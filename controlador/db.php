@@ -1,5 +1,4 @@
 <?php
-
 class DB{
     private $host;
     private $db;
@@ -9,7 +8,7 @@ class DB{
     public function __construct(){
         $params = parse_ini_file('database.ini');
         if ($params === false) {
-            throw new \Exception("Error lectura base de datos ");
+            echo("error");
         }
         $this->host     = $params['host'];
         $this->db       = $params['database'];
@@ -35,3 +34,4 @@ class DB{
     }
 
 }
+?>
