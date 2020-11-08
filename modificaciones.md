@@ -1,0 +1,1 @@
+se agregó al cliente la fila de habilitado
