@@ -16,6 +16,7 @@ public function __construct()
 public function agregarRegistro($nuevoRegistro){
 
 }
+
 public function actualizarRegistro($registroActualizar){
 
 }

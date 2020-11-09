@@ -17,7 +17,6 @@ class DB{
     }
 
     function connect(){
-    
         try{
             $connection = "pgsql:host=" . $this->host . ";dbname=" . $this->db;
             $options = [
@@ -32,6 +31,5 @@ class DB{
             print_r('Error connection: ' . $e->getMessage());
         }   
     }
-
 }
 ?>
