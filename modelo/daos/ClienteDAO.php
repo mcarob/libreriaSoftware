@@ -15,37 +15,48 @@ class ClienteDAO extends BD  implements dao_interface
     }
     
 
-    public function agregarAutoresDocumento(Cliente $nuevoRegistro){
+    public function agregarRegistro(Cliente $nuevoRegistro){
         
-        $query = "INSERT INTO autores_documento (cod_autores_documento,cod_documento,cod_autor) values (?,?,?)";
+        $query = "INSERT INTO cliente (cod_cliente,cod_usuario,nom_cliente,
+        telefono_cliente,correo_cliente,direccion_cliente,habilitado) values (?,?,?,?,?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
-                $nuevoRegistro->getCodAutoresDocumento(), 
-                $nuevoRegistro->getCodDocumento(), 
-                $nuevoRegistro->getCodAutor()
+                $nuevoRegistro->getCod_cliente(), 
+                $nuevoRegistro->getCod_usuario(), 
+                $nuevoRegistro->getNom_cliente(),
+                $nuevoRegistro->getTelefono_cliente(), 
+                $nuevoRegistro->getCorreo_cliente(), 
+                $nuevoRegistro->getDireccion_cliente(),
+                $nuevoRegistro->getHabilitado()
         ]);
         return $respuesta;
     }
 
 
-    public function editarAutoresDocumento(Cliente $registroActualizar){
-        $query = "UPDATE autores_documento SET cod_documento=?,cod_autor=? WHERE cod_autores_documento=?";
+    public function actualizarRegistro(Cliente $registroActualizar){
+        $query = "UPDATE cliente SET cod_usuario=?,nom_cliente=?,telefono_cliente=?,
+        correo_cliente=?,direccion_cliente=?,habilitado=? WHERE cod_cliente=?";
         $respuesta = $this->con->prepare($query)->execute([ 
-                $registroActualizar->getCodDocumento(), 
-                $registroActualizar->getCodAutor(),
-                $registroActualizar->getCodAutoresDocumento()
+                $registroActualizar->getCod_usuario(), 
+                $registroActualizar->getNom_cliente(),
+                $registroActualizar->getTelefono_cliente(),
+                $registroActualizar->getCorreo_cliente(), 
+                $registroActualizar->getDireccion_cliente(),
+                $registroActualizar->getHabilitado(),
+                $registroActualizar->getCod_cliente()
+
         ]);
         return $respuesta;
 
     }
     
-    public function eliminarAutoresDocumento($idRegistro){
-        $query = "DELETE FROM autores_documento WHERE cod_autores_documento=?";
+    public function eliminarRegistro($idRegistro){
+        $query = "DELETE FROM cliente WHERE cod_cliente=?";
         $respuesta = $this->con->prepare($query)->execute([$idRegistro]);
         return $respuesta;
     }
 
     public function listar(){
-        $query = $this->con->prepare("SELECT * FROM autores_documento");
+        $query = $this->con->prepare("SELECT * FROM cliente");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {

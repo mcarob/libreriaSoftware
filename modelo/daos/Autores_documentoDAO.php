@@ -15,7 +15,7 @@ class Autores_documentoDAO extends BD  implements dao_interface
     }
     
 
-    public function agregarAutoresDocumento(Autores_documento $nuevoRegistro){
+    public function agregarRegistro(Autores_documento $nuevoRegistro){
         
         $query = "INSERT INTO autores_documento (cod_autores_documento,cod_documento,cod_autor) values (?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
@@ -27,7 +27,7 @@ class Autores_documentoDAO extends BD  implements dao_interface
     }
 
 
-    public function editarAutoresDocumento(Autores_documento $registroActualizar){
+    public function actualizarRegistro(Autores_documento $registroActualizar){
         $query = "UPDATE autores_documento SET cod_documento=?,cod_autor=? WHERE cod_autores_documento=?";
         $respuesta = $this->con->prepare($query)->execute([ 
                 $registroActualizar->getCodDocumento(), 
@@ -38,7 +38,7 @@ class Autores_documentoDAO extends BD  implements dao_interface
 
     }
     
-    public function eliminarAutoresDocumento($idRegistro){
+    public function eliminarRegistro($idRegistro){
         $query = "DELETE FROM autores_documento WHERE cod_autores_documento=?";
         $respuesta = $this->con->prepare($query)->execute([$idRegistro]);
         return $respuesta;
