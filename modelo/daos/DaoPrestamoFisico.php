@@ -30,7 +30,7 @@ class DaoPrestamoFisico extends DB implements dao_interface
     }
 
 
-    public function actualizarRegistro(Publicador $registroActualizar)
+    public function actualizarRegistro($registroActualizar)
     {
        // No se le hace update al prestamo
     }
