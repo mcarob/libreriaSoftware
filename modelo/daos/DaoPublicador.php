@@ -36,7 +36,7 @@ class DaoPublicador extends DB implements dao_interface
 
     public function actualizarRegistro(Publicador $registroActualizar)
     {
-        $query = "INSERT INTO publicador (
+        $query = "UPDATE publicador SET (
             ced_publicador=?,
             nom_publicador=?,
             correo_publicador=?,
