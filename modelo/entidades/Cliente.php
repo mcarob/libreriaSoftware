@@ -7,8 +7,9 @@ class Cliente{
   private $telefono_cliente;
   private $correo_cliente;
   private $direccion_cliente;
+  private $habilitado;
 
-  public function __construct($cod_cliente, $cod_usuario,$nom_cliente,$telefono_cliente, $correo_cliente,$direccion_cliente)
+  public function __construct($cod_cliente, $cod_usuario,$nom_cliente,$telefono_cliente, $correo_cliente,$direccion_cliente,$habilitado)
   {
     $this->cod_cliente=$cod_cliente;
     $this->cod_usuario=$cod_usuario;
@@ -16,6 +17,7 @@ class Cliente{
     $this->telefono_cliente=$telefono_cliente;
     $this->correo_cliente=$correo_cliente;
     $this->direccion_cliente=$direccion_cliente;
+    $this->habilitado=$habilitado;
 
   }
   
@@ -75,6 +77,15 @@ class Cliente{
   public function setDireccion_cliente($direccion_cliente)
   {
     $this->direccion_cliente = $direccion_cliente;
+  }
+
+  public function getHabilitado()
+  {
+    return $this->habilitado;
+  } 
+  public function setHabilitado($habilitado)
+  {
+    $this->habilitado = $habilitado;
   }
 }
 ?>
