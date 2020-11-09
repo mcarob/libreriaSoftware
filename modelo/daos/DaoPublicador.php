@@ -57,16 +57,10 @@ class DaoPublicador extends DB implements dao_interface
 
     public function listar()
     {
-        $query = "select * from usuario";
-        $sentencia = $this->con->prepare($query);
-        $sentencia->execute([]);
-        $usuarios = [];
-        foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Usuario($key[0], $key[1], $key[2], $key[3], $key[4], $key[5], $key[6], $key[7], $key[8]);
-        }
-        return $usuarios;
+
     }
     public function eliminarRegistro($idRegistro)
     {
+        
     }
 }
