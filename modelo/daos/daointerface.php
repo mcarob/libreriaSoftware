@@ -1,5 +1,4 @@
 <?php
-
 interface dao_interface{
 /** 
  * metodos de CRUD
