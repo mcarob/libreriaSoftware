@@ -32,22 +32,7 @@ class DaoPrestamoFisico extends DB implements dao_interface
 
     public function actualizarRegistro(Publicador $registroActualizar)
     {
-        $query = "INSERT INTO publicador (
-            ced_publicador=?,
-            nom_publicador=?,
-            correo_publicador=?,
-            direccion_publicador=?,
-            ciudad_publicador=?,
-            pais_publicador=?,
-            telefono_publicador=?) WHERE cod_publicador=?";
-
-        $respuesta = $this->con->prepare($query)->execute([
-            $registroActualizar->getCedPublicador(),$registroActualizar->getNomPublicador(), 
-            $registroActualizar->getCorreoPublicador(), $registroActualizar->getDireccionPublicador(), 
-            $registroActualizar->getCiudadPublicador(),$registroActualizar->getPaisPublicador(),
-            $registroActualizar->getTelefonoPublicador(),$registroActualizar->getCodPublicador()
-        ]);
-        return $respuesta;
+       // No se le hace update al prestamo
     }
 
 
