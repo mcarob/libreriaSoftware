@@ -1,63 +1,54 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/Modelo/Entidades/Autores_documento.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/conexion/db.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/Autores_documento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/db.php');
 
-
-class Autores_documentoDAO
+class Autores_documentoDAO extends BD  implements dao_interface
 {
     
     private $con;
-    private $autores_documento;
 
-    
     public function __construct()
     {
-        $claseCon = new DB();
-        $this->con =$claseCon->connect();
+        parent::__construct();
+        $this->con =$this->connect();
     }
     
 
-    public function agregarAutoresDocumento(Autores_documento $autores_documento){
+    public function agregarRegistro(Autores_documento $nuevoRegistro){
         
-        $sql="insert into academica_hoja (COD_HOJA_VIDA, ACADEMICA_TITULO, ACADEMICA_INSTITUTO, ACADEMICA_DESDE,
-        ACADEMICA_HASTA,COD_TIPO_FORMACION)
-        values 
-        (?,?,?,?,?,?)";
-        $respuesta=$this->con->prepare($sql)->execute([$academica->getCodHojaVida(),$academica->getFormacionTitulo(),
-        $academica->getFormacionInstitucion(), $academica->getFormacionDesde(), $academica->getFormacionHasta(),
-        $academica->getTipoFormacion()]);
-        
+        $query = "INSERT INTO autores_documento (cod_autores_documento,cod_documento,cod_autor) values (?,?,?)";
+        $respuesta = $this->con->prepare($query)->execute([
+                $nuevoRegistro->getCodAutoresDocumento(), 
+                $nuevoRegistro->getCodDocumento(), 
+                $nuevoRegistro->getCodAutor()
+        ]);
+        return $respuesta;
+    }
+
+
+    public function actualizarRegistro(Autores_documento $registroActualizar){
+        $query = "UPDATE autores_documento SET cod_documento=?,cod_autor=? WHERE cod_autores_documento=?";
+        $respuesta = $this->con->prepare($query)->execute([ 
+                $registroActualizar->getCodDocumento(), 
+                $registroActualizar->getCodAutor(),
+                $registroActualizar->getCodAutoresDocumento()
+        ]);
         return $respuesta;
 
     }
-
-
-    public function EDITARHojaAcademica(AcademicaHoja $academica){
-        
-        $sql="UPDATE academica_hoja SET (ACADEMICA_TITULO, ACADEMICA_INSTITUTO, ACADEMICA_DESDE,
-        ACADEMICA_HASTA,COD_TIPO_FORMACION)
-        values 
-        (?,?,?,?,?)";
-        $respuesta=$this->con->prepare($sql)->execute([$academica->getFormacionTitulo(),
-        $academica->getFormacionInstitucion(), $academica->getFormacionDesde(), $academica->getFormacionHasta(),
-        $academica->getTipoFormacion()]);
+    
+    public function eliminarRegistro($idRegistro){
+        $query = "DELETE FROM autores_documento WHERE cod_autores_documento=?";
+        $respuesta = $this->con->prepare($query)->execute([$idRegistro]);
         return $respuesta;
-
     }
-    public function pasarInformaciones($var){
-        $sql="SELECT  * FROM academica_tipo_formacion where cod_hoja_vida=?";
-        $respuesta=$this->con->prepare($sql);
-        $respuesta->execute([$var]);
-        return $respuesta->fetchall();
 
-    }
-    public function buscarAcademica($cod)
-    {
-        $sentencia = $this->con->prepare("SELECT * FROM academica_hoja  WHERE cod_hoja_vida=?");
-        $sentencia->execute([$cod]);
+    public function listar(){
+        $query = $this->con->prepare("SELECT * FROM autores_documento");
+        $query->execute();
         $em = array();
-        while ($fila = $sentencia->fetch()) {
+        while ($fila = $query->fetch()) {
             $em[] = $fila;
         }
         return $em;
