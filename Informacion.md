@@ -26,7 +26,7 @@ idiomas
 
 estado_prestamo
 1) reservado
-2)atrasado
+2) atrasado
 3) en espera
-4)emtregado
+4) entregado
 5) solicitado
