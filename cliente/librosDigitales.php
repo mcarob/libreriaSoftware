@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <body>
@@ -31,11 +31,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand de libros fisicos</h2>
+                        	<h2 class="bradcaump-title">Stand de libros Digitales</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Libros Fisicos</span>
+                              <span class="breadcrumb_item active">Libros Digitales</span>
                             </nav>
                         </div>
                     </div>
@@ -117,13 +117,13 @@
 											<a class="first__img"><img src="assetsCliente/images/books/1.jpg" alt="product image" width="150" height="300"></a>
 
 											<div class="hot__box">
-												<span class="hot-label">MAS PEDIDO</span>
+												<span class="hot-label">MAS VENDIDO</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
 											<h4><a>El talisman, Stephen King</a> </h4>
 											<ul class="prize d-flex">
-												<li>Fecha de publicacion: 13/11/2020</li>
+                                            <li>Fecha de publicacion: 13/11/2020</li>
 											</ul>
 											<div class="action">
 												<div class="actions_inner">

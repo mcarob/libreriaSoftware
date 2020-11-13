@@ -684,7 +684,7 @@ a {
   background-size: cover;
   background-position: center center; }
 .bg-image--3 {
-  background-image: url(images/bg/3.jpg);
+  background-image: url(images/bg/3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; }
@@ -1045,9 +1045,9 @@ Elements Styles
   max-width: 650px;
 }
 .section__title.title--white h2 {
-  color: #fff; }
   .section__title.title--white h2.title__be--2::after {
     content: url("images/icons/icon_title3.png"); }
+  color: #fff; }
 .section__title h2 {
   -webkit-text-stroke: 0.5px black;
   color: #e6e696;

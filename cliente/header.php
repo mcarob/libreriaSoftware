@@ -44,40 +44,29 @@
 										<ul class="item item02">
 											<li class="title">Documentos Físicos</li>
 											<li><a href="librosFisicos.php">Libros Físicos</a></li>
-											<li><a href="misReservas.php">Mis reservas</a></li>
-											<li><a href="single-product.html">Articulos Físicas</a></li>
+											<li><a href="ponenciasFisicas.php">Ponencias Fisicas</a></li>
+											<li><a href="articulosFisicos.php">Articulos Físicos</a></li>
 										</ul>
 										<ul class="item item02">
 											<li class="title">Documentos Digitales</li>
-											<li><a href="shop-grid.html">Libros Digitales</a></li>
-											<li><a href="single-product.html">Ponencias Digitales</a></li>
-											<li><a href="single-product.html">Articulos Digitales</a></li>
+											<li><a href="librosDigitales.php">Libros Digitales</a></li>
+											<li><a href="ponenciasDigitales.php">Ponencias Digitales</a></li>
+											<li><a href="articulosDigitales.php">Articulos Digitales</a></li>
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="shop-grid.html">La Libreria</a>
+								<li class="drop"><a href="shop-grid.html">Reservas</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li class="title">Nuestros Servicios</li>
-											<li><a href="shop-grid.html">Reserva Online Documentos </a></li>
-											<li><a href="shop-grid.html">Descargas de Documentos digitales </a></li>
-											<li><a href="shop-grid.html">Salas de conferencia </a></li>
+											<li class="title">Mis reservas</li>
+											<li><a href="reservas.php">Consultar</a></li>
+											
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="shop-grid.html">Nuestras Sedes</a>
-									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li class="title">Bogotá</li>
-											<li><a href="shop-grid.html">Suba Bulevar</a></li>
-											<li><a href="shop-grid.html">Unicentro</a></li>
-											<li><a href="shop-grid.html">Centro Mayor</a></li>
-										</ul>
-									</div>
-								</li>
-							
+					
 								<li><a href="contact.html">Contactanos</a></li>
-								<li><a href="login.php">Registarse/Iniciar Sesión</a></li>
+								<li><a href="login.php">Cerrar Sesión</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -93,38 +82,35 @@
 					<div class="col-lg-12 d-none">
 						<nav class="mobilemenu__nav">
 							<ul class="meninmenu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="#">Pages</a>
+								<li><a href="index.php">Inicio</a></li>
+								<li><a>Documentos</a>
 									<ul>
-										<li><a href="about.html">About Page</a></li>
-										<li><a href="portfolio.html">Portfolio</a>
+										<li><a>Libros</a>
 											<ul>
-												<li><a href="portfolio.html">Portfolio</a></li>
-												<li><a href="portfolio-details.html">Portfolio Details</a></li>
+												<li><a href="librosFisicos.php">Fisicos</a></li>
+												<li><a href="librosDigitales.php">Digitales</a></li>
 											</ul>
 										</li>
-										<li><a href="my-account.html">My Account</a></li>
-										<li><a href="cart.html">Cart Page</a></li>
-										<li><a href="checkout.html">Checkout Page</a></li>
-										<li><a href="wishlist.html">Wishlist Page</a></li>
-										<li><a href="error404.html">404 Page</a></li>
-										<li><a href="faq.html">Faq Page</a></li>
-										<li><a href="team.html">Team Page</a></li>
+										<li><a>Articulos</a>
+											<ul>
+												<li><a href="articulosFisicos.php">Fisicos</a></li>
+												<li><a href="articulosDigitales">Digitales</a></li>
+											</ul>
+										</li>
+										<li><a>Ponencias</a>
+											<ul>
+												<li><a href="ponenciasFisicas.php">Fisicas</a></li>
+												<li><a href="ponenciasDigitales">Digitales</a></li>
+											</ul>
+										</li>
 									</ul>
 								</li>
-								<li><a href="shop-grid.html">Shop</a>
+								<li><a>Mis Reservas</a>
 									<ul>
-										<li><a href="shop-grid.html">Shop Grid</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
+										<li><a href="reservas.php">Consultar</a></li>
 									</ul>
 								</li>
-								<li><a href="blog.html">Blog</a>
-									<ul>
-										<li><a href="blog.html">Blog Page</a></li>
-										<li><a href="blog-details.html">Blog Details</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="perfil.php">Perfil</a></li>
 							</ul>
 						</nav>
 					</div>
