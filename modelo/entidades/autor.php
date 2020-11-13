@@ -6,7 +6,7 @@
         private $fecha_nacimiento;
         private $biografia_autor;
 
-        public function_construct($cod_autor,$nombre_autor,$apellido_autor, $fecha_nacimiento,$biografia_autor ){
+        public function __construct($cod_autor,$nombre_autor,$apellido_autor, $fecha_nacimiento,$biografia_autor ){
             $this->cod_autor=$cod_autor;
             $this->nombre_autor=$nombre_autor;
             $this->apellido_autor=$apellido_autor;

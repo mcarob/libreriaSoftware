@@ -6,7 +6,7 @@
         private $telefono_administrador;
         private $correo_administrador;
 
-        public function_construct($cod_administrador, $cod_usuario, $nom_administrador, $telefono_administrador, $correo_administrador){
+        public function __construct($cod_administrador, $cod_usuario, $nom_administrador, $telefono_administrador, $correo_administrador){
             $this->cod_administrador=$cod_administrador;
             $this->cod_usuario=$cod_usuario;
             $this->nom_administrador=$nom_administrador;
