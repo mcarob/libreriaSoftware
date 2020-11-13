@@ -65,8 +65,8 @@
 									</div>
 								</li>
 					
-								<li><a href="contact.html">Contactanos</a></li>
-								<li><a href="login.php">Cerrar Sesión</a></li>
+								<li><a href="perfil.php">Perfil</a></li>
+								<li><a href="index.php">Cerrar Sesión</a></li>
 							</ul>
 						</nav>
 					</div>
