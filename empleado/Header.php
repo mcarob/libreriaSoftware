@@ -18,11 +18,6 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/core.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.css">
-	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/style.css">
-
-	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/icon-font.min.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/style.css">

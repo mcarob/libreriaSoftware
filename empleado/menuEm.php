@@ -25,7 +25,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="TablaEmpleados.php">Listar</a></li>
-							<li><a href="FormEmpleado.php">Agregar</a></li>
+							<li><a href="advanced-components.html">Agregar</a></li>
 					
 						</ul>
 					</li>
