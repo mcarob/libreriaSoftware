@@ -11,6 +11,8 @@ tipo presentación ->
 1) Físico
 2) Digital
 
+tipo_documento-> 
+1) 
 
 parametros -> 
 
