@@ -32,18 +32,18 @@
 							<ul class="nav nav-pills nav-justified nav-style-fill" id="myTab" role="tablist">
 								<li class="nav-item">
 									<a class="nav-link active" id="Libro-tab" data-toggle="tab" role="tab"
-                                    aria-controls="Libro" href="#Libro">Libro</a>
+                                    aria-controls="Libro" aria-selected="true" href="#Libro">Libro</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" id="Presentacion-tab" data-toggle="tab" role="tab"
-                                    aria-controls="Presentacion" href="#Presentacion">Presentación</a>
+                                    aria-controls="Presentacion"  aria-selected="false" href="#Presentacion">Presentación</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" id="Articulo-tab" data-toggle="tab" role="tab"
-                                    aria-controls="Articulo" href="#Articulo">Articulo</a>
+                                    aria-controls="Articulo"  aria-selected="false" href="#Articulo">Articulo</a>
 								</li>
 							</ul>
-							<div class="tab-content" id="myTab1">
+							<div class="tab-content" id="myTabContent4">
 								<div class="tab-pane pt-3 fade show active" id="Libro" role="tabpanel" aria-labelledby="Libro-tab">
 
 									<?php include_once 'regLibro.php'; ?>
@@ -60,18 +60,11 @@
 
 								</div>
 							</div>
-
-
 						</div>
-
-						<!--  fin del primer tab-->
 					</div>
 				</nav>
-
-
 			</div>
 		</div>
-
 	</div>
 	</div>
 
