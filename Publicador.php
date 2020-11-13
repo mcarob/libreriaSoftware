@@ -14,8 +14,7 @@
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
 	<!-- Stylesheets -->
@@ -163,8 +162,7 @@
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<li class="shop_search"><a class="search__active" href="#"></a></li>
 							<li class="wishlist"><a href="#"></a></li>
-							<li class="shopcart"><a class="cartbox_active" href="#"><span
-										class="product_qun">3</span></a>
+							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
 								<!-- Start Shopping Cart -->
 								<div class="block-minicart minicart__active">
 									<div class="minicart-content-wrapper">
@@ -185,9 +183,7 @@
 											<div class="miniproduct">
 												<div class="item01 d-flex">
 													<div class="thumb">
-														<a href="product-details.html"><img
-																src="assetsCliente/images/product/sm-img/1.jpg"
-																alt="product images"></a>
+														<a href="product-details.html"><img src="assetsCliente/images/product/sm-img/1.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
@@ -205,9 +201,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="product-details.html"><img
-																src="assetsCliente/images/product/sm-img/3.jpg"
-																alt="product images"></a>
+														<a href="product-details.html"><img src="assetsCliente/images/product/sm-img/3.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Impulse Duffle</a></h6>
@@ -225,9 +219,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="product-details.html"><img
-																src="assetsCliente/images/product/sm-img/2.jpg"
-																alt="product images"></a>
+														<a href="product-details.html"><img src="assetsCliente/images/product/sm-img/2.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Compete Track Tote</a></h6>
@@ -388,7 +380,7 @@
 		<!-- End Search Popup -->
 		<!-- Start Bradcaump area -->
 		<div class="ht__bradcaump__area_general_nav bg-image--6">
-			
+
 		</div>
 		<br>
 		<div style=" display: flex;
@@ -398,127 +390,46 @@
 				<nav class="bradcaump-content">
 					<div class="card card-default">
 						<div class="card-body">
-							<ul class="nav nav-pills nav-fill">
+							<ul class="nav nav-pills nav-justified nav-style-fill" id="myTab" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active" href="#">Libro</a>
+									<a class="nav-link active" id="Libro-tab" data-toggle="tab" role="tab"
+                                    aria-controls="Libro" href="#Libro">Libro</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Presentación</a>
+									<a class="nav-link" id="Presentacion-tab" data-toggle="tab" role="tab"
+                                    aria-controls="Presentacion" href="#Presentacion">Presentación</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Articulo</a>
+									<a class="nav-link" id="Articulo-tab" data-toggle="tab" role="tab"
+                                    aria-controls="Articulo" href="#Articulo">Articulo</a>
 								</li>
 							</ul>
-							<div class="tab-content" id="myTabContent4">
-								<div class="tab-pane pt-3 fade show active" id="home3" role="tabpanel"
-									aria-labelledby="home3-tab">
+							<div class="tab-content" id="myTab1">
+								<div class="tab-pane pt-3 fade show active" id="Libro" role="tabpanel" aria-labelledby="Libro-tab">
 
-									<form autocomplete="off" id="formNuevoLibro" action="" method="POST">
-										<!--    esto es algo comentado--->
-
-										<div class="wizard-card">
-											<br>
-											<br>
-											<div class="picture-container">
-												<div class="picture">
-													<img src="assetsCliente/images/icons/default-avatar1.png"
-														class="picture-src" id="wizardPicturePreview" title="" />
-													<input type="file" id="portada" name="portada" required>
-												</div>
-												<h6>Elegir portada del titulo</h6>
-											</div>
-											<br>
-											<br>
-											<div class="row">
-												<div class="col-md-4" aling="align-items-center">
-													<div class="form-group">
-														<label>Titulo del libro:</label>
-														<input class="form-control" id="titulo" name="titulo">
-														</input>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="form-group">
-														<label>Fecha de publicacion:</label>
-														<input class="form-control" id="fechaPublicacion"
-															name="fechaPublicacion">
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="form-group">
-														<label>Autor:</label>
-														<input class="form-control" id="fechaPublicacion"
-															name="fechaPublicacion">
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-4">
-													<div class="form-group">
-														<label>ISBN:</label>
-														<input class="form-control" id="fechaPublicacion"
-															name="fechaPublicacion">
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="form-group">
-														<label>Mes de publicacion:</label>
-														<input class="form-control" id="fechaPublicacion"
-															name="fechaPublicacion">
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="form-group">
-														<label>Dia de publicacion:</label>
-														<input class="form-control" id="fechaPublicacion"
-															name="fechaPublicacion">
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-4">
-													<div class="form-group">
-														<label>ISBN:</label>
-														<input class="form-control" id="fechaPublicacion"
-															name="fechaPublicacion">
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="form-group">
-														
-														<label class="control control-checkbox checkbox-success">Tipo de formato:</label>
-														
-															<div class="input-group md-4">
-																<select class="custom-select" id="inputGroupSelect02">
-																	<option value="1" selected>Físico</option>
-																	<option value="2">Digital</option>
-																</select>
-																<div class="input-group-append">
-																	<label class="input-group-text"
-																		for="inputGroupSelect02">Formato</label>
-																</div>
-															</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</form>
+									<?php include_once 'regLibro.php'; ?>
 
 								</div>
+								<div class="tab-pane pt-3 fade" id="Presentacion" role="tabpanel" aria-labelledby="Presentacion-tab">
 
-								<div class="form-footer " style="float: right;">
-									<input type="submit" class="btn btn-primary btn-default" value="Registrar"></input>
+									<?php include_once 'regPresentacion.php'; ?>
+
 								</div>
+								<div class="tab-pane pt-3 fade" id="Articulo" role="tabpanel" aria-labelledby="Articulo-tab">
 
+									<?php include_once 'regArticulo.php'; ?>
+
+								</div>
 							</div>
+
+
 						</div>
+
 						<!--  fin del primer tab-->
 					</div>
 				</nav>
 
-				<div class="tab-pane pt-3 fade" id="profile3" role="tabpanel" aria-labelledby="profile3-tab">
-					<?php include_once 'registro_estudiante.php'; ?>
-				</div>
+
 			</div>
 		</div>
 
@@ -599,14 +510,15 @@
 	<script src="assetsCliente/js/active.js"></script>
 	<script>
 		// Prepare the preview for profile picture
-		$("#wizard-picture").change(function () {
+		$("#wizard-picture").change(function() {
 			readURL(this);
 		});
+
 		function readURL(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 
-				reader.onload = function (e) {
+				reader.onload = function(e) {
 					$('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
 				}
 				reader.readAsDataURL(input.files[0]);
