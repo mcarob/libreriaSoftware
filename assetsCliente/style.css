@@ -452,6 +452,7 @@ h2,
 
 h3,
 .h3 {
+  color:#54878f;
   font-size: 22px; }
 
 h4,
@@ -534,7 +535,7 @@ ul {
   list-style: none; }
 
 a#scrollUp {
-  background: #e59285;
+  background: #5069F9;
   color: #fff;
   bottom: 40px;
   right: 40px;
@@ -583,7 +584,7 @@ a {
 
 /* Define Colors */
 .color--theme {
-  color: #e59285; }
+  color: #d5ab9c; }
 .color--light {
   color: #999999; }
 .color--dark {
@@ -629,7 +630,7 @@ a {
 
 /* Background Image */
 .bg-image--1index{
-  background-image: url(images/bg/Reading.jpg);
+  background-image: url(images/bg/libreria.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -703,7 +704,7 @@ a {
   background-size: cover;
   background-position: center center; }
 .bg-image--7 {
-  background-image: url(images/bg/7.jpg);
+  background-image: url(images/bg/libreria2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; }
@@ -1048,7 +1049,8 @@ Elements Styles
   .section__title.title--white h2.title__be--2::after {
     content: url("images/icons/icon_title3.png"); }
 .section__title h2 {
-  color: #333;
+  -webkit-text-stroke: 0.5px black;
+  color: #e6e696;
   display: block;
   font-size: 30px;
   font-weight: 700;
@@ -2165,7 +2167,7 @@ Header Styles
 .sticky__header.is-sticky {
   -webkit-animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
   animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
-  background: rgba(0, 0, 0, 0.9) none repeat scroll 0 0;
+  background: rgba(84, 135, 143, 1) none repeat scroll 0 0;
   box-shadow: 0 0 5px #bdbdbd;
   left: 0;
   position: fixed;
@@ -3068,7 +3070,8 @@ h3.widget-title-modal {
   font-size: 60px;
 }
 .slide .slider__content h2 {
-  color: #3c3c3c;
+  -webkit-text-stroke: 1px black;
+  color: #e6e696;
   font-size: 68px;
   font-family: poppins;
   font-weight: 700;
@@ -3107,9 +3110,9 @@ h3.widget-title-modal {
     vertical-align: middle;
     width: 44px; }
   .slide .slider__content a.shopbtn:hover {
-    color: #e59285; }
+    color: #d5ab9c; }
     .slider--15 .slide .slider__content h2 span {
-      color: #ce7852; }
+      color: #d5ab9c; }
   .slider--15 .slide .slider__content h1 {
     color: #3c3c3c;
     font-family: "tex_gyre_adventorbold";
