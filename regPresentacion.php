@@ -1,4 +1,4 @@
-<form autocomplete="off" id="formNuevoLibro" action="" method="POST">
+<form autocomplete="off" id="formNuevoPresentacion" action="" method="POST">
     <!--    esto es algo comentado--->
 
     <div class="wizard-card">
@@ -85,7 +85,5 @@
             </div>
         </div>
     </div>
-    <div class="form-footer " style="float: right;">
-        <input type="submit" class="btn btn-primary btn-default" value="Registrar"></input>
-    </div>
+   
 </form>

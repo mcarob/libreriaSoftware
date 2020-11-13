@@ -86,7 +86,5 @@
             </div>
         </div>
     </div>
-    <div class="form-footer " style="float: right;">
-        <input type="submit" class="btn btn-primary btn-default" value="Registrar"></input>
-    </div>
+    
 </form>
