@@ -1,6 +1,6 @@
 <?php
 include('Header.php');
-include('menuAdmi.php');
+include('menuEm.php');
 ?>
 
 
@@ -12,12 +12,12 @@ include('menuAdmi.php');
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<div class="title">
-							<h4>Publicadores en Bosquecillo </h4>
+							<h4>Libros de Bosquecillo </h4>
 						</div>
 						<nav aria-label="breadcrumb" role="navigation">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">Publicadores</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Listar</li>
+								<li class="breadcrumb-item"><a href="index.html">Libros</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Aceptar Devolución</li>
 							</ol>
 						</nav>
 					</div>
@@ -31,7 +31,7 @@ include('menuAdmi.php');
 			<!-- Export Datatable start -->
 			<div class="card-box mb-30">
 				<div class="pd-20">
-					<h4 class="text-blue h4">Publicadores registrados</h4>
+					<h4 class="text-blue h4">Libros Prestados</h4>
 				</div>
 				<div class="pb-20">
 					<table class="table hover multiple-select-row data-table-export nowrap">
@@ -42,7 +42,7 @@ include('menuAdmi.php');
 								<th>Office</th>
 								<th>Address</th>
 								<th>Start Date</th>
-								<th></th>
+								<th> </th>
 							</tr>
 						</thead>
 						<tbody>
@@ -59,30 +59,13 @@ include('menuAdmi.php');
 										</a>
 										<div class="dropdown-menu dropdown-menu-right">
 											<a class="dropdown-item" href="#">Ver más</a>
-											<a class="dropdown-item" href="#">Inactivar</a>
+											<a class="dropdown-item" href="#">Aceptar</a>
 										</div>
 									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											Acciones
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" href="#">Ver más</a>
-											<a class="dropdown-item" href="#">Activar</a>
-										</div>
-									</div>
-								</td>
-							</tr>
 
+								</td>
+
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -94,8 +77,6 @@ include('menuAdmi.php');
 		</div>
 	</div>
 </div>
-
-
 
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>

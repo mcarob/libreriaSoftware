@@ -1,8 +1,7 @@
 <?php
 include('Header.php');
-include('menuAdmi.php');
+include('menuEm.php');
 ?>
-
 
 
 <div class="main-container">
@@ -59,7 +58,6 @@ include('menuAdmi.php');
 										</a>
 										<div class="dropdown-menu dropdown-menu-right">
 											<a class="dropdown-item" href="#">Ver más</a>
-											<a class="dropdown-item" href="#">Inactivar</a>
 										</div>
 									</div>
 								</td>
@@ -77,7 +75,6 @@ include('menuAdmi.php');
 										</a>
 										<div class="dropdown-menu dropdown-menu-right">
 											<a class="dropdown-item" href="#">Ver más</a>
-											<a class="dropdown-item" href="#">Activar</a>
 										</div>
 									</div>
 								</td>

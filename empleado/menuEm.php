@@ -19,16 +19,7 @@
 							<li><a href="index.html">Dashboard style 1</a></li>
 						</ul>
 					</li>
-					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-edit2"></span><span class="mtext">Empleados</span>
-						</a>
-						<ul class="submenu">
-							<li><a href="TablaEmpleados.php">Listar</a></li>
-							<li><a href="advanced-components.html">Agregar</a></li>
 					
-						</ul>
-					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
 							<span class="micon dw dw-library"></span><span class="mtext">Publicadores</span>
