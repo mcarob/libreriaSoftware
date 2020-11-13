@@ -61,4 +61,3 @@ class autorDAO extends BD  implements dao_interface
         return $em;
     }
 }
-?>
