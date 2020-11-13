@@ -375,24 +375,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Publicador</h2>
-                            <nav class="bradcaump-content">
-                              <a class="breadcrumb_item" href="index.html">Home</a>
-                              <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Publicador</span>
+					
+					<nav class="bradcaump-content">
+
 					<div class="card card-default">
 						<div class="card-body">
-							<ul class="nav nav-pills nav-justified nav-style-fill" id="myTab" role="tablist">
+							
+							<ul class="nav nav-pills nav-fill">
 								<li class="nav-item">
-									<a class="nav-link active" id="home3-tab" data-toggle="tab" href="#home3" role="tab"
-										aria-controls="home3" aria-selected="true">Registro Empresa</a>
+								  <a class="nav-link active" href="#">Libro</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" id="profile3-tab" data-toggle="tab" href="#profile3" role="tab"
-										aria-controls="profile3" aria-selected="false">Registro Estudiante</a>
+								  <a class="nav-link" href="#">Presentación</a>
 								</li>
-							</ul>
+								<li class="nav-item">
+								  <a class="nav-link" href="#">Articulo</a>
+								</li>
+							  </ul>
 							<div class="tab-content" id="myTabContent4">
 								<div class="tab-pane pt-3 fade show active" id="home3" role="tabpanel"
 									aria-labelledby="home3-tab">
@@ -403,50 +402,29 @@
 										<div class="wizard-card">
 											<div class="picture-container">
 												<div class="picture">
-													<img src="assets/img/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title="" />
+													<img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title="" />
 													<input type="file" id="logo" name="logo" required>
 												</div>
-												<h6>Elegir Logo</h6>
+												<h6>Elegir portada del titulo</h6>
 											</div>
 										</div>
 										<br>
-										<div class="input-group">
+										<div class="input-group row">
 											<div class="input-group-prepend">
 												<span class="input-group-text">
-													<i class="material-icons"></i>
+													<i class="material-icons">phone</i>
 												</span>
 											</div>
 											<input type="text" id="registroE" name="REM" value="REM" hidden>
-											<input autocomplete="new-false" type="text" class="form-control" id="nombreE" name="nombreE"
-												placeholder="Nombre o Razón Social" aria-label="Nombre Empresa" maxlength="60" required>
-										</div>
-										<div class="row no-gutters">
-											<div class="col-md-6 mb">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">
-															<i class="material-icons"></i>
-														</span>
-													</div>
-													<input autocomplete="false" type="text" class="form-control" id="nitE" name="nitE"
-														data-mask="999999999-9" placeholder="NIT" maxlength="11" pattern="(^[0-9]{9}-{1}[0-9]{1})"
-														title="El Formmato de Nit es xxxxxxxxx-x" aria-label="Nit Empresa">
-												</div>
-											</div>
-											<div class="col-md-6 mb">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">
-															<i class="material-icons"></i>
-														</span>
-													</div>
-													<input autocomplete="false" type="text" class="form-control" id="telE" name="telE" required
-														placeholder="Teléfono Empresa" maxlength="15" pattern="(^[+]?[0-9]{7,15})"
-														title="El Formato de telefono puede comenzar con + o solo numeros (max 15)"
-														aria-label="Telefono Empresa">
-												</div>
+											<input autocomplete="new-false" type="text" class="form-control" id="nombreT" name="nombreT"
+												placeholder="Nombre del titulo" aria-label="Nombre del titulo" maxlength="100" required>
+												<label for="example-date-input" class="col-2 col-form-label">Fecha de publicacion</label>
+											<div class="col-10">
+											  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
 											</div>
 										</div>
+										<br>
+											
 										<div class="input-group">
 											<div class="input-group-prepend">
 												<span class="input-group-text">
@@ -495,7 +473,7 @@
 												<div class="input-group">
 													<div class="input-group-prepend">
 														<span class="input-group-text">
-															<i class="material-icons">group</i>
+															<i class="material-icons"></i>
 														</span>
 													</div>
 													<input autocomplete="false" type="text" class="form-control" id="cargoC" name="cargoC" required
@@ -541,7 +519,6 @@
 						</div>
 					</div>
 	
-				</div>
 			</div>
 	
 		</div>
