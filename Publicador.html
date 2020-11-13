@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Portfolio | Bookshop Responsive Bootstrap4 Template</title>
+	<title>Portfolio</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,7 +42,7 @@
 					<div class="col-md-4 col-sm-4 col-7 col-lg-2">
 						<div class="logo">
 							<a href="index.html">
-								<img src="images/logo/logo.png" alt="logo images">
+								<img src="assetsCliente/images/logo/logo.png" alt="logo images">
 							</a>
 						</div>
 					</div>
@@ -181,7 +181,7 @@
 											<div class="miniproduct">
 												<div class="item01 d-flex">
 													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
+														<a href="product-details.html"><img src="assetsCliente/images/product/sm-img/1.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
@@ -197,7 +197,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/3.jpg" alt="product images"></a>
+														<a href="product-details.html"><img src="assetsCliente/images/product/sm-img/3.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Impulse Duffle</a></h6>
@@ -213,7 +213,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/2.jpg" alt="product images"></a>
+														<a href="product-details.html"><img src="assetsCliente/images/product/sm-img/2.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Compete Track Tote</a></h6>
@@ -376,289 +376,180 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Portfolio</h2>
+                        	<h2 class="bradcaump-title">Publicador</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.html">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Portfolio</span>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area -->
-		<!-- Start Portfolio Area -->
-		<section class="wn__portfolio__area gallery__masonry__activation bg--white mt--40 pb--100">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="gallery__menu">
-                            <button data-filter="*" class="is-checked">Filter - All</button>
-                            <button data-filter=".cat--1">Company News</button>
-                            <button data-filter=".cat--2">Computers</button>
-                            <button data-filter=".cat--3">General News</button>
-                            <button data-filter=".cat--4">Hipster Content</button>
-                            <button data-filter=".cat--5">Just Food</button>
-                      	</div>
-					</div>
-				</div>
-				<div class="row masonry__wrap">
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--1">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/1.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/1.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
+                              <span class="breadcrumb_item active">Publicador</span>
+v -1">
+					<div class="card card-default">
+						<div class="card-body">
+							<ul class="nav nav-pills nav-justified nav-style-fill" id="myTab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="home3-tab" data-toggle="tab" href="#home3" role="tab"
+										aria-controls="home3" aria-selected="true">Registro Empresa</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="profile3-tab" data-toggle="tab" href="#profile3" role="tab"
+										aria-controls="profile3" aria-selected="false">Registro Estudiante</a>
+								</li>
+							</ul>
+							<div class="tab-content" id="myTabContent4">
+								<div class="tab-pane pt-3 fade show active" id="home3" role="tabpanel"
+									aria-labelledby="home3-tab">
+	
+									<form autocomplete="off" id="formNuevoLibro" action="" method="POST">
+										<!--    esto es algo comentado--->
+										
+										
+										<h4>Logo:</h4>
+										<div class="col-md-2 col-sm-offset-5 ">
+										<div class="picture-container">
+											<div class="picture">
+											<img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title=""/>
+											<input type="file" name="file" id="wizard-picture" aria-invalid="false" class="valid" accept="image/*" />
+											</div>
+											<h6>Choose Picture</h6>
+										</div>
+										</div>
+
+										<br>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">
+													<i class="material-icons"></i>
+												</span>
+											</div>
+											<input type="text" id="registroE" name="REM" value="REM" hidden>
+											<input autocomplete="new-false" type="text" class="form-control" id="nombreE" name="nombreE"
+												placeholder="Nombre o Razón Social" aria-label="Nombre Empresa" maxlength="60" required>
+										</div>
+										<div class="row no-gutters">
+											<div class="col-md-6 mb">
+												<div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text">
+															<i class="material-icons"></i>
+														</span>
+													</div>
+													<input autocomplete="false" type="text" class="form-control" id="nitE" name="nitE"
+														data-mask="999999999-9" placeholder="NIT" maxlength="11" pattern="(^[0-9]{9}-{1}[0-9]{1})"
+														title="El Formmato de Nit es xxxxxxxxx-x" aria-label="Nit Empresa">
+												</div>
+											</div>
+											<div class="col-md-6 mb">
+												<div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text">
+															<i class="material-icons"></i>
+														</span>
+													</div>
+													<input autocomplete="false" type="text" class="form-control" id="telE" name="telE" required
+														placeholder="Teléfono Empresa" maxlength="15" pattern="(^[+]?[0-9]{7,15})"
+														title="El Formato de telefono puede comenzar con + o solo numeros (max 15)"
+														aria-label="Telefono Empresa">
+												</div>
+											</div>
+										</div>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">
+													<i class="material-icons"></i>
+												</span>
+											</div>
+											<input autocomplete="false" type="text"
+												pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(.[A-Za-z0-9]+)(.[A-Za-z]{2,})$"
+												title="No Cumple con el Formato de Correo Electrónico" class="form-control" id="emailE" name="emailE"
+												required placeholder="Correo Electrónico Empresa" maxlength="60" aria-label="Username">
+										</div>
+										<div class="form-group">
+											<textarea class="form-control" id="exampleFormControlTextarea1" id="descE" name="descE" required rows="5"
+												style="resize: none;" maxlength="1200" placeholder="Descripción Empresa (max 1200)"></textarea>
+										</div>
+										<h2 style="color: black;">Información del Contacto </h2>
+										<br>
+										<div class="row no-gutters">
+											<div class="col-md-6 ">
+												<div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text">
+															<i class="material-icons"></i>
+														</span>
+													</div>
+													<input autocomplete="false" type="text" class="form-control" title="Solo Caracteres Alfabeticos"
+														pattern="^[a-zA-Z ]*$" id="nomC" name="nomC" required placeholder="Nombres" maxlength="30"
+														aria-label="Username">
+												</div>
+											</div>
+											<div class="col-md-6 ">
+												<div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text">
+															<i class="material-icons"></i>
+														</span>
+													</div>
+													<input autocomplete="false" type="text" class="form-control" id="apeC"
+														title="Solo Caracteres Alfabeticos" pattern="^[a-zA-Z ]*$" name="apeC" required
+														placeholder="Apellidos " maxlength="30" aria-label="Username">
+												</div>
+											</div>
+										</div>
+										<div class="row no-gutters">
+											<div class="col-md-6 ">
+												<div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text">
+															<i class="material-icons">group</i>
+														</span>
+													</div>
+													<input autocomplete="false" type="text" class="form-control" id="cargoC" name="cargoC" required
+														placeholder="Cargo" maxlength="30" aria-label="Username">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text">
+															<i class="material-icons"></i>
+														</span>
+													</div>
+													<input autocomplete="false" type="text" class="form-control" id="telC" name="telC" required
+														placeholder="Teléfono " maxlength="15" pattern="(^[+]?[0-9]{7,15})"
+														title="El Formato de teléfono puede comenzar con + o solo numeros (max 15)" aria-label="Username">
+												</div>
+											</div>
+										</div>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text">
+													<i class="material-icons"></i>
+												</span>
+											</div>
+											<input autocomplete="false" type="text" class="form-control" id="emailC" name="emailC" required
+												placeholder="Correo Electrónico Contacto"
+												pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(.[A-Za-z0-9]+)(.[A-Za-z]{2,})$"
+												title="No Cumple con el Formato de Correo Electrónico" maxlength="60" aria-label="Username">
+										</div>
+										<div class="form-footer " style="float: right;">
+											<input type="submit" class="btn btn-primary btn-default" value="Registrar"></input>
+										</div>
+									</form>
+	
+									<!--  fin del primer tab-->
 								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
+								<div class="tab-pane pt-3 fade" id="profile3" role="tabpanel"
+									aria-labelledby="profile3-tab">
+									<?php include_once 'registro_estudiante.php'; ?>
 								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
 							</div>
 						</div>
 					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--2">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/2.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/2.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--3">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/3.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/3.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--4">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/4.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/1.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--5">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/5.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/1.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--2">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/6.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/2.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--3">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/7.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/1.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--4">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/8.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/3.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--5">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/9.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/2.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--2">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/10.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/1.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--3">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/5.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/1.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--4">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/7.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/2.jpg" data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
+	
 				</div>
 			</div>
-		</section>
+	
+		</div>
+	
 		<!-- End Portfolio Area -->
 		<!-- Footer Area -->
 		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
@@ -728,4 +619,20 @@
 	<script src="assetsCliente/js/active.js"></script>
 	
 </body>
+<script>
+// Prepare the preview for profile picture
+$("#wizard-picture").change(function() {
+  readURL(this);
+}); 
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+	</script>
 </html>
