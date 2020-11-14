@@ -169,7 +169,7 @@ include('menuAdmi.php');
 				</form>
 			</div>
 		</div>
-	</div>
+	</div>	
 	</div>
 </div>
 
