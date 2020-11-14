@@ -3,7 +3,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/Cliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/db.php');
 
-class ClienteDAO extends BD  implements dao_interface
+class ClienteDAO extends DB  implements dao_interface
 {
     
     private $con;

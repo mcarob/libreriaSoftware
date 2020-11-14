@@ -3,7 +3,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/parametro.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/db.php');
 
-class DaoParametro extends db  implements dao_interface
+class DaoParametro extends DB  implements dao_interface
 {
     
     private $con;

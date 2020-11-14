@@ -15,12 +15,12 @@ class Documento{
   private $informacion_bib;
   private $direccion_archivo;
   private $cod_publicador;
-  
+  private $direccion_portada;  
 
   public function __construct($cod_documento,$cod_idioma, $cod_tipo_documento,
   $cod_tipo_presentacion,$titulo_documento,$fecha_publicacion,$editorial_publicacion,
   $codigo_isbn, $informacion_paginas,$informacion_congreso,$informacion_ssn, 
-  $informacion_bib,$direccion_archivo,$cod_publicador)
+  $informacion_bib,$direccion_archivo,$cod_publicador,$direccion_portada)
   {
     $this->cod_documento=$cod_documento;
     $this->cod_idioma=$cod_idioma;
@@ -37,6 +37,7 @@ class Documento{
     $this->informacion_bib=$informacion_bib;
     $this->direccion_archivo=$direccion_archivo;
     $this->cod_publicador=$cod_publicador;
+    $this->direccion_portada=$direccion_portada;
 
   }
   
@@ -49,6 +50,16 @@ class Documento{
   {
     $this->cod_documento = $cod_documento;
   }
+  
+  public function getDireccion_portada()
+  {
+    return $this->direccion_portada;
+  } 
+  public function setDireccion_portada($direccion_portada)
+  {
+    $this->direccion_portada = $direccion_portada;
+  }
+
 
    
   public function getCod_idioma()

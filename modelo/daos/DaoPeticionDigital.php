@@ -3,7 +3,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/peticion_digital.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/db.php');
 
-class DaoPeticionDigital extends db  implements dao_interface
+class DaoPeticionDigital extends DB  implements dao_interface
 {
     
     private $con;

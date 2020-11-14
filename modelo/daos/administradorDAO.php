@@ -3,7 +3,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/administrador.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/db.php');
 
-class administradorDAO extends BD  implements dao_interface
+class administradorDAO extends DB  implements dao_interface
 {
     
     private $con;
@@ -21,7 +21,7 @@ class administradorDAO extends BD  implements dao_interface
         telefono_administrador,correo_administrador) values (?,?,?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
                 $nuevoRegistro->getCodAdministrador(), 
-                $nuevoRegistro->getCod_usuario(), 
+                $nuevoRegistro->getCodUsuario(), 
                 $nuevoRegistro->getNomAdministrador(),
                 $nuevoRegistro->getTelefonoAdministrador(), 
                 $nuevoRegistro->getCorreoAdministrador()
@@ -34,7 +34,7 @@ class administradorDAO extends BD  implements dao_interface
         $query = "UPDATE administrador SET cod_usuario=?,nom_administrador=?,telefono_administrador=?,
         correo_administrador=? WHERE cod_administrador=?";
         $respuesta = $this->con->prepare($query)->execute([ 
-                $registroActualizar->getCod_usuario(), 
+                $registroActualizar->getCodUsuario(), 
                 $registroActualizar->getNomAdministrador(),
                 $registroActualizar->getTelefonoAdministrador(),
                 $registroActualizar->getCorreoAdministrador(), 
