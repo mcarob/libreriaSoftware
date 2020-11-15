@@ -37,7 +37,14 @@ class DaoPrestamoFisico extends DB implements dao_interface
 
     public function listar()
     {
-
+        // VISTA PARA OBTENER LOS DOCUMENTOS PRESTADOS, PREGUNTAR EL CODIGO DEL ESTADO_PRESTAMO
+        $query = $this->con->prepare("SELECT * FROM listaLibrosFisicosPrestados where cod_estado_prestamo=3");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
     }
     public function eliminarRegistro($idRegistro)
     {

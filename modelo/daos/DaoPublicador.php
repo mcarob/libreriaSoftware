@@ -14,7 +14,7 @@ class DaoPublicador extends DB implements dao_interface
         $this->con = $this->connect();
     }
 
-    public function agregarRegistro(Publicador $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
         $query = "INSERT INTO publicador (cod_publicador,
     cod_usuario,
@@ -34,7 +34,7 @@ class DaoPublicador extends DB implements dao_interface
     }
 
 
-    public function actualizarRegistro(Publicador $registroActualizar)
+    public function actualizarRegistro(Object $registroActualizar)
     {
         $query = "UPDATE publicador SET (
             ced_publicador=?,
@@ -55,11 +55,36 @@ class DaoPublicador extends DB implements dao_interface
     }
 
 
-
-
     public function listar()
     {
+        
     }
+
+    public function listarPublicadoresSinValidar()
+    {
+        $query = $this->con->prepare("SELECT * FROM listaPublicadoresnovalidados");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function darPublicadorxCod($id)
+    {
+        $query = $this->con->prepare("SELECT * FROM listaPublicadoresnovalidados where cod_publicador=".$id);
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    
+    
+
     public function eliminarRegistro($idRegistro)
     {
     }

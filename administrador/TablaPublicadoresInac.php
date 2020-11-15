@@ -1,6 +1,9 @@
 <?php
 include('Header.php');
 include('menuAdmi.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPublicador.php');
+$CPublicador = new ControladorPublicador();
+$publicador = $CPublicador->PublicadoresSinValidar();
 ?>
 
 
@@ -37,51 +40,39 @@ include('menuAdmi.php');
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Name</th>
-								<th>Age</th>
-								<th>Office</th>
-								<th>Address</th>
-								<th>Start Date</th>
-								<th></th>
+								<th class="table-plus datatable-nosort">Nombre</th>
+								<th>Cédula</th>
+								<th>Correo</th>
+								<th>Estado</th>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="table-plus">Gloria F. Mead</td>
-								<td>25</td>
-								<td>Sagittarius</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											Acciones
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" href="#">Ver más</a>
-											<a class="dropdown-item" href="#">Aceptar</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											Acciones
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" data-toggle="modal" data-target="#modal1" href="#">Ver más</a>
-											<a class="dropdown-item" href="#">Aceptar</a>
-										</div>
-									</div>
-								</td>
-							</tr>
+							<?php
+							foreach ($publicador as $key) {
+								echo ("<tr>");
+								echo ("<td>" . $key[3] . "</td>");
+								echo ("<td>" . $key[2] . "</td>");
+								echo ("<td>" . $key[4] . "</td>");
+								echo ("<td>" . $key[9] . "</td>");
+
+								echo ("<div class='dropdown'>
+								<a class='btn btn-outline-primary dropdown-toggle' href='#' role='button' data-toggle='dropdown'>
+									Acciones
+								</a>
+								<div class='dropdown-menu dropdown-menu-right'>
+									<a class='dropdown-item' data-toggle='modal' data-target='#modal1' href='#'>Ver más</a>
+									<a class='dropdown-item' href='#'>Aceptar</a>
+								</div>
+							</div>");
+
+							?>
+
+							<?php
+								echo ("</tr>");
+							}
+							?>
+							
 
 						</tbody>
 					</table>
@@ -94,82 +85,82 @@ include('menuAdmi.php');
 		</div>
 
 		<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header px-4">
-						<h5 class="modal-title" id="exampleModalCenterTitle">Editar Profesional</h5>
-					</div>
-					<div class="modal-body px-4">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<form>
+						<div class="modal-header px-4">
+							<h5 class="modal-title" id="exampleModalCenterTitle">Editar Profesional</h5>
+						</div>
+						<div class="modal-body px-4">
 
-						<div class="form-group row mb-6">
-							<label for="coverImage" class="col-sm-4 col-lg-2 col-form-label">Firma</label>
-							<div class="col-sm-8 col-lg-10">
-								<div class="custom-file mb-1">
-									<input type="file" class="custom-file-input" id="coverImage" required>
-									<label class="custom-file-label" for="coverImage">Seleccione el archivo</label>
-									<div class="invalid-feedback">Example invalid custom file feedback</div>
+							<div class="form-group row mb-6">
+								<label for="coverImage" class="col-sm-4 col-lg-2 col-form-label">Firma</label>
+								<div class="col-sm-8 col-lg-10">
+									<div class="custom-file mb-1">
+										<input type="file" class="custom-file-input" id="coverImage" required>
+										<label class="custom-file-label" for="coverImage">Seleccione el archivo</label>
+										<div class="invalid-feedback">Example invalid custom file feedback</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-2">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="firstName">Nombres</label>
+										<input type="text" class="form-control" id="firstName" value="">
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="lastName">Apellidos</label>
+										<input type="text" class="form-control" id="lastName" value="">
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="userName">Identificación</label>
+										<input type="text" class="form-control" id="userName" value="">
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="email">Correo</label>
+										<input type="email" class="form-control" id="email" value="">
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="Birthday">Fecha de incorporación</label>
+										<input type="text" class="form-control" id="Birthday" value="01-10-1993">
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="event">Area</label>
+										<select type="text" class="form-control" id="event" value="Some value for event">
+											<option>Fonoaudiologa</option>
+											<option>Psicologa</option>
+											<option>Terapeuta</option>
+											<option>Musicoterapeuta</option>
+										</select>
+									</div>
 								</div>
 							</div>
 						</div>
-
-						<div class="row mb-2">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="firstName">Nombres</label>
-									<input type="text" class="form-control" id="firstName" value="">
-								</div>
-							</div>
-
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="lastName">Apellidos</label>
-									<input type="text" class="form-control" id="lastName" value="">
-								</div>
-							</div>
-
-							<div class="col-lg-6">
-								<div class="form-group mb-4">
-									<label for="userName">Identificación</label>
-									<input type="text" class="form-control" id="userName" value="">
-								</div>
-							</div>
-
-							<div class="col-lg-6">
-								<div class="form-group mb-4">
-									<label for="email">Correo</label>
-									<input type="email" class="form-control" id="email" value="">
-								</div>
-							</div>
-
-							<div class="col-lg-6">
-								<div class="form-group mb-4">
-									<label for="Birthday">Fecha de incorporación</label>
-									<input type="text" class="form-control" id="Birthday" value="01-10-1993">
-								</div>
-							</div>
-
-							<div class="col-lg-6">
-								<div class="form-group mb-4">
-									<label for="event">Area</label>
-									<select type="text" class="form-control" id="event" value="Some value for event">
-										<option>Fonoaudiologa</option>
-										<option>Psicologa</option>
-										<option>Terapeuta</option>
-										<option>Musicoterapeuta</option>
-									</select>
-								</div>
-							</div>
+						<div class="modal-footer px-4">
+							<button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary btn-pill">Guardar</button>
 						</div>
-					</div>
-					<div class="modal-footer px-4">
-						<button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-primary btn-pill">Guardar</button>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>	
 	</div>
 </div>
 

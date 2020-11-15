@@ -1,9 +1,10 @@
 <?php
 include('Header.php');
 include('menuAdmi.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPrestamosF.php');
+$CPF= new ControladorPrestamoFisico();
+$prestamos = $CPF->listar();
 ?>
-
-
 
 <div class="main-container">
 	<div class="pd-ltr-20 xs-pd-20-10">
