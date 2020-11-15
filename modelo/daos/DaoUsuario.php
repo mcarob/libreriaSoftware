@@ -8,6 +8,7 @@ class DaoUsuario extends DB implements dao_interface
 
     private $con;
 
+<<<<<<< Updated upstream
     public function __construct()
     {
         parent::__construct();
@@ -56,5 +57,24 @@ class DaoUsuario extends DB implements dao_interface
         $sentencia = $this->con->prepare($query);
         return $sentencia->execute([]);
     }
+=======
+}
+public function validarUsuario($cod_usuario){
+$query="UPDATE usuario SET estado_usuario=1 WHERE cod_usuario=?";
+$sentencia=$this->con->prepare($query);
+$sentencia->execute([$cod_usuario]);
+}
+
+public function darUsuario($user_usuario){
+    $query=$this->connect()->prepare('SELECT * FROM usuario WHERE USER_USUARIO=?');
+    $query->execute([$user_usuario]);
+    if($query->rowCount()){
+        $key=$query->fetchAll();
+        return new Usuario($key[0],$key[1],$key[2],$key[3],$key[4],$key[5],$key[6],$key[7],$key[8]);
+    }else{ 
+        return null;
+    }
+}
+>>>>>>> Stashed changes
 
 }
