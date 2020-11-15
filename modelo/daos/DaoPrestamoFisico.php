@@ -35,7 +35,6 @@ class DaoPrestamoFisico extends DB implements dao_interface
        // No se le hace update al prestamo
     }
 
-
     public function listar()
     {
 
@@ -43,5 +42,12 @@ class DaoPrestamoFisico extends DB implements dao_interface
     public function eliminarRegistro($idRegistro)
     {
         
+    }
+
+    public function aceptarDevo($idPrestamoFisico){
+        //preguntar estados
+        $query = "UPDATE prestamo_fisico SET cod_estado_prestamo=2 where cod_prestamo_fisico=".$idPrestamoFisico;
+        $sentencia = $this->con->prepare($query);
+        return $sentencia->execute([]);
     }
 }

@@ -13,10 +13,10 @@
 				<ul id="accordion-menu">
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-house-1"></span><span class="mtext">Inicio</span>
+							<span class="micon dw dw-house-1"></span><span href="index.php" class="mtext">Inicio</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="index.html">Dashboard style 1</a></li>
+							<li><a href="index.php">inicio</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -35,7 +35,10 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="TablaPublicadores.php">Listar</a></li>
+							<li><a href="TablaPublicadoresInac.php">Aceptar</a></li>
+						
 						</ul>
+						
 					</li>
 				
 					<li class="dropdown">
@@ -58,7 +61,6 @@
                             <li><a href="ui-buttons.html">Libros más prestados</a></li>
                             <li><a href="ui-buttons.html">Libros Físicos</a></li>
                             <li><a href="ui-buttons.html">Libros Digitales</a></li>
-
 						</ul>
 					</li>
 				</ul>

@@ -46,21 +46,21 @@ class DaoPublicador extends DB implements dao_interface
             telefono_publicador=?) WHERE cod_publicador=?";
 
         $respuesta = $this->con->prepare($query)->execute([
-            $registroActualizar->getCedPublicador(),$registroActualizar->getNomPublicador(), 
-            $registroActualizar->getCorreoPublicador(), $registroActualizar->getDireccionPublicador(), 
-            $registroActualizar->getCiudadPublicador(),$registroActualizar->getPaisPublicador(),
-            $registroActualizar->getTelefonoPublicador(),$registroActualizar->getCodPublicador()
+            $registroActualizar->getCedPublicador(), $registroActualizar->getNomPublicador(),
+            $registroActualizar->getCorreoPublicador(), $registroActualizar->getDireccionPublicador(),
+            $registroActualizar->getCiudadPublicador(), $registroActualizar->getPaisPublicador(),
+            $registroActualizar->getTelefonoPublicador(), $registroActualizar->getCodPublicador()
         ]);
         return $respuesta;
     }
 
 
+
+
     public function listar()
     {
-
     }
     public function eliminarRegistro($idRegistro)
     {
-        
     }
 }

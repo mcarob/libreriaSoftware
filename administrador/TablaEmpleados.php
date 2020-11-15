@@ -1,8 +1,10 @@
 <?php
 include('Header.php');
 include('menuAdmi.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorEmpleados.php');
+$CEmpleados = new ControladorEmpleados();
+$empleados = $CEmpleados->listar();
 ?>
-
 
 
 <div class="main-container">
@@ -21,13 +23,7 @@ include('menuAdmi.php');
 							</ol>
 						</nav>
 					</div>
-					<div class="col-md-6 col-sm-12 text-right">
-						<div class="button">
-							<a class="btn btn-primary dropdown-toggle" href="#" role="button">
-								Agregar
-							</a>
-						</div>
-					</div>
+
 				</div>
 			</div>
 
@@ -43,111 +39,39 @@ include('menuAdmi.php');
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Name</th>
-								<th>Age</th>
-								<th>Office</th>
-								<th>Address</th>
-								<th>Start Date</th>
-								<th>Salart</th>
+								<th class="table-plus datatable-nosort">Nombre</th>
+								<th>Cédula</th>
+								<th>Telefono</th>
+								<th>Correo</th>
+								<th>Estado</th>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="table-plus">Gloria F. Mead</td>
-								<td>25</td>
-								<td>Sagittarius</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>20</td>
-								<td>Gemini</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>25</td>
-								<td>Gemini</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>20</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>18</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
+							<?php
+							foreach ($empleados as $key) {
+								echo ("<tr>");
+								echo ("<td>" . $key[3] . "</td>");
+								echo ("<td>" . $key[2] . "</td>");
+								echo ("<td>" . $key[4] . "</td>");
+								echo ("<td>" . $key[5] . "</td>");
+								
+								if ($key[6] == "4") {
+									echo ("<div class='btn-list'>	
+											<button type='button' class='btn btn-outline-success'>Activar</button>
+											</div></td");
+								} else {
+									echo ("<div class='btn-list'>
+											<button type='button' class='btn btn-outline-danger'>Inactivar</button>
+											</div></td>");
+								}
+							?>
+
+							<?php
+								echo ("</tr>");
+							}
+							?>
+
 						</tbody>
 					</table>
 				</div>

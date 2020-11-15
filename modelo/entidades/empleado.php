@@ -12,6 +12,7 @@ class Empleado{
   public function __construct($cod_empleado, $cod_usuario, $ced_empleado, $nom_empleado, $telefono_empleado, $correo_empleado)
   {
       $this->cod_empleado = $cod_empleado;
+      $this->cod_usuario = $cod_usuario;
       $this->ced_empleado = $ced_empleado;
       $this->nom_empleado = $nom_empleado;
       $this->$telefono_empleado = $telefono_empleado;   
@@ -75,6 +76,26 @@ class Empleado{
   public function setCorreo_empleado($correo_empleado)
   {
     $this->correo_empleado = $correo_empleado;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of nom_empleado
+   */ 
+  public function getNom_empleado()
+  {
+    return $this->nom_empleado;
+  }
+
+  /**
+   * Set the value of nom_empleado
+   *
+   * @return  self
+   */ 
+  public function setNom_empleado($nom_empleado)
+  {
+    $this->nom_empleado = $nom_empleado;
 
     return $this;
   }
