@@ -44,7 +44,6 @@ $clientes = $CCliente->listar();
 								<th>Correo</th>
 								<th>Dirección</th>
 								<th>Habilitado</th>
-								<th>Estado</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -56,7 +55,11 @@ $clientes = $CCliente->listar();
 								echo ("<td>" . $key['telefono_cliente'] . "</td>");
 								echo ("<td>" . $key['correo_cliente'] . "</td>");
 								echo ("<td>" . $key['direccion_cliente'] . "</td>");
-								echo ("<td>" . $key['habilitado'] . "</td>");
+								if ($key['habilitado'] == "1") {
+									echo ("<td>SI</td>");
+								} else if($key['habilitado'] == "2") {
+									echo ("<td>Bloqqueado</td>");
+								}
 
 								
 								if ($key['estado_usuario'] == "4") {
