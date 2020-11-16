@@ -16,7 +16,7 @@ class DocumentoDAO extends DB  implements dao_interface
     }
     
 
-    public function agregarRegistro(Documento $nuevoRegistro){
+    public function agregarRegistro(Object $nuevoRegistro){
         
         $query = "INSERT INTO documento (cod_documento,cod_idioma,cod_tipo_documento,
         cod_tipo_presentacion,titulo_documento,fecha_publicacion,editorial_publicacion,
@@ -43,7 +43,7 @@ class DocumentoDAO extends DB  implements dao_interface
     }
 
 
-    public function actualizarRegistro(Documento $registroActualizar){
+    public function actualizarRegistro(Object $registroActualizar){
         $query = "UPDATE documento SET cod_idioma=?,cod_tipo_documento=?,
         cod_tipo_presentacion=?,titulo_documento=?,fecha_publicacion=?,editorial_publicacion=?,
         codigo_isbn=?,informacion_paginas=?,informacion_congreso=?,informacion_ssn=?,
@@ -86,6 +86,26 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
 
+
+    public function listarDocumentoFisico(){
+        $query = $this->con->prepare("SELECT * FROM listadocumentosfisicos");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function listarDocumentoDigital(){
+        $query = $this->con->prepare("SELECT * FROM listadocumentosdigitales");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
     
 }
 ?>

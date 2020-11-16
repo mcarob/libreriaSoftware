@@ -31,6 +31,18 @@ class ControladorDocumento{
         return $this->documento->listar();
     }
 
+
+    public function listarDocumentoF()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarDocumentoFisico();
+    }
+
+    public function listarDocumentoD()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarDocumentoDigital();
+    }
 }
 
 ?>

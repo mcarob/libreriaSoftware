@@ -77,7 +77,7 @@ class DaoPublicador extends DB implements dao_interface
         return $em;
     }
 
-    public function darPublicadorxCod($id)
+    public function darPublicadorNoValidadoxCod($id)
     {
         $query = $this->con->prepare("SELECT * FROM listaPublicadoresnovalidados where cod_publicador=".$id);
         $query->execute();

@@ -64,11 +64,11 @@ $clientes = $CCliente->listar();
 								
 								if ($key['estado_usuario'] == "4") {
 									echo ("<td><div class='btn-list'>	
-											<button type='button' class='btn btn-outline-danger'>Inactivar</button>
+											<button type='button' class='btn btn-outline-danger' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")' >Inactivar</button>
 											</div></td>");
 								} else if($key['estado_usuario'] == "5") {
 									echo ("<td><div class='btn-list'>
-											<button type='button' class='btn btn-outline-success'>Activar</button>
+											<button type='button' class='btn btn-outline-success' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")' >Activar</button>
 											</div></td>");
 								}
 							?>
@@ -90,6 +90,14 @@ $clientes = $CCliente->listar();
 	</div>
 </div>
 
+
+<script>
+
+		function estado(cod) {
+            window.location.href = 'ac.php?action=' + "estadoCL&" + "codigo=" + cod;
+        }
+
+</script>
 
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>

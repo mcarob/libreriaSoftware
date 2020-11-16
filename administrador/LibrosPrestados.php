@@ -62,7 +62,7 @@ $prestamos = $CPF->listar();
 											Acciones
 										</a>
 										<div class='dropdown-menu dropdown-menu-right'>
-											<a class='dropdown-item' data-toggle='modal' data-target='#modal1'>Ver más</a>
+											<a class='dropdown-item' data-toggle='modal' onclick='estado(" . '"' . $key['cod_prestamo_fisico'] . '"' . ")'>Ver más</a>
 											<a class='dropdown-item' data-toggle='modal' data-target='#confirmation-modal'>Aceptar</a>
 										</div>
 									</div>
@@ -98,7 +98,7 @@ $prestamos = $CPF->listar();
 							NO
 						</div>
 						<div class="col-6">
-							<button type="button" class="btn btn-primary border-radius-100 btn-block confirmation-btn" data-dismiss="modal"><i class="fa fa-check"></i></button>
+							<button type='button' class='btn btn-primary border-radius-100 btn-block confirmation-btn' data-dismiss='modal'  onclick="aceptarDevo($key['cod_prestamo_fisico'])"><i class='fa fa-check'></i></button>
 							SI
 						</div>
 					</div>
@@ -188,6 +188,20 @@ $prestamos = $CPF->listar();
 </div>
 </div>
 
+
+
+<script>
+
+		function aceptarDevo(cod) {
+            window.location.href = 'ac.php?action=' + "aceptarDevo&" + "codigo=" + cod;
+        }
+
+		function mostrarModal1(valor) {
+        $('#modall').modal('show');
+        variableCod = valor;
+    }
+
+</script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/process.js"></script>

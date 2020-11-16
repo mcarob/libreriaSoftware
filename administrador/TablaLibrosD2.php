@@ -1,10 +1,13 @@
 <?php
 include('Header.php');
 include('menuAdmi.php');
+
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+$CDocumentos = new ControladorDocumento();
+$digitales = $CDocumentos->listarDocumentoD();
 ?>
 
 <div class="mobile-menu-overlay"></div>
-
 
 <div class="main-container">
 	<div class="pd-ltr-20 xs-pd-20-10">
@@ -38,111 +41,45 @@ include('menuAdmi.php');
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Name</th>
-								<th>Age</th>
-								<th>Office</th>
-								<th>Address</th>
-								<th>Start Date</th>
-								<th>Salart</th>
+								<th class="table-plus datatable-nosort">Titulo</th>
+								<th>Publicador</th>
+								<th>Editorial</th>
+								<th>Código</th>
+								<th>Tipo de documento</th>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td class="table-plus">Gloria F. Mead</td>
-								<td>25</td>
-								<td>Sagittarius</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
+								<?php
+								foreach ($digitales as $key) {
+									echo ("<tr>");
+									echo ("<td>" . $key['titulo_documento'] . "</td>");
+									echo ("<td>" . $key['nom_publicador'] . "</td>");
+									echo ("<td>" . $key['editorial_publicacion'] . "</td>");
+									if ($key['cod_tipo_documento'] == 2) {
+										echo ("<td>" . $key['informacion_ssn'] . "</td>");
+									} else {
+										echo ("<td>" . $key['informacion_bib'] . "</td>");
+									}
+									echo ("<td>" . $key['nom_tipo_documento'] . "</td>");
+									echo ("<td>
+										<div class='btn-list'>	
+											<button type='button' class='btn btn-outline-success' onclick='verMas(" . '"' . $key['cod_documento'] . '"' . ")'>Ver más</button>
+											</div>
+										</td>");
+
+
+								?>
+
+								<?php
+									echo ("</tr>");
+								}
+								?>
+
+
 							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>20</td>
-								<td>Gemini</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>25</td>
-								<td>Gemini</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>20</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>18</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Sagittarius</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>$162,700</td>
-							</tr>
+
 						</tbody>
 					</table>
 				</div>
@@ -154,6 +91,8 @@ include('menuAdmi.php');
 		</div>
 	</div>
 </div>
+
+
 
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>

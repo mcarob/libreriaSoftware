@@ -32,7 +32,7 @@ class ControladorUsuario{
 
     public function darUsuarioxCod($id){
         $this->Usuario=new DaoUsuario();
-        return $this->Usuario->darUsuario($id);
+        return $this->Usuario->darUsuarioxCod1($id);
     }
 
 

@@ -57,11 +57,11 @@ $empleados = $CEmpleados->listar();
 								
 								if ($key[6] == "4") {
 									echo ("<td><div class='btn-list'>	
-											<button type='button' class='btn btn-outline-danger'>Inactivar</button>
+											<button type='button' class='btn btn-outline-danger' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Inactivar</button>
 											</div></td>");
 								} else {
 									echo ("<td><div class='btn-list'>
-											<button type='button' class='btn btn-outline-success'>Activar</button>
+											<button type='button' class='btn btn-outline-success' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Activar</button>
 											</div></td>");
 								}
 							?>
@@ -83,6 +83,14 @@ $empleados = $CEmpleados->listar();
 	</div>
 </div>
 
+
+<script>
+
+		function estado(cod) {
+            window.location.href = 'ac.php?action=' + "estadoEm&" + "codigo=" + cod;
+        }
+
+</script>
 
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>

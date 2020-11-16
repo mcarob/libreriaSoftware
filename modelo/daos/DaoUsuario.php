@@ -58,6 +58,18 @@ class DaoUsuario extends DB implements dao_interface
         }
     }
 
+    public function darUsuarioxCod1($id)
+    {
+        $query = $this->connect()->prepare('SELECT * FROM usuario WHERE cod_usuario=?');
+        $query->execute([$id]);
+        if ($query->rowCount()) {
+            $key = $query->fetch();
+            return new Usuario($key[0], $key[1], $key[2], $key[3], $key[4], $key[5], $key[6], $key[7], $key[8]);
+        } else {
+            return null;
+        }
+    }
+
 
     public function cambiarUsuarioPublicador($idUsu, $estado_usu)
     {
