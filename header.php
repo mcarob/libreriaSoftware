@@ -12,6 +12,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assetsCliente/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assetsCliente/css/plugins.css">
+    <link rel="stylesheet" href="assetsCliente/plugins/toastr/toastr.min.css"/>
     <link rel="stylesheet" href="assetsCliente/style.css">
 
     <!-- Cusom css -->

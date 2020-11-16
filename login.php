@@ -1,12 +1,8 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/controladorRegistro.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/user_Sesion.php');
-
 $userSession = new UserSession();
 $controladorR = new ControladorRegistro();
-
-
-
 if(isset($_SESSION['user'])){
     $usuario=$controladorR->darUsuario($userSession->getCurrentUser());
     $tipo=$usuario->getCod_tipo_usuario();
@@ -45,8 +41,6 @@ if($usu!=null){
 }else{
     include_once 'loginp.php';
 }
-
-
 
 function verificarIngresoUsuario(Usuario $usuario){
     global $errorEntrada,$controladorR,$userSession,$mostrarCodigo;
@@ -109,9 +103,6 @@ function verificarIngresoUsuario(Usuario $usuario){
     }else{
         $errorEntrada="La contraseña no es correcta";
         include_once 'loginp.php';
-    }
-
-	
+    }	
 }
-
-?>|
+?>

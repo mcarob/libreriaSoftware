@@ -6413,3 +6413,17 @@ section.wn_contact_area {
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+.btnRegistro{
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 2px solid #333;
+  color: #333;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 34px;
+  padding: 2px 20px 0;
+  text-transform: uppercase;
+  transition: all 0.4s ease 0s;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
