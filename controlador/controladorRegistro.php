@@ -25,7 +25,7 @@ class ControladorRegistro{
     }
 
     public function darUsuario($user_usuario){
-        $variable=$this->dao_usuario->darUsuario($user_usuario);
+        $variable=$this->dao_usuario->darUsuarioUser($user_usuario);
         if($variable==null){
             return null;
         }else{
