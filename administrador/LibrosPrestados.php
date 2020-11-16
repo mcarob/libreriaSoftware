@@ -1,8 +1,8 @@
 <?php
 include('Header.php');
 include('menuAdmi.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPrestamosF.php');
-$CPF= new ControladorPrestamoFisico();
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPrestamoF.php');
+$CPF = new ControladorPrestamoFisico();
 $prestamos = $CPF->listar();
 ?>
 
@@ -38,35 +38,43 @@ $prestamos = $CPF->listar();
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Name</th>
-								<th>Age</th>
-								<th>Office</th>
-								<th>Address</th>
-								<th>Start Date</th>
-								<th> </th>
+								<th class="table-plus datatable-nosort">Nombre</th>
+								<th>ISBN</th>
+								<th>Correo Lector</th>
+								<th>Fecha devolución</th>
+								<th>Estado</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="table-plus">Gloria F. Mead</td>
-								<td>25</td>
-								<td>Sagittarius</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+
+							<?php
+							foreach ($prestamos as $key) {
+								echo ("<tr>");
+								echo ("<td>" . $key['nom_cliente'] . "</td>");
+								echo ("<td>" . $key['codigo_isbn'] . "</td>");
+								echo ("<td>" . $key['correo_cliente'] . "</td>");
+								echo ("<td>" . $key['fecha_devolucion_fisico'] . "</td>");
+								echo ("<td>" . $key['nombre_estado'] . "</td>");
+								echo ("<td>
+									<div class='dropdown'>
+										<a class='btn btn-outline-primary dropdown-toggle' href='#' role='button' data-toggle='dropdown'>
 											Acciones
 										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" data-toggle="modal" data-target="#modal1">Ver más</a>
-											<a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal">Aceptar</a>
+										<div class='dropdown-menu dropdown-menu-right'>
+											<a class='dropdown-item' data-toggle='modal' data-target='#modal1'>Ver más</a>
+											<a class='dropdown-item' data-toggle='modal' data-target='#confirmation-modal'>Aceptar</a>
 										</div>
 									</div>
+									</td>");
 
-								</td>
+							?>
 
-							</tr>
+							<?php
+								echo ("</tr>");
+							}
+							?>
+
 						</tbody>
 					</table>
 				</div>

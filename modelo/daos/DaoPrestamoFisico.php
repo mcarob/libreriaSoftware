@@ -14,7 +14,7 @@ class DaoPrestamoFisico extends DB implements dao_interface
         $this->con = $this->connect();
     }
 
-    public function agregarRegistro(PrestamoFisico $nuevoRegistro)
+    public function agregarRegistro(OBJECT $nuevoRegistro)
     {
         $query = "INSERT INTO prestamo_fisico (cod_prestamo_fisico,
         cod_existencia,

@@ -15,7 +15,7 @@ class ClienteDAO extends DB  implements dao_interface
     }
     
 
-    public function agregarRegistro(Cliente $nuevoRegistro){
+    public function agregarRegistro(Object $nuevoRegistro){
         
         $query = "INSERT INTO cliente (cod_cliente,cod_usuario,nom_cliente,
         telefono_cliente,correo_cliente,direccion_cliente,habilitado) values (?,?,?,?,?,?,?)";
@@ -32,7 +32,7 @@ class ClienteDAO extends DB  implements dao_interface
     }
 
 
-    public function actualizarRegistro(Cliente $registroActualizar){
+    public function actualizarRegistro(Object $registroActualizar){
         $query = "UPDATE cliente SET cod_usuario=?,nom_cliente=?,telefono_cliente=?,
         correo_cliente=?,direccion_cliente=?,habilitado=? WHERE cod_cliente=?";
         $respuesta = $this->con->prepare($query)->execute([ 
@@ -56,7 +56,7 @@ class ClienteDAO extends DB  implements dao_interface
     }
 
     public function listar(){
-        $query = $this->con->prepare("SELECT * FROM cliente");
+        $query = $this->con->prepare("SELECT * FROM listaClientesActivos");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
