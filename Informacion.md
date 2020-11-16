@@ -4,10 +4,11 @@ tipo de usuario ->
 3) publicador
 4) cliente
 estado_usuario-> 
-1) activo 
-2) inactivo
-3)esperando aprobacion 
-4)rechazado ,
+1) registrado 
+3) esperando(publicador) 
+4) activo 
+5) inactivo 
+6) rechazado
 
 tipo presentación -> 
 1) Físico

@@ -11,7 +11,7 @@ class ControladorRegistro{
 
     public function __construct()
     {
-        $dao_usuario= new DaoUsuario();
+        $this->dao_usuario= new DaoUsuario();
     }
 
   

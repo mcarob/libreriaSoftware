@@ -16,19 +16,7 @@
 		?>
 		<!-- //Header -->
 		<!-- Start Search Popup -->
-		<div class="box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Search entire store here...">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
-			</div>
-		</div>
+
 		<!-- End Search Popup -->
         <!-- Start Bradcaump area -->
         <div class="ht__bradcaump__area bg-imagenindex--6">
@@ -55,7 +43,7 @@
 					<div class="col-lg-6 col-12">
 						<div class="my__account__wrapper">
 							<h3 class="account__title">Iniciar sesión</h3>
-							<form action="#">
+							<form action="" method="POST">
 								<div class="account__form">
 									<div class="input__box">
 										<label>Usuario<span>*</span></label>
@@ -71,6 +59,12 @@
 
 										</label>
 									</div>
+									<?php
+
+									if (isset($errorEntrada)) {
+									echo  $errorEntrada;
+									}
+									?>
 									<a class="forget_pass" href="#">¿Olvidaste tu Contraseña?</a>
 								</div>
 							</form>
@@ -113,12 +107,6 @@
 	</div>
 	<!-- //Main wrapper -->
 
-	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
 	
 </body>
 </html>
