@@ -43,7 +43,6 @@ $empleados = $CEmpleados->listar();
 								<th>Cédula</th>
 								<th>Telefono</th>
 								<th>Correo</th>
-								<th>Estado</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -57,12 +56,12 @@ $empleados = $CEmpleados->listar();
 								echo ("<td>" . $key[5] . "</td>");
 								
 								if ($key[6] == "4") {
-									echo ("<div class='btn-list'>	
-											<button type='button' class='btn btn-outline-success'>Activar</button>
-											</div></td");
-								} else {
-									echo ("<div class='btn-list'>
+									echo ("<td><div class='btn-list'>	
 											<button type='button' class='btn btn-outline-danger'>Inactivar</button>
+											</div></td>");
+								} else {
+									echo ("<td><div class='btn-list'>
+											<button type='button' class='btn btn-outline-success'>Activar</button>
 											</div></td>");
 								}
 							?>

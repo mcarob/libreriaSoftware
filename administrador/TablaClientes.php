@@ -64,11 +64,11 @@ $clientes = $CCliente->listar();
 								
 								if ($key['estado_usuario'] == "4") {
 									echo ("<td><div class='btn-list'>	
-											<button type='button' class='btn btn-outline-success'>Inactivar</button>
+											<button type='button' class='btn btn-outline-danger'>Inactivar</button>
 											</div></td>");
 								} else if($key['estado_usuario'] == "5") {
 									echo ("<td><div class='btn-list'>
-											<button type='button' class='btn btn-outline-danger'>Activar</button>
+											<button type='button' class='btn btn-outline-success'>Activar</button>
 											</div></td>");
 								}
 							?>

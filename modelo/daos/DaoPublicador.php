@@ -57,7 +57,13 @@ class DaoPublicador extends DB implements dao_interface
 
     public function listar()
     {
-        
+        $query = $this->con->prepare("SELECT * FROM listapublicadoresActivos");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
     }
 
     public function listarPublicadoresSinValidar()
