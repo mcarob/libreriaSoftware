@@ -36,6 +36,7 @@ $digitales = $CDocumentos->listarDocumentoD();
 			<div class="card-box mb-30">
 				<div class="pd-20">
 					<h4 class="text-blue h4">Libros Digitales</h4>
+					<h1>HOLA</h1>
 				</div>
 				<div class="pb-20">
 					<table class="table hover multiple-select-row data-table-export nowrap">
