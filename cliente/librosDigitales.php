@@ -1,3 +1,13 @@
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+$controladorDocumentos = new ControladorDocumento();
+
+$documentos = $controladorDocumentos->informacionDocumentos();
+
+$categorias=$controladorDocumentos->materias();
+$idiomas=$controladorDocumentos->idiomas();
+
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -52,40 +62,28 @@
         					<aside class="wedget__categories poroduct--cat">
         						<h3 class="wedget__title">Categorias</h3>
         						<ul>
-        							<li><a href="#">Cientificos <span>(3)</span></a></li>
-        							<li><a href="#">Terror <span>(4)</span></a></li>
-        							<li><a href="#">Aventura <span>(6)</span></a></li>
-        						</ul>
+								<?php foreach ($categorias as $key) { 
+								if($key["nom_tipo_documento"]=="Libro" and $key["nom_tipo_presentacion"]=="Digital")
+								{
+								?>
+									<li><a href="#"><?php echo $key["nom_materia"]?> <span>(<?php echo $key["cantidad"]?>)</span></a></li>
+								<?php }} ?>
+								</ul>
         					</aside>
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Idioma</h3>
         						<ul>
-        							<li><a href="#">Ingles</a></li>
-        							<li><a href="#">Español</a></li>
-        							<li><a href="#">Aleman</a></li>
-        							<li><a href="#">Italiano</a></li>
-        						</ul>
+								<?php foreach ($idiomas as $key) { 
+								if($key["nom_tipo_documento"]=="Libro" and $key["nom_tipo_presentacion"]=="Digital")
+								{
+								?>
+
+        						<li><a href="#"><?php echo $key["nom_idioma"]?></a></li>
+
+								<?php }} ?>
+								</ul>
         					</aside>
-        					<aside class="wedget__categories pro--range">
-        						<h3 class="wedget__title">Filtrar por año</h3>
-        						<div class="content-shopby">
-        						    <div class="price_filter s-filter clear">
-        						        <form action="#" method="GET">
-        						            <div id="slider-range"></div>
-        						            <div class="slider__range--output">
-        						                <div class="price__output--wrap">
-        						                    <div class="price--output">
-        						                        <span>Año :</span><input type="text" id="amount" readonly="">
-        						                    </div>
-        						                    <div class="price--filter">
-        						                        <a href="#">Filtrar</a>
-        						                    </div>
-        						                </div>
-        						            </div>
-        						        </form>
-        						    </div>
-        						</div>
-        					</aside>
+        					
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -96,15 +94,7 @@
 			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
 			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
 			                        </div>
-			                        <p>Showing 1–12 of 40 results</p>
-			                        <div class="orderby__wrapper">
-			                        	<span>Filtrar por</span>
-			                        	<select class="shot__byselect">
-			                        		<option>Menor precio a mayor precio</option>
-			                        		<option>Mayor precio a menor precio</option>
-			                        		<option>Disponibilidad</option>
-			                        	</select>
-			                        </div>
+			                        <p>Resultados (Libros Digitales)</p>
 		                        </div>
         					</div>
         				</div>
@@ -112,90 +102,38 @@
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
 	        						<!-- Start Single Product -->
+									<?php foreach ($documentos as $key) {
+									if($key["nom_tipo_documento"]=="Libro" and $key["nom_tipo_presentacion"]=="Digital")
+									{
+									?>
+									
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="assetsCliente/images/books/1.jpg" alt="product image" width="150" height="300"></a>
 
 											<div class="hot__box">
-												<span class="hot-label">MAS VENDIDO</span>
+												<span class="hot-label">MAS PEDIDO</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a>El talisman, Stephen King</a> </h4>
+											<h4><a><?php echo($key["titulo_documento"])?>,<?php echo($key["nombre_autor"]." ".$key["apellido_autor"])?></a> </h4>
 											<ul class="prize d-flex">
-                                            <li>Fecha de publicacion: 13/11/2020</li>
+												<li>Publicado: <?php echo($key["fecha_publicacion"])?></li>
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
 														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-														<li><a data-toggle="modal" title="Especificaciones" class="quickview modal-view detail-link"  data-target="#miModal"><i class="bi bi-search"></i></a></li>
-														
+														<li><a data-toggle="modal" title="Especificaciones" class="quickview modal-view detail-link"  data-target= '#miModal'><i class="bi bi-search"></i></a></li>
 													</ul>
 												</div>
-											</div>										
-
-											<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-												
-											<div class="modal-dialog" role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-														<h5 class="modal-title col-11 text-center">Detalles de: El talisman</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-														<table style="border:hidden"> 
-																<tr> 
-																<td rowspan="7">
-																	<img src="assetsCliente/images/books/1.jpg" alt="product image" width="200" height="200">
-																<td>
-																</tr>
-
-
-																<tr> 
-																<td><b>Nombre:</b><td>
-																<td>El talisman<td>
-																</tr>
-
-																<tr>
-																	
-																<td><b>Genero:</b><td>
-																<td>Terror<td>
-																</tr>	
-																
-																<tr>
-																<td><b>Existencias:</b><td>
-																<td>7<td>
-																</tr>
-
-																<tr>
-																<td><b>Descripcion Fisica:</b><td>
-																<td>52 paginas sin enumerar<td>
-																</tr>	
-
-																<tr>
-																<td><b>ISBN:</b><td>
-																<td>9789585712225<td>
-																</tr>	
-
-																<tr>
-																<td><b>SSN:</b><td>
-																<td>No contiene<td>
-																</tr>	
-
-																</table>
-																<br><br>
-																<button type="button" class="btn btn-primary" href="index.php">Reservar</button>
-																
-
-														</div>
-													</div>
-											    </div>
-											</div>
+											</div>							
 										</div>
-									</div>
+											
+									</div>									
+									
+									<?php }
+									}?>	
 									
 									
 		        				

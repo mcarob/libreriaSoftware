@@ -45,37 +45,23 @@ class ControladorDocumento{
     }
 
     // // // // 
-    public function listarLibrosFisicos()
+
+    public function informacionDocumentos()
     {
         $this->documento=new DocumentoDAO();
-        return $this->documento->informacionLibrosFisicos();
-    }
-    public function listarLibrosDigitales()
-    {
-        $this->documento=new DocumentoDAO();
-        return $this->documento->informacionLibrosDigitales();
-    }
-    public function listarPonencias()
-    {
-        $this->documento=new DocumentoDAO();
-        return $this->documento->informacionPonencia();
-    }
-    public function listarArticulos()
-    {
-        $this->documento=new DocumentoDAO();
-        return $this->documento->informacionArticulos();
+        return $this->documento->informacionDocumentos();
     }
 
-    public function listarCategorias()
+
+    public function materias()
     {
         $this->documento=new DocumentoDAO();
-        return $this->documento->documentosxcategoria();
+        return $this->documento->materias();
     }
 
-    public function listarIdiomas()
-    {
+    public function idiomas(){
         $this->documento=new DocumentoDAO();
-        return $this->documento->documentosxidioma();
+        return $this->documento->idiomas();
     }
     // // // 
 }

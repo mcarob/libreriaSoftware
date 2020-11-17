@@ -1,63 +1,139 @@
+<!DOCTYPE html>
 <?php
-include('header.php');
+include("header.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
+
+
+$usuario=new Usuario();
+$usuario->setUser($_SESSION['user']);
+$codigo=$usuario->getCod_usuario();
+
+$controladorCliente=new ControladorCliente();
+$cliente=$controladorCliente->devolverEstudiante($codigo);
+
 ?>
 
+<head>
+    <title>Editar perfil</title>
+    <link href="formulario/css/main.css" rel="stylesheet" media="all">
+</head>
 
 <body>
-<div>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Editar Perfil</h2>
+                    <form method="POST" action="javascript:editarPerfil()" id="editarPerfil">
+                        
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" id="nom_cliente" name="nom_cliente" aria-describedby="emailHelp" placeholder="Nombre"
+                        value=<?php echo ($cliente->getNom_cliente())?>>
+                        <small id="emailHelp" class="form-text text-muted">Nombre completo.</small>    
+                        
+                        <table style="border: hidden"> 
+                            <tr> 
+                                <td>                 
+                                    <div class="form-group">
+                                    <label >Telefono</label>
+                                        <input type="text" class="form-control" id="telefono_cliente" name="telefono_cliente" aria-describedby="emailHelp" placeholder="telefono"
+                                        value=<?php echo ($cliente->getTelefono_cliente())?>>
+                                        <small id="emailHelp" class="form-text text-muted">Este es el numero al que se le contactara.</small>
+                                    </div>
+                                </td>
+                                <td>                 
+                                    <div class="form-group">
+                                    <label>Dirección</label>
+                                        <input type="text" class="form-control" id="direccion_cliente" name="direccion_cliente" aria-describedby="emailHelp" placeholder="Dirección"
+                                        value=<?php echo ($cliente->getDireccion_cliente())?>>
+                                        <small id="emailHelp" class="form-text text-muted">Lugar de residencia.</small>
+                                    </div>
+                                </td>
+                            </tr>
+                                                        
+                        <tr>                  
+                            <td>
+                                <div class="form-group">
+                                <label>Correo electronico</label>
+                                    <input type="email" class="form-control" id="correo_cliente" name="correo_cliente" aria-describedby="emailHelp" placeholder="Email" 
+                                    value="<?php echo ($cliente->getCorreo_cliente())?>">
+                                    <small id="emailHelp" class="form-text text-muted">Este es el correo registrado.</small>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                <label>Usuario</label>
+                                    <input type="text" class="form-control" id="userName" name="userName" aria-describedby="emailHelp" placeholder="Usuario" value="<?php echo (($_SESSION['user']))  ?>">
+                                    <small id="emailHelp" class="form-text text-muted">Este es el usuario con el que se registra.</small>
+                                </div>
+                            </td>
+                        </tr>
 
-<br><br><br>  
+                        <tr>    
+                            
+                            <td>
+                                <div class="form-group">
+                                <label for="exampleInputEmail1">Contraseña nueva</label>
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword" aria-describedby="emailHelp" placeholder="Contraseña"
+                                    value="">
+                                    <small id="emailHelp" class="form-text text-muted">Ingrese una constraseña nueva.</small>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                <label for="exampleInputEmail1">Confrimar contraseña</label>
+                                    <input type="password" class="form-control" id="conPassword" name="conPassword" aria-describedby="emailHelp" placeholder="Confirmación"
+                                    value="">
+                                    <small id="emailHelp" class="form-text text-muted">Confirmación de la nueva contraseña.</small>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Contraseña antigua</label>
+                            <input type="password" class="form-control" name="conPassword1" id="conPassword1" aria-describedby="emailHelp" placeholder="contraseña antigua"
+                            value="">
+                            <small id="emailHelp" class="form-text text-muted">Para realizar cualquier cambio es necesario que ingrese la contraseña antigua.</small>
+                    </div>
 
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <div class="p-t-15">
+                        <button class="btn btn--radius-2 btn--blue" type="submit">Actualizar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
-</div>
-</body> 
+</body>
 
-   
 <?php
-include('footer.php')
+		include("footer.php");
 ?>
+
+<script>
+        function editarPerfil() {
+
+            datos = $('#editarPerfil').serialize();
+
+            $.ajax({
+                type: "POST",
+                data: datos,
+                url: "editar_perfil.php",
+                success: function(r) {
+
+                    console.log(r);
+                    if (r == 1) {
+                        toastr["success"]('Actualizando perfil...', "NOTIFICACIÓN");
+                        window.location.href = "index.php";
+                    } else {
+                        toastr["success"](r, "ERROR");
+                    }
+                }
+            });
+
+        }
+    </script>
+
+</html>

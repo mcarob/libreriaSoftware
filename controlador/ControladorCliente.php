@@ -1,6 +1,6 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/Modelo/daos/ClienteDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
 
 class ControladorCliente{
 
@@ -31,6 +31,11 @@ class ControladorCliente{
         return $this->cliente->listar();
     }
 
+    public function devolverEstudiante($codigo_usuario)
+    {
+        $this->cliente=new ClienteDAO();
+        return $this->cliente->devolverEstudiante($codigo_usuario);
+    }
 }
 
 ?>

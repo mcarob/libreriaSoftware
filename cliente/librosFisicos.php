@@ -1,9 +1,12 @@
 ﻿<?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 $controladorDocumentos = new ControladorDocumento();
-$librosFisicos = $controladorDocumentos->listarLibrosFisicos();
-$categorias=$controladorDocumentos->listarCategorias();
-$idiomas=$controladorDocumentos->listarIdiomas();
+
+$documentos = $controladorDocumentos->informacionDocumentos();
+
+$categorias=$controladorDocumentos->materias();
+$idiomas=$controladorDocumentos->idiomas();
+
 ?>
 
 <!doctype html>
@@ -61,41 +64,30 @@ $idiomas=$controladorDocumentos->listarIdiomas();
         						<h3 class="wedget__title">Categorias</h3>
 							
         						<ul>
-								<?php foreach ($categorias as $key) { ?>
+								<?php foreach ($categorias as $key) { 
+								if($key["nom_tipo_documento"]=="Libro" and $key["nom_tipo_presentacion"]=="Física")
+								{
+								?>
 									<li><a href="#"><?php echo $key["nom_materia"]?> <span>(<?php echo $key["cantidad"]?>)</span></a></li>
-								<?php } ?>
+								<?php }} ?>
 								</ul>
 								
         					</aside>
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Idioma</h3>
         						<ul>
-								<?php foreach ($idiomas as $key) { ?>
-        							<li><a href="#"><?php echo $key["nom_idioma"]?></a></li>
-								<?php } ?>
+								<?php foreach ($idiomas as $key) { 
+								if($key["nom_tipo_documento"]=="Libro" and $key["nom_tipo_presentacion"]=="Física")
+								{
+								?>
+
+        						<li><a href="#"><?php echo $key["nom_idioma"]?></a></li>
+
+								<?php }} ?>
 								</ul>
 								
         					</aside>
-        					<aside class="wedget__categories pro--range">
-        						<h3 class="wedget__title">Filtrar por año</h3>
-        						<div class="content-shopby">
-        						    <div class="price_filter s-filter clear">
-        						        <form action="#" method="GET">
-        						            <div id="slider-range"></div>
-        						            <div class="slider__range--output">
-        						                <div class="price__output--wrap">
-        						                    <div class="price--output">
-        						                        <span>Año :</span><input type="text" id="amount" readonly="">
-        						                    </div>
-        						                    <div class="price--filter">
-        						                        <a href="#">Filtrar</a>
-        						                    </div>
-        						                </div>
-        						            </div>
-        						        </form>
-        						    </div>
-        						</div>
-        					</aside>
+        					
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -107,21 +99,17 @@ $idiomas=$controladorDocumentos->listarIdiomas();
 			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
 			                        </div>
 			                        <p>Resultados (Libros fisicos)</p>
-			                        <div class="orderby__wrapper">
-			                        	<span>Filtrar por</span>
-			                        	<select class="shot__byselect">
-			                        		<option>Menor precio a mayor precio</option>
-			                        		<option>Mayor precio a menor precio</option>
-			                        		<option>Disponibilidad</option>
-			                        	</select>
-			                        </div>
+			                        
 		                        </div>
         					</div>
         				</div>
         				<div class="tab__container">
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
-									<?php foreach ($librosFisicos as $key) {?>
+									<?php foreach ($documentos as $key) {
+									if($key["nom_tipo_documento"]=="Libro" and $key["nom_tipo_presentacion"]=="Física")
+									{
+									?>
 									
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
@@ -140,13 +128,18 @@ $idiomas=$controladorDocumentos->listarIdiomas();
 												<div class="actions_inner">
 													<ul class="add_to_links">
 														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-														<li><a data-toggle="modal" title="Especificaciones" class="quickview modal-view detail-link"  data-target="#miModal"><i class="bi bi-search"></i></a></li>
-														
+														<li><a data-toggle="modal" title="Especificaciones" class="quickview modal-view detail-link"  data-target= '#miModal'><i class="bi bi-search"></i></a></li>
 													</ul>
 												</div>
-											</div>										
-											<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-												
+											</div>							
+										</div>
+											
+									</div>									
+									
+									<?php }
+									}?>		
+									
+		        					<!-- <div class="modal fade" id=<?php echo 'miModal'.$i ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
@@ -211,12 +204,7 @@ $idiomas=$controladorDocumentos->listarIdiomas();
 													</div>
 											    </div>
 											</div>
-										</div>
-									</div>									
-									<?php }?>
-									
-		        				
-		        					
+										</div> -->
 		        					
 	        					</div>
 	        					<ul class="wn__pagination">

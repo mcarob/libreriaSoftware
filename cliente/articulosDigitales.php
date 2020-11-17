@@ -1,3 +1,14 @@
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+$controladorDocumentos = new ControladorDocumento();
+
+$documentos = $controladorDocumentos->informacionDocumentos();
+
+$categorias=$controladorDocumentos->materias();
+$idiomas=$controladorDocumentos->idiomas();
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -51,40 +62,26 @@
         					<aside class="wedget__categories poroduct--cat">
         						<h3 class="wedget__title">Categorias</h3>
         						<ul>
-        							<li><a href="#">Cientificos <span>(3)</span></a></li>
-        							<li><a href="#">Terror <span>(4)</span></a></li>
-        							<li><a href="#">Aventura <span>(6)</span></a></li>
+								<?php foreach ($categorias as $key) { 
+								if($key["nom_tipo_documento"]=="Articulo" and $key["nom_tipo_presentacion"]=="Digital")
+								{
+								?>
+									<li><a href="#"><?php echo $key["nom_materia"]?> <span>(<?php echo $key["cantidad"]?>)</span></a></li>
+								<?php }} ?>
         						</ul>
         					</aside>
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Idioma</h3>
-        						<ul>
-        							<li><a href="#">Ingles</a></li>
-        							<li><a href="#">Español</a></li>
-        							<li><a href="#">Aleman</a></li>
-        							<li><a href="#">Italiano</a></li>
-        						</ul>
+        						<?php foreach ($idiomas as $key) { 
+								if($key["nom_tipo_documento"]=="Articulo" and $key["nom_tipo_presentacion"]=="Digital")
+								{
+								?>
+
+        						<li><a href="#"><?php echo $key["nom_idioma"]?></a></li>
+
+								<?php }} ?>
         					</aside>
-        					<aside class="wedget__categories pro--range">
-        						<h3 class="wedget__title">Filtrar por año</h3>
-        						<div class="content-shopby">
-        						    <div class="price_filter s-filter clear">
-        						        <form action="#" method="GET">
-        						            <div id="slider-range"></div>
-        						            <div class="slider__range--output">
-        						                <div class="price__output--wrap">
-        						                    <div class="price--output">
-        						                        <span>Año :</span><input type="text" id="amount" readonly="">
-        						                    </div>
-        						                    <div class="price--filter">
-        						                        <a href="#">Filtrar</a>
-        						                    </div>
-        						                </div>
-        						            </div>
-        						        </form>
-        						    </div>
-        						</div>
-        					</aside>
+        					
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -95,15 +92,7 @@
 			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
 			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
 			                        </div>
-			                        <p>Showing 1–12 of 40 results</p>
-			                        <div class="orderby__wrapper">
-			                        	<span>Filtrar por</span>
-			                        	<select class="shot__byselect">
-			                        		<option>Menor precio a mayor precio</option>
-			                        		<option>Mayor precio a menor precio</option>
-			                        		<option>Disponibilidad</option>
-			                        	</select>
-			                        </div>
+			                        <p>Resultados (Articulos Digitales)</p>
 		                        </div>
         					</div>
         				</div>
