@@ -44,8 +44,6 @@
 										<ul class="item item02">
 											<li class="title">Documentos Físicos</li>
 											<li><a href="librosFisicos.php">Libros Físicos</a></li>
-											<li><a href="ponenciasFisicas.php">Ponencias Fisicas</a></li>
-											<li><a href="articulosFisicos.php">Articulos Físicos</a></li>
 										</ul>
 										<ul class="item item02">
 											<li class="title">Documentos Digitales</li>
