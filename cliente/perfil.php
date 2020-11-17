@@ -3,15 +3,22 @@
 include("header.php");
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
 
+session_start();
+if (!isset($_SESSION['user'])) {
 
-$usuario=new Usuario();
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 4) {
+    header("location: ../index.php");
+}
+
+$usuario=new ControladorUsuario();
 $usuario->setUser($_SESSION['user']);
-$codigo=$usuario->getCod_usuario();
+$codigo=$usuario->getCodigo();
 
 $controladorCliente=new ControladorCliente();
 $cliente=$controladorCliente->devolverEstudiante($codigo);
-
 ?>
 
 <head>
@@ -26,7 +33,9 @@ $cliente=$controladorCliente->devolverEstudiante($codigo);
                 <div class="card-body">
                     <h2 class="title">Editar Perfil</h2>
                     <form method="POST" action="javascript:editarPerfil()" id="editarPerfil">
-                        
+                    <input type="hidden" class="form-control" id="cod_usuario" name="cod_usuario" value="<?php echo ($codigo) ?>">
+                    <input type="hidden" class="form-control" id="habilitado" name="habilitado" value="<?php echo ($cliente->getHabilitado()) ?>">
+
                         <label>Nombre</label>
                         <input type="text" class="form-control" id="nom_cliente" name="nom_cliente" aria-describedby="emailHelp" placeholder="Nombre"
                         value=<?php echo ($cliente->getNom_cliente())?>>

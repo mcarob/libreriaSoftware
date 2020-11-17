@@ -1,8 +1,8 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/Cliente.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/ControladorCliente.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/ControladorUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
 
 
 
@@ -17,7 +17,7 @@ $datos=array(
 );
 
 $conUsuario=new ControladorUsuario();
-$validacion=$conUsuario->validarContra($datos[3],$_POST["conPassword1"]);
+$validacion=$conUsuario->validarContraseña($datos[1],$_POST["conPassword1"]);
 
 if(count($validacion)>0)
 {
@@ -36,8 +36,8 @@ if(count($validacion)>0)
             $cliente=new Cliente($datos[0],$datos[1],$datos[2],$datos[3],$datos[4],$datos[5],$datos[6]);
             $conCliente->actualizarRegistro($cliente);
                         
-            // $conUsuario=new ControladorUsuario();
-            // echo($conUsuario->actualizarUsuario($datos[3],$_POST["conPassword"]));
+            $conUsuario=new ControladorUsuario();
+            echo($conUsuario->cambiarContraseña($datos[1],$_POST["conPassword"]));
         }else{
             echo("La nueva contraseña no coincide con la confirmación");
         }

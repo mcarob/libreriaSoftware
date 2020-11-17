@@ -6,6 +6,12 @@ class ControladorUsuario{
 
     private $Usuario;
 
+    private $tipoUsuario;
+    private $nombreUsuario;
+    private $correo;
+    private $cedula;
+    private $codigo;
+
 
     public function agregarRegistro(Empleado $nuevoRegistro)
     {
@@ -35,6 +41,8 @@ class ControladorUsuario{
         return $this->Usuario->darUsuarioxCod1($id);
     }
 
+
+
     public function setUser($usuario){
         $query=$this->connect()->prepare('SELECT * FROM usuario WHERE USER_USUARIO=:user');
         $query->execute(['user'=>$usuario]);
@@ -44,36 +52,64 @@ class ControladorUsuario{
                 $cod_usuario=$kk['COD_USUARIO'];
                 $this->codigo=$cod_usuario;
                 $this->tipoUsuario= $thipou;
-                $this->estado_empresa=$kk['VALIDADO'];
-                if($thipou==1 || $thipou==4){
+                if($thipou==1){
                     $query=$this->connect()->prepare('SELECT * FROM administrador WHERE COD_USUARIO=:id');
                     $query->execute(['id'=>$cod_usuario]);
                     foreach ($query as $kk) {
-                        $this->nombreUsuario=$kk['NOMBRE_ADMINISTRADOR']." ".$kk['APELLIDO_ADMINISTRADOR'];
-                        $this->correo=$kk['CORREO_ADMINISTRADOR'];
+                        $this->nombreUsuario=$kk['nom_administrador'];
+                        $this->correo=$kk['correo_administrador'];
                     }
                 }else if($thipou==2){
-                    $query=$this->connect()->prepare('SELECT * FROM estudiante WHERE COD_USUARIO=:id');
+                    $query=$this->connect()->prepare('SELECT * FROM empleado WHERE COD_USUARIO=:id');
                     $query->execute(['id'=>$cod_usuario]);
                     foreach ($query as $kk) {
-                        $this->nombreUsuario=$kk['NOMBRE_ESTUDIANTE']." ".$kk['APELLIDO_ESTUDIANTE'];
-                        $this->correo=$kk['CORREO_ESTUDIANTE'];
+                        $this->nombreUsuario=$kk['nom_empleado'];
+                        $this->correo=$kk['correo_empleado'];
+                        $this->cedula=$kk['ced_empleado'];
+                    }
+                }else if($thipou==3){
+                    $query=$this->connect()->prepare('SELECT * FROM publicador WHERE COD_USUARIO=:id');
+                    $query->execute(['id'=>$cod_usuario]);
+                    foreach ($query as $kk) {
+                       $this->nombreUsuario=$kk['nom_publicador']." ".$kk['ced_empleado'];
+                       $this->correo=$kk['correo_empleado'];
+                       $this->cedula=$kk['ced_publicador'];
                     }
                 }else {
-                    $query=$this->connect()->prepare('SELECT * FROM infoempresa_contacto WHERE COD_USUARIO=:id');
+                    $query=$this->connect()->prepare('SELECT * FROM cliente WHERE COD_USUARIO=:id');
                     $query->execute(['id'=>$cod_usuario]);
                     foreach ($query as $kk) {
-                        $this->nombreUsuario=$kk['RAZON_SOCIAL'];
-                        $this->correo=$kk['CORREO_CONTACTO'];
-                        $this->contacto_empresa=$kk['NOM_CONTACTO']." ".$kk['APELLIDO_CONTACTO'];
-                        $this->codigoEmpresa=$kk['COD_EMPRESA'];
+                        $this->nombreUsuario=$kk['nom_cliente'];
+                        $this->correo=$kk['correo_cliente'];
+                        $this->cedula=$kk['ced_publicador'];
                     }
                 }
             }
         }
     }
 
+    public function validarContraseña($id,$contra)
+    {
+        $this->usuario=new UsuarioDAO();
+        return $this->usuario->validarContraseña($id,$contra);
+    }
 
+    public function cambiarContraseña($codigo,$pass)
+    {
+        $this->usuario=new UsuarioDAO();
+        return $this->usuario->cambiarContraseña($codigo,$pass);
+    }
+
+
+
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+    public function setCodigo($codigo)
+    {
+        return $this->codigo = $codigo;
+    }
 }
 
 ?>

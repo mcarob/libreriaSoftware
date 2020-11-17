@@ -103,4 +103,21 @@ class DaoUsuario extends DB implements dao_interface
             return null;
         }
     }
+
+    public function validarContraseña($id,$contra)
+    {
+        
+        $sentencia = $this->con->prepare("SELECT * from usuario where cod_usuario=? and contra_usuario=?");
+        $sentencia->execute([$id,md5($contra)]);
+        $number_of_rows = $sentencia->fetchAll();
+        return $number_of_rows;
+    }
+
+    public function cambiarContraseña($codigo,$pass)
+    {
+        $pass2 = md5($pass);
+        $sentencia = $this->con->prepare("UPDATE usuario SET pass_usuario='".$pass2."' WHERE cod_usuario =".$codigo);
+        $res=$sentencia->execute();
+        return $res;
+    }
 }
