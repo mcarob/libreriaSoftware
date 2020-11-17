@@ -43,6 +43,29 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->listarDocumentoDigital();
     }
+
+    // // // // 
+    public function listarLibrosFisicos()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->informacionLibrosFisicos();
+    }
+    public function listarLibrosDigitales()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->informacionLibrosDigitales();
+    }
+    public function listarPonencias()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->informacionPonencia();
+    }
+    public function listarArticulos()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->informacionArticulos();
+    }
+    // // // 
 }
 
 ?>
