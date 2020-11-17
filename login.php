@@ -15,7 +15,7 @@ if(isset($_SESSION['user'])){
     }else{
         header('location: cliente/index.php');
     }
-    include_once 'loginp.php';
+    include_once 'loginp2.php';
 }else if(isset($_POST['username']) && isset($_POST['password'])){
 /** la sesión  aun no se encuentra creada, 
  * este if es para cuando la persona esta usando el formulario de ingreso 
@@ -28,7 +28,7 @@ if($usu!=null){
 
 }else{
     $errorEntrada="No existe un usuario con ese correo, Puedes registrarte y empezar a usar nuestros servicios";
-    include_once 'loginp.php';
+    include_once 'loginp2.php';
 }
 
 
@@ -39,7 +39,7 @@ if($usu!=null){
 }else if(isset($_POST['contrasena1con'])){
 
 }else{
-    include_once 'loginp.php';
+    include_once 'loginp2.php';
 }
 
 function verificarIngresoUsuario(Usuario $usuario){
@@ -86,23 +86,23 @@ function verificarIngresoUsuario(Usuario $usuario){
                 }else{
                     $mostrarCodigo=true;
                     $errorEntrada="El codigo de verificación es incorrecto";
-                    include_once 'loginp.php';
+                    include_once 'loginp2.php';
                 }
                 
             }else{
                 $mostrarCodigo=true;
-                include_once 'loginp.php';
+                include_once 'loginp2.php';
             }
             
         }else{
             $errorEntrada="No puede ingresar a la plataforma, puede contactarse a ____ y enviar un correo para habilitar su usuario";
-            include_once 'loginp.php';
+            include_once 'loginp2.php';
         }
         
 
     }else{
         $errorEntrada="La contraseña no es correcta";
-        include_once 'loginp.php';
+        include_once 'loginp2.php';
     }	
 }
 ?>

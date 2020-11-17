@@ -38,6 +38,7 @@
         </div>
         <!-- End Bradcaump area -->
         <!-- Start My Account Area -->
+        <!--    nombre télefono dirección //    nombre tel dirección ced cuidad pais    -->
         <section class="my_account_area pt--80 pb--55 bg--white">
             <div class="container">
                 <div class="row">
@@ -100,7 +101,7 @@
                                         </ul>
                                         <div class="card-body">
                                             <?php
-											include('divWizardRegistro.php')
+											include('registrophp/divWizardRegistro.php')
 										?>
                                         </div>
                                     </div>
