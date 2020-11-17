@@ -1,4 +1,10 @@
-﻿<!doctype html>
+﻿<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+$controladorDocumentos = new ControladorDocumento();
+$librosFisicos = $controladorDocumentos->listarLibrosFisicos();
+?>
+
+<!doctype html>
 <html class="no-js" lang="zxx">
 
 <body>
@@ -112,6 +118,7 @@
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
 	        						<!-- Start Single Product -->
+									<?php foreach ($librosFisicos as $key) {?>
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="assetsCliente/images/books/1.jpg" alt="product image" width="150" height="300"></a>
@@ -121,9 +128,9 @@
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a>El talisman, Stephen King</a> </h4>
+											<h4><a><?php echo($key["titulo_documento"])?>,<?php echo($key["editorial_publicacion"])?></a> </h4>
 											<ul class="prize d-flex">
-												<li>Fecha de publicacion: 13/11/2020</li>
+												<li><?php echo($key["fecha_publicacion"])?></li>
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
@@ -134,13 +141,12 @@
 													</ul>
 												</div>
 											</div>										
-
 											<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												
 											<div class="modal-dialog" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
-														<h5 class="modal-title col-11 text-center">Detalles de: El talisman</h5>
+														<h5 class="modal-title col-11 text-center">Detalles de: <?php echo($key["titulo_documento"])?> </h5>
 														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
@@ -152,37 +158,44 @@
 																	<img src="assetsCliente/images/books/1.jpg" alt="product image" width="200" height="200">
 																<td>
 																</tr>
-
-
 																<tr> 
 																<td><b>Nombre:</b><td>
-																<td>El talisman<td>
+																<td><?php echo($key["titulo_documento"])?><td>
 																</tr>
 
 																<tr>
 																	
 																<td><b>Genero:</b><td>
-																<td>Terror<td>
+																<td><?php echo($key["nom_materia"])?><td>
 																</tr>	
 																
 																<tr>
 																<td><b>Existencias:</b><td>
-																<td>7<td>
+																<td><?php echo($key["existencias"])?><td>
 																</tr>
 
 																<tr>
 																<td><b>Descripcion Fisica:</b><td>
-																<td>52 paginas sin enumerar<td>
+																<td><?php echo($key["informacion_paginas"])?><<td>
 																</tr>	
 
 																<tr>
 																<td><b>ISBN:</b><td>
-																<td>9789585712225<td>
+																<td><?php if($key["codigo_isbn"]==null){
+																	echo("NP");
+																	}else
+																	{
+																		echo ($key["codigo_isbn"]);
+																	}?><td>
 																</tr>	
-
-																<tr>
-																<td><b>SSN:</b><td>
-																<td>No contiene<td>
+<tr>
+																<td><b>ISBN:</b><td>
+																<td><?php if($key["informacion_ssn"]==null){
+																	echo("NP");
+																	}else
+																	{
+																		echo ($key["informacion_ssn"]);
+																	}?><td>
 																</tr>	
 
 																</table>
@@ -195,9 +208,8 @@
 											    </div>
 											</div>
 										</div>
-									</div>
-									
-									
+									</div>									
+									<?php }?>
 		        				
 		        					
 		        					
