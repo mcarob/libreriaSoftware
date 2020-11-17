@@ -2,6 +2,8 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 $controladorDocumentos = new ControladorDocumento();
 $librosFisicos = $controladorDocumentos->listarLibrosFisicos();
+$categorias=$controladorDocumentos->listarCategorias();
+$idiomas=$controladorDocumentos->listarIdiomas();
 ?>
 
 <!doctype html>
@@ -57,20 +59,22 @@ $librosFisicos = $controladorDocumentos->listarLibrosFisicos();
         				<div class="shop__sidebar">
         					<aside class="wedget__categories poroduct--cat">
         						<h3 class="wedget__title">Categorias</h3>
+							
         						<ul>
-        							<li><a href="#">Cientificos <span>(3)</span></a></li>
-        							<li><a href="#">Terror <span>(4)</span></a></li>
-        							<li><a href="#">Aventura <span>(6)</span></a></li>
-        						</ul>
+								<?php foreach ($categorias as $key) { ?>
+									<li><a href="#"><?php echo $key["nom_materia"]?> <span>(<?php echo $key["cantidad"]?>)</span></a></li>
+								<?php } ?>
+								</ul>
+								
         					</aside>
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Idioma</h3>
         						<ul>
-        							<li><a href="#">Ingles</a></li>
-        							<li><a href="#">Español</a></li>
-        							<li><a href="#">Aleman</a></li>
-        							<li><a href="#">Italiano</a></li>
-        						</ul>
+								<?php foreach ($idiomas as $key) { ?>
+        							<li><a href="#"><?php echo $key["nom_idioma"]?></a></li>
+								<?php } ?>
+								</ul>
+								
         					</aside>
         					<aside class="wedget__categories pro--range">
         						<h3 class="wedget__title">Filtrar por año</h3>
@@ -102,7 +106,7 @@ $librosFisicos = $controladorDocumentos->listarLibrosFisicos();
 			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
 			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
 			                        </div>
-			                        <p>Showing 1–12 of 40 results</p>
+			                        <p>Resultados (Libros fisicos)</p>
 			                        <div class="orderby__wrapper">
 			                        	<span>Filtrar por</span>
 			                        	<select class="shot__byselect">
@@ -117,8 +121,8 @@ $librosFisicos = $controladorDocumentos->listarLibrosFisicos();
         				<div class="tab__container">
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
-	        						<!-- Start Single Product -->
 									<?php foreach ($librosFisicos as $key) {?>
+									
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="assetsCliente/images/books/1.jpg" alt="product image" width="150" height="300"></a>
@@ -128,9 +132,9 @@ $librosFisicos = $controladorDocumentos->listarLibrosFisicos();
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a><?php echo($key["titulo_documento"])?>,<?php echo($key["editorial_publicacion"])?></a> </h4>
+											<h4><a><?php echo($key["titulo_documento"])?>,<?php echo($key["nombre_autor"]." ".$key["apellido_autor"])?></a> </h4>
 											<ul class="prize d-flex">
-												<li><?php echo($key["fecha_publicacion"])?></li>
+												<li>Publicado: <?php echo($key["fecha_publicacion"])?></li>
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
@@ -176,22 +180,22 @@ $librosFisicos = $controladorDocumentos->listarLibrosFisicos();
 
 																<tr>
 																<td><b>Descripcion Fisica:</b><td>
-																<td><?php echo($key["informacion_paginas"])?><<td>
+																<td><?php echo($key["informacion_paginas"])?> paginas<td>
 																</tr>	
 
 																<tr>
 																<td><b>ISBN:</b><td>
 																<td><?php if($key["codigo_isbn"]==null){
-																	echo("NP");
+																	echo("No Posee");
 																	}else
 																	{
 																		echo ($key["codigo_isbn"]);
 																	}?><td>
 																</tr>	
-<tr>
+																<tr>
 																<td><b>ISBN:</b><td>
 																<td><?php if($key["informacion_ssn"]==null){
-																	echo("NP");
+																	echo("No Posee");
 																	}else
 																	{
 																		echo ($key["informacion_ssn"]);
@@ -210,6 +214,7 @@ $librosFisicos = $controladorDocumentos->listarLibrosFisicos();
 										</div>
 									</div>									
 									<?php }?>
+									
 		        				
 		        					
 		        					

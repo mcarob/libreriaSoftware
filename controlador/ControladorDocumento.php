@@ -65,6 +65,18 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->informacionArticulos();
     }
+
+    public function listarCategorias()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->documentosxcategoria();
+    }
+
+    public function listarIdiomas()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->documentosxidioma();
+    }
     // // // 
 }
 

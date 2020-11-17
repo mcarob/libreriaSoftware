@@ -110,8 +110,7 @@ class DocumentoDAO extends DB  implements dao_interface
 //  //  //  //  //  //  
 
     public function informacionLibrosFisicos(){
-        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Libro' AND 
-        nom_tipo_presentacion='Física' and existencias>0");
+        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Libro' AND nom_tipo_presentacion='Física' and existencias>0");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -121,8 +120,7 @@ class DocumentoDAO extends DB  implements dao_interface
     }
 
     public function informacionLibrosDigitales(){
-        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Libro' AND 
-        nom_tipo_presentacion='Digital' and existencias>0");
+        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Libro' AND nom_tipo_presentacion='Digital' and existencias>0");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -133,8 +131,7 @@ class DocumentoDAO extends DB  implements dao_interface
     
 
     public function informacionArticulos(){
-        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Articulo'
-        AND existencias>0");
+        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Articulo' AND existencias>0");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -144,8 +141,47 @@ class DocumentoDAO extends DB  implements dao_interface
     }
 
     public function informacionPonencia(){
-        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Ponencia'
-        AND existencias>0");
+        $query = $this->con->prepare("SELECT * FROM info_documento WHERE nom_tipo_documento='Ponencia' AND existencias>0");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function documentosxcategoria(){
+        $query = $this->con->prepare("SELECT * FROM documentosxmateria");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function Listardocumentosxcategoria(){
+        $query = $this->con->prepare("SELECT * FROM documentosxmateria");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function documentosxidioma(){
+        $query = $this->con->prepare("SELECT * FROM documentosxidioma");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function Listardocumentosxidioma(){
+        $query = $this->con->prepare("SELECT * FROM documentosxidioma");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
