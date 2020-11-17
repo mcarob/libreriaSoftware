@@ -18,7 +18,7 @@ $usuario->setUser($_SESSION['user']);
 $codigo=$usuario->getCodigo();
 
 $controladorCliente=new ControladorCliente();
-$cliente=$controladorCliente->devolverEstudiante($codigo);
+$cliente=$controladorCliente->devolverCliente($codigo);
 ?>
 
 <head>

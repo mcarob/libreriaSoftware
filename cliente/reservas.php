@@ -1,8 +1,31 @@
 ﻿<!doctype html>
-<html class="no-js" lang="zxx">
-
 <?php
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorPrestamoF.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
+
 include("header.php");
+
+
+session_start();
+if (!isset($_SESSION['user'])) {
+
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 4) {
+    header("location: ../index.php");
+}
+
+$usuario=new ControladorUsuario();
+$usuario->setUser($_SESSION['user']);
+$codigo=$usuario->getCodigo();
+
+$controladorCliente=new ControladorCliente();
+$cliente=$controladorCliente->devolverCliente($codigo);
+
+$conPrestamoFisico=new ControladorPrestamoFisico();
+$prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_cliente());
+
 ?>
 <body>
 	
@@ -48,34 +71,32 @@ include("header.php");
                                     <thead>
                                         <tr class="title-top">
 											<th class="product-name">Nombre</th>
-											<th class="product-name">Tipo</th>
                                             <th class="product-price">Fecha de reserva</th>
 											<th class="product-quantity">Fecha de devolución</th>
 											<th class="product-quantity">Estado de prestamo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($prestamos as $kk)
+                                        {
+                                        ?>
                                         <tr>
-                                            <td >El talisman</td>
-											<td >Libro</td>
-											<td >13/11/2020</td>
-											<td >24/11/2020</td>
-											<td >Activo</td>
+                                            <td ><?php $kk["titulo_documento"] ?></td>
+											<td ><?php $kk["fecha_prestamo_fisico"] ?></td>
+											<td ><?php $kk["fecha_devolucion_fisico"] ?></td>
+                                            <?php if($kk["nombre_estado"]=="Atrasado" ) 
+                                            {
+                                            echo('<td><p style="color:#CC0000";><?php $kk["nombre_estado"] ?></p></td>');
+                                            }else if($kk["nombre_estado"]=="Reservado" ) 
+                                            {
+                                            echo('<td><p style="color:#FFFF00";><?php $kk["nombre_estado"] ?></p></td>');
+                                            }else if($kk["nombre_estado"]=="Entregado" ) 
+                                            {
+                                            echo('<td><p style="color:#33CC00";><?php $kk["nombre_estado"] ?></p></td>');
+                                            }
+                                            ?>
                                         </tr>
-                                        <tr>
-											<td>Digital Twins</td>
-											<td>Articulo</td>
-											<td>1/11/2020</td>
-											<td>12/11/2020</td>
-											<td>En mora</td>
-                                        </tr>
-                                        <tr>
-											<td>Ponencia del ambiente</td>
-											<td>Ponencia</td>
-											<td>10/11/2020</td>
-											<td>30/11/2020</td>
-											<td>Activo</td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

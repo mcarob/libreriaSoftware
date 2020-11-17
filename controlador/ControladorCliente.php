@@ -31,10 +31,10 @@ class ControladorCliente{
         return $this->cliente->listar();
     }
 
-    public function devolverEstudiante($codigo_usuario)
+    public function devolverCliente($codigo_usuario)
     {
         $this->cliente=new ClienteDAO();
-        return $this->cliente->devolverEstudiante($codigo_usuario);
+        return $this->cliente->devolverCliente($codigo_usuario);
     }
 }
 

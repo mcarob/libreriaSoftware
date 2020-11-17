@@ -1,6 +1,7 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/Modelo/daos/DocumentoDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/Modelo/daos/DaoPrestamoFisico.php');
 
 class ControladorDocumento{
 
@@ -63,6 +64,7 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->idiomas();
     }
+
     // // // 
 }
 

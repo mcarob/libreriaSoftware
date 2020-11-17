@@ -65,7 +65,7 @@ class ClienteDAO extends DB  implements dao_interface
         return $em;
     }
 
-    public function devolverEstudiante($codigo_usuario){
+    public function devolverCliente($codigo_usuario){
         $query=$this->con->prepare('SELECT * FROM cliente WHERE cod_usuario=:user');
         $query->execute(['user'=>$codigo_usuario]);
         if($query->rowCount()){
