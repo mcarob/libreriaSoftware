@@ -37,15 +37,16 @@
                     <input class="form-control" id="isbn" name="isbn">
                 </div>
             </div>
-    
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Editorial:</label>
                     <input class="form-control" id="editorial" name="editorial">
                 </div>
             </div>
+    
+        </div>
+        <div class="row">
+           
             <div class="col-md-4">
                 <div class="form-group">
 
@@ -56,9 +57,7 @@
                             <option value="1" selected>Físico</option>
                             <option value="2">Digital</option>
                         </select>
-                        <div class="input-group-append">
-                            <label class="input-group-text" for="inputGroupSelect02">Formato</label>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -71,11 +70,12 @@
             </div>
         </div>
         <input type= "number"class="form-control" id="tipo" name="tipo" value="1" hidden/>
-        <div class="form-footer pt-4 pt-5 mt-4" style="float: right;">
+        <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarLibro();" class="btn btn-primary btn-default" value="Registrar">Registrar</a>
         </div>
     </div>
 </form>
+
 <script>
   function agregarLibro() {
         datos = $('#formNuevoLibro').serialize();

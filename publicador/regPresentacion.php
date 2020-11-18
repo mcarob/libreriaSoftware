@@ -24,13 +24,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Fecha de publicacion:</label>
-                    <input class="form-control" id="fechaPublicacion" name="fechaPublicacion">
+                    <input type="date" class="form-control" id="fechaPublicacion" name="fechaPublicacion">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Autor:</label>
-                    <input class="form-control" id="fechaPublicacion" name="fechaPublicacion">
+                    <input class="form-control" id="autor" name="autor">
                 </div>
             </div>
         </div>
@@ -38,27 +38,16 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>ISBN:</label>
-                    <input class="form-control" id="fechaPublicacion" name="fechaPublicacion">
+                    <input class="form-control" id="isbn" name="isbn">
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Mes de publicacion:</label>
-                    <input class="form-control" id="fechaPublicacion" name="fechaPublicacion">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Dia de publicacion:</label>
-                    <input class="form-control" id="fechaPublicacion" name="fechaPublicacion">
-                </div>
-            </div>
+            
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Editorial:</label>
-                    <input class="form-control" id="fechaPublicacion" name="fechaPublicacion">
+                    <input class="form-control" id="editorial" name="editorial">
                 </div>
             </div>
             <div class="col-md-4">
@@ -80,10 +69,36 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Nombre del congreso:</label>
-                    <input class="form-control" id="fechaPublicacion" name="fechaPublicacion">
+                    <input class="form-control" id="nomCongreso" name="nomCongreso">
                 </div>
             </div>
         </div>
     </div>
+    <input type= "number"class="form-control" id="tipo" name="tipo" value="3" hidden/>
+    <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
+            <a onclick="agregarPresentacion();" class="btn btn-primary btn-default" value="Registrar">Registrar</a>
+        </div>
    
 </form>
+
+<script>
+  function agregarPresentacion() {
+        datos = $('#formNuevoPresentacion').serialize();
+
+        $.ajax({
+            type: "POST",
+            data: datos,
+            url: "agregar_presentacion.php",
+            success: function(r) {
+
+                console.log(r);
+                if (r == 1) {
+
+                    window.location.href = "index.php";
+                } else {
+
+                }
+            }
+        });
+    }
+</script>
