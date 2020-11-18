@@ -41,17 +41,13 @@
                     <input class="form-control" id="isbn" name="isbn">
                 </div>
             </div>
-            
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Editorial:</label>
                     <input class="form-control" id="editorial" name="editorial">
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
+            <div class="form-group">
 
                     <label class="control control-checkbox checkbox-success">Tipo de formato:</label>
 
@@ -60,11 +56,15 @@
                             <option value="1" selected>Físico</option>
                             <option value="2">Digital</option>
                         </select>
-                        <div class="input-group-append">
-                            <label class="input-group-text" for="inputGroupSelect02">Formato</label>
-                        </div>
+                        
                     </div>
                 </div>
+            
+        </div>
+        <div class="row">
+            
+            <div class="col-md-4">
+                
             </div>
             <div class="col-md-4">
                 <div class="form-group">
