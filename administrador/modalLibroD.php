@@ -54,6 +54,17 @@ $libro = $CDocumentos->darDocumentoDD($id)
                     </div>
                 </div>
 
+                <div class="col-lg-6">
+                    <div class="form-group mb-4">
+                        <label for="Birthday">Código</label>
+                        <input type="text" class="form-control" readonly value="<?php if($libro['cod_tipo_documento'] == 3) {
+										echo ($libro['informacion_ssn']);
+									} else {
+										echo ("No");
+									} ?>">
+                    </div>
+                </div>
+
 
                 <div class="col-lg-6">
                     <div class="form-group mb-4">

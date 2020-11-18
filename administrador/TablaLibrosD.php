@@ -54,10 +54,10 @@ $digitales = $CDocumentos->listarDocumentoD();
 									echo ("<td>" . $key['titulo_documento'] . "</td>");
 									echo ("<td>" . $key['nom_publicador'] . "</td>");
 									echo ("<td>" . $key['editorial_publicacion'] . "</td>");
-									if ($key['cod_tipo_documento'] == 2) {
+									if ($key['cod_tipo_documento'] == 3) {
 										echo ("<td>" . $key['informacion_ssn'] . "</td>");
 									} else {
-										echo ("<td>" . $key['informacion_bib'] . "</td>");
+										echo ("<td> No </td>");
 									}
 									echo ("<td>" . $key['nom_tipo_documento'] . "</td>");
 									echo ("<td>
