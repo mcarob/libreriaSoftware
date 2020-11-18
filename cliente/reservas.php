@@ -81,18 +81,18 @@ $prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_clie
                                         {
                                         ?>
                                         <tr>
-                                            <td ><?php $kk["titulo_documento"] ?></td>
-											<td ><?php $kk["fecha_prestamo_fisico"] ?></td>
-											<td ><?php $kk["fecha_devolucion_fisico"] ?></td>
+                                            <td><?php $kk["titulo_documento"] ?></td>
+											<td><?php $kk["fecha_prestamo_fisico"] ?></td>
+											<td id="devolucion"><?php $kk["fecha_devolucion_fisico"] ?></td>
                                             <?php if($kk["nombre_estado"]=="Atrasado" ) 
                                             {
-                                            echo('<td><p style="color:#CC0000";><?php $kk["nombre_estado"] ?></p></td>');
+                                            echo('<td id"estadoPrestamo"><p style="color:#CC0000";><?php $kk["nombre_estado"] ?></p></td>');
                                             }else if($kk["nombre_estado"]=="Reservado" ) 
                                             {
-                                            echo('<td><p style="color:#FFFF00";><?php $kk["nombre_estado"] ?></p></td>');
+                                            echo('<td id"estadoPrestamo"><p style="color:#FFFF00";><?php $kk["nombre_estado"] ?></p></td>');
                                             }else if($kk["nombre_estado"]=="Entregado" ) 
                                             {
-                                            echo('<td><p style="color:#33CC00";><?php $kk["nombre_estado"] ?></p></td>');
+                                            echo('<td id"estadoPrestamo"><p style="color:#33CC00";><?php $kk["nombre_estado"] ?></p></td>');
                                             }
                                             ?>
                                         </tr>
@@ -111,7 +111,7 @@ $prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_clie
                                     <li>Cantidad de prestamos realizados</li>
                                 </ul>
                                 <ul class="cart__total__tk">
-                                    <li>3</li>
+                                    <li></li>
                                 </ul>
                             </div>
                             <div class="cart__total__amount">
@@ -123,8 +123,16 @@ $prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_clie
                 </div>
             </div>  
         </div>
-		<?php
-		include("footer.php");
-		?>
 </body>
+<?php
+include("footer.php");
+?>
+<script>
+        function cambiarEstado() {
+            
+            var tomarFecha=document.getElementById("devolucion").value.split("-");
+            var fechaDevo=new Date( parseInt(tomarFecha[0]),parseInt(tomarFecha[1]),parseInt(tomarFecha[2]) );
+            var fechaActual=new Date();
+        }
+</script>
 </html>

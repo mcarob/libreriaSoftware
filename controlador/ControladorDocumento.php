@@ -80,6 +80,11 @@ class ControladorDocumento{
         return $this->documento->idiomas();
     }
 
+    public function filtradosInicio($idioma,$documento,$presentacion){
+        $this->documento=new DocumentoDAO();
+        return $this->documento->filtradosInicio($idioma,$documento,$presentacion);
+    }
+    
     // // // 
 }
 

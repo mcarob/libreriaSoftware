@@ -1,5 +1,7 @@
 ﻿<?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+include("header.php");
+		
 $controladorDocumentos = new ControladorDocumento();
 
 $documentos = $controladorDocumentos->informacionDocumentos();
@@ -7,20 +9,14 @@ $documentos = $controladorDocumentos->informacionDocumentos();
 $categorias=$controladorDocumentos->materias();
 $idiomas=$controladorDocumentos->idiomas();
 
+
 ?>
 
-<!doctype html>
-<html class="no-js" lang="zxx">
 
 <body>
 	
 	<div class="wrapper" id="wrapper">
-		
-	
-		<?php
-		include("header.php");
-		?>
-				
+
 				
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
@@ -94,10 +90,7 @@ $idiomas=$controladorDocumentos->idiomas();
         				<div class="row">
         					<div class="col-lg-12">
 								<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
-									<div class="shop__list nav justify-content-center" role="tablist">
-			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
-			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
-			                        </div>
+									
 			                        <p>Resultados (Libros fisicos)</p>
 			                        
 		                        </div>
@@ -224,11 +217,8 @@ $idiomas=$controladorDocumentos->idiomas();
         </div>
 
 		</div>
-		<!-- //Main wrapper -->
-		<?php
-		include("footer.php");
-		?>
-	
-		
+			
 	</body>
-	</html>
+	<?php
+		include("footer.php");
+	?>

@@ -1,12 +1,14 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
-<body>
-	
+
+<?php
+include("header.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+
+$conDocumento=new ControladorDocumento();
+$idiomas=$conDocumento->idiomas();
+
+?>
+<body>	
 	<div class="wrapper" id="wrapper">
-		
-		<?php
-		include("header.php");
-		?>
 		
 		<div class="brown--color box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
@@ -64,37 +66,43 @@
             <div class="container">
                 <div class="filter-box">
                     <h3>¿Qué tipo de documento estas buscando?</h3>
-                    <form action="http://libraria.demo.presstigers.com/index.html" method="get">
+                    <form method="POST" action="filtrados.php" id="filtros">
 						<div class="row">
                         <div class="col-md-3 col-sm-4">
-                            <div class="form-group">
-                                <label class="sr-only" for="keywords">Buscar por palabras claves</label>
-                                <input class="form-control" placeholder="Buscar por palabra Clave" id="keywords" name="keywords" type="text">
-                            </div>
+							<div class="form-group">
+									<select name="idioma" id="idioma" class="form-control">
+									<?php
+										foreach ($idiomas as $i) {
+										?>
+										<option value="<?php echo $i["nom_idioma"];?>">
+											<?php echo $i["nom_idioma"]; ?></option>
+										<?php
+										}
+										?>
+									</select>
+							</div>
 						</div>
                         <div class="col-md-3 col-sm-4">
                             <div class="form-group">
-                                <select name="catalog" id="catalog" class="form-control">
-                                    <option>Todos Los Documentos</option>
-                                    <option>Libro</option>
-                                    <option>Ponencias</option>
-                                    <option>Artículos Científicos</option>
+                                <select name="documento" id="documento" class="form-control">
+                                    <option value="Libro">Libros</option>
+                                    <option value="Ponencia">Ponencias</option>
+                                    <option value="Articulo">Artículos Científicos</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
                             <div class="form-group">
-                                <select name="category" id="category" class="form-control">
-                                    <option>Todos los Recursos</option>
-                                    <option>Recurso Físico</option>
-                                    <option>Recurso Electrónico</option>
-
+                                <select name="recurso" id="recurso" class="form-control">
+                                    <option value="Física">Recurso Físico</option>
+                                    <option value="Digital">Recurso Digital</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-4">
                             <div class="form-group">
-                                <input class="form-control" type="submit" value="Search">
+                                
+								<button class="form-control" type="submit">Filtrar</button>
                             </div>
 						</div>
 					</div>
@@ -104,257 +112,34 @@
         </section>
 		<section class="wn__product__area brown--color pt--80  pb--30">
 			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="section__title text-center">
-							<br><br>
-							<h2 class="title__be--2">New <span class="color--theme">Products</span></h2>
-							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
-					
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-							<a class="first__img" href="single-product.html"><img src="assetsCliente/images/books/1.jpg" width="270" height="340" alt="product image" ></a>
-								<a class="second__img animation1" href="single-product.html"><img src="assetsCliente/images/books/c.jpg" alt="product image" width="270" height="340"></a>
-								<div class="hot__box">
-									<span class="hot-label">BEST SALLER</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.html">robin parrish</a></h4>
-								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.html"><img src="assetsCliente/images/books/2.jpg" width="270" height="340" alt="product image" ></a>
-								<a class="second__img animation1" href="single-product.html"><img src="assetsCliente/images/books/c.jpg" alt="product image" width="270" height="340"></a>
-								<div class="hot__box color--2">
-									<span class="hot-label">HOT</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.html">The Remainng</a></h4>
-								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-		
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.html"><img src="assetsCliente/images/books/3.jpg" width="270" height="340" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.html"><img src="assetsCliente/images/books/c.jpg" alt="product image" width="270" height="340"></a>
-								<div class="hot__box">
-									<span class="hot-label">BEST SALLER</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.html">Bowen Greenwood</a></h4>
-								<ul class="prize d-flex">
-									<li>$40.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.html"><img src="assetsCliente/images/books/4.jpg" alt="product image" width="270" height="340"></a>
-								<a class="second__img animation1" href="single-product.html"><img src="assetsCliente/images/books/c.jpg" alt="product image" width="270" height="340"></a>
-								<div class="hot__box">
-									<span class="hot-label">HOT</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.html">Lando</a></h4>
-								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$50.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.html"><img src="assetsCliente/images/books/5.jpg" alt="product image" width="270" height="340"></a>
-								<a class="second__img animation1" href="single-product.html"><img src="assetsCliente/images/books/c.jpg" alt="product image" width="270" height="340"></a>
-								<div class="hot__box">
-									<span class="hot-label">HOT</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.html">Doctor Wldo</a></h4>
-								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.html"><img src="assetsCliente/images/books/6.jpg" alt="product image" width="270" height="340"></a>
-								<a class="second__img animation1" href="single-product.html"><img src="assetsCliente/images/books/c.jpg" alt="product image" width="270" height="340"></a>
-								<div class="hot__box">
-									<span class="hot-label">BEST SALER</span>
-								</div>
-							</div>
-							<div class="product__content content--center content--center">
-								<h4><a href="single-product.html">Ghost</a></h4>
-								<ul class="prize d-flex">
-									<li>$50.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.html"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-				
+				<br>
+				<br>
+				<br><br><br><br><br><br>
 			</div>
 		</section>
-		
-		<?php
-		include('footer.php')
-		?>
-		
 	</div>
 
 	
 </body>
-</html>
+		
+<?php
+		include('footer.php')
+?>
+<script>
+        function filtrar() {
+
+            datos = $('#filtros').serialize();
+			
+            $.ajax({
+                type: "POST",
+                data: datos,
+                url: "filtrados.php",
+                success: function(r) {
+                
+				window.location.href = "filtrados.php";
+
+                }
+            });
+
+        }
+    </script>

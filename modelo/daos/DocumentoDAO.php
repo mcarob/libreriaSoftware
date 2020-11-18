@@ -160,6 +160,16 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
 
+    public function filtradosInicio($idioma,$documento,$presentacion){
+        $query = $this->con->prepare("SELECT * FROM info_documento where nom_idioma=? and nom_tipo_documento=? and nom_tipo_presentacion=?");
+        $query->execute([$idioma,$documento,$presentacion]);
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
 //  //  //  //  //  
 
 }

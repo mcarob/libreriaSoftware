@@ -143,6 +143,6 @@ $cliente=$controladorCliente->devolverCliente($codigo);
             });
 
         }
-    </script>
+</script>
 
 </html>

@@ -70,8 +70,24 @@ class DaoPrestamoFisico extends DB implements dao_interface
     public function prestamosFisicosxCodCliente($cod_cliente){
         $sentencia = $this->con->prepare("SELECT * FROM documentosfisicosprestados WHERE cod_usuario_cliente =?");
         $sentencia->execute($cod_cliente);
-        $row = $sentencia->fetch();
-        return $row;
+        $em = array();
+        while ($fila = $sentencia->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
     }
+
+    public function cambiarEstado($estado,$cod_prestamo,$codigo_cliente)
+    {
+        $sentencia = $this->con->prepare("UPDATE prestamo_fisico SET cod_estado_prestamo=? WHERE cod_prestamo_fisico=? AND cod_usuario_cliente =?");
+        $sentencia->execute($estado,$cod_prestamo,$codigo_cliente);
+        $em = array();
+        while ($fila = $sentencia->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+
 
 }

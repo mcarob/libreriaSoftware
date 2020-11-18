@@ -1,27 +1,32 @@
 <?php
+
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
-$controladorDocumentos = new ControladorDocumento();
 
-$documentos = $controladorDocumentos->informacionDocumentos();
 
+include("header.php");
+$idioma=$_POST["idioma"];
+$documento=$_POST["documento"];
+$presentacion=$_POST["recurso"];
+
+
+$controladorDocumentos=new ControladorDocumento();
 $categorias=$controladorDocumentos->materias();
 $idiomas=$controladorDocumentos->idiomas();
 
+
+
+
+$filtrados=$controladorDocumentos->filtradosInicio($idioma,$documento,$presentacion);
+$resultados=0;
+if(isset($filtrados))
+{
+	$resultados=1;
+}
 ?>
-<!doctype html>
-<html class="no-js" lang="zxx">
+
 
 <body>
-	
-	<div class="wrapper" id="wrapper">
-		
-	
-		<?php
-		include("header.php");
-		?>
-				
-			
-		<div class="box-search-content search_active block-bg close__top">
+<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
 				<div class="field__search">
 					<input type="text" placeholder="Search entire store here...">
@@ -41,11 +46,11 @@ $idiomas=$controladorDocumentos->idiomas();
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand de ponencias digitales</h2>
+                        	<h2 class="bradcaump-title">Stand Filtrados</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Ponencias Digitales</span>
+                              <span class="breadcrumb_item active">Documentos Filtrados</span>
                             </nav>
                         </div>
                     </div>
@@ -57,42 +62,18 @@ $idiomas=$controladorDocumentos->idiomas();
         <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
         	<div class="container">
         		<div class="row">
-        			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
-        				<div class="shop__sidebar">
-        					<aside class="wedget__categories poroduct--cat">
-        						<h3 class="wedget__title">Categorias</h3>
-        						<ul>
-								<?php foreach ($categorias as $key) { 
-								if($key["nom_tipo_documento"]=="Ponencia" and $key["nom_tipo_presentacion"]=="Digital")
-								{
-								?>
-									<li><a href="#"><?php echo $key["nom_materia"]?> <span>(<?php echo $key["cantidad"]?>)</span></a></li>
-								<?php }} ?>
-								</ul>
-        					</aside>
-        					<aside class="wedget__categories poroduct--tag">
-        						<h3 class="wedget__title">Idioma</h3>
-        						<ul>
-								<?php foreach ($idiomas as $key) { 
-								if($key["nom_tipo_documento"]=="Ponencia" and $key["nom_tipo_presentacion"]=="Digital")
-								{
-								?>
-
-        						<li><a href="#"><?php echo $key["nom_idioma"]?></a></li>
-
-								<?php }} ?>
-        						</ul>
-        					</aside>
-        					
-        				</div>
-        			</div>
+        			
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
         				<div class="row">
         					<div class="col-lg-12">
 								<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
-									
-			                        <p>Resultados (Ponencias Digitales)</p>
-			                        
+									<?php 
+									if($resultados!=0)
+									{								
+									echo("<p>Resultados Filtrados</p>");
+									}
+
+									?>
 		                        </div>
         					</div>
         				</div>
@@ -100,9 +81,7 @@ $idiomas=$controladorDocumentos->idiomas();
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
 	        						<!-- Start Single Product -->
-		        					<?php foreach ($documentos as $key) {
-									if($key["nom_tipo_documento"]=="Ponencia" and $key["nom_tipo_presentacion"]=="Digital")
-									{
+									<?php foreach ($filtrados as $key) {
 									?>
 									
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
@@ -130,9 +109,7 @@ $idiomas=$controladorDocumentos->idiomas();
 											
 									</div>									
 									
-									<?php }
-									}?>	
-									
+                                    <?php }?>	
 									
 									
 		        				
@@ -156,11 +133,8 @@ $idiomas=$controladorDocumentos->idiomas();
         </div>
 
 		</div>
-		<!-- //Main wrapper -->
-		<?php
-		include("footer.php");
-		?>
-	
 		
-	</body>
-	</html>
+</body>
+<?php
+include("footer.php");
+?>

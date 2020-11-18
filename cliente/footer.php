@@ -9,7 +9,7 @@
 									<a href="index.html">
 										<img src="assetsCliente/images/logo/3.png" alt="logo">
 									</a>
-									<p>En el bosquecillo siempre encontraras tus libros, articulos y revistas preferidas.</p>
+									<p>En el bosquecillo siempre encontraras tus libros, articulos y ponencias preferidas.</p>
 								</div>
 								<div class="footer__content">
 									<ul class="social__net social__net--2 d-flex justify-content-center">
