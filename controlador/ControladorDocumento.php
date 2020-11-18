@@ -10,6 +10,8 @@ class ControladorDocumento{
 
     public function agregarRegistro(Documento $nuevoRegistro)
     {
+        echo("linea13");
+        print_r($nuevoRegistro);
         $this->documento=new DocumentoDAO();
         return $this->documento->agregarRegistro($nuevoRegistro);
     }
