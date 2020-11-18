@@ -38,7 +38,7 @@ class DaoPrestamoFisico extends DB implements dao_interface
     public function listar()
     {
         // VISTA PARA OBTENER LOS DOCUMENTOS PRESTADOS, PREGUNTAR EL CODIGO DEL ESTADO_PRESTAMO
-        $query = $this->con->prepare("SELECT * FROM listaLibrosFisicosPrestados where cod_estado_prestamo=3");
+        $query = $this->con->prepare("SELECT * FROM listaLibrosFisicosPrestados where (cod_estado_prestamo=1 or cod_estado_prestamo=2)");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -50,10 +50,19 @@ class DaoPrestamoFisico extends DB implements dao_interface
     {
         
     }
+    
+
+
+    public function darPrestamoFisicoxCod($id){
+        $query = $this->con->prepare("SELECT * FROM listaLibrosFisicosPrestados where cod_prestamo_fisico=".$id);
+        $query->execute();
+        return $query->fetch();
+        
+    }
 
     public function aceptarDevo($idPrestamoFisico){
         //preguntar estados
-        $query = "UPDATE prestamo_fisico SET cod_estado_prestamo=2 where cod_prestamo_fisico=".$idPrestamoFisico;
+        $query = "UPDATE prestamo_fisico SET cod_estado_prestamo=4 where cod_prestamo_fisico=".$idPrestamoFisico;
         $sentencia = $this->con->prepare($query);
         return $sentencia->execute([]);
     }

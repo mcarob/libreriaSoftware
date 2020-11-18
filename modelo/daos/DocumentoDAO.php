@@ -98,6 +98,10 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
 
+
+
+
+
     public function darDocumentoFisico($id){
         $query = $this->con->prepare("SELECT * FROM listadocumentosfisicos where cod_documento=".$id    );
         $query->execute();

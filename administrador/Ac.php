@@ -17,6 +17,7 @@ if (isset($_GET['action'])) {
             $datos = array(
                 $_POST["cedula"],
                 $_POST["nombre"],
+                $_POST['apellidos'],
                 $_POST["telefono"],
                 $_POST["correo"]
             );
