@@ -62,7 +62,7 @@ $digitales = $CDocumentos->listarDocumentoD();
 									echo ("<td>" . $key['nom_tipo_documento'] . "</td>");
 									echo ("<td>
 										<div class='btn-list'>	
-											<button type='button' class='btn btn-outline-success' onclick='verMas(" . '"' . $key['cod_documento'] . '"' . ")'>Ver más</button>
+											<button type='button' class='btn btn-outline-success' onclick='vermas(" . '"' . $key['cod_documento'] . '"' . ")'>Ver más</button>
 											</div>
 										</td>");
 
@@ -83,19 +83,30 @@ $digitales = $CDocumentos->listarDocumentoD();
 			DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
 		</div>
 	</div>
+
+
+	<div class="modal fade" id="modal11" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			
+						
+			</div>
+		</div>
+	</div>
 </div>
 
 
 
 
+
+
 <script>
-
-function verMas(valor) {
-        $('#modall').modal('show');
-        variableCod = valor;
-    }
-
+	function vermas(valor) {
+		$('.modal-content').load('modalLibroD.php?id='+valor) 
+		$('#modal11').modal('show');
+	}
 </script>
+
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/process.js"></script>

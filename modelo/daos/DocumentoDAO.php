@@ -97,12 +97,26 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
 
+    public function darDocumentoFisico($id){
+        $query = $this->con->prepare("SELECT * FROM listadocumentosfisicos where cod_documento=".$id    );
+        $query->execute();
+        return $query->fetch();
+        
+    }
+
+    public function darDocumentoDigital($id){
+        $query = $this->con->prepare("SELECT * FROM listadocumentosdigitales where cod_documento=".$id    );
+        $query->execute();
+        return $query->fetch();
+        
+    }
+
     public function listarDocumentoDigital(){
         $query = $this->con->prepare("SELECT * FROM listadocumentosdigitales");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
-            $em[] = $fila;
+            $em[] = $fila;  
         }
         return $em;
     }

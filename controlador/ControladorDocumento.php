@@ -45,6 +45,19 @@ class ControladorDocumento{
         return $this->documento->listarDocumentoDigital();
     }
 
+
+    public function darDocumentoFF($id)
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->darDocumentoFisico($id);
+    }
+
+
+    public function darDocumentoDD($id)
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->darDocumentoDigital($id);
+    }
     // // // // 
 
     public function informacionDocumentos()
