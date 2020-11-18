@@ -87,6 +87,15 @@ $digitales = $CDocumentos->listarDocumentoD();
 
 
 
+
+<script>
+
+function verMas(valor) {
+        $('#modall').modal('show');
+        variableCod = valor;
+    }
+
+</script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/process.js"></script>
