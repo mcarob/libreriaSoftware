@@ -17,13 +17,15 @@ class DocumentoDAO extends DB  implements dao_interface
     
 
     public function agregarRegistro(Object $nuevoRegistro){
-        
-        $query = "INSERT INTO documento (cod_documento,cod_idioma,cod_tipo_documento,
-        cod_tipo_presentacion,titulo_documento,fecha_publicacion,editorial_publicacion,
-        codigo_isbn,informacion_paginas,informacion_congreso,informacion_ssn,
-        informacion_bib,direccion_archivo,cod_publicador,direccion_portada) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        echo("linea20");
+        print_r($nuevoRegistro);
+        $query = "INSERT INTO documento(cod_idioma, cod_tipo_documento, 
+        cod_tipo_presentacion, titulo_documento, fecha_publicacion, 
+        editorial_publicacion, codigo_isbn, informacion_paginas,
+        informacion_congreso, informacion_ssn, informacion_bib, 
+        direccion_archivo, cod_publicador, direccion_portada)
+        VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $respuesta = $this->con->prepare($query)->execute([
-                $nuevoRegistro->getCod_documento(), 
                 $nuevoRegistro->getCod_idioma(), 
                 $nuevoRegistro->getCod_tipo_documento(),
                 $nuevoRegistro->getCod_tipo_presentacion(), 
@@ -41,7 +43,6 @@ class DocumentoDAO extends DB  implements dao_interface
         ]);
         return $respuesta;
     }
-
 
     public function actualizarRegistro(Object $registroActualizar){
         $query = "UPDATE documento SET cod_idioma=?,cod_tipo_documento=?,
