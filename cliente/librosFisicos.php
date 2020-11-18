@@ -16,7 +16,9 @@ $idiomas=$controladorDocumentos->idiomas();
 <body>
 	
 	<div class="wrapper" id="wrapper">
-
+	<?php
+		include("menu.php");
+		?>	
 				
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">

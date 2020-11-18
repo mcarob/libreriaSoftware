@@ -1,4 +1,6 @@
 <?php
+
+include("header.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 $controladorDocumentos = new ControladorDocumento();
 
@@ -9,15 +11,12 @@ $idiomas=$controladorDocumentos->idiomas();
 
 ?>
 <body>
-	
 	<div class="wrapper" id="wrapper">
 		
-	
-		<?php
-		include("header.php");
-		?>
-				
-				
+	<?php
+		include("menu.php");
+		?>	
+			
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
 				<div class="field__search">

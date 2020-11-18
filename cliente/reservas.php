@@ -8,28 +8,26 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/Controlado
 include("header.php");
 
 
-session_start();
-if (!isset($_SESSION['user'])) {
 
-    header("location: ../index.php");
-} else if (!$_SESSION['tipo'] == 4) {
-    header("location: ../index.php");
-}
-
-$usuario=new ControladorUsuario();
-$usuario->setUser($_SESSION['user']);
-$codigo=$usuario->getCodigo();
+$conUsuario=new ControladorUsuario();
+$conUsuario->setUser($_SESSION['user']);
+$codigo=$conUsuario->getCodigo();
 
 $controladorCliente=new ControladorCliente();
 $cliente=$controladorCliente->devolverCliente($codigo);
+$cantidadReservas=$controladorCliente->cantidadPrestamos($cliente->getCod_cliente());
 
 $conPrestamoFisico=new ControladorPrestamoFisico();
 $prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_cliente());
+$dis=10-$cantidadReservas["prestamos"];
 
 ?>
 <body>
 	
 	<div class="wrapper" id="wrapper">
+    <?php
+		include("menu.php");
+		?>	
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
 				<div class="field__search">
@@ -84,17 +82,6 @@ $prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_clie
                                             <td><?php $kk["titulo_documento"] ?></td>
 											<td><?php $kk["fecha_prestamo_fisico"] ?></td>
 											<td id="devolucion"><?php $kk["fecha_devolucion_fisico"] ?></td>
-                                            <?php if($kk["nombre_estado"]=="Atrasado" ) 
-                                            {
-                                            echo('<td id"estadoPrestamo"><p style="color:#CC0000";><?php $kk["nombre_estado"] ?></p></td>');
-                                            }else if($kk["nombre_estado"]=="Reservado" ) 
-                                            {
-                                            echo('<td id"estadoPrestamo"><p style="color:#FFFF00";><?php $kk["nombre_estado"] ?></p></td>');
-                                            }else if($kk["nombre_estado"]=="Entregado" ) 
-                                            {
-                                            echo('<td id"estadoPrestamo"><p style="color:#33CC00";><?php $kk["nombre_estado"] ?></p></td>');
-                                            }
-                                            ?>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -111,12 +98,12 @@ $prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_clie
                                     <li>Cantidad de prestamos realizados</li>
                                 </ul>
                                 <ul class="cart__total__tk">
-                                    <li></li>
+                                    <li><?php echo $cantidadReservas["prestamos"]?></li>
                                 </ul>
                             </div>
                             <div class="cart__total__amount">
                                 <span>Prestamos disponibles</span>
-                                <span>7</span>
+                                <span><?php echo $dis ?></span>
                             </div>
                         </div>
                     </div>

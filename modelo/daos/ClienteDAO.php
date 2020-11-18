@@ -75,5 +75,13 @@ class ClienteDAO extends DB  implements dao_interface
             }
         }
     }
+
+    public function cantidadPrestamos($codigoCliente){
+        $sentencia = $this->con->prepare("SELECT * FROM prestamosfisicosxcliente WHERE cod_cliente =?");
+        $sentencia->execute($codigoCliente);
+        $row = $sentencia->fetch();
+        return $row;
+    }
+    
 }
 ?>

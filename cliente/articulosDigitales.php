@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+include("header.php");
 $controladorDocumentos = new ControladorDocumento();
 
 $documentos = $controladorDocumentos->informacionDocumentos();
@@ -8,17 +9,13 @@ $categorias=$controladorDocumentos->materias();
 $idiomas=$controladorDocumentos->idiomas();
 
 ?>
-
-<!doctype html>
-<html class="no-js" lang="zxx">
-
 <body>
 	
 	<div class="wrapper" id="wrapper">
 		
 	
 		<?php
-		include("header.php");
+		include("menu.php");
 		?>
 				
 		<div class="box-search-content search_active block-bg close__top">
@@ -205,10 +202,10 @@ $idiomas=$controladorDocumentos->idiomas();
 
 		</div>
 		<!-- //Main wrapper -->
+		
+	</body>
 		<?php
 		include("footer.php");
 		?>
 	
-		
-	</body>
-	</html>
+	
