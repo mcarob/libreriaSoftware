@@ -29,7 +29,7 @@ include('menuEm.php');
                     <h4 class="text-blue h4">Formulario</h4>
                 </div>
                 <div class="wizard-content">
-                    <form id="newE" method="POST" onclick="agregarCliente()" class="tab-wizard wizard-circle wizard">
+                    <form id="newC" method="POST" onclick="agregarCliente()" class="tab-wizard wizard-circle wizard">
                         <h5>Información personal</h5>
                         <section>
                             <div class="row">
@@ -60,14 +60,7 @@ include('menuEm.php');
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label> Cédula :</label>
-                                        <input type="text" class="form-control" id="cedula" name="cedula">
-                                    </div>
-                                </div>
-                            </div>
+                         
                         </section>
                     </form>
                 </div>
@@ -85,7 +78,7 @@ include('menuEm.php');
   function agregarCliente() {
 
         console.log("Entroooooooooooooooooo");
-        datos = $('#newE').serialize();
+        datos = $('#newC').serialize();
 
         $.ajax({
             type: "POST",
