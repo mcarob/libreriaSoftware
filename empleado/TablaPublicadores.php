@@ -1,7 +1,11 @@
 <?php
 include('Header.php');
 include('menuEm.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPublicador.php');
+$Cpublicador = new ControladorPublicador();
+$publicadores = $Cpublicador->listar();
 ?>
+
 
 
 <div class="main-container">
@@ -36,49 +40,36 @@ include('menuEm.php');
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Name</th>
-								<th>Age</th>
-								<th>Office</th>
-								<th>Address</th>
-								<th>Start Date</th>
-								<th></th>
+								<th class="table-plus datatable-nosort">Nombre</th>
+								<th>Cédula</th>
+								<th>Correo</th>
+								<th>Pais</th>
+								<th>Ciudad</th>
+								<th>Dirección</th>
+								<th>Telefono</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="table-plus">Gloria F. Mead</td>
-								<td>25</td>
-								<td>Sagittarius</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
-								<td>29-03-2018</td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											Acciones
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" href="#">Ver más</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">Andrea J. Cagle</td>
-								<td>30</td>
-								<td>Gemini</td>
-								<td>1280 Prospect Valley Road Long Beach, CA 90802 </td>
-								<td>29-03-2018</td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											Acciones
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" data-toggle="modal" data-target="#modal1" href="#">Ver más</a>
-										</div>
-									</div>
-								</td>
-							</tr>
+						<?php
+							foreach ($publicadores as $key) {
+								echo ("<tr>");
+								echo ("<td>" . $key['nom_publicador'] . "</td>");
+								echo ("<td>" . $key['ced_publicador'] . "</td>");
+								echo ("<td>" . $key['correo_publicador'] . "</td>");
+								echo ("<td>" . $key['pais_publicador'] . "</td>");
+								echo ("<td>" . $key['ciudad_publicador'] . "</td>");
+								echo ("<td>" . $key['direccion_publicador'] . "</td>");
+								echo ("<td>" . $key['telefono_publicador'] . "</td>");
+
+				
+					
+							?>
+
+							<?php
+								echo ("</tr>");
+							}
+							?>
+					
 
 						</tbody>
 					</table>
@@ -86,6 +77,10 @@ include('menuEm.php');
 			</div>
 			<!-- Export Datatable End -->
 		</div>
+		<div class="footer-wrap pd-20 mb-20 card-box">
+			DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+		</div>
+
 		<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -162,13 +157,18 @@ include('menuEm.php');
 				</form>
 			</div>
 		</div>
-	</div>
-		<div class="footer-wrap pd-20 mb-20 card-box">
-			DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
-		</div>
+	</div>	
 	</div>
 </div>
 
+
+<script>
+
+		function estado(cod) {
+            window.location.href = 'ac.php?action=' + "estadoPub&" + "codigo=" + cod;
+        }
+
+</script>
 
 
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
