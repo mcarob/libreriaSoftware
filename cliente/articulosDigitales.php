@@ -1,8 +1,7 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
-include("header.php");
-
-
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/controladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorCliente.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -10,6 +9,13 @@ if (!isset($_SESSION['user'])) {
 } else if (!$_SESSION['tipo'] == 4) {
     header("location: ../index.php");
 }
+include("header.php");
+
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+
+$conCli=new ControladorCliente();
+$cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 
 
 $controladorDocumentos = new ControladorDocumento();
