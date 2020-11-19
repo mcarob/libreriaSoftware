@@ -11,11 +11,11 @@ include('menuEm.php');
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>¡Nuevo Cliente!</h4>
+                            <h4>¡Nuevo Empleado!</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Cliente</a></li>
+                                <li class="breadcrumb-item"><a href="index.html">Empleado</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                             </ol>
                         </nav>
@@ -25,11 +25,11 @@ include('menuEm.php');
             </div>
 
             <div class="pd-20 card-box mb-30">
-                <div>
+                <div class="clearfix">
                     <h4 class="text-blue h4">Formulario</h4>
                 </div>
                 <div class="wizard-content">
-                    <form id="newE" method="POST" onclick="agregarCliente()" class="tab-wizard wizard-circle wizard">
+                    <form id="newE" method="POST" onclick="agregarEmpleado()" class="tab-wizard wizard-circle wizard">
                         <h5>Información personal</h5>
                         <section>
                             <div class="row">
@@ -82,15 +82,13 @@ include('menuEm.php');
 
 
 <script>
-  function agregarCliente() {
-
-        console.log("Entroooooooooooooooooo");
+  function agregarEmpleado() {
         datos = $('#newE').serialize();
 
         $.ajax({
             type: "POST",
             data: datos,
-            url: "ac.php?action="+"AgregarC",
+            url: "ac.php?action="+"AgregarE",
             success: function(r) {
 
                 console.log(r);

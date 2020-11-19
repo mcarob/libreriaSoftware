@@ -1,6 +1,6 @@
 <?php
 include('Header.php');
-include('menuAdmi.php');
+include('menuEm.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPrestamoF.php');
 $CPF = new ControladorPrestamoFisico();
 $prestamos = $CPF->listar();

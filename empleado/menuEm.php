@@ -28,6 +28,17 @@
 							<li><a href="TablaPublicadores.php">Listar</a></li>
 						</ul>
 					</li>
+
+
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span class="mtext">Clientes</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="FormCliente.php">Agregar</a></li>
+							<li><a href="PrestamoCl.php">Realizar prestamo</a></li>
+						</ul>
+					</li>
 				
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">

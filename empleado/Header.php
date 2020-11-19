@@ -16,6 +16,14 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<!-- CSS -->
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.css">
+	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/style.css">
+
+
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/core.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/icon-font.min.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
@@ -33,18 +41,18 @@
 	</script>
 </head>
 <body>
-	<div class="pre-loader">
-		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="../TemplateAdministrador/vendors/images/deskapp-logo.svg" alt=""></div>
-			<div class='loader-progress' id="progress_div">
-				<div class='bar' id='bar1'></div>
-			</div>
-			<div class='percent' id='percent1'>0%</div>
-			<div class="loading-text">
-				Loading...
-			</div>
-		</div>
-	</div>
+			<!-- <div class="pre-loader">
+				<div class="pre-loader-box">
+					<div class="loader-logo"><img src="../TemplateAdministrador/vendors/images/deskapp-logo.svg" alt=""></div>
+					<div class='loader-progress' id="progress_div">
+						<div class='bar' id='bar1'></div>
+					</div>
+					<div class='percent' id='percent1'>0%</div>
+					<div class="loading-text">
+						Loading...
+					</div>
+				</div>
+			</div> -->
 
 	<div class="header">
 		<div class="header-left">

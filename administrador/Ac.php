@@ -156,6 +156,30 @@ if (isset($_GET['action'])) {
             }
         break;
 
+        case 'estadoCLE':
+            $CUsuarios = new ControladorUsuario();
+            $user = $CUsuarios->darUsuarioxCod($_GET['codigo']);
+            
+            if($user->getEstado_usuario()==4){
+                // InActivar
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],5);
+                if ($r) {
+                    header("location:../empleado/TablaClientes.php");
+                } else {
+                    echo ($r);
+                }
+            }
+            else if($user->getEstado_usuario()==5){
+                //Activar
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],4);
+                if ($r) {
+                    header("location:../empleado/TablaClientes.php");
+                } else {
+                    echo ($r);
+                }
+            }
+        break;
+
         
         
     }
