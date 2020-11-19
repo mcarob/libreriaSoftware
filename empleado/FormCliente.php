@@ -60,7 +60,16 @@ include('menuEm.php');
                                     </div>
                                 </div>
                             </div>
-                         
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Dirección :</label>
+                                        <input type="email" class="form-control" id="direccion" name="direccion">
+                                    </div>
+                                </div>
+                            </div>
+
                         </section>
                     </form>
                 </div>
@@ -75,7 +84,7 @@ include('menuEm.php');
 
 
 <script>
-  function agregarCliente() {
+    function agregarCliente() {
 
         console.log("Entroooooooooooooooooo");
         datos = $('#newC').serialize();
@@ -83,7 +92,7 @@ include('menuEm.php');
         $.ajax({
             type: "POST",
             data: datos,
-            url: "ac.php?action="+"AgregarC",
+            url: "../administrador/ac.php?action=" + "AgregarC",
             success: function(r) {
 
                 console.log(r);

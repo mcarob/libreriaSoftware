@@ -9,6 +9,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/Controla
 
 //ENTIDADES
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/modelo/entidades/empleado.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/modelo/entidades/Cliente.php');
+
 
 
 if (isset($_GET['action'])) {
@@ -32,6 +34,25 @@ if (isset($_GET['action'])) {
             }
             break;
 
+
+            case 'AgregarC':
+                $datos = array(
+                    $_POST["nombre"],
+                    $_POST['apellidos'],
+                    $_POST["telefono"],
+                    $_POST["correo"],
+                    $_POST["direccion"]
+                );
+                // FALTA EL CONTROLADOR DEL USUARIO
+                $CCliente = new ControladorCliente();
+                echo $r = $CCliente->agregarCliente($datos[0],$datos[1],$datos[3], $datos[2], $datos[4]);
+                if ($r) {
+                    header("location:TablaEmpleados.php");
+                } else {
+                    echo ($r);
+                }
+                break;
+            
         case 'APublicador':
             $CUsuarios = new ControladorUsuario();
             echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],4);
