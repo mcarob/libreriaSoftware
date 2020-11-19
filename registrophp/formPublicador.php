@@ -7,7 +7,7 @@
     <label>Identificación <span>*</span></label>
     <input type="text" class="form-control input-lg" id="identiReg" name="identiReg" placeholder="Identificación">
     <label>País <span>*</span></label>
-    <select class="custom-select custom-select-lg mb-3" id="selecionarTipoRegistro">
+    <select class="custom-select custom-select-lg mb-3" id="selecionarTipoRegistro" name="selecionarTipoRegistro">
         <option selected>Seleccione Pais</option>
         <option value="1">Colombia</option>
     </select>
@@ -24,7 +24,7 @@
     </div>
     <p style="margin-left:2em"></p>
     <p style="margin-left:2em"></p>
-    <a class="btn btnRegistro" onclick="Registrarse();">Registrarse</a>
+    <button>Registrarse</button>
 </div>
 
 <label class="label-for-checkbox">

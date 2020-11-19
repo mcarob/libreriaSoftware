@@ -12,7 +12,13 @@ if(isset($_POST['forma'])){
     }
 }
 if(isset($_GET['REGISTRAR'])){
-    echo("entro a la linea 15");
-    print_r($_POST);
+
+    if($_POST['selecionarTipoRegistro']==1){
+        // es un cliente --emailR contraR  nombreReg telReg dirReg
+
+    }else{
+        // es un publicador
+    }
+
 }
 ?>
