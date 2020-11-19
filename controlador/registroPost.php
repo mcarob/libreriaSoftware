@@ -1,18 +1,12 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/controladorRegistro.php');
+
+
 if(isset($_POST['forma'])){
+    echo("entro a verificar la cosa esta ");
     if(isset($_POST['correo'])){
-        $controller=new ControladorRegistro();
-        $variableUsuario=$controller->darUsuario(($_POST['correo']));
-        if($variableUsuario==null){
-            echo("1");
-        }else{
-            echo("0");
-        }
+        echo("entro al post de correo con ");
+        echo(isset($_POST['correo']));
     }
 }
-if(isset($_GET['REGISTRAR'])){
-    echo("entro a la linea 15");
-    print_r($_POST);
-}
+
 ?>

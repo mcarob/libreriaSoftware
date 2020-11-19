@@ -4,23 +4,18 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/user_Ses
 $userSession = new UserSession();
 $controladorR = new ControladorRegistro();
 if(isset($_SESSION['user'])){
-    echo($_SESSION['user']);
     $usuario=$controladorR->darUsuario($userSession->getCurrentUser());
-    if( $usuario!=null){
-        $tipo=$usuario->getCod_tipo_usuario();
-        if($tipo==1){
-            header('location: administrador/index.php');
-        }else if($tipo==2){
-            header('location: empleado/index.php');
-        }else if($tipo==3){
-            header('location: publicador/index.php');
-        }else{
-            header('location: cliente/index.php');
-        }
-        include_once 'loginp2.php';
+    $tipo=$usuario->getCod_tipo_usuario();
+    if($tipo==1){
+    header('location: administrador/index.php');
+    }else if($tipo==2){
+    header('location: empleado/index.php');
+    }else if($tipo==3){
+        header('location: publicador/index.php');
     }else{
-        header('location: cerrarSesion.php');
+        header('location: cliente/index.php');
     }
+    include_once 'loginp2.php';
 }else if(isset($_POST['username']) && isset($_POST['password'])){
 /** la sesión  aun no se encuentra creada, 
  * este if es para cuando la persona esta usando el formulario de ingreso 
