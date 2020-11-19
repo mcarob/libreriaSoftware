@@ -1,8 +1,6 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
-include("header.php");
-
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -10,7 +8,7 @@ if (!isset($_SESSION['user'])) {
 } else if (!$_SESSION['tipo'] == 4) {
     header("location: ../index.php");
 }
-
+include("header.php");
 
 $idioma=$_POST["idioma"];
 $documento=$_POST["documento"];
@@ -55,6 +53,11 @@ if(sizeof($filtrados)>0)
 
 
 <body>
+
+
+		<?php
+		include("menu.php");
+		?>	
 <div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
 				<div class="field__search">

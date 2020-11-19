@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <?php
-include("header.php");
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
-
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -12,13 +10,14 @@ if (!isset($_SESSION['user'])) {
 } else if (!$_SESSION['tipo'] == 4) {
     header("location: ../index.php");
 }
+include("header.php");
 
-$usuario=new ControladorUsuario();
-$usuario->setUser($_SESSION['user']);
-$codigo=$usuario->getCodigo();
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+$codigo=$usuario->getCod_usuario();
+$conCli=new ControladorCliente();
+$cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 
-$controladorCliente=new ControladorCliente();
-$cliente=$controladorCliente->devolverCliente($codigo);
 ?>
 
 <head>
@@ -38,6 +37,7 @@ $cliente=$controladorCliente->devolverCliente($codigo);
                     <form method="POST" action="javascript:editarPerfil()" id="editarPerfil">
                     <input type="hidden" class="form-control" id="cod_usuario" name="cod_usuario" value="<?php echo ($codigo) ?>">
                     <input type="hidden" class="form-control" id="habilitado" name="habilitado" value="<?php echo ($cliente->getHabilitado()) ?>">
+                    <input type="hidden" class="form-control" id="cod_cliente" name="cod_cliente" value="<?php echo ($cliente->getCod_cliente()) ?>">
 
                         <label>Nombre</label>
                         <input type="text" class="form-control" id="nom_cliente" name="nom_cliente" aria-describedby="emailHelp" placeholder="Nombre"
@@ -76,7 +76,7 @@ $cliente=$controladorCliente->devolverCliente($codigo);
                             <td>
                                 <div class="form-group">
                                 <label>Usuario</label>
-                                    <input type="text" class="form-control" id="userName" name="userName" aria-describedby="emailHelp" placeholder="Usuario" value="<?php echo (($_SESSION['user']))  ?>">
+                                    <input type="text" class="form-control" id="userName" name="userName" aria-describedby="emailHelp" placeholder="Usuario" value="<?php echo (($_SESSION['user']))  ?>" readonly>
                                     <small id="emailHelp" class="form-text text-muted">Este es el usuario con el que se registra.</small>
                                 </div>
                             </td>

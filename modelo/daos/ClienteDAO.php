@@ -67,12 +67,12 @@ class ClienteDAO extends DB  implements dao_interface
 
     public function devolverCliente($codigo_usuario){
         $query=$this->con->prepare('SELECT * FROM cliente WHERE cod_usuario=:user');
-        $query->execute(['user'=>$codigo_usuario]);
-        if($query->rowCount()){
-            foreach ($query as $kk) {
-                $cliente_devolver = new Cliente($kk['cod_cliente'],$kk['cod_usuario'],$kk['nom_cliente'],$kk['telefono_cliente'],$kk['correo_cliente'],$kk['direccion_cliente'],$kk['habilitado']);
-                return $cliente_devolver;
-            }
+        $query->execute([$codigo_usuario]);
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Cliente($key[0], $key[1], $key[2], $key[3], $key[4], $key[5], $key[6]);
+        } else {
+            return null;
         }
     }
 

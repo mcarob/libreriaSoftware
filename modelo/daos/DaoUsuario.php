@@ -105,9 +105,8 @@ class DaoUsuario extends DB implements dao_interface
     }
 
     public function validarContraseña($id,$contra)
-    {
-        
-        $sentencia = $this->con->prepare("SELECT * from usuario where cod_usuario=? and contra_usuario=?");
+    { 
+        $sentencia = $this->con->prepare("SELECT * from usuario where cod_usuario=? and pass_usuario=?");
         $sentencia->execute([$id,md5($contra)]);
         $number_of_rows = $sentencia->fetchAll();
         return $number_of_rows;
@@ -120,4 +119,7 @@ class DaoUsuario extends DB implements dao_interface
         $res=$sentencia->execute();
         return $res;
     }
+
+   
+
 }
