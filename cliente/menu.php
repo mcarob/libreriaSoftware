@@ -36,7 +36,7 @@
                         </li>
 
                         <li><a href="perfil.php">Perfil</a></li>
-                        <li><a href="index.php">Cerrar Sesión</a></li>
+                        <li><a href="../cerrarSesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </nav>
             </div>

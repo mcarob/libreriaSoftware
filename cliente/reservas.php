@@ -4,10 +4,15 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/Controlado
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorPrestamoF.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
-
 include("header.php");
 
+session_start();
+if (!isset($_SESSION['user'])) {
 
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 4) {
+    header("location: ../index.php");
+}
 
 $conUsuario=new ControladorUsuario();
 $conUsuario->setUser($_SESSION['user']);

@@ -1,9 +1,17 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
-
-
 include("header.php");
+
+session_start();
+if (!isset($_SESSION['user'])) {
+
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 4) {
+    header("location: ../index.php");
+}
+
+
 $idioma=$_POST["idioma"];
 $documento=$_POST["documento"];
 $presentacion=$_POST["recurso"];
