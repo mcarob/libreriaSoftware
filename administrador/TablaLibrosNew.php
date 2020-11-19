@@ -3,7 +3,7 @@ include('Header.php');
 include('menuAdmi.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 $CDocumentos = new ControladorDocumento();
-$fisicos = $CDocumentos->listarDocumentoF();
+$fisicos = $CDocumentos->listarDocumentoNoValidados();
 ?>
 <div class="mobile-menu-overlay"></div>
 
@@ -57,10 +57,17 @@ $fisicos = $CDocumentos->listarDocumentoF();
 								echo ("<td>" . $key['codigo_isbn'] . "</td>");
 								echo ("<td>" . $key['nom_tipo_documento'] . "</td>");
 
-								echo ("<td>
-								<div class='btn-list'>	
-									<button type='button' class='btn btn-outline-success' onclick='vermas(" . '"' . $key['cod_documento'] . '"' . ")'>Ver más</button>
-									</div>
+								echo ("
+								<td>
+								<div class='dropdown'>
+										<a class='btn btn-outline-primary dropdown-toggle' href='#' role='button' data-toggle='dropdown'>
+											Acciones
+										</a>
+										<div class='dropdown-menu dropdown-menu-right'>
+												<a class='dropdown-item' onclick='vermas(" . '"' . $key['cod_documento'] . '"' . ")'>Ver más</a>
+												<a class='dropdown-item' onclick='aceptar(" . '"' . $key['cod_documento'] . '"' . ")' >Aceptar</a>
+										</div>
+								</div>
 								</td>");
 
 
@@ -97,7 +104,7 @@ $fisicos = $CDocumentos->listarDocumentoF();
 
 
 
-	
+
 </div>
 
 
@@ -109,6 +116,11 @@ $fisicos = $CDocumentos->listarDocumentoF();
 	function vermas(valor) {
 		$('.modal-content').load('modalLibroF.php?id='+valor) 
 		$('#modal1').modal('show');
+	}
+
+	function aceptar(valor){
+		window.location.href = 'ac.php?action=' + "ALibro&" + "codigo=" + valor;
+
 	}
 </script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>

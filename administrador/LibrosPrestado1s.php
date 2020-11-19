@@ -63,7 +63,7 @@ $prestamos = $CPF->listar();
 										</a>
 										<div class='dropdown-menu dropdown-menu-right'>
 											<a class='dropdown-item' data-toggle='modal' onclick='vermas(" . '"' . $key['cod_prestamo_fisico'] . '"' . ")'>Ver más</a>
-											<a class='dropdown-item' data-toggle='modal' onclick='verModalPrestamo(" . '"' . $key['cod_prestamo_fisico'] . '"' . ")'>Aceptar</a>
+											<a class='dropdown-item' data-toggle='modal' data-target='#confirmation-modal'>Aceptar</a>
 										</div>
 									</div>
 									</td>");
@@ -118,7 +118,6 @@ $prestamos = $CPF->listar();
 		$('.modal-content').load('modalPrestamo.php?id=' + valor)
 		$('#modal12').modal('show');
 	}
-
 
 	function verModalPrestamo(valor) {
 		$('#343').load('modalAceptarDevo.php?id=' + valor)

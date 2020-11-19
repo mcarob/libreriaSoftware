@@ -48,6 +48,17 @@ class ControladorDocumento{
     }
 
 
+    public function listarDocumentoNoValidados()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarDocumentoFisicoNoValidado();
+    }
+
+    public function aceptarLibro($cod){
+        $this->documento=new DocumentoDAO();
+        return $this->documento->AceptarLibroNuevo($cod);
+    }
+
     public function darDocumentoFF($id)
     {
         $this->documento=new DocumentoDAO();
@@ -84,6 +95,8 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->filtradosInicio($idioma,$documento,$presentacion);
     }
+
+
     
     // // // 
 }

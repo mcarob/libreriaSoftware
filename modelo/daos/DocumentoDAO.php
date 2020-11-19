@@ -99,7 +99,23 @@ class DocumentoDAO extends DB  implements dao_interface
     }
 
 
+    public function listarDocumentoFisicoNoValidado(){
+        $query = $this->con->prepare("SELECT * FROM listalibrosnovalidados");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+    
 
+    public function AceptarLibroNuevo($id)
+    {
+        $query = "UPDATE existencia_documento SET cod_estado_copia=2 WHERE cod_documento=?";
+        $sentencia = $this->con->prepare($query);
+        return $sentencia->execute([$id]);
+    }
 
 
     public function darDocumentoFisico($id){

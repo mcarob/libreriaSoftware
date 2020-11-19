@@ -6,6 +6,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/Controla
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorUsuario.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPrestamoF.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+
 
 //ENTIDADES
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/modelo/entidades/empleado.php');
@@ -192,8 +194,16 @@ if (isset($_GET['action'])) {
                 }
             }
         break;
-
         
+        case 'ALibro':
+            $CDocumento = new ControladorDocumento();
+            echo $r = $CDocumento->aceptarLibro($_GET['codigo']);
+            if ($r) {
+                header("location:TablaLibrosNew.php");
+            } else {
+                echo ($r);
+            }
+            break;
         
     }
 }

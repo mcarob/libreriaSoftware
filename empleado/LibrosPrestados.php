@@ -63,7 +63,7 @@ $prestamos = $CPF->listar();
 										</a>
 										<div class='dropdown-menu dropdown-menu-right'>
 											<a class='dropdown-item' data-toggle='modal' onclick='vermas(" . '"' . $key['cod_prestamo_fisico'] . '"' . ")'>Ver más</a>
-											<a class='dropdown-item' data-toggle='modal' data-target='#confirmation-modal'>Aceptar</a>
+											<a class='dropdown-item' data-toggle='modal' onclick='verModalPrestamo(" . '"' . $key['cod_prestamo_fisico'] . '"' . ")'>Aceptar</a>
 										</div>
 									</div>
 									</td>");
@@ -89,20 +89,8 @@ $prestamos = $CPF->listar();
 
 	<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-body text-center font-18">
-					<h4 class="padding-top-30 mb-30 weight-500">¿Estas seguro de aceptar la devolución?</h4>
-					<div class="padding-bottom-30 row" style="max-width: 170px; margin: 0 auto;">
-						<div class="col-6">
-							<button type="button" class="btn btn-secondary border-radius-100 btn-block confirmation-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
-							NO
-						</div>
-						<div class="col-6">
-							<button type='button' class='btn btn-primary border-radius-100 btn-block confirmation-btn' data-dismiss='modal' onclick="aceptarDevo($key['cod_prestamo_fisico'])"><i class='fa fa-check'></i></button>
-							SI
-						</div>
-					</div>
-				</div>
+			<div class="modal-content" id="343">
+				
 			</div>
 		</div>
 	</div>
@@ -129,6 +117,12 @@ $prestamos = $CPF->listar();
 	function vermas(valor) {
 		$('.modal-content').load('modalPrestamo.php?id=' + valor)
 		$('#modal12').modal('show');
+	}
+
+
+	function verModalPrestamo(valor) {
+		$('#343').load('modalAceptarDevo.php?id=' + valor)
+		$('#confirmation-modal').modal('show');
 	}
 </script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
