@@ -2,8 +2,17 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 include("header.php");
 		
-$controladorDocumentos = new ControladorDocumento();
+session_start();
+if (!isset($_SESSION['user'])) {
 
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 4) {
+    header("location: ../index.php");
+}
+
+
+
+$controladorDocumentos = new ControladorDocumento();
 $documentos = $controladorDocumentos->informacionDocumentos();
 
 $categorias=$controladorDocumentos->materias();
