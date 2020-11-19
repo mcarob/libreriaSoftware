@@ -1,5 +1,4 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/controladorRegistro.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/user_Sesion.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/modelo/daos/DaoUsuario.php');
 
@@ -91,8 +90,4 @@ class ControladorRegistro{
         return $this->usuario;
     }
 }
-
-
 ?>
-
-

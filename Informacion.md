@@ -35,3 +35,10 @@ estado_prestamo
 3) en espera
 4) entregado
 5) solicitado
+
+
+estado_copia 
+1) esperar a administrador 
+2)disponible 
+3)prestado
+4)fuera de existencia 
