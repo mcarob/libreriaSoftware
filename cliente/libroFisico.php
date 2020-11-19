@@ -1,8 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <?php
-
-include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -12,44 +11,13 @@ if (!isset($_SESSION['user'])) {
 }
 include("header.php");
 
-$idioma=$_POST["idioma"];
-$documento=$_POST["documento"];
-$presentacion=$_POST["presentacion"];
 
+$contDoc=new ControladorDocumento();
+$idiomas=$contDoc->idiomas();
+$presentacion=$contDoc->tipoPres();
+$documento=$contDoc->tipoDoc();
 
-$controladorDocumentos=new ControladorDocumento();
-$categorias=$controladorDocumentos->materias();
-$idiomas=$controladorDocumentos->idiomas();
-$listaDocumentos=$controladorDocumentos->informacionDocumentos();
-
-
-$mostrarDoc;
-if($documento=="Libro")
-{
-	$mostrarDoc="Libros";
-
-}else if($documento=="Ponencia"){
-	$mostrarDoc="Ponencias";
-}else if($documento=="Articulo")
-{
-	$mostrarDoc="Articulos";
-}
-$mostrarPre;
-
-if($presentacion=="Digital")
-{
-	$mostrarPre="Digitales";
-
-}else if($presentacion=="Física"){
-	$mostrarPre="Fisicos";
-}
-
-$filtrados=$controladorDocumentos->filtradosInicio($idioma,$documento,$presentacion);
-$resultados=0;
-if(sizeof($filtrados)>0)
-{
-	$resultados=1;
-}
+$listaDocumentos=$contDoc->informacionDocumentos();
 ?>
 <body>
 <?php
@@ -77,11 +45,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand <?php echo $mostrarDoc." ".$mostrarPre?></h2>
+                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active"><?php echo $mostrarDoc." ".$mostrarPre?></span>
+                              <span class="breadcrumb_item active">Libros Fisicos</span>
                             </nav>
                         </div>
                     </div>
@@ -121,7 +89,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados <?php echo $mostrarDoc." ".$mostrarPre?></p>
+			                        <p>Resultados Libros Fisicos</p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -132,7 +100,9 @@ include("menu.php");
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
 	        						<!-- Start Single Product -->
-                                    <?php foreach($filtrados as $lib){?>
+                                    <?php foreach($listaDocumentos as $lib){
+                                    if($lib["nom_tipo_documento"]=="Libro"){?>
+
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
@@ -157,7 +127,9 @@ include("menu.php");
 											
 										</div>
                                     </div>
-                                    <?php } ?>
+
+                                    <?php }
+                                    }?>
 		        					<!-- End Single Product -->
 	        					</div>
 	        					<ul class="wn__pagination">
@@ -168,7 +140,70 @@ include("menu.php");
 	        						<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
 	        					</ul>
 	        				</div>
-	        				
+	        				<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
+	        					<div class="list__view__wrapper">
+	        						<!-- Start Single Product -->
+	        						<div class="list__view">
+	        							<div class="thumb">
+	        								<a class="first__img" href="single-product.html"><img src="images/product/1.jpg" alt="product images"></a>
+	        								<a class="second__img animation1" href="single-product.html"><img src="images/product/2.jpg" alt="product images"></a>
+	        							</div>
+	        							<div class="content">
+	        								<h2><a href="single-product.html">Ali Smith</a></h2>
+	        								<ul class="rating d-flex">
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li><i class="fa fa-star-o"></i></li>
+	        									<li><i class="fa fa-star-o"></i></li>
+	        								</ul>
+	        								<ul class="prize__box">
+	        									<li>$111.00</li>
+	        									<li class="old__prize">$220.00</li>
+	        								</ul>
+	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+	        								<ul class="cart__action d-flex">
+	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
+	        									<li class="wishlist"><a href="cart.html"></a></li>
+	        									<li class="compare"><a href="cart.html"></a></li>
+	        								</ul>
+
+	        							</div>
+	        						</div>
+	        						<!-- End Single Product -->
+	        						<!-- Start Single Product -->
+	        						<div class="list__view mt--40">
+	        							<div class="thumb">
+	        								<a class="first__img" href="single-product.html"><img src="images/product/2.jpg" alt="product images"></a>
+	        								<a class="second__img animation1" href="single-product.html"><img src="images/product/4.jpg" alt="product images"></a>
+	        							</div>
+	        							<div class="content">
+	        								<h2><a href="single-product.html">Blood In Water</a></h2>
+	        								<ul class="rating d-flex">
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li><i class="fa fa-star-o"></i></li>
+	        									<li><i class="fa fa-star-o"></i></li>
+	        								</ul>
+	        								<ul class="prize__box">
+	        									<li>$111.00</li>
+	        									<li class="old__prize">$220.00</li>
+	        								</ul>
+	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+	        								<ul class="cart__action d-flex">
+	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
+	        									<li class="wishlist"><a href="cart.html"></a></li>
+	        									<li class="compare"><a href="cart.html"></a></li>
+	        								</ul>
+
+	        							</div>
+	        						</div>
+	        						
+	        					</div>
+	        				</div>
         				</div>
         			</div>
         		</div>

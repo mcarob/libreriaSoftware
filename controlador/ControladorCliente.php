@@ -56,6 +56,13 @@ class ControladorCliente{
         return $this->cliente->cantidadPrestamos($codigoCliente);
     }
 
+    public function listarPrestamosXcliente($codigoCliente)
+    {
+        $this->cliente=new ClienteDAO();
+        return $this->cliente->listarPrestamosXcliente($codigoCliente);
+    }
+
+
 }
 
 ?>
