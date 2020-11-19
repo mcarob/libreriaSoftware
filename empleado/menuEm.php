@@ -36,7 +36,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="FormCliente.php">Agregar</a></li>
-							<li><a href="PrestamoCl.php">Realizar prestamo</a></li>
+							<li><a href="TablaClientes.php">Listar</a></li>
 						</ul>
 					</li>
 				

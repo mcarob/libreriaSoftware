@@ -26,23 +26,21 @@ include('menuAdmi.php');
 
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix">
-                    <h4 class="text-blue h4">Formulario</h4>
+                    <h4 class="text-blue h4">Formulario del empleado</h4>
                 </div>
                 <div class="wizard-content">
-                    <form id="newE" method="POST" onclick="agregarEmpleado()" class="tab-wizard wizard-circle wizard">
-                        <h5>Información personal</h5>
-                        <section>
+                    <form id="newE" method="POST" action ="javascript: agregarEmpleado()" class="tab-wizard wizard-circle wizard">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nombres :</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre">
+                                        <input type="text" class="form-control" required id="nombre" name="nombre">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Apellidos :</label>
-                                        <input type="text" class="form-control" id="apellidos" name="apellidos">
+                                        <input type="text" class="form-control" required id="apellidos" name="apellidos">
                                     </div>
                                 </div>
                             </div>
@@ -50,13 +48,13 @@ include('menuAdmi.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Correo electronico:</label>
-                                        <input type="email" class="form-control" id="correo" name="correo">
+                                        <input type="email" class="form-control" required id="correo" name="correo">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Número de celular :</label>
-                                        <input type="text" class="form-control" id="telefono" name="telefono">
+                                        <input type="text" class="form-control" required id="telefono" name="telefono">
                                     </div>
                                 </div>
                             </div>
@@ -64,12 +62,28 @@ include('menuAdmi.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Cédula :</label>
-                                        <input type="text" class="form-control" id="cedula" name="cedula">
+                                        <input type="text" class="form-control"  requiredid="cedula" name="cedula">
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </form>
+
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <br>
+                                        <input type="hidden" class="form-control" required id="" name="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <br>
+                                        <!-- onclick="agregarCliente()" -->
+                                        <button type="submit"  class='btn btn-outline-success'>Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                                           </form>
                 </div>
             </div>
 
@@ -84,7 +98,7 @@ include('menuAdmi.php');
 <script>
   function agregarEmpleado() {
         datos = $('#newE').serialize();
-
+        
         $.ajax({
             type: "POST",
             data: datos,
@@ -107,4 +121,3 @@ include('menuAdmi.php');
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
 <script src="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
-<script src="../TemplateAdministrador/vendors/scripts/steps-setting.js"></script>

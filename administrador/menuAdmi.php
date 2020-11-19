@@ -36,7 +36,7 @@
 						<ul class="submenu">
 							<li><a href="TablaPublicadores.php">Listar</a></li>
 							<li><a href="TablaPublicadoresInac.php">Aceptar</a></li>
-						
+							<li><a href="TablaLibrosNew.php">Aceptar libros</a></li>						
 						</ul>
 						
 					</li>

@@ -1,6 +1,6 @@
 <?php
 include('Header.php');
-include('menuEm.php');
+include('menuAdmi.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 $CDocumentos = new ControladorDocumento();
 $fisicos = $CDocumentos->listarDocumentoF();
@@ -14,12 +14,12 @@ $fisicos = $CDocumentos->listarDocumentoF();
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<div class="title">
-							<h4>Libros de Bosquecillo </h4>
+							<h4>Libros nuevos de Bosquecillo </h4>
 						</div>
 						<nav aria-label="breadcrumb" role="navigation">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">Empleados</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Listar</li>
+								<li class="breadcrumb-item"><a href="index.html">Publicadores</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Aceptar libros</li>
 							</ol>
 						</nav>
 					</div>
@@ -33,7 +33,7 @@ $fisicos = $CDocumentos->listarDocumentoF();
 			<!-- Export Datatable start -->
 			<div class="card-box mb-30">
 				<div class="pd-20">
-					<h4 class="text-blue h4">Libros Fisicos</h4>
+					<h4 class="text-blue h4">Libros esperando aprobación</h4>
 				</div>
 				<div class="pb-20">
 					<table class="table hover multiple-select-row data-table-export nowrap">
@@ -58,15 +58,9 @@ $fisicos = $CDocumentos->listarDocumentoF();
 								echo ("<td>" . $key['nom_tipo_documento'] . "</td>");
 
 								echo ("<td>
-								<div class='dropdown'>
-										<a class='btn btn-outline-primary dropdown-toggle' href='#' role='button' data-toggle='dropdown'>
-											Acciones
-										</a>
-										<div class='dropdown-menu dropdown-menu-right'>
-												<a class='dropdown-item' onclick='vermas(" . '"' . $key['cod_documento'] . '"' . ")'>Ver más</a>
-												<a class='dropdown-item' onclick='prestar(" . '"' . $key['cod_documento'] . '"' . ")' >Prestar</a>
-										</div>
-								</div>
+								<div class='btn-list'>	
+									<button type='button' class='btn btn-outline-success' onclick='vermas(" . '"' . $key['cod_documento'] . '"' . ")'>Ver más</button>
+									</div>
 								</td>");
 
 
@@ -95,22 +89,15 @@ $fisicos = $CDocumentos->listarDocumentoF();
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
-
-
+			
+						
 			</div>
 		</div>
 	</div>
 
 
 
-	<div class="modal fade" id="234444444432" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content" id="123">
-
-
-			</div>
-		</div>
-	</div>
+	
 </div>
 
 
@@ -120,15 +107,8 @@ $fisicos = $CDocumentos->listarDocumentoF();
 
 <script>
 	function vermas(valor) {
-		console.log("entro113");
-		$('.modal-content').load('modalLibroF.php?id=' + valor);
+		$('.modal-content').load('modalLibroF.php?id='+valor) 
 		$('#modal1').modal('show');
-	}
-
-	function prestar(valor) {
-
-		$('#123').load('modalPrestar.php?id=' + valor);
-		$('#234444444432').modal('show');
 	}
 </script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>

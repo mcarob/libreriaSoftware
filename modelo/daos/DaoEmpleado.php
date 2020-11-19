@@ -53,6 +53,25 @@ class DaoEmpleado extends DB implements dao_interface
     public function eliminarRegistro($idRegistro){
     }
 
+
+    public function agregarRegistroEmpleado($nombre, $apellido, $correo, $telefono, $cedula){
+
+        $query2=$this->con->prepare('SELECT * FROM usuario WHERE user_usuario=?');
+        $query2->execute([$correo]);
+        if ($query2->rowCount()) {
+            return "El correo ya existe, intente con otro";
+        }
+        $query = "CALL agregarempleado(?,?,?,?,?,?)";
+        $codigo=intval(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
+        $codc= md5($codigo);
+        $nombres= $nombre." ".$apellido;
+        $respuesta2 = $this->con->prepare($query)->execute([$correo,$cedula,$codc,$nombres,$telefono,$cedula]);
+        if($respuesta2==1){
+            return "Se agrego correctamente";
+        }
+
+        return "Error en el registro";
+    }
     //VISTA CON USUARIOS ACTIVOS E INACTIVOS
     public function listar(){
         $query = $this->con->prepare("SELECT * FROM listaEmpleadosActivos");

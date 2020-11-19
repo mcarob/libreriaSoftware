@@ -15,7 +15,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/modelo/entidades/Cli
 
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
-        case 'AgregarE':
+            
+            case 'AgregarE':
             $datos = array(
                 $_POST["cedula"],
                 $_POST["nombre"],
@@ -25,13 +26,8 @@ if (isset($_GET['action'])) {
             );
             // FALTA EL CONTROLADOR DEL USUARIO
             $CEmpleados = new ControladorEmpleados();
-            $empleado = new Empleado(0, 0, $datos[0], $datos[1], $datos[2], $datos[3]);
-            echo $r = $CEmpleados->agregarRegistro($empleado);
-            if ($r) {
-                header("location:TablaEmpleados.php");
-            } else {
-                echo ($r);
-            }
+            echo $r = $CEmpleados->agregarEmpleado($datos[1],$datos[2],$datos[4],$datos[3],$datos[0]);
+            
             break;
 
 
@@ -45,12 +41,8 @@ if (isset($_GET['action'])) {
                 );
                 // FALTA EL CONTROLADOR DEL USUARIO
                 $CCliente = new ControladorCliente();
-                echo $r = $CCliente->agregarCliente($datos[0],$datos[1],$datos[3], $datos[2], $datos[4]);
-                if ($r) {
-                    header("location:TablaEmpleados.php");
-                } else {
-                    echo ($r);
-                }
+                echo $CCliente->agregarCliente($datos[0],$datos[1],$datos[3], $datos[2], $datos[4]);
+
                 break;
             
         case 'APublicador':

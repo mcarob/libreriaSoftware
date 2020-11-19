@@ -77,6 +77,11 @@ class DaoUsuario extends DB implements dao_interface
         // 1->Se registro
         // 2->Ya puso el cod de verificación  
         // 3->Esperando aprobación
+
+
+
+
+        
         // 4->Ya lo acepto el admi -> Activo
         // 5->Inactivo
         // 6->Rechazado

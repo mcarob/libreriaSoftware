@@ -26,12 +26,10 @@ include('menuEm.php');
 
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix">
-                    <h4 class="text-blue h4">Formulario</h4>
+                    <h4 class="text-blue h4">Formulario del empleado</h4>
                 </div>
                 <div class="wizard-content">
                     <form id="newE" method="POST" onclick="agregarEmpleado()" class="tab-wizard wizard-circle wizard">
-                        <h5>Información personal</h5>
-                        <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -68,8 +66,24 @@ include('menuEm.php');
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </form>
+
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <br>
+                                        <input type="hidden" class="form-control" required id="" name="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <br>
+                                        <!-- onclick="agregarCliente()" -->
+                                        <button type="submit"  class='btn btn-outline-success'>Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                                           </form>
                 </div>
             </div>
 
@@ -107,4 +121,3 @@ include('menuEm.php');
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
 <script src="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
-<script src="../TemplateAdministrador/vendors/scripts/steps-setting.js"></script>

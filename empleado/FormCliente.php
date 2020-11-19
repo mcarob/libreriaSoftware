@@ -26,23 +26,21 @@ include('menuEm.php');
 
             <div class="pd-20 card-box mb-30">
                 <div>
-                    <h4 class="text-blue h4">Formulario</h4>
+                    <h4 class="text-blue h4">Formulario del cliente</h4>
                 </div>
                 <div class="wizard-content">
-                    <form id="newC" method="POST" onclick="agregarCliente()" class="tab-wizard wizard-circle wizard">
-                        <h5>Información personal</h5>
-                        <section>
+                    <form id="newC" method="POST" action="javascript: agregarCliente()"  class="tab-wizard wizard-circle wizard">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nombres :</label>
-                                        <input type="text" class="form-control" require id="nombre" name="nombre">
+                                        <input type="text" class="form-control" required="true" id="nombre" name="nombre">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Apellidos :</label>
-                                        <input type="text" class="form-control" require id="apellidos" name="apellidos">
+                                        <input type="text" class="form-control" required id="apellidos" name="apellidos">
                                     </div>
                                 </div>
                             </div>
@@ -50,13 +48,13 @@ include('menuEm.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Correo electronico:</label>
-                                        <input type="email" class="form-control" require id="correo" name="correo">
+                                        <input type="email" class="form-control" required id="correo" name="correo">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Número de celular :</label>
-                                        <input type="text" class="form-control" require id="telefono" name="telefono">
+                                        <input type="text" class="form-control" required id="telefono" name="telefono">
                                     </div>
                                 </div>
                             </div>
@@ -65,12 +63,27 @@ include('menuEm.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Dirección :</label>
-                                        <input type="email" class="form-control" require id="direccion" name="direccion">
+                                        <input type="email" class="form-control" required id="direccion" name="direccion">
                                     </div>
                                 </div>
                             </div>
 
-                        </section>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <br>
+                                        <input type="hidden" class="form-control" required id="" name="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <br>
+                                        <!-- onclick="agregarCliente()" -->
+                                        <button type="submit"  class='btn btn-outline-success'>Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+
                     </form>
                 </div>
             </div>
@@ -94,10 +107,9 @@ include('menuEm.php');
             data: datos,
             url: "../administrador/ac.php?action=" + "AgregarC",
             success: function(r) {
-
                 console.log(r);
                 if (r == 1) {
-                    window.location.href = "index.php";
+                    window.location.href = "FormCliente.php";
                 } else {
 
                 }
@@ -106,9 +118,7 @@ include('menuEm.php');
     }
 </script>
 
-
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
 <script src="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
-<script src="../TemplateAdministrador/vendors/scripts/steps-setting.js"></script>

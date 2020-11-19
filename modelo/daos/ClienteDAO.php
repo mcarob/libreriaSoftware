@@ -33,14 +33,14 @@ class ClienteDAO extends DB  implements dao_interface
 
     public function agregarCl($nombre,$apellido, $correo, $telefono, $direccion){
 
-        $query2 = "SELECT * FROM cliente where correo_cliente=?";
-        $respuesta = $this->con->prepare($query2)->execute([$correo]);
-        if($respuesta==1){
+        $query2=$this->con->prepare('SELECT * FROM usuario WHERE user_usuario=?');
+        $query2->execute([$correo]);
+        if ($query2->rowCount()) {
             return "El correo ya existe, intente con otro";
         }
         $query = "CALL agregarcliente(?,?,?,?,?,?)";
         $codigo=intval(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
-        $nombres= $nombre + " " + $apellido;
+        $nombres= $nombre." ".$apellido;
         $respuesta2 = $this->con->prepare($query)->execute([$correo,$telefono,$codigo,$nombres,$telefono,$direccion ]);
         if($respuesta2==1){
             return "Se agrego correctamente";
@@ -94,6 +94,17 @@ class ClienteDAO extends DB  implements dao_interface
         }
     }
 
+
+    public function devolverClienteXU($user){
+        $query=$this->con->prepare('select cliente.* from usuario,cliente where usuario.cod_usuario=cliente.cod_usuario and usuario.user_usuario=?');
+        $query->execute([$user]);
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Cliente($key[0], $key[1], $key[2], $key[3], $key[4], $key[5], $key[6]);
+        } else {
+            return null;
+        }
+    }
     public function cantidadPrestamos($codigoCliente){
         $sentencia = $this->con->prepare("SELECT * FROM prestamosfisicosxcliente WHERE cod_cliente =?");
         $sentencia->execute($codigoCliente);
