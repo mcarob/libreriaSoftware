@@ -40,8 +40,7 @@ $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
                     <input type="hidden" class="form-control" id="cod_cliente" name="cod_cliente" value="<?php echo ($cliente->getCod_cliente()) ?>">
 
                         <label>Nombre</label>
-                        <input type="text" class="form-control" id="nom_cliente" name="nom_cliente" aria-describedby="emailHelp" placeholder="Nombre"
-                        value=<?php echo ($cliente->getNom_cliente())?>>
+                        <input type="text" class="form-control" id="nom_cliente" name="nom_cliente" aria-describedby="emailHelp" placeholder="Nombre" value=<?php echo ($cliente->getNom_cliente())?>>
                         <small id="emailHelp" class="form-text text-muted">Nombre completo.</small>    
                         
                         <table style="border: hidden"> 
