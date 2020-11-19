@@ -106,6 +106,11 @@ class ControladorDocumento{
         return $this->documento->tipoPres();
     }
 
+    public function darInfoXdoc($documento){
+        $this->documento=new DocumentoDAO();
+        return $this->documento->darInfoXdoc($documento);
+    }
+
 
     
     // // // 

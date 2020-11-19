@@ -2,6 +2,9 @@
 <html class="no-js" lang="zxx">
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -10,6 +13,13 @@ if (!isset($_SESSION['user'])) {
     header("location: ../index.php");
 }
 include("header.php");
+
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+
+$conCli=new ControladorCliente();
+$cliente=$conCli->devolverCliente($usuario->getCod_usuario());
+
 
 
 $contDoc=new ControladorDocumento();
@@ -120,7 +130,10 @@ include("menu.php");
 												<div class="actions_inner">
 													<ul class="add_to_links">
                                                         <li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
-														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+														
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"  onclick='vermas(<?php echo $lib["cod_documento"] ?>,<?php echo ($cliente->getCod_cliente()) ?>)'>
+														<i class="bi bi-search"></i></a>
+														</li>
 													</ul>
 												</div>
 											</div>
@@ -130,6 +143,15 @@ include("menu.php");
 
                                     <?php }
                                     }?>
+
+									<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+												
+															
+												</div>
+											</div>
+										</div>
 		        					<!-- End Single Product -->
 	        					</div>
 	        					<ul class="wn__pagination">
@@ -140,70 +162,7 @@ include("menu.php");
 	        						<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
 	        					</ul>
 	        				</div>
-	        				<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
-	        					<div class="list__view__wrapper">
-	        						<!-- Start Single Product -->
-	        						<div class="list__view">
-	        							<div class="thumb">
-	        								<a class="first__img" href="single-product.html"><img src="images/product/1.jpg" alt="product images"></a>
-	        								<a class="second__img animation1" href="single-product.html"><img src="images/product/2.jpg" alt="product images"></a>
-	        							</div>
-	        							<div class="content">
-	        								<h2><a href="single-product.html">Ali Smith</a></h2>
-	        								<ul class="rating d-flex">
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        								</ul>
-	        								<ul class="prize__box">
-	        									<li>$111.00</li>
-	        									<li class="old__prize">$220.00</li>
-	        								</ul>
-	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-	        								<ul class="cart__action d-flex">
-	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
-	        									<li class="wishlist"><a href="cart.html"></a></li>
-	        									<li class="compare"><a href="cart.html"></a></li>
-	        								</ul>
-
-	        							</div>
-	        						</div>
-	        						<!-- End Single Product -->
-	        						<!-- Start Single Product -->
-	        						<div class="list__view mt--40">
-	        							<div class="thumb">
-	        								<a class="first__img" href="single-product.html"><img src="images/product/2.jpg" alt="product images"></a>
-	        								<a class="second__img animation1" href="single-product.html"><img src="images/product/4.jpg" alt="product images"></a>
-	        							</div>
-	        							<div class="content">
-	        								<h2><a href="single-product.html">Blood In Water</a></h2>
-	        								<ul class="rating d-flex">
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li class="on"><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        									<li><i class="fa fa-star-o"></i></li>
-	        								</ul>
-	        								<ul class="prize__box">
-	        									<li>$111.00</li>
-	        									<li class="old__prize">$220.00</li>
-	        								</ul>
-	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-	        								<ul class="cart__action d-flex">
-	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
-	        									<li class="wishlist"><a href="cart.html"></a></li>
-	        									<li class="compare"><a href="cart.html"></a></li>
-	        								</ul>
-
-	        							</div>
-	        						</div>
-	        						
-	        					</div>
-	        				</div>
+	        				
         				</div>
         			</div>
         		</div>
@@ -220,3 +179,10 @@ include("menu.php");
 include('footer.php')
 ?>
 </html>
+
+<script>
+	function vermas(libro,cliente) {
+		$('.modal-content').load('modalLibroF.php?libro='+libro+'&cliente='+cliente) 
+		$('#modal1').modal('show');
+	}
+</script>

@@ -206,6 +206,12 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
 
+    public function darInfoXdoc($documento){
+        $query = $this->con->prepare("SELECT * FROM info_documento where cod_documento=?");
+        $query->execute([$documento]);
+        return $query->fetch();
+    }
+
 
 
 //  //  //  //  //  
