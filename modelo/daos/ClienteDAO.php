@@ -31,6 +31,24 @@ class ClienteDAO extends DB  implements dao_interface
         return $respuesta;
     }
 
+    public function agregarCl($nombre,$apellido, $correo, $telefono, $direccion){
+
+        $query2 = "SELECT * FROM cliente where correo_cliente=?";
+        $respuesta = $this->con->prepare($query2)->execute([$correo]);
+        if($respuesta==1){
+            return "El correo ya existe, intente con otro";
+        }
+        $query = "CALL agregarcliente(?,?,?,?,?,?)";
+        $codigo=intval(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
+        $nombres= $nombre + " " + $apellido;
+        $respuesta2 = $this->con->prepare($query)->execute([$correo,$telefono,$codigo,$nombres,$telefono,$direccion ]);
+        if($respuesta2==1){
+            return "Se agrego correctamente";
+        }
+
+        return "Error en el registro";
+    }
+
 
     public function actualizarRegistro(Object $registroActualizar){
         $query = "UPDATE cliente SET cod_usuario=?,nom_cliente=?,telefono_cliente=?,

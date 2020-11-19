@@ -36,13 +36,13 @@ include('menuEm.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nombres :</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre">
+                                        <input type="text" class="form-control" require id="nombre" name="nombre">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Apellidos :</label>
-                                        <input type="text" class="form-control" id="apellidos" name="apellidos">
+                                        <input type="text" class="form-control" require id="apellidos" name="apellidos">
                                     </div>
                                 </div>
                             </div>
@@ -50,17 +50,26 @@ include('menuEm.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Correo electronico:</label>
-                                        <input type="email" class="form-control" id="correo" name="correo">
+                                        <input type="email" class="form-control" require id="correo" name="correo">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label> Número de celular :</label>
-                                        <input type="text" class="form-control" id="telefono" name="telefono">
+                                        <input type="text" class="form-control" require id="telefono" name="telefono">
                                     </div>
                                 </div>
                             </div>
-                         
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Dirección :</label>
+                                        <input type="email" class="form-control" require id="direccion" name="direccion">
+                                    </div>
+                                </div>
+                            </div>
+
                         </section>
                     </form>
                 </div>
@@ -75,7 +84,7 @@ include('menuEm.php');
 
 
 <script>
-  function agregarCliente() {
+    function agregarCliente() {
 
         console.log("Entroooooooooooooooooo");
         datos = $('#newC').serialize();
@@ -83,7 +92,7 @@ include('menuEm.php');
         $.ajax({
             type: "POST",
             data: datos,
-            url: "ac.php?action="+"AgregarC",
+            url: "../administrador/ac.php?action=" + "AgregarC",
             success: function(r) {
 
                 console.log(r);

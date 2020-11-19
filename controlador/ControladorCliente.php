@@ -13,6 +13,13 @@ class ControladorCliente{
         return $this->cliente->agregarRegistro($nuevoRegistro);
     }
 
+
+    public function agregarCliente($nombre,$apellido, $correo, $telefono, $direccion)
+    {
+        $this->cliente=new ClienteDAO();
+        return $this->cliente->agregarCl($nombre,$apellido,$correo, $telefono, $direccion);
+    }
+
     public function actualizarRegistro(Cliente $registroActualizar)
     {
         $this->cliente=new ClienteDAO();
