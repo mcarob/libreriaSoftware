@@ -2,17 +2,8 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 include("header.php");
 		
-session_start();
-if (!isset($_SESSION['user'])) {
-
-    header("location: ../index.php");
-} else if (!$_SESSION['tipo'] == 4) {
-    header("location: ../index.php");
-}
-
-
-
 $controladorDocumentos = new ControladorDocumento();
+
 $documentos = $controladorDocumentos->informacionDocumentos();
 
 $categorias=$controladorDocumentos->materias();
@@ -25,9 +16,7 @@ $idiomas=$controladorDocumentos->idiomas();
 <body>
 	
 	<div class="wrapper" id="wrapper">
-	<?php
-		include("menu.php");
-		?>	
+
 				
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
@@ -142,82 +131,9 @@ $idiomas=$controladorDocumentos->idiomas();
 									
 									<?php }
 									}?>		
-									
-		        					<!-- <div class="modal fade" id=<?php echo 'miModal'.$i ?> tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-											<div class="modal-dialog" role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-														<h5 class="modal-title col-11 text-center">Detalles de: <?php echo($key["titulo_documento"])?> </h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-														<table style="border:hidden"> 
-																<tr> 
-																<td rowspan="7">
-																	<img src="assetsCliente/images/books/1.jpg" alt="product image" width="200" height="200">
-																<td>
-																</tr>
-																<tr> 
-																<td><b>Nombre:</b><td>
-																<td><?php echo($key["titulo_documento"])?><td>
-																</tr>
-
-																<tr>
-																	
-																<td><b>Genero:</b><td>
-																<td><?php echo($key["nom_materia"])?><td>
-																</tr>	
-																
-																<tr>
-																<td><b>Existencias:</b><td>
-																<td><?php echo($key["existencias"])?><td>
-																</tr>
-
-																<tr>
-																<td><b>Descripcion Fisica:</b><td>
-																<td><?php echo($key["informacion_paginas"])?> paginas<td>
-																</tr>	
-
-																<tr>
-																<td><b>ISBN:</b><td>
-																<td><?php if($key["codigo_isbn"]==null){
-																	echo("No Posee");
-																	}else
-																	{
-																		echo ($key["codigo_isbn"]);
-																	}?><td>
-																</tr>	
-																<tr>
-																<td><b>ISBN:</b><td>
-																<td><?php if($key["informacion_ssn"]==null){
-																	echo("No Posee");
-																	}else
-																	{
-																		echo ($key["informacion_ssn"]);
-																	}?><td>
-																</tr>	
-
-																</table>
-																<br><br>
-																<button type="button" class="btn btn-primary" href="index.php">Reservar</button>
-																
-
-														</div>
-													</div>
-											    </div>
-											</div>
-										</div> -->
-		        					
+								
 	        					</div>
-	        					<ul class="wn__pagination">
-	        						<li class="active"><a href="#">1</a></li>
-	        						<li><a href="#">2</a></li>
-	        						<li><a href="#">3</a></li>
-	        						<li><a href="#">4</a></li>
-	        						<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-	        					</ul>
+	        					
 	        				</div>
 	        				
 	        				</div>
