@@ -77,7 +77,7 @@
                     <div class="col-lg-6 col-12">
                         <div class="my__account__wrapper">
                             <h3 class="account__title">Registrarse</h3>
-                            <form  id="RegistroPasos" method="POST">
+                            <form  id="RegistroPasos"  action="javascript:Registrarse()" method="POST">
                                 <div class="account__form">
 								<h2>¿Deseas ser parte de la comunidad Bosquecillo? </h2>
                                     <div class="card card-default border-0">

@@ -1,11 +1,8 @@
 ﻿<!doctype html>
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorPrestamoF.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
-include("header.php");
-
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -13,26 +10,24 @@ if (!isset($_SESSION['user'])) {
 } else if (!$_SESSION['tipo'] == 4) {
     header("location: ../index.php");
 }
+include("header.php");
 
-$conUsuario=new ControladorUsuario();
-$conUsuario->setUser($_SESSION['user']);
-$codigo=$conUsuario->getCodigo();
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+$codigo=$usuario->getCod_usuario();
+$conCli=new ControladorCliente();
+$cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 
-$controladorCliente=new ControladorCliente();
-$cliente=$controladorCliente->devolverCliente($codigo);
-$cantidadReservas=$controladorCliente->cantidadPrestamos($cliente->getCod_cliente());
+$PreH=$conCli->cantidadPrestamos($cliente->getCod_cliente());
+$PreF=10-$PreH["cantidad_prestamos"];
 
-$conPrestamoFisico=new ControladorPrestamoFisico();
-$prestamos=$conPrestamoFisico->prestamosFisicosxCodCliente($cliente->getCod_cliente());
-$dis=10-$cantidadReservas["prestamos"];
-
+$misPrestamos=$conCli->listarPrestamosXcliente($cliente->getCod_cliente());
 ?>
 <body>
-	
+<?php
+include("menu.php");
+?>	
 	<div class="wrapper" id="wrapper">
-    <?php
-		include("menu.php");
-		?>	
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
 				<div class="field__search">
@@ -73,20 +68,33 @@ $dis=10-$cantidadReservas["prestamos"];
                                 <table>
                                     <thead>
                                         <tr class="title-top">
-											<th class="product-name">Nombre</th>
+											<th class="product-name">Titulo libro</th>
                                             <th class="product-price">Fecha de reserva</th>
-											<th class="product-quantity">Fecha de devolución</th>
+                                            <th class="product-quantity">Fecha de devolución</th>
+                                            <th class="product-quantity">Codigo ISBN</th>
 											<th class="product-quantity">Estado de prestamo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($prestamos as $kk)
+                                        <?php foreach ($misPrestamos as $pre)
                                         {
                                         ?>
                                         <tr>
-                                            <td><?php $kk["titulo_documento"] ?></td>
-											<td><?php $kk["fecha_prestamo_fisico"] ?></td>
-											<td id="devolucion"><?php $kk["fecha_devolucion_fisico"] ?></td>
+                                            <td><?php echo $pre["titulo_documento"] ?></td>
+											<td><?php echo $pre["fecha_prestamo_fisico"] ?></td>
+                                            <td><?php echo $pre["fecha_devolucion_fisico"] ?></td>
+                                            <td><?php echo $pre["codigo_isbn"] ?></td>
+                                            <?php if($pre["nombre_estado"]=="Entregado")
+                                                {
+                                                    echo ('<td><font COLOR="green">'.$pre["nombre_estado"].'</font> </td>');
+                                                }else if($pre["nombre_estado"]=="Reservado")
+                                                {
+                                                    echo ('<td><font COLOR="teal">'.$pre["nombre_estado"].'</font> </td>');
+                                                }else if($pre["nombre_estado"]=="Atrasado")
+                                                {
+                                                    echo ('<td><font COLOR="red">'.$pre["nombre_estado"].'</font> </td>');    
+                                                }
+                                            ?>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -103,12 +111,12 @@ $dis=10-$cantidadReservas["prestamos"];
                                     <li>Cantidad de prestamos realizados</li>
                                 </ul>
                                 <ul class="cart__total__tk">
-                                    <li><?php echo $cantidadReservas["prestamos"]?></li>
+                                    <li><?php echo $PreH["cantidad_prestamos"]?></li>
                                 </ul>
                             </div>
                             <div class="cart__total__amount">
                                 <span>Prestamos disponibles</span>
-                                <span><?php echo $dis ?></span>
+                                <span><?php echo $PreF ?></span>
                             </div>
                         </div>
                     </div>

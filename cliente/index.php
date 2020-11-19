@@ -1,34 +1,33 @@
-
+<!doctype html>
+<html class="no-js" lang="zxx">
 <?php
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 4) {
+    header("location: ../index.php");
+}
 include("header.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
 
-$conDocumento=new ControladorDocumento();
-$idiomas=$conDocumento->idiomas();
 
+$contDoc=new ControladorDocumento();
+$idiomas=$contDoc->idiomas();
+$presentacion=$contDoc->tipoPres();
+$documento=$contDoc->tipoDoc();
+
+$listaDocumentos=$contDoc->informacionDocumentos();
 ?>
-<body>	
+<body>
+	
 	<div class="wrapper" id="wrapper">
-	<?php
-		include("menu.php");
-		?>	
-		<div class="brown--color box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Que tipo de documento prefieres">
-					<input type="text" placeholder="Buscar por palabra clave en nuestros documentos">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
-			</div>
-		</div>
 		
+		<?php
+		include("menu.php");
+		?>
         <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
-        	
+        
 	        <div class="slide animation__style10 bg-image--1index fullscreen align__center--left">
 	            <div class="container">
 	            	<div class="row">
@@ -45,16 +44,17 @@ $idiomas=$conDocumento->idiomas();
 	            	</div>
 	            </div>
             </div>
-  
+            <!-- End Single Slide -->
+        	<!-- Start Single Slide -->
 	        <div class="slide animation__style10 bg-image--7 fullscreen align__center--left">
 	            <div class="container">
 	            	<div class="row">
 	            		<div class="col-lg-12">
 	            			<div class="slider__content">
 		            			<div class="contentbox">
-		            				<h2>Reserva <span>tu </span></h2>
-		            				<h2>libro <span>favorito </span></h2>
-		            				<h2>en tu <span>biblioteca Bosquecillo </span></h2>
+		            				<h2>Buy <span>your </span></h2>
+		            				<h2>favourite <span>Book </span></h2>
+		            				<h2>from <span>Here </span></h2>
 				                   	<a class="shopbtn" href="#">shop now</a>
 		            			</div>
 	            			</div>
@@ -68,43 +68,43 @@ $idiomas=$conDocumento->idiomas();
             <div class="container">
                 <div class="filter-box">
                     <h3>¿Qué tipo de documento estas buscando?</h3>
-                    <form method="POST" action="filtrados.php" id="filtros">
+                    <form action="filtrados.php" method="POST" id="filtros">
 						<div class="row">
-                        <div class="col-md-3 col-sm-4">
-							<div class="form-group">
-									<select name="idioma" id="idioma" class="form-control">
-									<?php
-										foreach ($idiomas as $i) {
-										?>
-										<option value="<?php echo $i["nom_idioma"];?>">
-											<?php echo $i["nom_idioma"]; ?></option>
-										<?php
-										}
-										?>
-									</select>
-							</div>
+						<div class="col-md-3 col-sm-4">
+                            <div class="form-group">
+								<label>(*) Tipo de documento: </label>
+								<select name="documento" id="documento" class="form-control">
+								<?php foreach($documento as $i){?>
+                                    <option value="<?php echo $i["nom_tipo_documento"]?>"><?php echo $i["nom_tipo_documento"]?></option>
+								<?php }?>
+                                </select>
+                            </div>
 						</div>
-                        <div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4">
                             <div class="form-group">
-                                <select name="documento" id="documento" class="form-control">
-                                    <option value="Libro">Libros</option>
-                                    <option value="Ponencia">Ponencias</option>
-                                    <option value="Articulo">Artículos Científicos</option>
+								<label>(*) Presentación: </label>
+                                <select name="presentacion" id="presentacion" class="form-control">
+                                <?php foreach($presentacion as $i){?>
+                                    <option value="<?php echo $i["nom_tipo_presentacion"]?>"><?php echo $i["nom_tipo_presentacion"]?></option>
+								<?php }?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
                             <div class="form-group">
-                                <select name="recurso" id="recurso" class="form-control">
-                                    <option value="Física">Recurso Físico</option>
-                                    <option value="Digital">Recurso Digital</option>
+								<label>(*) Idioma: </label>
+								<select name="idioma" id="idioma" class="form-control">
+								<?php foreach($idiomas as $i){?>
+                                    <option value="<?php echo $i["nom_idioma"]?>"><?php echo $i["nom_idioma"]?></option>
+								<?php }?>
                                 </select>
                             </div>
                         </div>
+                        
                         <div class="col-md-2 col-sm-4">
                             <div class="form-group">
-                                
-								<button class="form-control" type="submit">Filtrar</button>
+								<label></label>
+                                <input class="form-control" type="submit" value="Buscar">
                             </div>
 						</div>
 					</div>
@@ -114,29 +114,73 @@ $idiomas=$conDocumento->idiomas();
         </section>
 		<section class="wn__product__area brown--color pt--80  pb--30">
 			<div class="container">
-				<br>
-				<br>
-				<br><br><br><br><br><br>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section__title text-center">
+							<br><br>
+							<h2 class="title__be--2">New <span class="color--theme">Products</span></h2>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+						</div>
+					</div>
+				</div>
+				<!-- CONTENEDOR DE PRODUCTOS-->
+
+				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
+					
+					<!-- AQUI EMPIEZA EL PRODUCTO -->
+					<?php foreach($listaDocumentos as $doc){
+					if($doc["nom_tipo_documento"]=="Libro"){?>
+					<div class="product product__style--3">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="product__thumb">
+							<a class="first__img" ><img src="<?php echo($doc["direccion_portada"])?>" width="270" height="340" ></a>
+								<div class="hot__box">
+									<span class="hot-label">LIBRO</span>
+								</div>
+							</div>
+							<div class="product__content content--center">
+								<h4><a><?php echo ($doc["nombre_autor"]." ".$doc["apellido_autor"] )?></a></h4>
+								<ul class="prize d-flex">
+									<li><?php echo ($doc["editorial_publicacion"])?></li>
+								</ul>
+								<div class="action">
+									<div class="actions_inner">
+										<ul class="add_to_links">
+											<li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
+											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?php }
+					}?>
+					<!--AQUI TERMINA EL PRODUCTO  -->
+				</div>
+				<!-- FIN DEL CONTENEDOR DE PRODUCTOS -->
 			</div>
 		</section>
-	</div>
-</body>
 		
+	</div>
+	
+</body>
 <?php
-		include('footer.php')
+include('footer.php')
 ?>
+</html>
 <script>
         function filtrar() {
 
             datos = $('#filtros').serialize();
-			
+
             $.ajax({
                 type: "POST",
                 data: datos,
                 url: "filtrados.php",
                 success: function(r) {
-                
-				window.location.href = "filtrados.php";
+
+                window.location.href = "filtrados.php";
 
                 }
             });

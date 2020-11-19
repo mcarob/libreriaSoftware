@@ -2,7 +2,7 @@
 <div class="tab-content" id="myTabContent4">
     <div class="tab-pane  fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <h3>¿Qué tipo de usuario eres? </h3>
-        <select class="custom-select custom-select-lg mb-3" id="selecionarTipoRegistro">
+        <select class="custom-select custom-select-lg mb-3" id="selecionarTipoRegistro" name="selecionarTipoRegistro">
             <option selected>Seleccione Registro</option>
             <option value="1">Cliente</option>
             <option value="2">Publicador</option>
@@ -13,7 +13,7 @@
             <label class="label-for-checkbox">
             </label>
         </div>
-
+// #1f3258e3
     </div>
     <div class="tab-pane  fade" id="profile1" role="tabpanel" aria-labelledby="profile1-tab">
         <h3>Ingresa tus datos de usario </h3>
@@ -25,14 +25,14 @@
                 <input autocomplete="false" type="text"
                     pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(.[A-Za-z0-9]+)(.[A-Za-z]{2,})$"
                     title="No Cumple con el Formato de Correo Electrónico" class="form-control" id="emailR"
-                    name="emailR" required placeholder="Correo Electrónico (Usuario)" maxlength="100"
+                    name="emailR"  placeholder="Correo Electrónico (Usuario)" maxlength="100"
                     aria-label="Username">
             </div>
             <div class="input__box">
                 <label>Contraseña<span>*</span></label>
                 <input autocomplete="off" type="password" class="form-control" placeholder="Contraseña"
                     style="display:none;" aria-label="Username">
-                <input autocomplete="off" type="password" class="form-control" placeholder="Contraseña" required
+                <input autocomplete="off" type="password" class="form-control" placeholder="Contraseña" 
                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" aria-label="Username" id="contraR"
                     name="contraR"
                     title="El formato de la contraseña debe ser contener al menos 1 mayúscula, 1 minúscula y 1 numero min 8 caracteres ">

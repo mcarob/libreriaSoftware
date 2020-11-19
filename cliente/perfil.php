@@ -38,10 +38,9 @@ $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
                     <input type="hidden" class="form-control" id="cod_usuario" name="cod_usuario" value="<?php echo ($codigo) ?>">
                     <input type="hidden" class="form-control" id="habilitado" name="habilitado" value="<?php echo ($cliente->getHabilitado()) ?>">
                     <input type="hidden" class="form-control" id="cod_cliente" name="cod_cliente" value="<?php echo ($cliente->getCod_cliente()) ?>">
-
                         <label>Nombre</label>
-                        <input type="text" class="form-control" id="nom_cliente" name="nom_cliente" aria-describedby="emailHelp" placeholder="Nombre" value=<?php echo ($cliente->getNom_cliente())?>>
-                        <small id="emailHelp" class="form-text text-muted">Nombre completo.</small>    
+                        <input type="text" class="form-control" id="nom_cliente" name="nom_cliente" placeholder="Nombre" value="<?php echo ($cliente->getNom_cliente())?>">
+                        <small class="form-text text-muted">Nombre completo.</small>    
                         
                         <table style="border: hidden"> 
                             <tr> 
@@ -57,7 +56,7 @@ $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
                                     <div class="form-group">
                                     <label>Dirección</label>
                                         <input type="text" class="form-control" id="direccion_cliente" name="direccion_cliente" aria-describedby="emailHelp" placeholder="Dirección"
-                                        value=<?php echo ($cliente->getDireccion_cliente())?>>
+                                        value="<?php echo ($cliente->getDireccion_cliente())?>">
                                         <small id="emailHelp" class="form-text text-muted">Lugar de residencia.</small>
                                     </div>
                                 </td>

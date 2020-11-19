@@ -79,6 +79,11 @@ class ControladorDocumento{
         return $this->documento->informacionDocumentos();
     }
 
+    public function filtradosInicio($idioma,$documento,$presentacion){
+        $this->documento=new DocumentoDAO();
+        return $this->documento->filtradosInicio($idioma,$documento,$presentacion);
+    }
+
 
     public function materias()
     {
@@ -91,9 +96,19 @@ class ControladorDocumento{
         return $this->documento->idiomas();
     }
 
-    public function filtradosInicio($idioma,$documento,$presentacion){
+    public function tipoDoc(){
         $this->documento=new DocumentoDAO();
-        return $this->documento->filtradosInicio($idioma,$documento,$presentacion);
+        return $this->documento->tipoDoc();
+    }
+
+    public function tipoPres(){
+        $this->documento=new DocumentoDAO();
+        return $this->documento->tipoPres();
+    }
+
+    public function darInfoXdoc($documento){
+        $this->documento=new DocumentoDAO();
+        return $this->documento->darInfoXdoc($documento);
     }
 
 

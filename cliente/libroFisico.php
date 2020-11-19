@@ -1,8 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <?php
-
-include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -12,44 +14,20 @@ if (!isset($_SESSION['user'])) {
 }
 include("header.php");
 
-$idioma=$_POST["idioma"];
-$documento=$_POST["documento"];
-$presentacion=$_POST["presentacion"];
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+
+$conCli=new ControladorCliente();
+$cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 
 
-$controladorDocumentos=new ControladorDocumento();
-$categorias=$controladorDocumentos->materias();
-$idiomas=$controladorDocumentos->idiomas();
-$listaDocumentos=$controladorDocumentos->informacionDocumentos();
 
+$contDoc=new ControladorDocumento();
+$idiomas=$contDoc->idiomas();
+$presentacion=$contDoc->tipoPres();
+$documento=$contDoc->tipoDoc();
 
-$mostrarDoc;
-if($documento=="Libro")
-{
-	$mostrarDoc="Libros";
-
-}else if($documento=="Ponencia"){
-	$mostrarDoc="Ponencias";
-}else if($documento=="Articulo")
-{
-	$mostrarDoc="Articulos";
-}
-$mostrarPre;
-
-if($presentacion=="Digital")
-{
-	$mostrarPre="Digitales";
-
-}else if($presentacion=="Física"){
-	$mostrarPre="Fisicos";
-}
-
-$filtrados=$controladorDocumentos->filtradosInicio($idioma,$documento,$presentacion);
-$resultados=0;
-if(sizeof($filtrados)>0)
-{
-	$resultados=1;
-}
+$listaDocumentos=$contDoc->informacionDocumentos();
 ?>
 <body>
 <?php
@@ -77,11 +55,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand <?php echo $mostrarDoc." ".$mostrarPre?></h2>
+                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active"><?php echo $mostrarDoc." ".$mostrarPre?></span>
+                              <span class="breadcrumb_item active">Libros Fisicos</span>
                             </nav>
                         </div>
                     </div>
@@ -121,7 +99,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados <?php echo $mostrarDoc." ".$mostrarPre?></p>
+			                        <p>Resultados Libros Fisicos</p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -132,7 +110,9 @@ include("menu.php");
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
 	        						<!-- Start Single Product -->
-                                    <?php foreach($filtrados as $lib){?>
+                                    <?php foreach($listaDocumentos as $lib){
+                                    if($lib["nom_tipo_documento"]=="Libro"){?>
+
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
@@ -150,14 +130,28 @@ include("menu.php");
 												<div class="actions_inner">
 													<ul class="add_to_links">
                                                         <li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
-														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+														
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"  onclick='vermas(<?php echo $lib["cod_documento"] ?>,<?php echo ($cliente->getCod_cliente()) ?>)'>
+														<i class="bi bi-search"></i></a>
+														</li>
 													</ul>
 												</div>
 											</div>
 											
 										</div>
                                     </div>
-                                    <?php } ?>
+
+                                    <?php }
+                                    }?>
+
+									<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+												
+															
+												</div>
+											</div>
+										</div>
 		        					<!-- End Single Product -->
 	        					</div>
 	        					<ul class="wn__pagination">
@@ -185,3 +179,10 @@ include("menu.php");
 include('footer.php')
 ?>
 </html>
+
+<script>
+	function vermas(libro,cliente) {
+		$('.modal-content').load('modalLibroF.php?libro='+libro+'&cliente='+cliente) 
+		$('#modal1').modal('show');
+	}
+</script>

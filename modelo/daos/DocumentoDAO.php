@@ -155,27 +155,6 @@ class DocumentoDAO extends DB  implements dao_interface
     return $em;
     }
 
-
-    public function materias(){
-        $query = $this->con->prepare("SELECT * FROM documentosxmateria");
-        $query->execute();
-        $em = array();
-        while ($fila = $query->fetch()) {
-            $em[] = $fila;
-        }
-        return $em;
-    }
-
-    public function idiomas(){
-        $query = $this->con->prepare("SELECT * FROM documentosxidioma");
-        $query->execute();
-        $em = array();
-        while ($fila = $query->fetch()) {
-            $em[] = $fila;
-        }
-        return $em;
-    }
-
     public function filtradosInicio($idioma,$documento,$presentacion){
         $query = $this->con->prepare("SELECT * FROM info_documento where nom_idioma=? and nom_tipo_documento=? and nom_tipo_presentacion=?");
         $query->execute([$idioma,$documento,$presentacion]);
@@ -185,6 +164,55 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+
+    //Filtrados
+    public function materias(){
+        $query = $this->con->prepare("SELECT * FROM materia");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function idiomas(){
+        $query = $this->con->prepare("SELECT * FROM idioma");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function tipoDoc(){
+        $query = $this->con->prepare("SELECT * FROM tipo_documento");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function tipoPres(){
+        $query = $this->con->prepare("SELECT * FROM tipo_presentacion");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+    public function darInfoXdoc($documento){
+        $query = $this->con->prepare("SELECT * FROM info_documento where cod_documento=?");
+        $query->execute([$documento]);
+        return $query->fetch();
+    }
+
+
 
 //  //  //  //  //  
 

@@ -16,7 +16,7 @@
                             <div class="megamenu mega02">
                                 <ul class="item item02">
                                     <li class="title">Documentos Físicos</li>
-                                    <li><a href="librosFisicos.php">Libros</a></li>
+                                    <li><a href="libroFisico.php">Libros</a></li>
                                 </ul>
                                 <ul class="item item02">
                                     <li class="title">Documentos Digitales</li>
