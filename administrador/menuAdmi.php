@@ -6,6 +6,7 @@
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>
+				
 			</div>
 		</div>
 		<div class="menu-block customscroll">
