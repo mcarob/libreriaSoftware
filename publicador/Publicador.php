@@ -15,7 +15,7 @@
 
 
 	<?php
-		include("header.php");
+		include("menu.php");
 		?>
 		<!-- End Search Popup -->
 		<!-- Start Bradcaump area -->
