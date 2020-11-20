@@ -86,7 +86,7 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
     public function listarLibro(){
-        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_presentacion = '1'");
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '1'");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -95,7 +95,7 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
     public function listarPonencia(){
-        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_presentacion = '2'");
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '3'");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -103,6 +103,15 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+
+    public function cantidadPonencia($codigoPublicador){
+        $sentencia = $this->con->prepare("SELECT * FROM cantidaddeprestamosxcliente WHERE cod_publicador =?");
+        $sentencia->execute([$codigoPublicador]);
+        $row = $sentencia->fetch();
+        return $row;
+    }
+
+    
 
 
 

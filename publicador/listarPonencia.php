@@ -65,6 +65,8 @@ $ponencia = $conDoc->listarPonencia($conDoc->listarLibro());
                             <div class="pd-20">
                                     <h4 class="text-blue h4">Ponencias registradas</h4>
                                     <br>
+                                    <button type='button'  class='btn btn-danger' style="float: right;">Nueva Ponencia</button>
+                                    <br>
 				                </div>
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
