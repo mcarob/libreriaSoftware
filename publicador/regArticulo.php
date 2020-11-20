@@ -14,6 +14,17 @@
         <br>
         <br>
         <div class="row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Cargar</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="archivoDocumento">
+                    <label class="custom-file-label" for="inputGroupFile01">Elegir Documento</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
                     <label>Titulo del articulo:</label>
@@ -28,10 +39,10 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <!--<div class="form-group">
+                <div class="form-group">
                     <label>Autor:</label>
                     <input class="form-control" id="autor" name="autor">
-                </div>-->
+                </div>
             </div>
         </div>
         <div class="row">
@@ -41,37 +52,30 @@
                     <input class="form-control" id="ssn" name="ssn">
                 </div>
             </div>
-             
-            <div class="form-group">
-
-                    <label class="control control-checkbox checkbox-success">Tipo de formato:</label>
-
-                    <div class="input-group md-4">
-                        <select class="custom-select" id="inputGroupSelect02">
-                            <option value="1" selected>Físico</option>
-                            <option value="2">Digital</option>
-                        </select>
-                       
-                    </div>
-                </div>
-            
-        </div>
-        <div class="row">
-            
             <div class="col-md-4">
-                
+                <div class="form-group">
+                    <label> Editorial:</label>
+                    <input class="form-control" id="editorial" name="editorial">
+                </div>
+            </div>
+
+            
+            <div class="row">
+
+                <div class="col-md-4">
+
+                </div>
             </div>
         </div>
-    </div>
-    <input type= "number"class="form-control" id="tipo" name="tipo" value="2" hidden/>
-    <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
+        <input type="number" class="form-control" id="tipo" name="tipo" value="2" hidden />
+        <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarArticulo();" class="btn btn-success" value="Registrar">Registrar</a>
         </div>
-  
+
 </form>
 
 <script>
-  function agregarArticulo() {
+    function agregarArticulo() {
         datos = $('#formNuevoArticulo').serialize();
 
         $.ajax({

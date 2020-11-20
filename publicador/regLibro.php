@@ -14,6 +14,17 @@
         <br>
         <br>
         <div class="row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Cargar</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="archivoDocumento">
+                    <label class="custom-file-label" for="inputGroupFile01">Elegir Documento</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
                     <label>Titulo del libro:</label>
@@ -28,17 +39,17 @@
                 </div>
             </div>
             <div class="col-md-4">
-            <div class="form-group">
-                <label>Idioma:</label>
-                <select class="custom-select" id="idioma">
-                    <option selected>Escoger idioma...</option>
-                    <option value="1">Inglés</option>
-                    <option value="2">Español</option>
-                    <option value="3">Portuges</option>
-                    <option value="4">Alemán</option>
-                    <option value="5">Frances</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label>Idioma:</label>
+                    <select class="custom-select" id="idioma">
+                        <option selected>Escoger idioma...</option>
+                        <option value="1">Inglés</option>
+                        <option value="2">Español</option>
+                        <option value="3">Portuges</option>
+                        <option value="4">Alemán</option>
+                        <option value="5">Frances</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -57,13 +68,13 @@
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
                     <label>Numero de Paginas:</label>
-                    <input type= "number"class="form-control" id="informacion_paginas" name="informacion_paginas">
+                    <input type="number" class="form-control" id="informacion_paginas" name="informacion_paginas">
                     </input>
                 </div>
             </div>
         </div>
         <div class="row">
-            
+
             <div class="col-md-4">
                 <div class="form-group">
 
@@ -80,16 +91,23 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="col-md-4" aling="align-items-center">
+                <div class="form-group">
+                    <label>Autores:</label>
+                    <input type="text" class="form-control" id="autores" name="autores">
+                    </input>
+                </div>
+            </div>
+
         </div>
-        <input type= "number"class="form-control" id="tipo" name="tipo" value="1" hidden/>
+        <input type="number" class="form-control" id="tipo" name="tipo" value="1" hidden />
         <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarLibro();" class="btn btn-success" value="Registrar">Registrar</a>
         </div>
     </div>
 </form>
 <script>
-  function agregarLibro() { 
+    function agregarLibro() {
         datos = $('#formNuevoLibro').serialize();
 
         $.ajax({

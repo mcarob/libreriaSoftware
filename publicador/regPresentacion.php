@@ -14,6 +14,17 @@
         <br>
         <br>
         <div class="row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Cargar</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="archivoDocumento">
+                    <label class="custom-file-label" for="inputGroupFile01">Elegir Documento</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
                     <label>Titulo de la ponencia:</label>
@@ -47,18 +58,13 @@
                     <input class="form-control" id="editorial" name="editorial">
                 </div>
             </div>
-            <div class="form-group">
-
-                    <label class="control control-checkbox checkbox-success">Tipo de formato:</label>
-
-                    <div class="input-group md-4">
-                        <select class="custom-select" id="inputGroupSelect02">
-                            <option value="1" selected>Físico</option>
-                            <option value="2">Digital</option>
-                        </select>
-                        
-                    </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Nombre del congreso:</label>
+                    <input class="form-control" id="nomCongreso" name="nomCongreso">
                 </div>
+            </div>
+            
             
         </div>
         <div class="row">
@@ -66,12 +72,7 @@
             <div class="col-md-4">
                 
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Nombre del congreso:</label>
-                    <input class="form-control" id="nomCongreso" name="nomCongreso">
-                </div>
-            </div>
+            
         </div>
     </div>
     <input type= "number"class="form-control" id="tipo" name="tipo" value="3" hidden/>

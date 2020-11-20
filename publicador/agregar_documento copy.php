@@ -5,23 +5,37 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/Entidades/Docum
 
 
 $libro=array(
+    $_POST["idioma"],
     $_POST["titulo"],
+    $_POST["formato"],
     $_POST["fechaPublicacion"],
     $_POST["editorial"],  
     $_POST["isbn"],
-    $_POST["nomCongreso"]
+    $_POST["informacion_paginas"],
+    $_POST["direccion_archivo"],
+    $_POST["direccion_portada"]
      
 );
 
-$articulo=array(
+$ponencia=array(
+
+    $_POST["idioma"],
     $_POST["titulo"],
     $_POST["fechaPublicacion"],
-    $_POST["ssn"]
+    $_POST["editorial"],
+    $_POST["isbn"],
+    $_POST["informacion_congreso"],
+    $_POST["direccion_archivo"],
+    $_POST["direccion_portada"]
+    
 );
 
-$ponencia=array(
+$articulo=array(
+
+    $_POST["idioma"],
     $_POST["titulo"],
     $_POST["fechaPublicacion"],
+    $_POST["editorial"],
     $_POST["ssn"]
 );
 
