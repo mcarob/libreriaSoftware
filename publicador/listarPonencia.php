@@ -65,9 +65,13 @@ $ponencia = $conDoc->listarPonencia($conDoc->listarLibro());
                             <div class="pd-20">
                                     <h4 class="text-blue h4">Ponencias registradas</h4>
                                     <br>
-                                    <button type='button'  class='btn btn-danger' style="float: right;">Nueva Ponencia</button>
-                                    <br>
-				                </div>
+                                    
+                                
+                                </div>
+                                <div class="pd-20" style="padding-bottom: 20px; float: right; display : inline-flex; ">
+                                        <a  class="btn btn-outline-success" href="Publicador.php" role="button">Publicar nuevo libro</a>
+                            
+                                </div>
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
                                         <tr class="title-top">
