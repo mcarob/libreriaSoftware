@@ -33,7 +33,11 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->listar();
     }
-
+    public function listarLibro()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarLibro();
+    }
 
     public function listarDocumentoF()
     {

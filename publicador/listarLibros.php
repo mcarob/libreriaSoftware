@@ -1,8 +1,8 @@
 <!doctype html>
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorPublicador.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/DaoPublicador.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/DocumentoDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -12,16 +12,12 @@ if (!isset($_SESSION['user'])) {
 }
 include("header.php");
 
-$conReg=new ControladorRegistro();
-$usuario=$conReg->darUsuario($_SESSION['user']);
-$codigo=$usuario->getCod_usuario();
-$conCli=new ControladorCliente();
-$cliente=$conCli->devolverCliente($usuario->getCod_usuario());
+// $conReg=new ControladorRegistro();
+// $usuario=$conReg->darUsuario($_SESSION['user']);
+// $codigo=$usuario->getCod_usuario();
+$conDoc=new ControladorDocumento();
+$libro=$conDoc->listarLibro($conDoc->listarLibro());
 
-$PreH=$conCli->cantidadPrestamos($cliente->getCod_cliente());
-$PreF=10-$PreH["cantidad_prestamos"];
-
-$misPrestamos=$conCli->listarPrestamosXcliente($cliente->getCod_cliente());
 ?>
 <body>
 <?php
@@ -47,11 +43,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Mis reservas</h2>
+                        	<h2 class="bradcaump-title">Mis libros</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Mis Reservas</span>
+                              <span class="breadcrumb_item active">Mis libros</span>
                             </nav>
                         </div>
                     </div>
@@ -65,38 +61,46 @@ include("menu.php");
                     <div class="col-md-12 col-sm-12 ol-lg-12">
                         <form action="#">               
                             <div class="table-content wnro__table table-responsive">
-                                <table>
+                                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
                                         <tr class="title-top">
 											<th class="product-name">Titulo libro</th>
-                                            <th class="product-price">Cantidad De Paginas</th>
-                                            <th class="product-quantity">Tipo presentacion</th>
+                                            <th class="product-price">Cantidad De Paginas</th>                                            
                                             <th class="product-quantity">Editorial</th>
                                             <th class="product-quantity">Codigo ISBN</th>
+                                            <th class="product-quantity">Acciones</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($misPrestamos as $pre)
-                                        {
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $pre["titulo_documento"] ?></td>
-											<td><?php echo $pre["fecha_prestamo_fisico"] ?></td>
-                                            <td><?php echo $pre["fecha_devolucion_fisico"] ?></td>
-                                            <td><?php echo $pre["codigo_isbn"] ?></td>
-                                            <?php if($pre["nombre_estado"]=="Entregado")
-                                                {
-                                                    echo ('<td><font COLOR="green">'.$pre["nombre_estado"].'</font> </td>');
-                                                }else if($pre["nombre_estado"]=="Reservado")
-                                                {
-                                                    echo ('<td><font COLOR="teal">'.$pre["nombre_estado"].'</font> </td>');
-                                                }else if($pre["nombre_estado"]=="Atrasado")
-                                                {
-                                                    echo ('<td><font COLOR="red">'.$pre["nombre_estado"].'</font> </td>');    
+                                    <?php
+                                            foreach ($publicadores as $key) {
+                                                echo ("<tr>");
+                                                echo ("<td>" . $key['nom_publicador'] . "</td>");
+                                                echo ("<td>" . $key['ced_publicador'] . "</td>");
+                                                echo ("<td>" . $key['correo_publicador'] . "</td>");
+                                                echo ("<td>" . $key['pais_publicador'] . "</td>");
+                                                echo ("<td>" . $key['ciudad_publicador'] . "</td>");
+                                                echo ("<td>" . $key['direccion_publicador'] . "</td>");
+                                                echo ("<td>" . $key['telefono_publicador'] . "</td>");
+
+                                
+                                                
+                                                if ($key['estado_usuario'] == "4") {
+                                                    echo ("<td><div class='btn-list'>	
+                                                            <button type='button' class='btn btn-outline-danger' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Inactivar</button>
+                                                            </div></td>");
+                                                } else if($key['estado_usuario'] == "5") {
+                                                    echo ("<td><div class='btn-list'>
+                                                            <button type='button' class='btn btn-outline-success' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Activar</button>
+                                                            </div></td>");
                                                 }
                                             ?>
-                                        </tr>
-                                        <?php } ?>
+
+                                            <?php
+                                                echo ("</tr>");
+                                            }
+                                            ?>					
                                     </tbody>
                                 </table>
                             </div>
@@ -108,15 +112,12 @@ include("menu.php");
                         <div class="cartbox__total__area">
                             <div class="cartbox-total d-flex justify-content-between">
                                 <ul class="cart__total__list">
-                                    <li>Cantidad de prestamos realizados</li>
+                                    <li>Cantidad de libros publicados</li>
                                 </ul>
                                 <ul class="cart__total__tk">
-                                    <li><?php echo $PreH["cantidad_prestamos"]?></li>
+                                    <!-- <li><?php echo $libH["cantidad_libstamos"]?></li> -->
+                                    <li>1</li>
                                 </ul>
-                            </div>
-                            <div class="cart__total__amount">
-                                <span>Prestamos disponibles</span>
-                                <span><?php echo $PreF ?></span>
                             </div>
                         </div>
                     </div>
@@ -128,11 +129,9 @@ include("menu.php");
 include("footer.php");
 ?>
 <script>
-        function cambiarEstado() {
-            
-            var tomarFecha=document.getElementById("devolucion").value.split("-");
-            var fechaDevo=new Date( parseInt(tomarFecha[0]),parseInt(tomarFecha[1]),parseInt(tomarFecha[2]) );
-            var fechaActual=new Date();
-        }
+$(document).ready(function () {
+  $('#dtBasicExample').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
 </script>
 </html>

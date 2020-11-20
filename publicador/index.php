@@ -1,179 +1,38 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Home | Bookshop Responsive Bootstrap4 Template</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="assetsCliente/images/favicon.ico">
-	<link rel="apple-touch-icon" href="assetsCliente/images/icon.png">
+session_start();
+if (!isset($_SESSION['user'])) {
 
-	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> 
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 3) {
+    header("location: ../index.php");
+}
+include("header.php");
 
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="../assetsCliente/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assetsCliente/css/plugins.css">
-	<link rel="stylesheet" href="../assetsCliente/style.css">
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
 
-	<!-- Cusom css -->
-   <link rel="stylesheet" href="../assetsCliente/css/custom.css">
-
-	<!-- Modernizer js -->
-	<script src="assetsCliente/js/vendor/modernizr-3.5.0.min.js"></script>
-</head>
+?>
 <body>
-
-
-	<!-- Main wrapper -->
+	
 	<div class="wrapper" id="wrapper">
-		<!-- Header -->
-		<header id="wn__header" class="header__area header__absolute sticky__header">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
-						<div class="logo">
-							<a href="index.html">
-								<img src="assetsCliente/images/logo/logo.png" alt="logo images">
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-8 d-none d-lg-block">
-						<nav class="mainmenu__nav">
-							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="index.html">Inicio</a></li>
-								<li class="drop"><a href="#">Documentos</a>
-									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li class="title">Documentos Físicos</li>
-											<li><a href="shop-grid.html">Libros Físicos</a></li>
-											<li><a href="single-product.html">Ponencias Físicas</a></li>
-											<li><a href="single-product.html">Articulos Físicas</a></li>
-										</ul>
-										<ul class="item item02">
-											<li class="title">Documentos Digitales</li>
-											<li><a href="shop-grid.html">Libros Digitales</a></li>
-											<li><a href="single-product.html">Ponencias Digitales</a></li>
-											<li><a href="single-product.html">Articulos Digitales</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="shop-grid.html">La Libreria</a>
-									<div class="megamenu dropdown">
-										<ul class="item item01">
-											<li class="title">Nuestros Servicios</li>
-											<li><a href="shop-grid.html">Reserva Online Documentos </a></li>
-											<li><a href="shop-grid.html">Descargas de Documentos digitales </a></li>
-											<li><a href="shop-grid.html">Salas de conferencia </a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="shop-grid.html">Nuestras Sedes</a>
-									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li class="title">Bogotá</li>
-											<li><a href="shop-grid.html">Suba Bulevar</a></li>
-											<li><a href="shop-grid.html">Unicentro</a></li>
-											<li><a href="shop-grid.html">Centro Mayor</a></li>
-										</ul>
-										<ul class="item item02">
-											<li class="title">Medellín</li>
-
-										</ul>
-									</div>
-								</li>
-							
-								<li><a href="contact.html">Contactanos</a></li>
-								<li><a href="contact.html">Registarse/Iniciar Sesión</a></li>
-							</ul>
-						</nav>
-					</div>
-					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
-						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-							<li class="shop_search"><a class="search__active" href="#"></a></li>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- Start Mobile Menu -->
-				<div class="row d-none">
-					<div class="col-lg-12 d-none">
-						<nav class="mobilemenu__nav">
-							<ul class="meninmenu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="#">Pages</a>
-									<ul>
-										<li><a href="about.html">About Page</a></li>
-										<li><a href="portfolio.html">Portfolio</a>
-											<ul>
-												<li><a href="portfolio.html">Portfolio</a></li>
-												<li><a href="portfolio-details.html">Portfolio Details</a></li>
-											</ul>
-										</li>
-										<li><a href="my-account.html">My Account</a></li>
-										<li><a href="cart.html">Cart Page</a></li>
-										<li><a href="checkout.html">Checkout Page</a></li>
-										<li><a href="wishlist.html">Wishlist Page</a></li>
-										<li><a href="error404.html">404 Page</a></li>
-										<li><a href="faq.html">Faq Page</a></li>
-										<li><a href="team.html">Team Page</a></li>
-									</ul>
-								</li>
-								<li><a href="shop-grid.html">Shop</a>
-									<ul>
-										<li><a href="shop-grid.html">Shop Grid</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-									</ul>
-								</li>
-								<li><a href="blog.html">Blog</a>
-									<ul>
-										<li><a href="blog.html">Blog Page</a></li>
-										<li><a href="blog-details.html">Blog Details</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<!-- End Mobile Menu -->
-	            <div class="mobile-menu d-block d-lg-none">
-	            </div>
-	            <!-- Mobile Menu -->	
-			</div>		
-		</header>
-		<!-- //Header -->
-		<!-- Start Search Popup -->
-		<div class="brown--color box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Que tipo de documento prefieres">
-					<input type="text" placeholder="Buscar por palabra clave en nuestros documentos">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
-			</div>
-		</div>
-		<!-- End Search Popup -->
-        <!-- Start Slider area -->
+		
+		<?php
+		include("menu.php");
+		?>
         <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
-        	<!-- Start Single Slide -->
+        
 	        <div class="slide animation__style10 bg-image--1index fullscreen align__center--left">
 	            <div class="container">
 	            	<div class="row">
 	            		<div class="col-lg-12">
 	            			<div class="slider__content">
 		            			<div class="contentbox">
-		            				<h2>La <span>Libreria </span></h2>
+		            				<h2>El <span>Bosquecillo</span> </h2>
 		            				<h2>La mejor <span>Forma de </span></h2>
 		            				<h2><span>Buscar tus </span>Documentos </h2>
 				                   	<a class="shopbtn" href="#">Ver todos</a>
@@ -201,46 +60,49 @@
 	            	</div>
 	            </div>
             </div>
-            <!-- End Single Slide -->
         </div>
-        <!-- End Slider area -->
-		<!-- Escoger tipo de documento -->
 
 		<section class="search-filters">
             <div class="container">
                 <div class="filter-box">
                     <h3>¿Qué tipo de documento estas buscando?</h3>
-                    <form action="http://libraria.demo.presstigers.com/index.html" method="get">
+                    <form action="filtrados.php" method="POST" id="filtros">
 						<div class="row">
-                        <div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4">
                             <div class="form-group">
-                                <label class="sr-only" for="keywords">Buscar por palabras claves</label>
-                                <input class="form-control" placeholder="Buscar por palabra Clave" id="keywords" name="keywords" type="text">
+								<label>(*) Tipo de documento: </label>
+								<select name="documento" id="documento" class="form-control">
+								<?php foreach($documento as $i){?>
+                                    <option value="<?php echo $i["nom_tipo_documento"]?>"><?php echo $i["nom_tipo_documento"]?></option>
+								<?php }?>
+                                </select>
                             </div>
 						</div>
-                        <div class="col-md-3 col-sm-4">
+						<div class="col-md-3 col-sm-4">
                             <div class="form-group">
-                                <select name="catalog" id="catalog" class="form-control">
-                                    <option>Todos Los Documentos</option>
-                                    <option>Libro</option>
-                                    <option>Ponencias</option>
-                                    <option>Artículos Científicos</option>
+								<label>(*) Presentación: </label>
+                                <select name="presentacion" id="presentacion" class="form-control">
+                                <?php foreach($presentacion as $i){?>
+                                    <option value="<?php echo $i["nom_tipo_presentacion"]?>"><?php echo $i["nom_tipo_presentacion"]?></option>
+								<?php }?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-4">
                             <div class="form-group">
-                                <select name="category" id="category" class="form-control">
-                                    <option>Todos los Recursos</option>
-                                    <option>Recurso Físico</option>
-                                    <option>Recurso Electrónico</option>
-
+								<label>(*) Idioma: </label>
+								<select name="idioma" id="idioma" class="form-control">
+								<?php foreach($idiomas as $i){?>
+                                    <option value="<?php echo $i["nom_idioma"]?>"><?php echo $i["nom_idioma"]?></option>
+								<?php }?>
                                 </select>
                             </div>
                         </div>
+                        
                         <div class="col-md-2 col-sm-4">
                             <div class="form-group">
-                                <input class="form-control" type="submit" value="Search">
+								<label></label>
+                                <input class="form-control" type="submit" value="Buscar">
                             </div>
 						</div>
 					</div>
@@ -248,15 +110,78 @@
                 </div>
             </div>
         </section>
-	</div>
-	<!-- //Main wrapper -->
+		<section class="wn__product__area brown--color pt--80  pb--30">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section__title text-center">
+							<br><br>
+							<h2 class="title__be--2">New <span class="color--theme">Products</span></h2>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+						</div>
+					</div>
+				</div>
+				<!-- CONTENEDOR DE PRODUCTOS-->
 
-	<!-- JS Files -->
-	<script src="../assetsCliente/js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="../assetsCliente/js/popper.min.js"></script>
-	<script src="../assetsCliente/js/bootstrap.min.js"></script>
-	<script src="../assetsCliente/js/plugins.js"></script>
-	<script src="../assetsCliente/js/active.js"></script>
+				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
+					
+					<!-- AQUI EMPIEZA EL PRODUCTO -->
+					<?php foreach($listaDocumentos as $doc){
+					if($doc["nom_tipo_documento"]=="Libro"){?>
+					<div class="product product__style--3">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="product__thumb">
+							<a class="first__img" ><img src="<?php echo($doc["direccion_portada"])?>" width="270" height="340" ></a>
+								<div class="hot__box">
+									<span class="hot-label">LIBRO</span>
+								</div>
+							</div>
+							<div class="product__content content--center">
+								<h4><a><?php echo ($doc["nombre_autor"]." ".$doc["apellido_autor"] )?></a></h4>
+								<ul class="prize d-flex">
+									<li><?php echo ($doc["editorial_publicacion"])?></li>
+								</ul>
+								<div class="action">
+									<div class="actions_inner">
+										<ul class="add_to_links">
+											<li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
+											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?php }
+					}?>
+					<!--AQUI TERMINA EL PRODUCTO  -->
+				</div>
+				<!-- FIN DEL CONTENEDOR DE PRODUCTOS -->
+			</div>
+		</section>
+		
+	</div>
 	
 </body>
+<?php
+include('footer.php')
+?>
 </html>
+<script>
+        function filtrar() {
+
+            datos = $('#filtros').serialize();
+
+            $.ajax({
+                type: "POST",
+                data: datos,
+                url: "filtrados.php",
+                success: function(r) {
+
+                window.location.href = "filtrados.php";
+
+                }
+            });
+
+        }
+    </script>

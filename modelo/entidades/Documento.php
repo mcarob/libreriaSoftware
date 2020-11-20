@@ -1,6 +1,7 @@
 <?php
 
 class Documento{
+
   private $cod_documento;
   private $cod_idioma;
   private $cod_tipo_documento;
@@ -15,7 +16,7 @@ class Documento{
   private $informacion_bib;
   private $direccion_archivo;
   private $cod_publicador;
-  private $direccion_portada;  
+  private $direccion_portada;
 
   public function __construct($cod_documento,$cod_idioma, $cod_tipo_documento,
   $cod_tipo_presentacion,$titulo_documento,$fecha_publicacion,$editorial_publicacion,
@@ -29,7 +30,6 @@ class Documento{
     $this->titulo_documento=$titulo_documento;
     $this->fecha_publicacion=$fecha_publicacion;
     $this->editorial_publicacion=$editorial_publicacion;
-
     $this->codigo_isbn=$codigo_isbn;
     $this->informacion_paginas=$informacion_paginas;
     $this->informacion_congreso=$informacion_congreso;
@@ -38,7 +38,6 @@ class Documento{
     $this->direccion_archivo=$direccion_archivo;
     $this->cod_publicador=$cod_publicador;
     $this->direccion_portada=$direccion_portada;
-
   }
   
 
