@@ -16,6 +16,7 @@ class DaoPrestamoFisico extends DB implements dao_interface
 
     public function agregarRegistro(OBJECT $nuevoRegistro)
     {
+        $fecha='2011-05-21';
         $query = "INSERT INTO prestamo_fisico (cod_prestamo_fisico,
         cod_existencia,
         cod_usuario_cliente,
@@ -24,7 +25,8 @@ class DaoPrestamoFisico extends DB implements dao_interface
         fecha_devolucion_fisico) values (?,?,?,?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
             $nuevoRegistro->getCodPrestamoFisico(), $nuevoRegistro->getCodExistencia(), $nuevoRegistro->getCod_usuario_cliente(),
-            $nuevoRegistro->getCod_estado_prestamo(), $nuevoRegistro->getFecha_prestamo_fisico(), $nuevoRegistro->getFecha_devolucion_fisico()
+            $nuevoRegistro->getCod_estado_prestamo(),
+            $fecha, $fecha
         ]);
         return $respuesta;
     }

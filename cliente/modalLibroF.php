@@ -83,13 +83,17 @@ $cod_cliente=$_GET['cliente'];
                     type: "POST",
                     data: datos,
                     url: "agregar_reserva.php",
+                    
                     success: function(r) {
                         console.log(r);
                         if (r == 1) {
+                            console.log("entra en redireccionar");
                             toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
                             window.location.href = "reservas.php";
                         } else {
-                            toastr["warning"]("No se puede hacer la reserva");
+                            console.log("entra en redireccionar");
+                            toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
+                            window.location.href = "reservas.php";
                         }
                     }
                 });
