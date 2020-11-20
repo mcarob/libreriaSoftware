@@ -61,6 +61,10 @@ include("menu.php");
                     <div class="col-md-12 col-sm-12 ol-lg-12">
                         <form action="#">               
                             <div class="table-content wnro__table table-responsive">
+                                <div class="pd-20">
+                                    <h4 class="text-blue h4">Libros registrados</h4>
+                                    <br>
+				                </div>
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                     <thead>
                                         <tr class="title-top">
@@ -74,33 +78,20 @@ include("menu.php");
                                     </thead>
                                     <tbody>
                                     <?php
-                                            foreach ($publicadores as $key) {
-                                                echo ("<tr>");
-                                                echo ("<td>" . $key['nom_publicador'] . "</td>");
-                                                echo ("<td>" . $key['ced_publicador'] . "</td>");
-                                                echo ("<td>" . $key['correo_publicador'] . "</td>");
-                                                echo ("<td>" . $key['pais_publicador'] . "</td>");
-                                                echo ("<td>" . $key['ciudad_publicador'] . "</td>");
-                                                echo ("<td>" . $key['direccion_publicador'] . "</td>");
-                                                echo ("<td>" . $key['telefono_publicador'] . "</td>");
-
-                                
-                                                
-                                                if ($key['estado_usuario'] == "4") {
-                                                    echo ("<td><div class='btn-list'>	
-                                                            <button type='button' class='btn btn-outline-danger' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Inactivar</button>
-                                                            </div></td>");
-                                                } else if($key['estado_usuario'] == "5") {
-                                                    echo ("<td><div class='btn-list'>
-                                                            <button type='button' class='btn btn-outline-success' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Activar</button>
-                                                            </div></td>");
-                                                }
-                                            ?>
-
-                                            <?php
-                                                echo ("</tr>");
-                                            }
-                                            ?>					
+                                        foreach ($libro as $key) {
+                                            echo ("<tr>");
+                                            echo ("<td>" . $key['titulo_documento'] . "</td>");
+                                            echo ("<td>" . $key['informacion_paginas'] . "</td>");
+                                            echo ("<td>" . $key['editorial_publicacion'] . "</td>");
+                                            echo ("<td>" . $key['codigo_isbn'] . "</td>");        
+                                            echo ("<td>" . "<button type='button' class='btn btn-danger'>Deshabilitar</button>" . "</td>");
+                                            
+                                           
+                                        ?>
+                                        <?php
+                                            echo ("</tr>");
+                                        }
+                                        ?>                                    			
                                     </tbody>
                                 </table>
                             </div>
