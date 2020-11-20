@@ -69,6 +69,11 @@ class ControladorDocumento{
         $this->libro=new ClienteDAO();
         return $this->cliente->cantidadLibros($codigoCliente);
     }
+    public function graficoFisicovDigital()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->graficoDvsF();
+    }
 
     public function listarDocumentoNoValidados()
     {
