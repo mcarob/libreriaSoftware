@@ -104,15 +104,6 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
 
-    public function cantidadPonencia($codigoPublicador){
-        $sentencia = $this->con->prepare("SELECT * FROM cantidaddeprestamosxcliente WHERE cod_publicador =?");
-        $sentencia->execute([$codigoPublicador]);
-        $row = $sentencia->fetch();
-        return $row;
-    }
-
-    
-
 
 
     public function listarDocumentoFisico(){

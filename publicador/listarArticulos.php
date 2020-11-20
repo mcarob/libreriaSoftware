@@ -16,7 +16,7 @@ include("header.php");
 // $usuario=$conReg->darUsuario($_SESSION['user']);
 // $codigo=$usuario->getCod_usuario();
 $conDoc=new ControladorDocumento();
-$libro=$conDoc->listarLibro($conDoc->listarLibro());
+$libro=$conDoc->listarPresentacion($conDoc->listarPresentacion());
 
 ?>
 <body>
@@ -69,7 +69,7 @@ include("menu.php");
                                     
                                 </div>
                                 <div class="pd-20" style="padding-bottom: 20px; float: right; display : inline-flex; ">
-                                        <a  class="btn btn-outline-success" href="Publicador.php" role="button">Publicar nuevo libro</a>
+                                        <a  class="btn btn-outline-success" href="Publicador.php" role="button">Publicar nuevo articulo</a>
                             
                                 </div>
                                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -78,7 +78,7 @@ include("menu.php");
 											<th class="product-name">Titulo libro</th>
                                             <th class="product-price">Cantidad De Paginas</th>                                            
                                             <th class="product-quantity">Editorial</th>
-                                            <th class="product-quantity">Codigo ISBN</th>
+                                            <th class="product-quantity">Codigo SSN</th>
                                             <th class="product-quantity">Acciones</th>
                                             <th class="product-quantity">Fecha publicacion</th>
                                         </tr>
@@ -90,10 +90,9 @@ include("menu.php");
                                             echo ("<td>" . $key['titulo_documento'] . "</td>");
                                             echo ("<td>" . $key['informacion_paginas'] . "</td>");
                                             echo ("<td>" . $key['editorial_publicacion'] . "</td>");
-                                            echo ("<td>" . $key['codigo_isbn'] . "</td>");
+                                            echo ("<td>" . $key['informacion_ssn'] . "</td>");
                                             echo ("<td>" . $key['fecha_publicacion'] . "</td>");
-                                            echo ("<td>" . "<button type='button' class='btn btn-danger'>Deshabilitar</button>" . "</td>");
-                                            
+                                            echo ("<td>" . "<button type='button' class='btn btn-danger'>Deshabilitar</button>" . "</td>");                                            
                                            
                                         ?>
                                         <?php
