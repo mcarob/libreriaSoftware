@@ -86,7 +86,7 @@ class DocumentoDAO extends DB  implements dao_interface
         return $em;
     }
     public function listarLibro(){
-        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_presentacion = '1'");
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '1'");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -94,6 +94,16 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+    public function listarPresentacion(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '2'");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
 
 
 

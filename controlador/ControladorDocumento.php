@@ -38,7 +38,11 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->listarLibro();
     }
-
+    public function listarPresentacion()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarPresentacion();
+    }
     public function listarDocumentoF()
     {
         $this->documento=new DocumentoDAO();
@@ -51,6 +55,11 @@ class ControladorDocumento{
         return $this->documento->listarDocumentoDigital();
     }
 
+    public function cantidadLibro($codigoCliente)
+    {
+        $this->libro=new ClienteDAO();
+        return $this->cliente->cantidadLibros($codigoCliente);
+    }
 
     public function listarDocumentoNoValidados()
     {
