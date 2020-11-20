@@ -38,13 +38,13 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->listarLibro();
     }
-<<<<<<< HEAD
-    public function listarPresentacion()
+
+    public function listarArticulo()
     {
         $this->documento=new DocumentoDAO();
-        return $this->documento->listarPresentacion();
+        return $this->documento->listarArticulo();
     }
-=======
+
 
     public function listarPonencia()
     {
@@ -52,7 +52,6 @@ class ControladorDocumento{
         return $this->documento->listarPonencia();
     }
 
->>>>>>> a98540e7f8054188f695fbf3280577d5800a0c7b
     public function listarDocumentoF()
     {
         $this->documento=new DocumentoDAO();

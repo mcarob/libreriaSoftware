@@ -16,7 +16,7 @@ include("header.php");
 // $usuario=$conReg->darUsuario($_SESSION['user']);
 // $codigo=$usuario->getCod_usuario();
 $conDoc=new ControladorDocumento();
-$libro=$conDoc->listarPresentacion($conDoc->listarPresentacion());
+$articulo=$conDoc->listarArticulo($conDoc->listarArticulo());
 
 ?>
 <body>
@@ -63,7 +63,7 @@ include("menu.php");
                             <div class="table-content wnro__table table-responsive">
                                 <div class="box" style="display : flex; ">
                                     <div class="pd-20">
-                                        <h4 class="text-blue h4">Libros registrados</h4>
+                                        <h4 class="text-blue h4">Articulos registrados</h4>
                                     
                                     </div>
                                     
@@ -85,7 +85,7 @@ include("menu.php");
                                     </thead>
                                     <tbody>
                                     <?php
-                                        foreach ($libro as $key) {
+                                        foreach ($articulo as $key) {
                                             echo ("<tr>");
                                             echo ("<td>" . $key['titulo_documento'] . "</td>");
                                             echo ("<td>" . $key['informacion_paginas'] . "</td>");
@@ -110,10 +110,9 @@ include("menu.php");
                         <div class="cartbox__total__area">
                             <div class="cartbox-total d-flex justify-content-between">
                                 <ul class="cart__total__list">
-                                    <li>Cantidad de libros publicados</li>
+                                    <li>Cantidad de articulos publicados</li>
                                 </ul>
                                 <ul class="cart__total__tk">
-                                    <!-- <li><?php echo $libH["cantidad_libstamos"]?></li> -->
                                     <li>1</li>
                                 </ul>
                             </div>

@@ -94,13 +94,9 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
-<<<<<<< HEAD
-    public function listarPresentacion(){
-        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '2'");
-=======
-    public function listarPonencia(){
-        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_presentacion = '2'");
->>>>>>> a98540e7f8054188f695fbf3280577d5800a0c7b
+
+    public function listarArticulo(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '3'");
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -108,13 +104,16 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
-<<<<<<< HEAD
+    public function listarPonencia(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '2'");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
 
-=======
->>>>>>> a98540e7f8054188f695fbf3280577d5800a0c7b
-
-
-
+    }
     public function listarDocumentoFisico(){
         $query = $this->con->prepare("SELECT * FROM listadocumentosfisicos");
         $query->execute();
