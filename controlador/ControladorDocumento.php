@@ -39,6 +39,12 @@ class ControladorDocumento{
         return $this->documento->listarLibro();
     }
 
+    public function listarPonencia()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarPonencia();
+    }
+
     public function listarDocumentoF()
     {
         $this->documento=new DocumentoDAO();

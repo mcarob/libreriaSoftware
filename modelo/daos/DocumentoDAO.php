@@ -94,6 +94,15 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+    public function listarPonencia(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_presentacion = '2'");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
 
 
 
