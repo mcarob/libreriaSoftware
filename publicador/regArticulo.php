@@ -65,7 +65,7 @@
     </div>
     <input type= "number"class="form-control" id="tipo" name="tipo" value="2" hidden/>
     <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
-            <a onclick="agregarArticulo();" class="btn btn-primary btn-default" value="Registrar">Registrar</a>
+            <a onclick="agregarArticulo();" class="btn btn-success" value="Registrar">Registrar</a>
         </div>
   
 </form>

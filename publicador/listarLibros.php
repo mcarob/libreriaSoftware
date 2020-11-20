@@ -93,8 +93,7 @@ include("menu.php");
                                             echo ("<td>" . $key['codigo_isbn'] . "</td>");
                                             echo ("<td>" . $key['fecha_publicacion'] . "</td>");
                                             echo ("<td>" . "<button type='button' class='btn btn-danger'>Deshabilitar</button>" . "</td>");
-                                            
-                                           
+                                                                                       
                                         ?>
                                         <?php
                                             echo ("</tr>");

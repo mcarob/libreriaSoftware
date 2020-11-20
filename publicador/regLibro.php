@@ -27,8 +27,19 @@
                     <input type="date" class="form-control" id="fechaPublicacion" name="fechaPublicacion">
                 </div>
             </div>
-            
-
+            <div class="col-md-4">
+            <div class="form-group">
+                <label>Idioma:</label>
+                <select class="custom-select" id="idioma">
+                    <option selected>Escoger idioma...</option>
+                    <option value="1">Inglés</option>
+                    <option value="2">Español</option>
+                    <option value="3">Portuges</option>
+                    <option value="4">Alemán</option>
+                    <option value="5">Frances</option>
+                </select>
+            </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -37,15 +48,22 @@
                     <input class="form-control" id="isbn" name="isbn">
                 </div>
             </div>
-    
-        </div>
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Editorial:</label>
                     <input class="form-control" id="editorial" name="editorial">
                 </div>
             </div>
+            <div class="col-md-4" aling="align-items-center">
+                <div class="form-group">
+                    <label>Numero de Paginas:</label>
+                    <input type= "number"class="form-control" id="informacion_paginas" name="informacion_paginas">
+                    </input>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            
             <div class="col-md-4">
                 <div class="form-group">
 
@@ -62,17 +80,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" aling="align-items-center">
-                <div class="form-group">
-                    <label>Numero de Paginas:</label>
-                    <input type= "number"class="form-control" id="informacion_paginas" name="informacion_paginas">
-                    </input>
-                </div>
-            </div>
+            
         </div>
         <input type= "number"class="form-control" id="tipo" name="tipo" value="1" hidden/>
         <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
-            <a onclick="agregarLibro();" class="btn btn-primary btn-default" value="Registrar">Registrar</a>
+            <a onclick="agregarLibro();" class="btn btn-success" value="Registrar">Registrar</a>
         </div>
     </div>
 </form>
