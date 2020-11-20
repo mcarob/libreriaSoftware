@@ -23,7 +23,7 @@ class PrestamoFisico{
         $this->fecha_devolucion_fisico = $fecha_devolucion_fisico;
 
     }
-
+    
 
     /**
      * Get the value of codPrestamoFisico

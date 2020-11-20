@@ -47,6 +47,11 @@ class ControladorPrestamoFisico{
         return $this->PrestamoFisico->darPrestamoFisicoxCod($cod);
     }
 
+    public function cambiarEstadoExistencia($existencia){
+        $this->PrestamoFisico=new DaoPrestamoFisico();
+        return $this->PrestamoFisico->cambiarEstadoExistencia($existencia);
+    }
+
 }
 
 ?>

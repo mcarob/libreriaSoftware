@@ -111,7 +111,11 @@ class ControladorDocumento{
         return $this->documento->darInfoXdoc($documento);
     }
 
-
+    public function buscarExistenciaXdocumento($documento){
+        $this->documento=new DocumentoDAO();
+        return $this->documento->buscarExistenciaXdocumento($documento);
+    }
+    
     
     // // // 
 }

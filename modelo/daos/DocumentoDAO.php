@@ -211,7 +211,17 @@ class DocumentoDAO extends DB  implements dao_interface
         $query->execute([$documento]);
         return $query->fetch();
     }
-
+    
+    public function buscarExistenciaXdocumento($documento)
+    {
+        $sentencia = $this->con->prepare("SELECT * FROM existencia_documento WHERE cod_documento=? and cod_estado_copia=2");
+        $sentencia->execute([$documento]);
+        $em = array();
+        while ($fila = $sentencia->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
 
 
 //  //  //  //  //  

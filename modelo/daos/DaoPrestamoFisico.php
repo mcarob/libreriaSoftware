@@ -21,7 +21,7 @@ class DaoPrestamoFisico extends DB implements dao_interface
         cod_usuario_cliente,
         cod_estado_prestamo,
         fecha_prestamo_fisico,
-        fecha_devolucion_fisico) values (?,?,?,?,?,?,?,?,?)";
+        fecha_devolucion_fisico) values (?,?,?,?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
             $nuevoRegistro->getCodPrestamoFisico(), $nuevoRegistro->getCodExistencia(), $nuevoRegistro->getCod_usuario_cliente(),
             $nuevoRegistro->getCod_estado_prestamo(), $nuevoRegistro->getFecha_prestamo_fisico(), $nuevoRegistro->getFecha_devolucion_fisico()
@@ -86,6 +86,14 @@ class DaoPrestamoFisico extends DB implements dao_interface
             $em[] = $fila;
         }
         return $em;
+    }
+
+
+    public function cambiarEstadoExistencia($existencia)
+    {
+            $sentencia=$this->con->prepare("UPDATE existencia_documento set cod_estado_copia= 3 WHERE cod_existencia_documento=?");
+            $respuesta=$sentencia->execute([$existencia]);
+            return $respuesta;
     }
 
 
