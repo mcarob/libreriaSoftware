@@ -108,6 +108,17 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+
+
+    public function graficoDvsF(){
+        $query = $this->con->prepare("SELECT * FROM fvd");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
     
 
     public function AceptarLibroNuevo($id)

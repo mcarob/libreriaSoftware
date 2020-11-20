@@ -41,8 +41,8 @@ $prestamos = $CPF->DarprestamosFisicosxCodPrestamo($id);
                 
                 <div class="col-lg-6">
                     <div class="form-group mb-4">
-                        <label for="Birthday">Tipo de documento</label>
-                        <input type="text" class="form-control" readonly value="<?php echo $prestamos['nom_tipo_documento'] ?>">
+                        <label for="Birthday">Documento</label>
+                        <input type="text" class="form-control" readonly value="<?php echo $prestamos['titulo_documento'] ?>">
                     </div>
                 </div>
 
@@ -74,8 +74,8 @@ $prestamos = $CPF->DarprestamosFisicosxCodPrestamo($id);
                         <input type="text" class="form-control" readonly value="<?php echo $prestamos['direccion_cliente'] ?>">
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="form-group mb-4">
+                <div class="col-lg-12">
+                    <div class="form-group mb-12">
                         <label for="Birthday">Correo del Usuario</label>
                         <input type="text" class="form-control" readonly value="<?php echo $prestamos['correo_cliente'] ?>">
                     </div>

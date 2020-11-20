@@ -47,6 +47,12 @@ class ControladorDocumento{
         return $this->documento->listarDocumentoDigital();
     }
 
+    public function graficoFisicovDigital()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->graficoDvsF();
+    }
+
 
     public function listarDocumentoNoValidados()
     {
