@@ -29,7 +29,9 @@
                         <li class="drop"><a>Mis Documentos</a>
                             <div class="megamenu mega02">
                                 <ul class="item item02">
-                                    <li><a href="listarDocs.php">Consultar</a></li>
+                                    <li><a href="listarLibros.php">Libros</a></li>
+                                    <li><a href="listarPonencia.php">Ponencia</a></li>
+                                    <li><a href="listarArticulo.php">Articulos</a></li>
                                     
                                 </ul>
                             </div>

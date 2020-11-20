@@ -73,11 +73,6 @@ include("menu.php");
                                             <th class="product-quantity">Tipo presentacion</th>
                                             <th class="product-quantity">Editorial</th>
                                             <th class="product-quantity">Codigo ISBN</th>
-                                            <th class="product-quantity">Codigo SSN</th>
-                                            <th class="product-quantity"></th>
-
-
-											<th class="product-quantity">Estado de prestamo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
