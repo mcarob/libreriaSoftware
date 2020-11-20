@@ -94,8 +94,13 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+<<<<<<< HEAD
     public function listarPresentacion(){
         $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '2'");
+=======
+    public function listarPonencia(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_presentacion = '2'");
+>>>>>>> a98540e7f8054188f695fbf3280577d5800a0c7b
         $query->execute();
         $em = array();
         while ($fila = $query->fetch()) {
@@ -103,7 +108,10 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> a98540e7f8054188f695fbf3280577d5800a0c7b
 
 
 
