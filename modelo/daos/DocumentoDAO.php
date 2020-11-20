@@ -17,8 +17,7 @@ class DocumentoDAO extends DB  implements dao_interface
     
 
     public function agregarRegistro(Object $nuevoRegistro){
-        echo("linea20");
-        print_r($nuevoRegistro);
+
         $query = "INSERT INTO documento(cod_idioma, cod_tipo_documento, 
         cod_tipo_presentacion, titulo_documento, fecha_publicacion, 
         editorial_publicacion, codigo_isbn, informacion_paginas,
@@ -86,8 +85,35 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+    public function listarLibro(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '1'");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
 
+    public function listarArticulo(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '3'");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+    public function listarPonencia(){
+        $query = $this->con->prepare("SELECT * FROM documento WHERE cod_tipo_documento = '2'");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
 
+    }
     public function listarDocumentoFisico(){
         $query = $this->con->prepare("SELECT * FROM listadocumentosfisicos");
         $query->execute();
@@ -151,6 +177,13 @@ class DocumentoDAO extends DB  implements dao_interface
             $em[] = $fila;  
         }
         return $em;
+    }
+
+    public function cantidadLibros($codigoCliente){
+        $sentencia = $this->con->prepare("SELECT * FROM cantidaddeprestamosxcliente WHERE cod_cliente =?");
+        $sentencia->execute([$codigoCliente]);
+        $row = $sentencia->fetch();
+        return $row;
     }
 
 //  //  //  //  //  //  

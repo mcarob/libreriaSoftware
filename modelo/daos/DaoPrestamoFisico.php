@@ -16,17 +16,15 @@ class DaoPrestamoFisico extends DB implements dao_interface
 
     public function agregarRegistro(OBJECT $nuevoRegistro)
     {
-        $fecha='2011-05-21';
-        $query = "INSERT INTO prestamo_fisico (cod_prestamo_fisico,
+        $query = "INSERT INTO prestamo_fisico (
         cod_existencia,
         cod_usuario_cliente,
         cod_estado_prestamo,
         fecha_prestamo_fisico,
-        fecha_devolucion_fisico) values (?,?,?,?,?,?)";
+        fecha_devolucion_fisico) values (?,?,?,now(),now()+8*interval'1 day')";
         $respuesta = $this->con->prepare($query)->execute([
-            $nuevoRegistro->getCodPrestamoFisico(), $nuevoRegistro->getCodExistencia(), $nuevoRegistro->getCod_usuario_cliente(),
-            $nuevoRegistro->getCod_estado_prestamo(),
-            $fecha, $fecha
+            $nuevoRegistro->getCodExistencia(), $nuevoRegistro->getCod_usuario_cliente(),
+            $nuevoRegistro->getCod_estado_prestamo()
         ]);
         return $respuesta;
     }

@@ -5,7 +5,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/Controla
 $conDocumento = new ControladorDocumento();
 $idLibro = $_GET['libro'];
 $libro = $conDocumento->darInfoXdoc($idLibro);
-
 $cod_cliente=$_GET['cliente'];
 
 ?>
@@ -17,7 +16,7 @@ $cod_cliente=$_GET['cliente'];
         </div>
         <div class="modal-body px-4">
 
-            <form id="reserva" method="POST" action="javascript: agregarPostulacion()">
+            <form id="reserva" method="POST" action="javascript:agregarPostulacion()">
             
                 <div class="modal-body px-4">
                 <div>
@@ -75,28 +74,27 @@ $cod_cliente=$_GET['cliente'];
 </div>
 
 <script>
-    var entrada=0;
+    
         function agregarPostulacion() {
             
-                datos = $('#reserva').serialize();
-                $.ajax({
-                    type: "POST",
-                    data: datos,
-                    url: "agregar_reserva.php",
-                    
-                    success: function(r) {
-                        console.log(r);
-                        if (r == 1) {
-                            console.log("entra en redireccionar");
-                            toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
-                            window.location.href = "reservas.php";
-                        } else {
-                            console.log("entra en redireccionar");
-                            toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
-                            window.location.href = "reservas.php";
+               
+            datos = $('#reserva').serialize();
+
+                    $.ajax({
+                        type: "POST",
+                        data: datos,
+                        url: "agregar_reserva.php",
+                        success: function(r) {
+
+                            console.log(r);
+                            if (r == 1) {
+                                toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
+                                window.location.href = "reservas.php";
+                            } else {
+                                toastr["success"]("No se pudo hacer la reserva", "ERROR");
+                            }
                         }
-                    }
-                });
+                    });
 
                
         }

@@ -33,7 +33,24 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->listar();
     }
+    public function listarLibro()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarLibro();
+    }
 
+    public function listarArticulo()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarArticulo();
+    }
+
+
+    public function listarPonencia()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->listarPonencia();
+    }
 
     public function listarDocumentoF()
     {
@@ -47,12 +64,16 @@ class ControladorDocumento{
         return $this->documento->listarDocumentoDigital();
     }
 
+    public function cantidadLibro($codigoCliente)
+    {
+        $this->libro=new ClienteDAO();
+        return $this->cliente->cantidadLibros($codigoCliente);
+    }
     public function graficoFisicovDigital()
     {
         $this->documento=new DocumentoDAO();
         return $this->documento->graficoDvsF();
     }
-
 
     public function listarDocumentoNoValidados()
     {
