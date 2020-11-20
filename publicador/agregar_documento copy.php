@@ -26,7 +26,7 @@ $ponencia=array(
 );
 
 
-if (isset($_POST["REM"])) {
+if (isset($_POST["RLI"])) {
     // validaciones de registro empresa y registro como tal 
     
     if (isset($_FILES['archivoDocumento'])) {
