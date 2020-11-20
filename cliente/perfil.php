@@ -138,7 +138,7 @@ $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
                         toastr["success"]('Actualizando perfil...', "NOTIFICACIÓN");
                         window.location.href = "index.php";
                     } else {
-                        toastr["success"](r, "ERROR");
+                        toastr["error"](r, "ERROR");
                     }
                 }
             });
