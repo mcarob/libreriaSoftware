@@ -13,7 +13,7 @@
             <label class="label-for-checkbox">
             </label>
         </div>
-// #1f3258e3
+
     </div>
     <div class="tab-pane  fade" id="profile1" role="tabpanel" aria-labelledby="profile1-tab">
         <h3>Ingresa tus datos de usario </h3>
