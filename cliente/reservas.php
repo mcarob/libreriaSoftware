@@ -1,6 +1,7 @@
 ﻿<!doctype html>
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorPrestamoF.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
@@ -22,6 +23,9 @@ $PreH=$conCli->cantidadPrestamos($cliente->getCod_cliente());
 $PreF=10-$PreH["cantidad_prestamos"];
 
 $misPrestamos=$conCli->listarPrestamosXcliente($cliente->getCod_cliente());
+
+$conPrestamo=new ControladorPrestamoFisico();
+
 ?>
 <body>
 <?php
@@ -84,16 +88,26 @@ include("menu.php");
 											<td><?php echo $pre["fecha_prestamo_fisico"] ?></td>
                                             <td><?php echo $pre["fecha_devolucion_fisico"] ?></td>
                                             <td><?php echo $pre["codigo_isbn"] ?></td>
-                                            <?php if($pre["nombre_estado"]=="Entregado")
+                                            <?php 
+                                            if($conPrestamo->verRetraso($pre["fecha_devolucion_fisico"])==1)
+                                            {
+                                                $conPrestamo->cambiarEstadoPrestamo($pre["cod_prestamo_fisico"]);
+                                                echo ('<td><FONT COLOR="red">Atrasado</FONT></td>');
+
+                                            }else{
+                                                if($pre["nombre_estado"]=='En Espera')
                                                 {
-                                                    echo ('<td><font COLOR="green">'.$pre["nombre_estado"].'</font> </td>');
-                                                }else if($pre["nombre_estado"]=="Reservado")
+                                                    echo ('<td><FONT COLOR="red">En Espera</FONT></td>');
+
+                                                }else if($pre["nombre_estado"]=='Reservado')
                                                 {
-                                                    echo ('<td><font COLOR="teal">'.$pre["nombre_estado"].'</font> </td>');
-                                                }else if($pre["nombre_estado"]=="Atrasado")
+                                                    echo ('<td><FONT COLOR="navy">Reservado</FONT></td>');
+                                                
+                                                }else if($pre["nombre_estado"]=='Entregado')
                                                 {
-                                                    echo ('<td><font COLOR="red">'.$pre["nombre_estado"].'</font> </td>');    
+                                                    echo ('<td><FONT COLOR="green">Entregado</FONT></td>');
                                                 }
+                                            }
                                             ?>
                                         </tr>
                                         <?php } ?>
