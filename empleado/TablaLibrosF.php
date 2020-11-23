@@ -130,6 +130,24 @@ $fisicos = $CDocumentos->listarDocumentoF();
 		$('#123').load('modalPrestar.php?id=' + valor);
 		$('#234444444432').modal('show');
 	}
+
+
+	function agregarPrestamo(){
+        datos = $('#dddd').serialize();
+        $.ajax({
+            type: "POST",
+            data: datos,
+            url: "../administrador/Ac.php?action=" + "reservarLxC",
+            success: function(r) {
+                console.log(r);
+                if (r == 1) {
+                    window.location.href = "index.php";
+                } else {
+
+                }
+            }
+        });
+    }
 </script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>

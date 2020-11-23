@@ -63,7 +63,7 @@ include('menuEm.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Dirección :</label>
-                                        <input type="email" class="form-control" required id="direccion" name="direccion">
+                                        <input type="text" class="form-control" required id="direccion" name="direccion">
                                     </div>
                                 </div>
                             </div>
@@ -98,20 +98,41 @@ include('menuEm.php');
 
 <script>
     function agregarCliente() {
-
-        console.log("Entroooooooooooooooooo");
         datos = $('#newC').serialize();
 
         $.ajax({
             type: "POST",
             data: datos,
-            url: "../administrador/ac.php?action=" + "AgregarC",
+            url: "../administrador/Ac.php?action=" + "AgregarC",
             success: function(r) {
                 console.log(r);
-                if (r == 1) {
-                    window.location.href = "FormCliente.php";
-                } else {
+                if (r == 3) {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: '¡El correo ya existe!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
 
+
+                } else if (r == 1) {
+                    swal({
+                        type: 'success',
+                        title: '¡Se agrego correctamente!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    document.getElementById("newC").reset();
+
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: '¡No se ha podido agregar!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                 }
             }
         });
@@ -122,3 +143,6 @@ include('menuEm.php');
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
 <script src="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
+
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>

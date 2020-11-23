@@ -17,8 +17,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/modelo/entidades/Cli
 
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
-            
-            case 'AgregarE':
+
+        case 'AgregarE':
             $datos = array(
                 $_POST["cedula"],
                 $_POST["nombre"],
@@ -28,28 +28,28 @@ if (isset($_GET['action'])) {
             );
             // FALTA EL CONTROLADOR DEL USUARIO
             $CEmpleados = new ControladorEmpleados();
-            echo $r = $CEmpleados->agregarEmpleado($datos[1],$datos[2],$datos[4],$datos[3],$datos[0]);
-            
+            echo $CEmpleados->agregarEmpleado($datos[1], $datos[2], $datos[4], $datos[3], $datos[0]);
+
             break;
 
 
-            case 'AgregarC':
-                $datos = array(
-                    $_POST["nombre"],
-                    $_POST['apellidos'],
-                    $_POST["telefono"],
-                    $_POST["correo"],
-                    $_POST["direccion"]
-                );
-                // FALTA EL CONTROLADOR DEL USUARIO
-                $CCliente = new ControladorCliente();
-                echo $CCliente->agregarCliente($datos[0],$datos[1],$datos[3], $datos[2], $datos[4]);
+        case 'AgregarC':
+            $datos = array(
+                $_POST["nombre"],
+                $_POST['apellidos'],
+                $_POST["telefono"],
+                $_POST["correo"],
+                $_POST["direccion"]
+            );
+            // FALTA EL CONTROLADOR DEL USUARIO
+            $CCliente = new ControladorCliente();
+            echo $CCliente->agregarCliente($datos[0], $datos[1], $datos[3], $datos[2], $datos[4]);
 
-                break;
-            
+            break;
+
         case 'APublicador':
             $CUsuarios = new ControladorUsuario();
-            echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],4);
+            echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 4);
             if ($r) {
                 header("location:TablaPublicadoresInac.php");
             } else {
@@ -59,7 +59,7 @@ if (isset($_GET['action'])) {
 
         case 'rechazarPu':
             $CUsuarios = new ControladorUsuario();
-            echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],6);
+            echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 6);
             if ($r) {
                 header("location:TablaPublicadoresInac.php");
             } else {
@@ -80,121 +80,110 @@ if (isset($_GET['action'])) {
 
         case 'estadoPub':
             $CUsuarios = new ControladorUsuario();
-            
+
             $user = $CUsuarios->darUsuarioxCod($_GET['codigo']);
-            if($user->getEstado_usuario()==4){
+            if ($user->getEstado_usuario() == 4) {
                 // InActivar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],5);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 5);
                 if ($r) {
                     header("location:TablaPublicadores.php");
                 } else {
                     echo ($r);
                 }
-            }
-            else if($user->getEstado_usuario()==5){
+            } else if ($user->getEstado_usuario() == 5) {
                 //Activar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],4);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 4);
                 if ($r) {
                     header("location:TablaPublicadores.php");
                 } else {
                     echo ($r);
                 }
             }
-        break;
+            break;
 
-        case 'AgregarC':
-            $datos = array(
-                $_POST["nombre"],
-                $_POST["telefono"],
-                $_POST["correo"],
-                $_POST["direccion"]
-            );
 
-            // PROCEDIMIENTO PARA AGREGAR CLIENTE
-        break;
-
-        
         case 'reservarLxC':
+            print("entrooo");
             $datos = array(
                 $_POST["cod_libro"],
-                $_POST["cod_cliente"]
+                $_POST["correo_usuario"]
             );
+            print_r($datos);
+            $CPrestamoF = new ControladorPrestamoFisico();
+            echo $CPrestamoF->agregarPrestamoProce($datos[0],$datos[1]);
 
             // METODO PARA RESERVAR POR EL CLIENTES
-        break; 
-        
+            break;
+
         case 'estadoEm':
             $CUsuarios = new ControladorUsuario();
             $user = $CUsuarios->darUsuarioxCod($_GET['codigo']);
-            if($user->getEstado_usuario()==4){
+            if ($user->getEstado_usuario() == 4) {
                 // InActivar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],5);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 5);
                 if ($r) {
                     header("location:TablaEmpleados.php");
                 } else {
                     echo ($r);
                 }
-            }
-            else if($user->getEstado_usuario()==5){
+            } else if ($user->getEstado_usuario() == 5) {
                 //Activar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],4);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 4);
                 if ($r) {
                     header("location:TablaEmpleados.php");
                 } else {
                     echo ($r);
                 }
             }
-        break;
+            break;
 
 
         case 'estadoCL':
             $CUsuarios = new ControladorUsuario();
             $user = $CUsuarios->darUsuarioxCod($_GET['codigo']);
-            
-            if($user->getEstado_usuario()==4){
+
+            if ($user->getEstado_usuario() == 4) {
                 // InActivar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],5);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 5);
                 if ($r) {
                     header("location:TablaClientes.php");
                 } else {
                     echo ($r);
                 }
-            }
-            else if($user->getEstado_usuario()==5){
+            } else if ($user->getEstado_usuario() == 5) {
                 //Activar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],4);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 4);
                 if ($r) {
                     header("location:TablaClientes.php");
                 } else {
                     echo ($r);
                 }
             }
-        break;
+            break;
 
         case 'estadoCLE':
             $CUsuarios = new ControladorUsuario();
             $user = $CUsuarios->darUsuarioxCod($_GET['codigo']);
-            
-            if($user->getEstado_usuario()==4){
+
+            if ($user->getEstado_usuario() == 4) {
                 // InActivar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],5);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 5);
                 if ($r) {
                     header("location:../empleado/TablaClientes.php");
                 } else {
                     echo ($r);
                 }
-            }
-            else if($user->getEstado_usuario()==5){
+            } else if ($user->getEstado_usuario() == 5) {
                 //Activar
-                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'],4);
+                echo $r = $CUsuarios->cambiarEstadoPubli($_GET['codigo'], 4);
                 if ($r) {
                     header("location:../empleado/TablaClientes.php");
                 } else {
                     echo ($r);
                 }
             }
-        break;
-        
+            break;
+
         case 'ALibro':
             $CDocumento = new ControladorDocumento();
             echo $r = $CDocumento->aceptarLibro($_GET['codigo']);
@@ -204,6 +193,5 @@ if (isset($_GET['action'])) {
                 echo ($r);
             }
             break;
-        
     }
 }

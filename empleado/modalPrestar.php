@@ -17,7 +17,7 @@ $devolucion = date('Y-m-d', $devolucion);
     </div>
     <div class="modal-body px-4">
 
-        <form id="prestar">
+        <form id="dddd" method="POST">
 
             <div class="modal-body px-4">
                 <div class="row mb-2">
@@ -25,6 +25,9 @@ $devolucion = date('Y-m-d', $devolucion);
                         <div class="form-group">
                             <label for="firstName">Correo usuario:</label>
                             <input type="text" id='dd'class="form-control 1">
+                            <input type="hidden" id="cod_libro" name="cod_libro" value="<?php echo $id?>">
+                            <input type="hidden" id="correo_usuario" name="correo_usuario" value="">
+
                         </div>
                     </div>
 
@@ -68,7 +71,7 @@ $devolucion = date('Y-m-d', $devolucion);
     </div>
     <div class="modal-footer px-4">
         <button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Aceptar</button>
+        <button type="button" class="btn btn-secondary btn-pill" onclick="agregarPrestamo()">Aceptar</button>
 
     </div>
 </form>
@@ -78,24 +81,9 @@ $devolucion = date('Y-m-d', $devolucion);
     function buscarusu() {
         var x = $('#dd').val();
         $('#4536').load('infoPrestamo.php?correo='+x);
+        $('#correo_usuario').val(x);
+
     }
 
-    function agregarPrestamo(){
-        datos = $('#prestar').serialize();
-
-        $.ajax({
-            type: "POST",
-            data: datos,
-            url: "ac.php?action="+"AgregarE",
-            success: function(r) {
-
-                console.log(r);
-                if (r == 1) {
-                    window.location.href = "index.php";
-                } else {
-
-                }
-            }
-        });
-    }
+    
 </script>

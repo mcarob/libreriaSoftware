@@ -22,6 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/icon-font.min.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.css">
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.css">
 
 
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/vendors/styles/core.css">

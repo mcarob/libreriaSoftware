@@ -36,7 +36,12 @@ class ControladorPrestamoFisico{
         $this->PrestamoFisico=new DaoPrestamoFisico();
         return $this->PrestamoFisico->aceptarDevo($idCodPrestamo);
     }    
-    
+
+    public function agregarPrestamoProce($cod_libro, $correo){
+        $this->PrestamoFisico=new DaoPrestamoFisico();
+        return $this->PrestamoFisico->nuevoprestamoProce($cod_libro, $correo);
+    }
+
     public function prestamosFisicosxCodCliente($cod_cliente){
         $this->PrestamoFisico=new DaoPrestamoFisico();
         return $this->PrestamoFisico->prestamosFisicosxCodCliente($cod_cliente);

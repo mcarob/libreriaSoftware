@@ -29,61 +29,61 @@ include('menuAdmi.php');
                     <h4 class="text-blue h4">Formulario del empleado</h4>
                 </div>
                 <div class="wizard-content">
-                    <form id="newE" method="POST" action ="javascript: agregarEmpleado()" class="tab-wizard wizard-circle wizard">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Nombres :</label>
-                                        <input type="text" class="form-control" required id="nombre" name="nombre">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Apellidos :</label>
-                                        <input type="text" class="form-control" required id="apellidos" name="apellidos">
-                                    </div>
+                    <form id="newE" method="POST" action="javascript: agregarEmpleado()" class="tab-wizard wizard-circle wizard">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombres :</label>
+                                    <input type="text" class="form-control" required id="nombre" name="nombre">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Correo electronico:</label>
-                                        <input type="email" class="form-control" required id="correo" name="correo">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label> Número de celular :</label>
-                                        <input type="text" class="form-control" required id="telefono" name="telefono">
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Apellidos :</label>
+                                    <input type="text" class="form-control" required id="apellidos" name="apellidos">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label> Cédula :</label>
-                                        <input type="text" class="form-control"  requiredid="cedula" name="cedula">
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Correo electronico:</label>
+                                    <input type="email" class="form-control" required id="correo" name="correo">
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Número de celular :</label>
+                                    <input type="text" class="form-control" required id="telefono" name="telefono">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> Cédula :</label>
+                                    <input type="text" class="form-control" requiredid="cedula" name="cedula">
+                                </div>
+                            </div>
+                        </div>
 
 
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <br>
-                                        <input type="hidden" class="form-control" required id="" name="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <br>
-                                        <!-- onclick="agregarCliente()" -->
-                                        <button type="submit"  class='btn btn-outline-success'>Agregar</button>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <br>
+                                    <input type="hidden" class="form-control" required id="" name="">
                                 </div>
                             </div>
-                                           </form>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <br>
+                                    <!-- onclick="agregarCliente()" -->
+                                    <button type="submit" class='btn btn-outline-success'>Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -96,20 +96,43 @@ include('menuAdmi.php');
 
 
 <script>
-  function agregarEmpleado() {
+    function agregarEmpleado() {
         datos = $('#newE').serialize();
-        
+
         $.ajax({
             type: "POST",
             data: datos,
-            url: "ac.php?action="+"AgregarE",
+            url: "Ac.php?action=" + "AgregarE",
             success: function(r) {
 
                 console.log(r);
-                if (r == 1) {
-                    window.location.href = "index.php";
-                } else {
+                if (r == 3) {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: '¡El correo ya existe!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
 
+
+                } else if (r == 1) {
+                    swal({
+                        type: 'success',
+                        title: '¡Se agrego correctamente!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    document.getElementById("newE").reset();
+
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: '¡No se ha podido agregar!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                 }
             }
         });
@@ -117,7 +140,10 @@ include('menuAdmi.php');
 </script>
 
 
+<script src="../assetsCliente/plugins/toastr/toastr.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
 <script src="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>

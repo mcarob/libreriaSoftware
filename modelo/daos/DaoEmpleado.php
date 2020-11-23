@@ -59,7 +59,7 @@ class DaoEmpleado extends DB implements dao_interface
         $query2=$this->con->prepare('SELECT * FROM usuario WHERE user_usuario=?');
         $query2->execute([$correo]);
         if ($query2->rowCount()) {
-            return "El correo ya existe, intente con otro";
+            return "3";
         }
         $query = "CALL agregarempleado(?,?,?,?,?,?)";
         $codigo=intval(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
@@ -67,10 +67,10 @@ class DaoEmpleado extends DB implements dao_interface
         $nombres= $nombre." ".$apellido;
         $respuesta2 = $this->con->prepare($query)->execute([$correo,$cedula,$codc,$nombres,$telefono,$cedula]);
         if($respuesta2==1){
-            return "Se agrego correctamente";
+            return "1";
         }
 
-        return "Error en el registro";
+        return "2";
     }
     //VISTA CON USUARIOS ACTIVOS E INACTIVOS
     public function listar(){

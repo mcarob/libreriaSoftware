@@ -14,7 +14,7 @@ $prestamos = $CPF->DarprestamosFisicosxCodPrestamo($id);
     </div>
     <div class="modal-body px-4">
 
-        <form>
+        <form id="prestamo">
            
             <div class="modal-body px-4">
             <div class="row mb-2">
