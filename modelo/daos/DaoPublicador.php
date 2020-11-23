@@ -32,6 +32,25 @@ class DaoPublicador extends DB implements dao_interface
         ]);
         return $respuesta;
     }
+    public function agregarRegistroPlataforma(Object $nuevoRegistro,$pass)
+    {
+        $query = "INSERT INTO publicador (cod_publicador,
+    cod_usuario,
+    ced_publicador,
+    nom_publicador,
+    correo_publicador,
+    direccion_publicador,
+    ciudad_publicador,
+    pais_publicador,
+    telefono_publicador) values (?,?,?,?,?,?,?,?,?)";
+        $respuesta = $this->con->prepare($query)->execute([
+            $nuevoRegistro->getCodPublicador(), $nuevoRegistro->getCod_usuario(), $nuevoRegistro->getCedPublicador(),
+            $nuevoRegistro->getNomPublicador(), $nuevoRegistro->getCorreoPublicador(), $nuevoRegistro->getDireccionPublicador(), $nuevoRegistro->getCiudadPublicador(),
+            $nuevoRegistro->getPaisPublicador(), $nuevoRegistro->getTelefonoPublicador()
+        ]);
+        return $respuesta;
+    }
+
 
 
     public function actualizarRegistro(Object $registroActualizar)

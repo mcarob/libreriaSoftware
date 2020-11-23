@@ -77,7 +77,6 @@
                     <div class="col-lg-6 col-12">
                         <div class="my__account__wrapper">
                             <h3 class="account__title">Registrarse</h3>
-                            <form  id="RegistroPasos"  action="javascript:Registrarse()" method="POST">
                                 <div class="account__form">
 								<h2>¿Deseas ser parte de la comunidad Bosquecillo? </h2>
                                     <div class="card card-default border-0">
@@ -91,12 +90,12 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" id="profile3-tab" data-toggle="tab" href="#profile1"
                                                     role="tab" aria-controls="profile3"
-                                                    aria-selected="false">Formaciones</a>
+                                                    aria-selected="false"></a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="profile3-tab" data-toggle="tab" href="#profile2"
                                                     role="tab" aria-controls="profile4"
-                                                    aria-selected="false">Experiencias</a>
+                                                    aria-selected="false"></a>
                                             </li>
                                         </ul>
                                         <div class="card-body">
@@ -106,7 +105,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>

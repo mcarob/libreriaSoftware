@@ -7,6 +7,12 @@ class ControladorPublicador{
     private $Publicador;
 
 
+    public function agregarRegistroPlataforma(Publicador $nuevoRegistro, $contrasenia)
+    {
+        $this->Publicador=new DaoPublicador();
+        return $this->Publicador->agregarRegistroPlataforma($nuevoRegistro,$contrasenia);
+    }
+
     public function agregarRegistro(Publicador $nuevoRegistro)
     {
         $this->Publicador=new DaoPublicador();

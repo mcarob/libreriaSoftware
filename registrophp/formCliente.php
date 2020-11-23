@@ -1,3 +1,4 @@
+<form id="formulTotal" onsubmit=" return Registrarse()">
 <h3>Ingresa tus datos Personales </h3>
 <div class="input__box">
     <label>Nombres y Apellidos <span>*</span></label>
@@ -15,8 +16,10 @@
     </div>
     <p style="margin-left:2em"></p>
     <p style="margin-left:2em"></p>
-    <button>Registrarse</button>
+    <input type="submit" class="btn btnRegistro" value="Registrarse" />
 </div>
 
 <label class="label-for-checkbox">
-</label>
+</label>    
+</form>
+
