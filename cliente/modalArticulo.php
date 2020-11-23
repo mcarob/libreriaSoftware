@@ -12,7 +12,7 @@ $cod_cliente=$_GET['cliente'];
 
 <div>
         <div class="modal-header px-4" >
-            <h3 class="modal-title" style="align-content:center;"  id="exampleModalCenterTitle">Libro: <?php echo $libro["titulo_documento"] ?></h3>        
+            <h3 class="modal-title" style="align-content:center;"  id="exampleModalCenterTitle">Articulo: <?php echo $libro["titulo_documento"] ?></h3>        
         </div>
         <div class="modal-body px-4">
 

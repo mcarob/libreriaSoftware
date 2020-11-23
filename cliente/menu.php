@@ -29,7 +29,8 @@
                         <li class="drop"><a>Mis reservas</a>
                             <div class="megamenu mega02">
                                 <ul class="item item02">
-                                    <li><a href="reservas.php">Consultar</a></li>
+                                    <li><a href="reservasF.php">Fisicas</a></li>
+                                    <li><a href="reservasD.php">Digitales</a></li>
                                     
                                 </ul>
                             </div>

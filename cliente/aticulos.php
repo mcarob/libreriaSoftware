@@ -55,11 +55,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
+                        	<h2 class="bradcaump-title">Stand Articulo</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Libros Fisicos</span>
+                              <span class="breadcrumb_item active">Articulos</span>
                             </nav>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados Libros Fisicos</p>
+			                        <p>Resultados Articulos</p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -119,7 +119,7 @@ include("menu.php");
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
 											<div class="hot__box">
-												<span class="hot-label">Libro</span>
+												<span class="hot-label">Articulo</span>
 											</div>
 										</div>
 										<div class="product__content content--center">

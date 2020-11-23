@@ -182,7 +182,7 @@ include('footer.php')
 
 <script>
 	function vermas(libro,cliente) {
-		$('.modal-content').load('modalLibroF.php?libro='+libro+'&cliente='+cliente) 
+		$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
 		$('#modal1').modal('show');
 	}
 	

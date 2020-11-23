@@ -16,7 +16,7 @@ $cod_cliente=$_GET['cliente'];
         </div>
         <div class="modal-body px-4">
 
-            <form id="reserva" method="POST" action="javascript:agregarReserva()">
+            <form id="reserva" method="POST" action="javascript:agregarReserva(<?php echo $libro["nom_tipo_presentacion"]?>)">
             
                 <div class="modal-body px-4">
                 <div>
@@ -64,11 +64,20 @@ $cod_cliente=$_GET['cliente'];
                     <td><?php echo $libro["existencias"]?></td>
                 </tr>                
                 <td><button id="botonCerrar" type="submit" class="btn btn-danger mb-2 btn-pill" >Cerrar</button></td>
-                <?php if($libro["existencias"]>0){
-                  echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
-                }else if($libro["existencias"]<0){
-                  echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Solicitar</button></td>");
-                }?>
+                <?php 
+                    if($libro["nom_tipo_presentacion"]=="Física")
+                    {
+                        if($libro["existencias"]>0){
+                            echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
+                        }else if($libro["existencias"]<0){
+                            echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Entrar en espera</button></td>");
+                        }
+
+                    }else if($libro["nom_tipo_presentacion"]=="Digital")
+                    {
+                    echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill'>Descargar</button></td>");      
+                    }
+                ?>
                 
                 </table>
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
@@ -82,7 +91,7 @@ $cod_cliente=$_GET['cliente'];
 
 <script>
     
-        function agregarReserva() {
+        function agregarReserva(tipo) {
             
                
             datos = $('#reserva').serialize();
@@ -95,8 +104,15 @@ $cod_cliente=$_GET['cliente'];
 
                             console.log(r);
                             if (r == 1) {
+                                if(tipo=="Física")
+                                {
                                 toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
                                 window.location.href = "reservasF.php";
+                                }else if(tipo=="Digital")
+                                {
+                                toastr["success"]('Realizando descarga...', "NOTIFICACIÓN");
+                                window.location.href = "reservasD.php";
+                                }
                             } else {
                                 toastr["success"]("No se pudo hacer la reserva", "ERROR");
                             }
