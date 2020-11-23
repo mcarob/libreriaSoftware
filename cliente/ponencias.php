@@ -1,5 +1,3 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
@@ -113,19 +111,19 @@ include("menu.php");
 	        					<div class="row">
 	        						<!-- Start Single Product -->
                                     <?php foreach($listaDocumentos as $lib){
-                                    if($lib["nom_tipo_documento"]=="Libro" and $lib["nom_tipo_presentacion"]=="Física"){?>
+                                    if($lib["nom_tipo_documento"]=="Ponencia"){?>
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
 											<div class="hot__box">
-												<span class="hot-label">Libro</span>
+												<span class="hot-label">Ponencia</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
 											<h4><a><?php echo $lib["nombre_autor"]." ".$lib["apellido_autor"]?></a></h4>
 											<ul class="prize d-flex">
-												<li><?php echo $lib["editorial_publicacion"]?></li>
+												<li><?php echo $lib["informacion_congreso"]?></li>
 												
 											</ul>
 											<div class="action">
@@ -182,7 +180,7 @@ include('footer.php')
 
 <script>
 	function vermas(libro,cliente) {
-		$('.modal-content').load('modalLibroF.php?libro='+libro+'&cliente='+cliente) 
+		$('.modal-content').load('modalPonencia.php?libro='+libro+'&cliente='+cliente) 
 		$('#modal1').modal('show');
 	}
 	

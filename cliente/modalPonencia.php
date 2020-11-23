@@ -16,7 +16,7 @@ $cod_cliente=$_GET['cliente'];
         </div>
         <div class="modal-body px-4">
 
-            <form id="reserva" method="POST" action="javascript:agregarReserva()">
+            <form id="reserva" method="POST" action="javascript:agregarPeticion()">
             
                 <div class="modal-body px-4">
                 <div>
@@ -44,8 +44,8 @@ $cod_cliente=$_GET['cliente'];
                 <td></td>
                 </tr>
                 <tr>
-                    <td>Editorial: </td>
-                    <td><?php echo $libro["editorial_publicacion"] ?></td>
+                    <td>Congreso: </td>
+                    <td><?php echo $libro["informacion_congreso"] ?></td>
                 </tr>
                 <tr>
                     <td>Idioma: </td>
@@ -59,10 +59,7 @@ $cod_cliente=$_GET['cliente'];
                     <td>Desc. fisica: </td>
                     <td><?php echo $libro["informacion_paginas"]." paginas" ?></td>
                 </tr>                
-                <tr>
-                    <td>Existencias: </td>
-                    <td><?php echo $libro["existencias"]?></td>
-                </tr>                
+                              
                 <td><button id="botonCerrar" type="submit" class="btn btn-danger mb-2 btn-pill" >Cerrar</button></td>
                 <?php if($libro["existencias"]>0){
                   echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
@@ -72,17 +69,16 @@ $cod_cliente=$_GET['cliente'];
                 
                 </table>
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
-                <input type="hidden" id="idDocumento" name="idDocumento" value="<?php echo $idLibro ?>" />
+                <input type="hidden" id="ponencia" name="ponencia" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
                 <input type="hidden" id="presentacion" name="presentacion" value="<?php echo $libro["nom_tipo_presentacion"] ?>" />
-
             </form>
         </div>
 </div>
 
 <script>
     
-        function agregarReserva() {
+        function agregarPeticion() {
             
                
             datos = $('#reserva').serialize();
@@ -90,15 +86,15 @@ $cod_cliente=$_GET['cliente'];
                     $.ajax({
                         type: "POST",
                         data: datos,
-                        url: "agregar_reserva.php",
+                        url: "agregar_ponencia.php",
                         success: function(r) {
 
                             console.log(r);
                             if (r == 1) {
-                                toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
-                                window.location.href = "reservasF.php";
+                                toastr["success"]('Realizando descarga...', "NOTIFICACIÓN");
+                                window.location.href = "reservasD.php";
                             } else {
-                                toastr["success"]("No se pudo hacer la reserva", "ERROR");
+                                toastr["error"]("No se pudo realizar la descarga", "ERROR");
                             }
                         }
                     });

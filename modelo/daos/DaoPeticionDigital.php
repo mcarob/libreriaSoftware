@@ -17,15 +17,13 @@ class DaoPeticionDigital extends DB  implements dao_interface
 
     public function agregarRegistro(Peticion_digital $nuevoRegistro){
         
-        $query = "INSERT INTO peticion_digital (cod_peticion_digital,
-        cod_existencia,
+        $query = "INSERT INTO peticion_digital (cod_existencia,
         cod_usuario_cliente,
-        fecha_peticion_digital) values (?,?,?,?)";
-        $respuesta = $this->con->prepare($query)->execute([
-            $nuevoRegistro->getcod_peticion_digital(), 
+        fecha_peticion_digital) values (?,?,now())";
+        $respuesta = $this->con->prepare($query)->execute([ 
             $nuevoRegistro->getcod_existencia(),
-            $nuevoRegistro->getcod_usuario_cliente(),
-            $nuevoRegistro->getfecha_peticion_digital()            
+            $nuevoRegistro->getcod_usuario_cliente()
+                        
         ]);
         return $respuesta;
     }
@@ -59,5 +57,17 @@ class DaoPeticionDigital extends DB  implements dao_interface
         }
         return $em;
     }
+
+    public function buscarxcodcliente($cliente){
+        $query = $this->con->prepare("SELECT * FROM prestamosdigitales where cod_cliente=?");
+        $query->execute([$cliente]);
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+
 }
 ?>
