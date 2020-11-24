@@ -8,7 +8,7 @@
                         <label >Cargar archivo</label>
                         <input type="file" class="form-control-file"  id="archivoDocumento" name = "archivoDocumento">
                 </div>
-            </div>
+        
         </div>
 
         <div class="row">
