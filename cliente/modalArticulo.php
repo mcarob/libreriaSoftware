@@ -12,11 +12,11 @@ $cod_cliente=$_GET['cliente'];
 
 <div>
         <div class="modal-header px-4" >
-            <h3 class="modal-title" style="align-content:center;"  id="exampleModalCenterTitle">Libro: <?php echo $libro["titulo_documento"] ?></h3>        
+            <h3 class="modal-title" style="align-content:center;"  id="exampleModalCenterTitle">Articulo: <?php echo $libro["titulo_documento"] ?></h3>        
         </div>
         <div class="modal-body px-4">
 
-            <form id="reserva" method="POST" action="javascript:agregarPostulacion()">
+            <form id="reserva" method="POST" action="javascript:agregarPeticion()">
             
                 <div class="modal-body px-4">
                 <div>
@@ -44,8 +44,13 @@ $cod_cliente=$_GET['cliente'];
                 <td></td>
                 </tr>
                 <tr>
-                    <td>Editorial: </td>
-                    <td><?php echo $libro["editorial_publicacion"] ?></td>
+                <td>SSN:</td>
+                    <?php if($libro["informacion_ssn"]==null){
+                        echo ('<td> No posee</td>');
+                    }else{ ?>
+                    
+                    <td><?php echo $libro["informacion_ssn"] ?></td>
+                    <?php }?>
                 </tr>
                 <tr>
                     <td>Idioma: </td>
@@ -53,29 +58,33 @@ $cod_cliente=$_GET['cliente'];
                 </tr>                
                 <tr>
                     <td>ISBN: </td>
+                    <?php if($libro["codigo_isbn"]==null){
+                        echo ('<td> No posee</td>');
+                    }else{ ?>
                     <td><?php echo $libro["codigo_isbn"] ?></td>
+                    <?php }?>
                 </tr>                
                 <tr>
                     <td>Desc. fisica: </td>
                     <td><?php echo $libro["informacion_paginas"]." paginas" ?></td>
-                </tr>                
-                <tr>
-                    <td>Existencias: </td>
-                    <td><?php echo $libro["existencias"]?></td>
-                </tr>                
-                <td><button id="botonCerrar" type="submit" class="btn btn-danger mb-2 btn-pill" >Cerrar</button></td>
-                <td><button id="botonReservar" type="submit" class="btn btn-primary mb-2 btn-pill" >Reservar</button></td>
+                </tr>                               
+                
+                
+                
                 </table>
+                <br>
+                <button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Descargar</button>
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
-                <input type="hidden" id="libro" name="libro" value="<?php echo $idLibro ?>" />
+                <input type="hidden" id="ponencia" name="ponencia" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
+                <input type="hidden" id="presentacion" name="presentacion" value="<?php echo $libro["nom_tipo_presentacion"] ?>" />
             </form>
         </div>
 </div>
 
 <script>
     
-        function agregarPostulacion() {
+        function agregarPeticion() {
             
                
             datos = $('#reserva').serialize();
@@ -83,15 +92,15 @@ $cod_cliente=$_GET['cliente'];
                     $.ajax({
                         type: "POST",
                         data: datos,
-                        url: "agregar_reserva.php",
+                        url: "agregar_ponencia.php",
                         success: function(r) {
 
                             console.log(r);
                             if (r == 1) {
-                                toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
-                                window.location.href = "reservas.php";
+                                toastr["success"]('Realizando descarga...', "NOTIFICACIÓN");
+                                window.location.href = "reservasD.php";
                             } else {
-                                toastr["success"]("No se pudo hacer la reserva", "ERROR");
+                                toastr["error"]("No se pudo realizar la descarga", "ERROR");
                             }
                         }
                     });

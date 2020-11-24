@@ -2,6 +2,7 @@
 include_once('daointerface.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/Cliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/db.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/enviar.php');
 
 class ClienteDAO extends DB  implements dao_interface
 {
@@ -14,6 +15,33 @@ class ClienteDAO extends DB  implements dao_interface
         $this->con =$this->connect();
     }
     
+    public function agregarRegistroPlataforma(Cliente $c,$pass){
+        $cor= new enviarCorreo();
+        $codigo=(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
+        $mensaje="Muchas gracias por registrarse en la aplicación de EL Bosquecillo".
+        " para continuar con el proceso de inscripción, por favor ingrese a la aplicación con su correo electrónico, 
+        deberá ingresar el codigo de verificacion que esta a continuación :  ".$codigo. ". al acceder la primera vez a la aplicación
+         Muchas Gracias";
+        $md5Codigo=md5($pass);
+        $sentencia = "CALL agregarcliente(?,?,?,?,?,?)";
+        $r = $this->con->prepare($sentencia)->execute([$c->getCorreo_cliente(),
+                                                                $md5Codigo,
+                                                                $codigo,
+                                                                $c->getNom_cliente(),
+                                                                $c->getTelefono_cliente(),
+                                                                $c->getDireccion_cliente()]);
+        if($r==1){
+            $r1=$cor->enviarMensaje("Miguel","miguelcaro@outlook.com","otro",$mensaje);
+            if($r1==0){
+                return $r1;
+            }else{
+                return 1;
+            }
+        }else{
+            return "Hubo un error con el registro, por favor intentelo mas tarde";
+        }
+    }
+
 
     public function agregarRegistro(Object $nuevoRegistro){
         
@@ -121,6 +149,18 @@ class ClienteDAO extends DB  implements dao_interface
         }
         return $em;
     }
+
+    public function listarPrestamosDXcliente($codigoCliente){
+        $query = $this->con->prepare("SELECT * FROM prestamosdigitales WHERE cod_usuario_cliente =?");
+        $query->execute([$codigoCliente]);
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+
     
 
 

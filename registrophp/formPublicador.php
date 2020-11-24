@@ -1,3 +1,4 @@
+<form id="formulTotal" onsubmit=" return Registrarse()">
 <h3>Ingresa tus datos Personales </h3>
 <div class="input__box">
     <label>Nombres y Apellidos <span>*</span></label>
@@ -7,9 +8,9 @@
     <label>Identificación <span>*</span></label>
     <input type="text" class="form-control input-lg" id="identiReg" name="identiReg" placeholder="Identificación">
     <label>País <span>*</span></label>
-    <select class="custom-select custom-select-lg mb-3" id="selecionarTipoRegistro" name="selecionarTipoRegistro">
+    <select class="custom-select custom-select-lg mb-3" id="paisRegistro" name="paisRegistro">
         <option selected>Seleccione Pais</option>
-        <option value="1">Colombia</option>
+        <option value="Colombia">Colombia</option>
     </select>
     <label>Ciudad <span>*</span></label>
     <input type="text" class="form-control input-lg" id="ciudadReg" name="ciudadReg" placeholder="Ciudad">
@@ -29,3 +30,4 @@
 
 <label class="label-for-checkbox">
 </label>
+</form>

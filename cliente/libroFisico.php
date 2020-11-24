@@ -75,18 +75,20 @@ include("menu.php");
         				<div class="shop__sidebar">
         					<aside class="wedget__categories poroduct--cat">
         						<h3 class="wedget__title">Idiomas</h3>
-        						<ul>
+								<form>
+								<ul>
                                 <?php foreach($idiomas as $i){?>    
-                                <li><a href="#"><?php echo $i["nom_idioma"] ?></a></li>
+                                <li><a><?php echo $i["nom_idioma"] ?></a></li>
         						<?php }?>	
-        						</ul>
+								</ul>
+								</form>
         					</aside>
         					
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Autores</h3>
         						<ul>
                                     <?php foreach($listaDocumentos as $a){?>
-        							<li><a href="#"><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></a></li>
+        							<li><a><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></a></li>
         							<?php }?>
         						</ul>
         					</aside>
@@ -111,7 +113,7 @@ include("menu.php");
 	        					<div class="row">
 	        						<!-- Start Single Product -->
                                     <?php foreach($listaDocumentos as $lib){
-                                    if($lib["nom_tipo_documento"]=="Libro"){?>
+                                    if($lib["nom_tipo_documento"]=="Libro" and $lib["nom_tipo_presentacion"]=="Física"){?>
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
@@ -170,9 +172,7 @@ include("menu.php");
         </div>
       
 		</div>
-		
-
-		
+	
 		
     </body>
 <?php
@@ -182,7 +182,10 @@ include('footer.php')
 
 <script>
 	function vermas(libro,cliente) {
-		$('.modal-content').load('modalLibroF.php?libro='+libro+'&cliente='+cliente) 
+		$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
 		$('#modal1').modal('show');
 	}
+	
+
 </script>
+

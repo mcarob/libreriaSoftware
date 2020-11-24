@@ -29,7 +29,20 @@ class DaoPrestamoFisico extends DB implements dao_interface
         return $respuesta;
     }
 
+    public function verRetraso($fecha)
+    {
+        
+        $hoy = strtotime(date("Y-m-d"),time());
+        $dev = strtotime($fecha);
+        
+        if($dev<$hoy)
+        {
+            return 1;
+        }else{
+            return 0;
+        }
 
+    }
     public function actualizarRegistro($registroActualizar)
     {
        // No se le hace update al prestamo
@@ -93,6 +106,13 @@ class DaoPrestamoFisico extends DB implements dao_interface
     {
             $sentencia=$this->con->prepare("UPDATE existencia_documento set cod_estado_copia= 3 WHERE cod_existencia_documento=?");
             $respuesta=$sentencia->execute([$existencia]);
+            return $respuesta;
+    }
+
+    public function cambiarEstadoPrestamo($cod)
+    {
+            $sentencia=$this->con->prepare("UPDATE prestamo_fisico set cod_estado_prestamo= 2 WHERE cod_prestamo_fisico=?");
+            $respuesta=$sentencia->execute([$cod]);
             return $respuesta;
     }
 

@@ -1,6 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorPrestamoF.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
@@ -21,7 +22,8 @@ $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 $PreH=$conCli->cantidadPrestamos($cliente->getCod_cliente());
 $PreF=10-$PreH["cantidad_prestamos"];
 
-$misPrestamos=$conCli->listarPrestamosXcliente($cliente->getCod_cliente());
+$misPrestamos=$conCli->listarPrestamosDXcliente($cliente->getCod_cliente());
+
 ?>
 <body>
 <?php
@@ -68,11 +70,12 @@ include("menu.php");
                                 <table>
                                     <thead>
                                         <tr class="title-top">
-											<th class="product-name">Titulo libro</th>
-                                            <th class="product-price">Fecha de reserva</th>
-                                            <th class="product-quantity">Fecha de devolución</th>
-                                            <th class="product-quantity">Codigo ISBN</th>
-											<th class="product-quantity">Estado de prestamo</th>
+                                            <th class="product-name">Titulo del documento</th>
+                                            <th class="product-quantity">Tipo de documento</th>
+                                            <th class="product-price">Fecha de descarga</th>
+                                            <th class="product-quantity">Congreso</th>
+                                            <th class="product-quantity">ISBN</th>
+                                            <th class="product-quantity">SSN</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,21 +84,33 @@ include("menu.php");
                                         ?>
                                         <tr>
                                             <td><?php echo $pre["titulo_documento"] ?></td>
-											<td><?php echo $pre["fecha_prestamo_fisico"] ?></td>
-                                            <td><?php echo $pre["fecha_devolucion_fisico"] ?></td>
-                                            <td><?php echo $pre["codigo_isbn"] ?></td>
-                                            <?php if($pre["nombre_estado"]=="Entregado")
-                                                {
-                                                    echo ('<td><font COLOR="green">'.$pre["nombre_estado"].'</font> </td>');
-                                                }else if($pre["nombre_estado"]=="Reservado")
-                                                {
-                                                    echo ('<td><font COLOR="teal">'.$pre["nombre_estado"].'</font> </td>');
-                                                }else if($pre["nombre_estado"]=="Atrasado")
-                                                {
-                                                    echo ('<td><font COLOR="red">'.$pre["nombre_estado"].'</font> </td>');    
-                                                }
+											<td><?php echo $pre["nom_tipo_documento"] ?></td>
+                                            <td><?php echo $pre["fecha_peticion_digital"] ?></td>
+                                            <?php
+                                            if($pre["informacion_congreso"]==null)
+                                            {
+                                                echo('<td> No posee</td>');
+                                            }else{
+                                                echo('<td>'. $pre["informacion_congreso"].'</td>');
+                                            } 
                                             ?>
-                                        </tr>
+                                            <?php
+                                            if($pre["codigo_isbn"]==null)
+                                            {
+                                                echo('<td> No posee</td>');
+                                            }else{
+                                            echo('<td>'. $pre["codigo_isbn"].'</td>');
+                                            } 
+                                            ?>
+                                            <?php
+                                            if($pre["informacion_ssn"]==null)
+                                            {
+                                                echo('<td> No posee</td>');
+                                            }else{
+                                                echo('<td>'. $pre["informacion_ssn"].'</td>');
+                                            } 
+                                            ?>
+                                            
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -106,18 +121,7 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-6 offset-lg-6">
                         <div class="cartbox__total__area">
-                            <div class="cartbox-total d-flex justify-content-between">
-                                <ul class="cart__total__list">
-                                    <li>Cantidad de prestamos realizados</li>
-                                </ul>
-                                <ul class="cart__total__tk">
-                                    <li><?php echo $PreH["cantidad_prestamos"]?></li>
-                                </ul>
-                            </div>
-                            <div class="cart__total__amount">
-                                <span>Prestamos disponibles</span>
-                                <span><?php echo $PreF ?></span>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -127,12 +131,4 @@ include("menu.php");
 <?php
 include("footer.php");
 ?>
-<script>
-        function cambiarEstado() {
-            
-            var tomarFecha=document.getElementById("devolucion").value.split("-");
-            var fechaDevo=new Date( parseInt(tomarFecha[0]),parseInt(tomarFecha[1]),parseInt(tomarFecha[2]) );
-            var fechaActual=new Date();
-        }
-</script>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
 
 class ControladorCliente{
@@ -7,12 +6,17 @@ class ControladorCliente{
     private $cliente;
 
 
+    public function agregarRegistroPlataforma(Cliente $nuevoRegistro,$pass)
+    {
+        $this->cliente=new ClienteDAO();
+        return $this->cliente->agregarRegistroPlataforma($nuevoRegistro,$pass);
+    }
+
     public function agregarRegistro(Cliente $nuevoRegistro)
     {
         $this->cliente=new ClienteDAO();
         return $this->cliente->agregarRegistro($nuevoRegistro);
     }
-
 
     public function agregarCliente($nombre,$apellido, $correo, $telefono, $direccion)
     {
@@ -60,6 +64,12 @@ class ControladorCliente{
     {
         $this->cliente=new ClienteDAO();
         return $this->cliente->listarPrestamosXcliente($codigoCliente);
+    }
+
+    public function listarPrestamosDXcliente($codigoCliente)
+    {
+        $this->cliente=new ClienteDAO();
+        return $this->cliente->listarPrestamosDXcliente($codigoCliente);
     }
 
 

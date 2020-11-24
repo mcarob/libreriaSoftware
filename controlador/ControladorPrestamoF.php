@@ -52,6 +52,16 @@ class ControladorPrestamoFisico{
         return $this->PrestamoFisico->cambiarEstadoExistencia($existencia);
     }
 
+    public function verRetraso($fecha){
+        $this->PrestamoFisico=new DaoPrestamoFisico();
+        return $this->PrestamoFisico->verRetraso($fecha);
+    }
+
+    public function cambiarEstadoPrestamo($cod){
+        $this->PrestamoFisico=new DaoPrestamoFisico();
+        return $this->PrestamoFisico->cambiarEstadoPrestamo($cod);
+    }
+
 }
 
 ?>
