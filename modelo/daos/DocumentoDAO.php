@@ -125,6 +125,8 @@ class DocumentoDAO extends DB  implements dao_interface
     }
 
 
+    
+
     public function listarDocumentoFisicoNoValidado(){
         $query = $this->con->prepare("SELECT * FROM listalibrosnovalidados");
         $query->execute();

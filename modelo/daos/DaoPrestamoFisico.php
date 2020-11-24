@@ -80,15 +80,20 @@ class DaoPrestamoFisico extends DB implements dao_interface
     public function darPrestamoFisicoxCod($id){
         $query = $this->con->prepare("SELECT * FROM listaLibrosFisicosPrestados where cod_prestamo_fisico=".$id);
         $query->execute();
-        return $query->fetch();
-        
+        return $query->fetch();    
     }
 
     public function aceptarDevo($idPrestamoFisico){
-        //preguntar estados
-        $query = "UPDATE prestamo_fisico SET cod_estado_prestamo=4 where cod_prestamo_fisico=".$idPrestamoFisico;
+
+        $codExistencia = $this->darPrestamoFisicoxCod($idPrestamoFisico)[1];
+        $query = "UPDATE prestamo_fisico SET cod_estado_prestamo=4, fecha_devolucion_fisico=now() where cod_prestamo_fisico=".$idPrestamoFisico;
         $sentencia = $this->con->prepare($query);
-        return $sentencia->execute([]);
+        $sentencia->execute([]);
+    
+        $query2 = "UPDATE existencia_documento SET cod_estado_copia=2 where cod_existencia_documento=".$codExistencia; 
+        $sentencia2 = $this->con->prepare($query2);
+        return $sentencia2->execute([]);
+        
     }
 
     public function prestamosFisicosxCodCliente($cod_cliente){

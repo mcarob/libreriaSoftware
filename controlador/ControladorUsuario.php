@@ -41,6 +41,10 @@ class ControladorUsuario{
         return $this->Usuario->darUsuarioxCod1($id);
     }
  
+    public function darUsuxUser($user){
+        $this->Usuario=new DaoUsuario();
+        return $this->Usuario->darUsuarioUser($user);
+    }
     public function validarContraseña($id,$contra)
     {
         $this->usuario=new DaoUsuario();

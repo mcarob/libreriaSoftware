@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 1) {
+    header("location: ../index.php");
+}
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorAdministrador.php');
+
+$conUsuario=new ControladorUsuario();
+$usuario = $conUsuario->darUsuxUser($_SESSION['user']);
+$conAdmi = new ControladorAdministrador();
+$admi = $conAdmi->darAdmi($usuario->getCod_usuario());
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +30,7 @@
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="stylesheet" href="../assetsCliente/plugins/toastr/toastr.min.css"/>
+	<link rel="stylesheet" href="../assetsCliente/plugins/toastr/toastr.min.css" />
 
 	<link rel="stylesheet" type="text/css" href="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.css">
 
@@ -75,13 +91,13 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="vendors/images/photo1.jpg" alt="">
+							<img src="../TemplateAdministrador/src/images/chat-img1.jpg" alt="">
 						</span>
-						<span class="user-name">Ross1 C. Lopez</span>
+						<span class="user-name"><?php echo $admi['nom_administrador'] ?></span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="profile.php"><i class="dw dw-user1"></i> Perfil</a>
-						<a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Salir</a>
+						<a class="dropdown-item" href="../cerrarSesion.php"><i class="dw dw-logout"></i> Salir</a>
 					</div>
 				</div>
 			</div>
@@ -90,3 +106,7 @@
 			</div>
 		</div>
 	</div>
+
+	<?php
+	include('Footer.php');
+	?>

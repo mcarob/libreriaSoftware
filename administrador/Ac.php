@@ -78,6 +78,17 @@ if (isset($_GET['action'])) {
 
             break;
 
+            case 'aceptarDevo1':
+                $CPrestamoF = new ControladorPrestamoFisico();
+                echo $r = $CPrestamoF->aceptarDevolucion($_GET['codigo']);
+                if ($r) {
+                    header("location:../empleado/LibrosPrestados.php");
+                } else {
+                    echo ($r);
+                }
+    
+                break;
+
         case 'estadoPub':
             $CUsuarios = new ControladorUsuario();
 
@@ -103,12 +114,10 @@ if (isset($_GET['action'])) {
 
 
         case 'reservarLxC':
-            print("entrooo");
             $datos = array(
                 $_POST["cod_libro"],
                 $_POST["correo_usuario"]
             );
-            print_r($datos);
             $CPrestamoF = new ControladorPrestamoFisico();
             echo $CPrestamoF->agregarPrestamoProce($datos[0],$datos[1]);
 
@@ -192,6 +201,18 @@ if (isset($_GET['action'])) {
             } else {
                 echo ($r);
             }
-            break;
+        break;
+
+        case 'buscarC':
+        
+            $CCliente= new ControladorCliente();
+            if($CCliente->devolverClientexUser($_GET['correo'])==2){
+                echo 2;
+            }else{
+                echo 1;
+            }
+        
+        break;
+        
     }
 }

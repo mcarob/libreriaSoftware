@@ -119,7 +119,7 @@ include('menuEm.php');
                 } else if (r == 1) {
                     swal({
                         type: 'success',
-                        title: '¡Se agrego correctamente!',
+                        title: '¡Se agregó correctamente!',
                         showConfirmButton: false,
                         timer: 2000
                     })

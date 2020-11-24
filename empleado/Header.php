@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 2) {
+    header("location: ../index.php");
+}
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorEmpleados.php');
+
+$conUsuario=new ControladorUsuario();
+$usuario = $conUsuario->darUsuxUser($_SESSION['user']);
+$conEm = new ControladorEmpleados();
+$empleado = $conEm->darEmplado($usuario->getCod_usuario());
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,13 +87,13 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="vendors/images/photo1.jpg" alt="">
+							<img src="../TemplateAdministrador/src/images/chat-img2.jpg" alt="">
 						</span>
-						<span class="user-name">Ross1 C. Lopez</span>
+						<span class="user-name"><?php echo $empleado['nom_empleado'] ?></span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="profile.php"><i class="dw dw-user1"></i> Perfil</a>
-						<a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Salir</a>
+						<a class="dropdown-item" href="../cerrarSesion.php"><i class="dw dw-logout"></i> Salir</a>
 					</div>
 				</div>
 			</div>

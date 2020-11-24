@@ -120,7 +120,6 @@ $fisicos = $CDocumentos->listarDocumentoF();
 
 <script>
 	function vermas(valor) {
-		console.log("entro113");
 		$('.modal-content').load('modalLibroF.php?id=' + valor);
 		$('#modal1').modal('show');
 	}
@@ -132,22 +131,7 @@ $fisicos = $CDocumentos->listarDocumentoF();
 	}
 
 
-	function agregarPrestamo(){
-        datos = $('#dddd').serialize();
-        $.ajax({
-            type: "POST",
-            data: datos,
-            url: "../administrador/Ac.php?action=" + "reservarLxC",
-            success: function(r) {
-                console.log(r);
-                if (r == 1) {
-                    window.location.href = "index.php";
-                } else {
-
-                }
-            }
-        });
-    }
+	
 </script>
 <script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
@@ -167,4 +151,8 @@ $fisicos = $CDocumentos->listarDocumentoF();
 <script src="../TemplateAdministrador/src/plugins/datatables/js/vfs_fonts.js"></script>
 <!-- Datatable Setting js -->
 <script src="../TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
+
+
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>

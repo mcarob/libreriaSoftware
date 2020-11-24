@@ -60,7 +60,9 @@ class ClienteDAO extends DB  implements dao_interface
     }
 
     public function agregarCl($nombre,$apellido, $correo, $telefono, $direccion){
-
+        $cor= new enviarCorreo();
+        
+        
         $query2=$this->con->prepare('SELECT * FROM usuario WHERE user_usuario=?');
         $query2->execute([$correo]);
         if ($query2->rowCount()) {
@@ -68,9 +70,17 @@ class ClienteDAO extends DB  implements dao_interface
         }
         $query = "CALL agregarcliente(?,?,?,?,?,?)";
         $codigo=intval(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
+        $mensaje="Muchas gracias por registrarse en la aplicación de EL Bosquecillo".
+        " para continuar con el proceso de inscripción, por favor ingrese a la aplicación con su correo electrónico, 
+        deberá ingresar el codigo de verificacion que esta a continuación :  ".$codigo. ". al acceder la primera vez a la aplicación su contraseña es el teléfono
+         Muchas Gracias";
+
         $nombres= $nombre." ".$apellido;
-        $respuesta2 = $this->con->prepare($query)->execute([$correo,$telefono,$codigo,$nombres,$telefono,$direccion ]);
+        $codigoCifrado = md5($codigo);
+        $contraCi = md5($telefono);
+        $respuesta2 = $this->con->prepare($query)->execute([$correo,$contraCi,$codigoCifrado,$nombres,$telefono,$direccion ]);
         if($respuesta2==1){
+            $r1=$cor->enviarMensaje($nombres,$correo,"Nuevo correo",$mensaje);
             return "1";
         }
 
@@ -129,9 +139,8 @@ class ClienteDAO extends DB  implements dao_interface
         if ($query->rowCount()) {
             $key = $query->fetchAll()[0];
             return new Cliente($key[0], $key[1], $key[2], $key[3], $key[4], $key[5], $key[6]);
-        } else {
-            return null;
-        }
+        } 
+        return "2";
     }
     public function cantidadPrestamos($codigoCliente){
         $sentencia = $this->con->prepare("SELECT * FROM cantidaddeprestamosxcliente WHERE cod_cliente =?");

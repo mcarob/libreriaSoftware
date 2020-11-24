@@ -111,7 +111,7 @@ $prestamos = $CPF->listar();
 
 <script>
 	function aceptarDevo(cod) {
-		window.location.href = 'ac.php?action=' + "aceptarDevo&" + "codigo=" + cod;
+		window.location.href = '../administrador/Ac.php?action=' + "aceptarDevo1&" + "codigo=" + cod;
 	}
 
 	function vermas(valor) {

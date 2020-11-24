@@ -15,7 +15,7 @@ class administradorDAO extends DB  implements dao_interface
     }
     
 
-    public function agregarRegistro(administrador $nuevoRegistro){
+    public function agregarRegistro(object $nuevoRegistro){
         
         $query = "INSERT INTO administrador (cod_administrador,cod_usuario,nom_administrador,
         telefono_administrador,correo_administrador) values (?,?,?,?,?)";
@@ -30,7 +30,7 @@ class administradorDAO extends DB  implements dao_interface
     }
 
 
-    public function actualizarRegistro(administrador $registroActualizar){
+    public function actualizarRegistro(object $registroActualizar){
         $query = "UPDATE administrador SET cod_usuario=?,nom_administrador=?,telefono_administrador=?,
         correo_administrador=? WHERE cod_administrador=?";
         $respuesta = $this->con->prepare($query)->execute([ 
@@ -59,6 +59,12 @@ class administradorDAO extends DB  implements dao_interface
             $em[] = $fila;
         }
         return $em;
+    }
+
+    public function darAdmixcodUsu($id){
+        $query = $this->con->prepare("SELECT * FROM administrador where cod_usuario=".$id);
+        $query->execute();
+        return $query->fetch(); 
     }
 }
 ?>

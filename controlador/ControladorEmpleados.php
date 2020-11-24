@@ -31,6 +31,15 @@ class ControladorEmpleados{
         return $this->Empleados->listar();
     }
 
+    public function darEmplado($id){
+        $this->Empleados=new DaoEmpleado();
+        return $this->Empleados->darEmpleadoxCodUsu($id);
+    }
+
+
+   
+
+
 }
 
 ?>

@@ -10,7 +10,6 @@ $devolucion = date('Y-m-d', $devolucion);
 ?>
 
 
-<form>
     <div class="modal-header px-4">
         <h3 class="modal-title" style="align-content:center;" id="exampleModalCenterTitle"><?php echo $libro['titulo_documento'] ?></h3>
 
@@ -24,8 +23,8 @@ $devolucion = date('Y-m-d', $devolucion);
                     <div class="col-lg-8">
                         <div class="form-group">
                             <label for="firstName">Correo usuario:</label>
-                            <input type="text" id='dd'class="form-control 1">
-                            <input type="hidden" id="cod_libro" name="cod_libro" value="<?php echo $id?>">
+                            <input type="text" required id='dd' class="form-control 1">
+                            <input type="hidden" id="cod_libro" name="cod_libro" value="<?php echo $id ?>">
                             <input type="hidden" id="correo_usuario" name="correo_usuario" value="">
 
                         </div>
@@ -45,7 +44,7 @@ $devolucion = date('Y-m-d', $devolucion);
 
                 <div class="row mb-2" id="4536">
 
-                    
+
                 </div>
 
                 <div class="row mb-2">
@@ -68,22 +67,77 @@ $devolucion = date('Y-m-d', $devolucion);
 
 
             </div>
+        </form>
     </div>
     <div class="modal-footer px-4">
         <button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-secondary btn-pill" onclick="agregarPrestamo()">Aceptar</button>
+        <button type="button" class="btn btn-secondary btn-pill" id='botonAgregar' disabled onclick="agregarPrestamo()">Aceptar</button>
 
     </div>
-</form>
 
 
 <script>
     function buscarusu() {
         var x = $('#dd').val();
-        $('#4536').load('infoPrestamo.php?correo='+x);
-        $('#correo_usuario').val(x);
-
-    }
+        var y = "../administrador/Ac.php?action=" + "buscarC&"+"correo="+x;
+                
+        $.ajax({
+            type: "POST",
+            url: y,
+            success: function(r) {
+                console.log(r);
+				if (r == "2") {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: '¡No se ha podido encontrar!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }else{
+                    $('#4536').load('infoPrestamo.php?correo=' + x);
+                    $('#correo_usuario').val(x);
+                    $("#botonAgregar").attr("disabled", false);
+                    
+                }
+            }
+        });
 
     
+    }
+
+
+    function agregarPrestamo(){
+        datos = $('#dddd').serialize();
+        $("#botonAgregar").attr("disabled", true);
+        $.ajax({
+            type: "POST",
+            data: datos,
+            url: "../administrador/Ac.php?action=" + "reservarLxC",
+            success: function(r) {
+                console.log(r);
+				if (r == 1) {
+                    swal({
+                        type: 'success',
+                        title: '¡Reserva exitosa!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    document.getElementById("dddd").reset();
+                    document.getElementById("prestamo").reset();
+                    window.location.href="TablaLibrosF.php";
+
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: '¡No se ha podido agregar!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    $("#botonAgregar").attr("disabled", false);
+                }
+            }
+        });
+    }
 </script>

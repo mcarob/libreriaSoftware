@@ -16,7 +16,7 @@ include('menuAdmi.php');
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Incio</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Perfil</li>
 								</ol>
 							</nav>
@@ -27,7 +27,7 @@ include('menuAdmi.php');
 					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
 						<div class="pd-20 card-box height-100-p">
 							<div class="profile-photo">
-								<img src="../TemplateAdministrador/vendors/images/photo1.jpg" alt="" class="avatar-photo">
+								<img src="../TemplateAdministrador/src/images/chat-img1.jpg" alt="" class="avatar-photo">
 								<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
@@ -41,28 +41,20 @@ include('menuAdmi.php');
 									</div>
 								</div>
 							</div>
-							<h5 class="text-center h5 mb-0">Ross C. Lopez</h5>
-							<p class="text-center text-muted font-14">Lorem ipsum dolor sit amet</p>
+							<h5 class="text-center h5 mb-0"><?php echo $admi['nom_administrador'] ?> </h5>
+							<p class="text-center text-muted font-14"></p>
 							<div class="profile-info">
-								<h5 class="mb-20 h5 text-blue">Contact Information</h5>
+								<h5 class="mb-20 h5 text-blue">Información</h5>
 								<ul>
 									<li>
-										<span>Email Address:</span>
-										FerdinandMChilds@test.com
+										<span>Correo:</span>
+										<?php echo $admi['correo_administrador'] ?>
 									</li>
 									<li>
-										<span>Phone Number:</span>
-										619-229-0054
+										<span>Teléfono:</span>
+										<?php echo $admi['telefono_administrador'] ?>
 									</li>
-									<li>
-										<span>Country:</span>
-										America
-									</li>
-									<li>
-										<span>Address:</span>
-										1807 Holden Street<br>
-										San Diego, CA 92115
-									</li>
+									
 								</ul>
 							</div>
 					
@@ -88,26 +80,30 @@ include('menuAdmi.php');
 														<li class="weight-700 col-md-10">
 															<h4 class="text-blue h5 mb-20">Edición de la información personal</h4>
 															<div class="form-group">
-																<label>Full Name</label>
-																<input class="form-control form-control-lg" type="text">
+																<label>Nombre completo</label>
+																<input class="form-control form-control-lg" type="text" value="<?php echo $admi['nom_administrador'] ?>">
 															</div>
 															<div class="form-group">
-																<label>Title</label>
-																<input class="form-control form-control-lg" type="text">
+																<label>Correo</label>
+																<input class="form-control form-control-lg" type="text" value="<?php echo $admi['correo_administrador'] ?>">
 															</div>
 															<div class="form-group">
-																<label>Email</label>
-																<input class="form-control form-control-lg" type="email">
+																<label>Teléfono</label>
+																<input class="form-control form-control-lg" type="email" value="<?php echo $admi['telefono_administrador'] ?>">
 															</div>
 															<div class="form-group">
-																<label>Date of birth</label>
-																<input class="form-control form-control-lg date-picker" type="text">
+																<label>Contraseña actual</label>
+																<input class="form-control form-control-lg" type="password">
 															</div>
 															<div class="form-group">
-																<label>Phone Number</label>
-																<input class="form-control form-control-lg" type="text">
+																<label>Contraseña nueva</label>
+																<input class="form-control form-control-lg date-picker" type="password">
 															</div>
-													
+															<div class="form-group">
+																<label>Repetir contraseña nueva</label>
+																<input class="form-control form-control-lg" type="password">
+															</div>
+															
 												
 														</li>
 													</ul>
@@ -131,8 +127,4 @@ include('menuAdmi.php');
 		</div>
     </div>
     
-
-    <?php
-    include('Footer.php')
-    ?>
 

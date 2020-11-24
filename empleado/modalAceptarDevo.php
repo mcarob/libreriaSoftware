@@ -16,7 +16,7 @@ $id = $_GET['id'];
         </div>
         <div class="col-6">
             <button type='button' class='btn btn-primary border-radius-100 btn-block confirmation-btn' data-dismiss='modal' onclick="aceptarDevo(<?php echo $id ?>)"><i class='fa fa-check'></i></button>
-            SIi
+            SI
         </div>
     </div>
 </div>
