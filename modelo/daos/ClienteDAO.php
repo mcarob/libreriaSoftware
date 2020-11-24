@@ -158,6 +158,18 @@ class ClienteDAO extends DB  implements dao_interface
         }
         return $em;
     }
+
+    public function listarPrestamosDXcliente($codigoCliente){
+        $query = $this->con->prepare("SELECT * FROM prestamosdigitales WHERE cod_usuario_cliente =?");
+        $query->execute([$codigoCliente]);
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+
+
     
 
 

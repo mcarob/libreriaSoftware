@@ -20,10 +20,11 @@ $conCli=new ControladorCliente();
 $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 
 $PreH=$conCli->cantidadPrestamos($cliente->getCod_cliente());
+
+
 $PreF=10-$PreH["cantidad_prestamos"];
 
 $misPrestamos=$conCli->listarPrestamosXcliente($cliente->getCod_cliente());
-
 $conPrestamo=new ControladorPrestamoFisico();
 
 ?>
@@ -141,12 +142,4 @@ include("menu.php");
 <?php
 include("footer.php");
 ?>
-<script>
-        function cambiarEstado() {
-            
-            var tomarFecha=document.getElementById("devolucion").value.split("-");
-            var fechaDevo=new Date( parseInt(tomarFecha[0]),parseInt(tomarFecha[1]),parseInt(tomarFecha[2]) );
-            var fechaActual=new Date();
-        }
-</script>
 </html>

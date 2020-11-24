@@ -60,17 +60,29 @@ $cod_cliente=$_GET['cliente'];
                     <td><?php echo $libro["informacion_paginas"]." paginas" ?></td>
                 </tr>                
                 <tr>
+                    <?php if($libro["nom_tipo_presentacion"]=="Física"){ ?>
                     <td>Existencias: </td>
                     <td><?php echo $libro["existencias"]?></td>
+                    <?php } ?>
                 </tr>                
-                <td><button id="botonCerrar" type="submit" class="btn btn-danger mb-2 btn-pill" >Cerrar</button></td>
-                <?php if($libro["existencias"]>0){
-                  echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
-                }else if($libro["existencias"]<0){
-                  echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Solicitar</button></td>");
-                }?>
                 
                 </table>
+
+                <br>
+                <?php 
+                    if($libro["nom_tipo_presentacion"]=="Física")
+                    {
+                        if($libro["existencias"]>0){
+                            echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
+                        }else if($libro["existencias"]<0){
+                            echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Entrar en espera</button></td>");
+                        }
+
+                    }else if($libro["nom_tipo_presentacion"]=="Digital")
+                    {
+                    echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill'>Descargar</button></td>");      
+                    }
+                ?>
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
                 <input type="hidden" id="idDocumento" name="idDocumento" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
@@ -95,10 +107,10 @@ $cod_cliente=$_GET['cliente'];
 
                             console.log(r);
                             if (r == 1) {
-                                toastr["success"]('Realizando reserva...', "NOTIFICACIÓN");
+                                toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
                                 window.location.href = "reservasF.php";
                             } else {
-                                toastr["success"]("No se pudo hacer la reserva", "ERROR");
+                                toastr["success"]("No se pudo realizar tu solicitud", "ERROR");
                             }
                         }
                     });

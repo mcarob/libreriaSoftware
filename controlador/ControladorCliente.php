@@ -66,6 +66,12 @@ class ControladorCliente{
         return $this->cliente->listarPrestamosXcliente($codigoCliente);
     }
 
+    public function listarPrestamosDXcliente($codigoCliente)
+    {
+        $this->cliente=new ClienteDAO();
+        return $this->cliente->listarPrestamosDXcliente($codigoCliente);
+    }
+
 
 }
 

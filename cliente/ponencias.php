@@ -1,3 +1,5 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
@@ -53,11 +55,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
+                        	<h2 class="bradcaump-title">Stand Ponencias</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Libros Fisicos</span>
+                              <span class="breadcrumb_item active">Ponencias</span>
                             </nav>
                         </div>
                     </div>
@@ -99,7 +101,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados Libros Fisicos</p>
+			                        <p>Resultados Ponencia</p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -123,7 +125,7 @@ include("menu.php");
 										<div class="product__content content--center">
 											<h4><a><?php echo $lib["nombre_autor"]." ".$lib["apellido_autor"]?></a></h4>
 											<ul class="prize d-flex">
-												<li><?php echo $lib["informacion_congreso"]?></li>
+												<li><?php echo $lib["editorial_publicacion"]?></li>
 												
 											</ul>
 											<div class="action">

@@ -113,7 +113,7 @@ include("menu.php");
 	        					<div class="row">
 	        						<!-- Start Single Product -->
                                     <?php foreach($listaDocumentos as $lib){
-                                    if($lib["nom_tipo_documento"]=="Libro" and $lib["nom_tipo_presentacion"]=="Física"){?>
+                                    if($lib["nom_tipo_documento"]=="Libro" and $lib["nom_tipo_presentacion"]=="Digital"){?>
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
@@ -188,4 +188,3 @@ include('footer.php')
 	
 
 </script>
-

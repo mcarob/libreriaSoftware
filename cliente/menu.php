@@ -20,16 +20,17 @@
                                 </ul>
                                 <ul class="item item02">
                                     <li class="title">Documentos Digitales</li>
-                                    <li><a href="librosDigitales.php">Libros</a></li>
-                                    <li><a href="articulosDigitales.php">Articulos</a></li>
-                                    <li><a href="ponenciasDigitales.php">Ponencias</a></li>
+                                    <li><a href="libroDigital.php">Libros</a></li>
+                                    <li><a href="articulos.php">Articulos</a></li>
+                                    <li><a href="ponencias.php">Ponencias</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="drop"><a>Mis reservas</a>
                             <div class="megamenu mega02">
                                 <ul class="item item02">
-                                    <li><a href="reservas.php">Consultar</a></li>
+                                    <li><a href="reservasF.php">Fisicas</a></li>
+                                    <li><a href="reservasD.php">Digitales</a></li>
                                     
                                 </ul>
                             </div>
