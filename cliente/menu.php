@@ -20,9 +20,9 @@
                                 </ul>
                                 <ul class="item item02">
                                     <li class="title">Documentos Digitales</li>
-                                    <li><a href="librosDigitales.php">Libros</a></li>
-                                    <li><a href="articulosDigitales.php">Articulos</a></li>
-                                    <li><a href="ponenciasDigitales.php">Ponencias</a></li>
+                                    <li><a href="libroDigital.php">Libros</a></li>
+                                    <li><a href="articulos.php">Articulos</a></li>
+                                    <li><a href="ponencias.php">Ponencias</a></li>
                                 </ul>
                             </div>
                         </li>

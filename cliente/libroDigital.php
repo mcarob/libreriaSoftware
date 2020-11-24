@@ -55,11 +55,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand Ponencias</h2>
+                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Ponencias</span>
+                              <span class="breadcrumb_item active">Libros Fisicos</span>
                             </nav>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados Ponencia</p>
+			                        <p>Resultados Libros Fisicos</p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -113,13 +113,13 @@ include("menu.php");
 	        					<div class="row">
 	        						<!-- Start Single Product -->
                                     <?php foreach($listaDocumentos as $lib){
-                                    if($lib["nom_tipo_documento"]=="Ponencia"){?>
+                                    if($lib["nom_tipo_documento"]=="Libro" and $lib["nom_tipo_presentacion"]=="Digital"){?>
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
 											<div class="hot__box">
-												<span class="hot-label">Ponencia</span>
+												<span class="hot-label">Libro</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
@@ -182,10 +182,9 @@ include('footer.php')
 
 <script>
 	function vermas(libro,cliente) {
-		$('.modal-content').load('modalPonencia.php?libro='+libro+'&cliente='+cliente) 
+		$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
 		$('#modal1').modal('show');
 	}
 	
 
 </script>
-

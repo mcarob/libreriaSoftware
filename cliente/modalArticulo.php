@@ -44,8 +44,13 @@ $cod_cliente=$_GET['cliente'];
                 <td></td>
                 </tr>
                 <tr>
-                    <td>SSN:: </td>
+                <td>SSN:</td>
+                    <?php if($libro["informacion_ssn"]==null){
+                        echo ('<td> No posee</td>');
+                    }else{ ?>
+                    
                     <td><?php echo $libro["informacion_ssn"] ?></td>
+                    <?php }?>
                 </tr>
                 <tr>
                     <td>Idioma: </td>
@@ -53,20 +58,22 @@ $cod_cliente=$_GET['cliente'];
                 </tr>                
                 <tr>
                     <td>ISBN: </td>
+                    <?php if($libro["codigo_isbn"]==null){
+                        echo ('<td> No posee</td>');
+                    }else{ ?>
                     <td><?php echo $libro["codigo_isbn"] ?></td>
+                    <?php }?>
                 </tr>                
                 <tr>
                     <td>Desc. fisica: </td>
                     <td><?php echo $libro["informacion_paginas"]." paginas" ?></td>
                 </tr>                               
-                <td><button id="botonCerrar" type="submit" class="btn btn-danger mb-2 btn-pill" >Cerrar</button></td>
-                <?php if($libro["existencias"]>0){
-                  echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
-                }else if($libro["existencias"]<0){
-                  echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Solicitar</button></td>");
-                }?>
+                
+                
                 
                 </table>
+                <br>
+                <button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Descargar</button>
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
                 <input type="hidden" id="ponencia" name="ponencia" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
