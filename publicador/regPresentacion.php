@@ -4,13 +4,13 @@
     <div class="wizard-card">
         <br>
         <br>
-        <div class="picture-container">
+       <!-- <div class="picture-container">
             <div class="picture">
                 <img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title="" />
                 <input type="file" id="portada" name="portada" required>
             </div>
             <h6>Elegir portada del titulo</h6>
-        </div>
+        </div>-->
         <br>
         <br>
         <div class="row">
@@ -78,7 +78,7 @@
     <input type= "number"class="form-control" id="tipo" name="tipo" value="3" hidden/>
     <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarPresentacion();" class="btn btn-success" value="Registrar">Registrar</a>
-        </div>
+    </div>
    
 </form>
 

@@ -1,47 +1,34 @@
-<form autocomplete="off" id="formNuevoLibro">
+<form  id="formNuevoLibro" enctype="multipart/form-data" method="post"  >
     <!--    esto es algo comentado--->
 
     <div class="wizard-card">
-        <br>
-        <br>
-        <div class="picture-container">
-            <div class="picture">
-                <img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title="" />
-                <input type="file" id="portada" name="portada" required>
-            </div>
-            <h6>Elegir portada del titulo</h6>
-        </div>
-        <br>
-        <br>
+
         <div class="row">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Cargar</span>
+                <div class="form-group">
+                        <label >Cargar archivo</label>
+                        <input type="file" class="form-control-file"  id="archivoDocumento" name = "archivoDocumento">
                 </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="archivoDocumento">
-                    <label class="custom-file-label" for="inputGroupFile01">Elegir Documento</label>
-                </div>
-            </div>
+        
         </div>
+
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
-                    <label>Titulo del libro:</label>
+                    <label>Título del libro:</label>
                     <input class="form-control" id="titulo" name="titulo">
                     </input>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label>Fecha de publicacion:</label>
+                    <label>Fecha de publicación:</label>
                     <input type="date" class="form-control" id="fechaPublicacion" name="fechaPublicacion">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Idioma:</label>
-                    <select class="custom-select" id="idioma">
+                    <select class="custom-select" id="idioma" name="idioma">
                         <option selected>Escoger idioma...</option>
                         <option value="1">Inglés</option>
                         <option value="2">Español</option>
@@ -109,10 +96,11 @@
 <script>
     function agregarLibro() {
         datos = $('#formNuevoLibro').serialize();
-
+        var file_imagen = $("#archivoDocumento").val();
+        
         $.ajax({
             type: "POST",
-            data: datos,
+            data: datos,         
             url: "agregar_libro.php",
             success: function(r) {
 

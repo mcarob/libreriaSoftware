@@ -4,13 +4,13 @@
     <div class="wizard-card">
         <br>
         <br>
-        <div class="picture-container">
+        <!--<div class="picture-container">
             <div class="picture">
                 <img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title="" />
                 <input type="file" id="portada" name="portada" required>
             </div>
-            <h6>Elegir portada del titulo</h6>
-        </div>
+            <h6>Elegir portada del título</h6>
+        </div>-->
         <br>
         <br>
         <div class="row">
@@ -27,14 +27,14 @@
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
-                    <label>Titulo del articulo:</label>
+                    <label>Título del articulo:</label>
                     <input class="form-control" id="titulo" name="titulo">
                     </input>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label>Fecha de publicacion:</label>
+                    <label>Fecha de publicación:</label>
                     <input class="form-control" type="date" id="fechaPublicacion" name="fechaPublicacion">
                 </div>
             </div>
@@ -71,7 +71,7 @@
         <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarArticulo();" class="btn btn-success" value="Registrar">Registrar</a>
         </div>
-
+    </div>
 </form>
 
 <script>
