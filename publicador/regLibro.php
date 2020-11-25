@@ -11,7 +11,11 @@
                 <h6>Elegir portada</h6>
             </div>
         </div>
+<<<<<<< Updated upstream
 <br>
+=======
+        <br><br>
+>>>>>>> Stashed changes
 
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
@@ -79,7 +83,9 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+<<<<<<< Updated upstream
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
                     <label>Autores:</label>
@@ -87,8 +93,12 @@
                     </input>
                 </div>
             </div>
+=======
+
+>>>>>>> Stashed changes
 
         </div>
+
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
 
