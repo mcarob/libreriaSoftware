@@ -5,13 +5,13 @@
         <div class="wizard-card">
             <div class="picture-container">
                 <div class="picture">
-                    <img src="assetsCliente/images/logo/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
+                    <img src="assetsCliente/images/logo/logo2.png" class="picture-src" id="wizardPicturePreview" title="" />
                     <input type="file" id="portada" name="portada" required>
                 </div>
                 <h6>Elegir portada</h6>
             </div>
         </div>
-<br>
+        <br>
 
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
@@ -80,22 +80,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" aling="align-items-center">
+            <div class="col-md-8" aling="align-items-center">
                 <div class="form-group">
-                    <label>Autores:</label>
-                    <input type="text" class="form-control" id="autores" name="autores">
-                    </input>
+                    <div class="row">
+                        <label>Autores:</label>
+                    </div>
+                    <select id="example-getting-started" multiple="multiple" value="Seleccionar">
+                        <option value="cheese">Andres Mendonza</option>
+                        <option value="tomatoes">Gabriel Garcia Marquez</option>
+                        <option value="mozarella">Maquiavelo</option>
+                        <option value="mushrooms">Fiodor Dostoievski</option>
+                        <option value="pepperoni">Alejandro Dumas</option>
+                        <option value="onions">Iam Sommerville</option>
+                    </select>
                 </div>
             </div>
 
         </div>
         <div class="row">
-            <div class="col-md-4" aling="align-items-center">
+            <div class="col-md-12" aling="align-items-center">
+            <div class="custom-file">
+            <input type="file" class="form-control-file" id="archivoDocumento" name="archivoDocumento">
+                    <label class="custom-file-label" for="inputGroupFile01">Elegir Documento</label>
+            </div>
 
-                <div class="form-group">
-                    <label>Cargar archivo</label>
-                    <input type="file" class="form-control-file" id="archivoDocumento" name="archivoDocumento">
-                </div>
             </div>
 
         </div>
@@ -103,7 +111,7 @@
         <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarLibro();" class="btn btn-success" value="Registrar">Registrar</a>
         </div>
-        
+
     </div>
 </form>
 <script>
