@@ -70,7 +70,7 @@
 						</a>
 						<ul class="submenu">
                             <li><a href="gr_fvd.php">Documentos Fisicos vs Virtuales</a></li>
-                            <li><a href="ui-buttons.html">Libros Físicos</a></li>
+                            <li><a href="gr_tipoDoc.php">Tipo de documentos</a></li>
                             <li><a href="ui-buttons.html">Libros Digitales</a></li>
 						</ul>
 					</li>

@@ -96,4 +96,21 @@ class DaoEmpleado extends DB implements dao_interface
 
 
     
+    public function editarEmepladoProce($nombre, $correo, $telefono, $id_usu, $contraActual, $contraNueva){
+       
+        $contraEncriptada = md5($contraActual);
+        $query4=$this->con->prepare('SELECT * FROM usuario WHERE pass_usuario=? and cod_usuario=?');
+        $query4->execute([$contraEncriptada, $id_usu]);
+        if (!$query4->rowCount()) {
+            return "8";
+        }
+
+        $query = "CALL editarperfil(?,?,?,?,?)";
+        $respuesta2 = $this->con->prepare($query)->execute([$nombre,$correo,$telefono,$id_usu,$contraNueva]);
+        if($respuesta2==1){
+            return "1";
+        }
+
+        return "2";
+    }
 }

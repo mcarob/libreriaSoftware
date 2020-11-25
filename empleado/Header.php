@@ -10,6 +10,7 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/Controlado
 
 $conUsuario=new ControladorUsuario();
 $usuario = $conUsuario->darUsuxUser($_SESSION['user']);
+$cod_usu = $usuario->getCod_usuario();
 $conEm = new ControladorEmpleados();
 $empleado = $conEm->darEmplado($usuario->getCod_usuario());
 

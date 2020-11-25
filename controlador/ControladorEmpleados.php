@@ -36,6 +36,13 @@ class ControladorEmpleados{
         return $this->Empleados->darEmpleadoxCodUsu($id);
     }
 
+    public function editarEmpelado($nombre, $correo, $telefono, $id, $contraActual, $contraNueva){
+        $this->Empleados=new DaoEmpleado();
+        return $this->Empleados->editarEmepladoProce($nombre, $telefono, $correo, $id, $contraActual, $contraNueva);
+    }
+
+
+
 
    
 

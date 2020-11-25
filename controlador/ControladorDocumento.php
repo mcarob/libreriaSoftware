@@ -74,6 +74,11 @@ class ControladorDocumento{
         $this->documento=new DocumentoDAO();
         return $this->documento->graficoDvsF();
     }
+    public function graficoTipoDocumento()
+    {
+        $this->documento=new DocumentoDAO();
+        return $this->documento->tipoDocumento();
+    }
 
     public function listarDocumentoNoValidados()
     {

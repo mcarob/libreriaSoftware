@@ -10,6 +10,8 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/Controlado
 
 $conUsuario=new ControladorUsuario();
 $usuario = $conUsuario->darUsuxUser($_SESSION['user']);
+$cod_usu = $usuario->getCod_usuario();
+
 $conAdmi = new ControladorAdministrador();
 $admi = $conAdmi->darAdmi($usuario->getCod_usuario());
 
@@ -106,7 +108,3 @@ $admi = $conAdmi->darAdmi($usuario->getCod_usuario());
 			</div>
 		</div>
 	</div>
-
-	<?php
-	include('Footer.php');
-	?>

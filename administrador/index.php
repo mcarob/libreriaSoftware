@@ -23,3 +23,6 @@ include ('menuAdmi.php');
 			
 		</div>
 	</div>
+	<?php
+include ('Footer.php');
+?>

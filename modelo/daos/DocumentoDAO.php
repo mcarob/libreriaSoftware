@@ -147,6 +147,18 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+
+
+    public function tipoDocumento(){
+        $query = $this->con->prepare("SELECT * FROM graficoxtipo");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+    }
+    
     
 
     public function AceptarLibroNuevo($id)

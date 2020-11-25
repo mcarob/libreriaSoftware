@@ -75,35 +75,41 @@ include('menuAdmi.php');
 										<div class="tab-pane fade show active" id="timeline" role="tabpanel">
 											<div class="pd-20">
                                             <div class="profile-setting">
-												<form>
+												<form id="admipr" action="javascript: editar()">
 													<ul class="profile-edit-list row">
 														<li class="weight-700 col-md-10">
 															<h4 class="text-blue h5 mb-20">Edición de la información personal</h4>
 															<div class="form-group">
 																<label>Nombre completo</label>
-																<input class="form-control form-control-lg" type="text" value="<?php echo $admi['nom_administrador'] ?>">
+																<input class="form-control form-control-lg" type="text" id="nombre"  name="nombre" value="<?php echo $admi['nom_administrador'] ?>">
 															</div>
 															<div class="form-group">
 																<label>Correo</label>
-																<input class="form-control form-control-lg" type="text" value="<?php echo $admi['correo_administrador'] ?>">
+																<input class="form-control form-control-lg" type="text" id="correo" name="correo" value="<?php echo $admi['correo_administrador'] ?>">
+																<input type="hidden" id="id_usu" name="id_usu" value="<?php echo $cod_usu ?>">
+
 															</div>
 															<div class="form-group">
 																<label>Teléfono</label>
-																<input class="form-control form-control-lg" type="email" value="<?php echo $admi['telefono_administrador'] ?>">
+																<input class="form-control form-control-lg" id="telefono" name="telefono" type="text" value="<?php echo $admi['telefono_administrador'] ?>">
 															</div>
 															<div class="form-group">
 																<label>Contraseña actual</label>
-																<input class="form-control form-control-lg" type="password">
+																<input class="form-control form-control-lg"  id="contraActual" name="contraActual" type="password">
 															</div>
 															<div class="form-group">
 																<label>Contraseña nueva</label>
-																<input class="form-control form-control-lg date-picker" type="password">
+																<input class="form-control form-control-lg"  id="contraNueva" name="contraNueva" type="password">
 															</div>
 															<div class="form-group">
 																<label>Repetir contraseña nueva</label>
-																<input class="form-control form-control-lg" type="password">
+																<input class="form-control form-control-lg" id="repeticion" name="repeticion" type="password">
 															</div>
-															
+															<div class="form-group">
+
+																<br>
+																<button type="submit" class='btn btn-outline-success'>Agregar</button>
+															</div>
 												
 														</li>
 													</ul>
@@ -126,5 +132,65 @@ include('menuAdmi.php');
 			</div>
 		</div>
     </div>
-    
+	
+	<script>
+	function editar() {
+		datos = $('#admipr').serialize();
 
+		$.ajax({
+			type: "POST",
+			data: datos,
+			url: "Ac.php?action=" + "perfilA",
+			success: function(r) {
+				console.log(r);
+				if (r == 3) {
+					swal({
+						type: 'error',
+						title: 'Oops...',
+						text: '¡El correo ya existe!',
+						showConfirmButton: false,
+						timer: 2000
+					})
+
+				} else if (r == 1) {
+					swal({
+						type: 'success',
+						title: '¡Se editó correctamente!',
+						showConfirmButton: false,
+						timer: 2000
+					})
+					location.reload();
+				} else if (r == 4) {
+					swal({
+						type: 'error',
+						title: 'Oops...',
+						text: '¡Las contraseñas no coinciden!',
+						showConfirmButton: false,
+						timer: 2000
+					})
+				} else if (r == 45) {
+					swal({
+						type: 'error',
+						title: 'Oops...',
+						text: '¡Debes colocar la contraseña actual!',
+						showConfirmButton: false,
+						timer: 2000
+					})
+				}else if (r == 8) {
+					swal({
+						type: 'error',
+						title: 'Oops...',
+						text: '¡La contraseña es incorrectal!',
+						showConfirmButton: false,
+						timer: 2000
+					})
+				}
+
+				
+			}
+		});
+	}
+</script>
+
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="../TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>

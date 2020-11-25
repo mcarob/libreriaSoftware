@@ -143,4 +143,3 @@ $prestamos = $CPF->listar();
 <script src="../TemplateAdministrador/src/plugins/datatables/js/vfs_fonts.js"></script>
 <!-- Datatable Setting js -->
 <script src="../TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
-</body>

@@ -7,6 +7,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/Controla
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorPrestamoF.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorAdministrador.php');
 
 
 //ENTIDADES
@@ -204,15 +205,79 @@ if (isset($_GET['action'])) {
         break;
 
         case 'buscarC':
-        
             $CCliente= new ControladorCliente();
             if($CCliente->devolverClientexUser($_GET['correo'])==2){
                 echo 2;
             }else{
                 echo 1;
             }
-        
         break;
+
+        case 'perfilE':
+            $datos = array(
+                $_POST["nombre"],
+                $_POST["telefono"],
+                $_POST["correo"],
+                $_POST["id_usu"],
+                $_POST["contraActual"],
+                $_POST["repeticion"],
+                $_POST["contraNueva"]
+            );
+
+            if($datos[4] != null){
+                // METODO PARA CAMBIAR ALGO QUE NO SEA LA CONTRASEÑA
+                if(($datos[6]==null and $datos[5]==null)){
+                    $CEmpleados = new ControladorEmpleados();
+                    $contraActEnc = md5($datos[4]);
+                    echo $CEmpleados->editarEmpelado($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $contraActEnc);
+                }
+                
+                if(($datos[5]==$datos[6]) and $datos[6]!=null){
+                    $CEmpleados = new ControladorEmpleados();
+                    $contraNuevaEnc = md5($datos[6]);
+                    echo $CEmpleados->editarEmpelado($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $contraNuevaEnc);
+                }else if(($datos[5]!=$datos[6]) and $datos[6]!=null){
+                    echo 4;
+                } 
+            }else{
+                echo 45;
+            }
+            
+           break;
+
+
+           case 'perfilA':
+            $datos = array(
+                $_POST["nombre"],
+                $_POST["telefono"],
+                $_POST["correo"],
+                $_POST["id_usu"],
+                $_POST["contraActual"],
+                $_POST["repeticion"],
+                $_POST["contraNueva"]
+            );
+
+            if($datos[4] != null){
+                // METODO PARA CAMBIAR ALGO QUE NO SEA LA CONTRASEÑA
+                if(($datos[6]==null and $datos[5]==null)){
+                    $CEmpleados = new ControladorEmpleados();
+                    $contraActEnc = md5($datos[4]);
+                    echo $CEmpleados->editarEmpelado($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $contraActEnc);
+                }
+                
+                if(($datos[5]==$datos[6]) and $datos[6]!=null){
+                    $CEmpleados = new ControladorEmpleados();
+                    $contraNuevaEnc = md5($datos[6]);
+                    echo $CEmpleados->editarEmpelado($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $contraNuevaEnc);
+                }else if(($datos[5]!=$datos[6]) and $datos[6]!=null){
+                    echo 4;
+                } 
+            }else{
+                echo 45;
+            }
+            
+           break;
+
         
     }
 }
