@@ -66,15 +66,17 @@ $cod_cliente=$_GET['cliente'];
                     <?php } ?>
                 </tr>                
                 
-                </table>
+                </table>    
 
                 <br>
                 <?php 
+                    
+
                     if($libro["nom_tipo_presentacion"]=="Física")
                     {
                         if($libro["existencias"]>0){
                             echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
-                        }else if($libro["existencias"]<0){
+                        }else if($libro["existencias"]<=0){
                             echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Entrar en espera</button></td>");
                         }
 

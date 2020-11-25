@@ -77,6 +77,7 @@ $cod_cliente=$_GET['cliente'];
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
                 <input type="hidden" id="ponencia" name="ponencia" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
+                <input type="hidden" id="idDocumento" name="idDocumento" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="presentacion" name="presentacion" value="<?php echo $libro["nom_tipo_presentacion"] ?>" />
             </form>
         </div>
@@ -92,7 +93,7 @@ $cod_cliente=$_GET['cliente'];
                     $.ajax({
                         type: "POST",
                         data: datos,
-                        url: "agregar_ponencia.php",
+                        url: "agregar_reserva.php",
                         success: function(r) {
 
                             console.log(r);
