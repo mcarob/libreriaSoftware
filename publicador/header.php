@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="assetsCliente/css/plugins.css">
     <link rel="stylesheet" href="assetsCliente/plugins/toastr/toastr.min.css"/>
     <link rel="stylesheet" href="assetsCliente/style.css">
-
+    <link rel="stylesheet" href="assetsCliente/plugins/toastr/toastr.min.css"/>
+    
     <!-- Cusom css -->
     <link rel="stylesheet" href="assetsCliente/css/custom.css">
 

@@ -1,22 +1,21 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/Entidades/Documento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/Documento.php');
 
 $tipo;
 if($_POST["tipo"] == 1)
 {
     $tipo = $_POST["tipo"];
 }
-    $tmp=$_FILES['archivoDocumento']['tmp_name'];
-    print_r($tmp);
-    // validaciones de registro empresa y registro como tal 
-    print_r($_POST);
+
     $documento = ($_FILES['archivoDocumento']['tmp_name']);  
     if (isset($_FILES['archivoDocumento'])) {
+        print_r("Entro aca");
         if (($_FILES['archivoDocumento']['type']) == 'application/pdf') {
-            
+            print_r("Entro aca 2");
             if ((($_FILES['archivoDocumento']['type']) == 'application/pdf') || (($_FILES['portada']['type']) == 'image/jpeg')) {
+                print_r("Entro aca 3");
                 try {
                     $datadocumento = $_FILES['archivoDocumento']['tmp_name'];
                     $dataportada = ($_FILES['portada']['tmp_name']);
@@ -58,19 +57,17 @@ if($_POST["tipo"] == 1)
                             $_POST["isbn"],
                             $_POST["informacion_paginas"],
                             $_POST["idioma"],                           
-                            $tnameD
+                            $pnameD,
+                            $pnameP
                        ]);
-                       echo($datos);
-                       if($seMovioDoc and $seMovioPor){
+                      
+                        print_r("Entro");
                         $controlador = new ControladorDocumento();
-                        echo($datos);
                         $documento = new Documento(0,$datos[5],$tipo,1,$datos[0],                                 
                                                          $datos[1],$datos[2],$datos[3],
-                                                         $datos[4]," "," "," ","archivo",1,"hola");
-                        echo($controlador->agregarRegistro($enviar));
-                       }else{
-                           echo("error en la carga de archivos por favor vuelva a intentarlo");
-                       }
+                                                         $datos[4]," "," "," ",$pnameD,1,$pnameP);
+                        echo($controlador->agregarRegistro($documento));
+                      
                     
                 
             } else {

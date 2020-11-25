@@ -2,9 +2,8 @@
 <html class="no-js" lang="zxx">
 
 <?php
-		include("header.php");
-		?>
-
+	include("header.php");
+	?>
 <body>
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -42,6 +41,10 @@
 									<a class="nav-link" id="Articulo-tab" data-toggle="tab" role="tab"
                                     aria-controls="Articulo"  aria-selected="false" href="#Articulo">Articulo</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="Autor-tab" data-toggle="tab" role="tab"
+                                    aria-controls="Autor"  aria-selected="false" href="#Autor">Autor</a>
+								</li>
 							</ul>
 							<div class="tab-content" id="myTabContent4">
 								<div class="tab-pane pt-3 fade show active" id="Libro" role="tabpanel" aria-labelledby="Libro-tab">
@@ -57,6 +60,11 @@
 								<div class="tab-pane pt-3 fade" id="Articulo" role="tabpanel" aria-labelledby="Articulo-tab">
 
 									<?php include_once 'regArticulo.php'; ?>
+
+								</div>
+								<div class="tab-pane pt-3 fade" id="Autor" role="tabpanel" aria-labelledby="Autor-tab">
+
+									<?php include_once 'regAutor.php'; ?>
 
 								</div>
 							</div>
@@ -81,7 +89,8 @@
 
 	<script>
 		// Prepare the preview for profile picture
-		$("#wizard-picture").change(function() {
+		
+		$("#portada",).change(function() {
 			readURL(this);
 		});
 
@@ -95,7 +104,11 @@
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
+
+		
+		
 	</script>
+	
 </body>
 
 </html>

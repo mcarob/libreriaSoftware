@@ -1,15 +1,16 @@
-<!doctype html>
+<!-- <link href="assetsCliente/plugins/data-tables/datatables.bootstrap4.min.css" rel="stylesheet"></link> -->
+
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/DocumentoDAO.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
-session_start();
-if (!isset($_SESSION['user'])) {
+// session_start();
+// if (!isset($_SESSION['user'])) {
 
-    header("location: ../index.php");
-} else if (!$_SESSION['tipo'] == 4) {
-    header("location: ../index.php");
-}
+//     header("location: ../index.php");
+// } else if (!$_SESSION['tipo'] == 4) {
+//     header("location: ../index.php");
+// }
 include("header.php");
 
 // $conReg=new ControladorRegistro();
@@ -22,6 +23,7 @@ $libro=$conDoc->listarLibro($conDoc->listarLibro());
 <body>
 <?php
 include("menu.php");
+
 ?>	
 	<div class="wrapper" id="wrapper">
 		<div class="box-search-content search_active block-bg close__top">
@@ -59,8 +61,6 @@ include("menu.php");
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ol-lg-12">
-                        <form action="#">               
-                            <div class="table-content wnro__table table-responsive">
                                 <div class="box" style="display : flex; ">
                                     <div class="pd-20">
                                         <h4 class="text-blue h4">Libros registrados</h4>
@@ -72,15 +72,15 @@ include("menu.php");
                                         <a  class="btn btn-outline-success" href="Publicador.php" role="button">Publicar nuevo libro</a>
                             
                                 </div>
-                                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                <table id="example"  class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr class="title-top">
 											<th class="product-name">Titulo libro</th>
                                             <th class="product-price">Cantidad De Paginas</th>                                            
                                             <th class="product-quantity">Editorial</th>
                                             <th class="product-quantity">Codigo ISBN</th>
+                                            <th class="product-quantity">Fecha de publicacion</th>
                                             <th class="product-quantity">Acciones</th>
-                                            <th class="product-quantity">Fecha publicacion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -101,8 +101,6 @@ include("menu.php");
                                         ?>                                    			
                                     </tbody>
                                 </table>
-                            </div>
-                        </form> 
                     </div>
                 </div>
                 <div class="row">
@@ -127,9 +125,10 @@ include("menu.php");
 include("footer.php");
 ?>
 <script>
-$(document).ready(function () {
-  $('#dtBasicExample').DataTable();
-  $('.dataTables_length').addClass('bs-select');
-});
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
 </script>
-</html>
+<script src="assetsCliente/plugins/data-tables/jquery.min.js"></script>
+<script src="assetsCliente/plugins/data-tables/jquery.datatables.min.js"></script>
+<script src="assetsCliente/plugins/data-tables/datatables.bootstrap4.min.js"></script>
