@@ -59,7 +59,8 @@ if($_POST["tipo"] == 1)
                             $_POST["isbn"],
                             $_POST["informacion_paginas"],
                             $_POST["idioma"],                           
-                            $tnameD
+                            $tnameD,
+                            $tnameP
                        ]);
                        echo($datos);
                        if($seMovioDoc and $seMovioPor){
@@ -67,7 +68,7 @@ if($_POST["tipo"] == 1)
                         echo($datos);
                         $documento = new Documento(0,$datos[5],$tipo,1,$datos[0],                                 
                                                          $datos[1],$datos[2],$datos[3],
-                                                         $datos[4]," "," "," ","archivo",1,"hola");
+                                                         $datos[4]," "," "," ",$tnameD,1,$tnameP);
                         echo($controlador->agregarRegistro($enviar));
                        }else{
                            echo("error en la carga de archivos por favor vuelva a intentarlo");

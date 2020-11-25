@@ -82,7 +82,7 @@
 	<script>
 		// Prepare the preview for profile picture
 
-		$("#logo").change(function() {
+		$("#portada").change(function() {
 			readURL(this);
 		});
 

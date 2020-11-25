@@ -6,9 +6,9 @@
         <div class="picture-container">
             <div class="picture">
                 <img src="assetsCliente/images/logo/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
-                <input type="file" id="logo" name="logo" required>
+                <input type="file" id="portada" name="portada" required>
             </div>
-            <h6>Elegir Logo</h6>
+            <h6>Elegir portada</h6>
         </div>
     </div>
         <div class="row">
