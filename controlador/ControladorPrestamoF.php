@@ -62,6 +62,11 @@ class ControladorPrestamoFisico{
         return $this->PrestamoFisico->cambiarEstadoPrestamo($cod);
     }
 
+    public function agregarEspera(PrestamoFisico $nuevoRegistro){
+        $this->PrestamoFisico=new DaoPrestamoFisico();
+        return $this->PrestamoFisico->agregarEspera($nuevoRegistro);
+    }
+
 }
 
 ?>

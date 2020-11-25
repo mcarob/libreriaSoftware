@@ -98,7 +98,7 @@ include("menu.php");
                                             }else{
                                                 if($pre["nombre_estado"]=='En Espera')
                                                 {
-                                                    echo ('<td><FONT COLOR="red">En Espera</FONT></td>');
+                                                    echo ('<td><FONT COLOR="orange">En Espera</FONT></td>');
 
                                                 }else if($pre["nombre_estado"]=='Reservado')
                                                 {
@@ -107,7 +107,11 @@ include("menu.php");
                                                 }else if($pre["nombre_estado"]=='Entregado')
                                                 {
                                                     echo ('<td><FONT COLOR="green">Entregado</FONT></td>');
+                                                }else if($pre["nombre_estado"]=='Atrasado')
+                                                {
+                                                    echo ('<td><FONT COLOR="red">Atrasado</FONT></td>');
                                                 }
+
                                             }
                                             ?>
                                         </tr>

@@ -15,7 +15,7 @@ class DaoPeticionDigital extends DB  implements dao_interface
     }
     
 
-    public function agregarRegistro(Peticion_digital $nuevoRegistro){
+    public function agregarRegistro(OBJECT $nuevoRegistro){
         
         $query = "INSERT INTO peticion_digital (cod_existencia,
         cod_usuario_cliente,
@@ -29,7 +29,7 @@ class DaoPeticionDigital extends DB  implements dao_interface
     }
 
 
-    public function actualizarRegistro(Peticion_digital $registroActualizar){
+    public function actualizarRegistro(OBJECT $registroActualizar){
         $query = "UPDATE peticion_digital SET cod_existencia=?,cod_usuario_cliente=?,fecha_peticion_digital=?
                   WHERE cod_peticion_digital=?";
         $respuesta = $this->con->prepare($query)->execute([

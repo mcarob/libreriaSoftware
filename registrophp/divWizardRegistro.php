@@ -125,8 +125,11 @@ function Registrarse() {
         url: 'controlador/registroPost.php?REGISTRAR=si', //archivo que recibe la peticion
         type: 'POST', //método de envio
         success: function(r) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-            console.log("información function r");
-            console.log("el valor de r es de " + r);
+            if(r=="1"){
+                toastr["warning"]("se ha completado su registro, muchas gracias", "ERROR");  
+            }else{
+                toastr["warning"](r, "ERROR");  
+            }
         }
     });
     return false;
