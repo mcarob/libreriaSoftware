@@ -1,13 +1,14 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/Entidades/Documento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/entidades/Documento.php');
 
 $tipo;
 if($_POST["tipo"] == 1)
 {
     $tipo = $_POST["tipo"];
 }
+    print_r($_FILES);
     $tmp=$_FILES['archivoDocumento']['tmp_name'];
     print_r($tmp);
     // validaciones de registro empresa y registro como tal 

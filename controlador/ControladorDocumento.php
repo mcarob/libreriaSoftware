@@ -1,7 +1,7 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/Modelo/daos/DocumentoDAO.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/Modelo/daos/DaoPrestamoFisico.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/DocumentoDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/DaoPrestamoFisico.php');
 
 class ControladorDocumento{
 

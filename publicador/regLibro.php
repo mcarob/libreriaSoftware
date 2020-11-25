@@ -1,4 +1,4 @@
-<form  id="formNuevoLibro" enctype="multipart/form-data" method="post"  >
+<form  id="formNuevoLibro" method="post"  >
     <!--    esto es algo comentado--->
 
     <div class="wizard-card">
@@ -103,13 +103,15 @@
 </form>
 <script>
     function agregarLibro() {
-        datos = $('#formNuevoLibro').serialize();
-        var file_imagen = $("#archivoDocumento").val();
+        var myform = document.getElementById("formNuevoLibro");
+        var datos = new FormData(myform);
         
         $.ajax({
             type: "POST",
             data: datos,         
             url: "agregar_libro.php",
+            processData: false,
+            contentType: false,
             success: function(r) {
 
                 console.log(r);
