@@ -31,7 +31,8 @@ if(isset($_GET['REGISTRAR'])){
         $pais=$_POST['paisRegistro'];
         $ciudad=$_POST['ciudadReg'];
         $publicador= new Publicador(null,null,$identificacion,$nombre,$correo,$direccion,$ciudad,$pais,$telefono);
-
+        $cpublicador= new ControladorPublicador();
+        $respuesta=$ControladorPublicador->agregarRegistroPlataforma();
 }
 
 }

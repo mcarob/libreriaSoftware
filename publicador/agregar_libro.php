@@ -16,7 +16,7 @@ if($_POST["tipo"] == 1)
     if (isset($_FILES['archivoDocumento'])) {
         if (($_FILES['archivoDocumento']['type']) == 'application/pdf') {
             
-            if (((($_FILES['portada']['type']) == 'image/png') || (($_FILES['portada']['type']) == 'image/jpeg'))) {
+            if ((($_FILES['archivoDocumento']['type']) == 'application/pdf') || (($_FILES['portada']['type']) == 'image/jpeg')) {
                 try {
                     $datadocumento = $_FILES['archivoDocumento']['tmp_name'];
                     $dataportada = ($_FILES['portada']['tmp_name']);
@@ -57,8 +57,7 @@ if($_POST["tipo"] == 1)
                             $_POST["editorial"],
                             $_POST["isbn"],
                             $_POST["informacion_paginas"],
-                            $_POST["idioma"],   
-                            $pnameD,                          
+                            $_POST["idioma"],                           
                             $tnameD
                        ]);
                        echo($datos);
@@ -67,7 +66,7 @@ if($_POST["tipo"] == 1)
                         echo($datos);
                         $documento = new Documento(0,$datos[5],$tipo,1,$datos[0],                                 
                                                          $datos[1],$datos[2],$datos[3],
-                                                         $datos[4]," "," "," ",$tnameD,1,$pnameD);
+                                                         $datos[4]," "," "," ","archivo",1,"hola");
                         echo($controlador->agregarRegistro($enviar));
                        }else{
                            echo("error en la carga de archivos por favor vuelva a intentarlo");
