@@ -40,6 +40,21 @@ class DaoPrestamoFisico extends DB implements dao_interface
         return $respuesta;
     }
 
+    public function agregarEspera(OBJECT $nuevoRegistro)
+    {
+        $query = "INSERT INTO prestamo_fisico (
+        cod_existencia,
+        cod_usuario_cliente,
+        cod_estado_prestamo,
+        fecha_prestamo_fisico,
+        fecha_devolucion_fisico) values (?,?,?,now(),null";
+        $respuesta = $this->con->prepare($query)->execute([
+            $nuevoRegistro->getCodExistencia(), $nuevoRegistro->getCod_usuario_cliente(),
+            $nuevoRegistro->getCod_estado_prestamo()
+        ]);
+        return $respuesta;
+    }
+
     public function verRetraso($fecha)
     {
         
