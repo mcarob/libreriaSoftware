@@ -2,7 +2,15 @@
     <!--    esto es algo comentado--->
 
     <div class="wizard-card">
-
+    <div class="wizard-card">
+        <div class="picture-container">
+            <div class="picture">
+                <img src="assetsCliente/images/logo/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
+                <input type="file" id="logo" name="logo" required>
+            </div>
+            <h6>Elegir Logo</h6>
+        </div>
+    </div>
         <div class="row">
                 <div class="form-group">
                         <label >Cargar archivo</label>

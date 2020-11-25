@@ -81,7 +81,8 @@
 
 	<script>
 		// Prepare the preview for profile picture
-		$("#wizard-picture").change(function() {
+
+		$("#logo").change(function() {
 			readURL(this);
 		});
 
