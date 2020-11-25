@@ -1,23 +1,17 @@
-<form  id="formNuevoLibro" method="post"  >
+<form id="formNuevoLibro" method="post">
     <!--    esto es algo comentado--->
 
     <div class="wizard-card">
-    <div class="wizard-card">
-        <div class="picture-container">
-            <div class="picture">
-                <img src="assetsCliente/images/logo/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
-                <input type="file" id="portada" name="portada" required>
-            </div>
-            <h6>Elegir portada</h6>
-        </div>
-    </div>
-        <div class="row">
-                <div class="form-group">
-                        <label >Cargar archivo</label>
-                        <input type="file" class="form-control-file"  id="archivoDocumento" name = "archivoDocumento">
+        <div class="wizard-card">
+            <div class="picture-container">
+                <div class="picture">
+                    <img src="assetsCliente/images/logo/logo.png" class="picture-src" id="wizardPicturePreview" title="" />
+                    <input type="file" id="portada" name="portada" required>
                 </div>
-        
+                <h6>Elegir portada</h6>
+            </div>
         </div>
+
 
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
@@ -93,8 +87,18 @@
                     </input>
                 </div>
             </div>
-
+            
         </div>
+        <div class="row">
+                <div class="col-md-4" aling="align-items-center">
+
+                    <div class="form-group">
+                        <label>Cargar archivo</label>
+                        <input type="file" class="form-control-file" id="archivoDocumento" name="archivoDocumento">
+                    </div>
+                </div>
+
+            </div>
         <input type="number" class="form-control" id="tipo" name="tipo" value="1" hidden />
         <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarLibro();" class="btn btn-success" value="Registrar">Registrar</a>
@@ -105,10 +109,10 @@
     function agregarLibro() {
         var myform = document.getElementById("formNuevoLibro");
         var datos = new FormData(myform);
-        
+
         $.ajax({
             type: "POST",
-            data: datos,         
+            data: datos,
             url: "agregar_libro.php",
             processData: false,
             contentType: false,
