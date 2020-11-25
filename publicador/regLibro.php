@@ -11,7 +11,7 @@
                 <h6>Elegir portada</h6>
             </div>
         </div>
-
+<br>
 
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
@@ -87,22 +87,23 @@
                     </input>
                 </div>
             </div>
-            
+
         </div>
         <div class="row">
-                <div class="col-md-4" aling="align-items-center">
+            <div class="col-md-4" aling="align-items-center">
 
-                    <div class="form-group">
-                        <label>Cargar archivo</label>
-                        <input type="file" class="form-control-file" id="archivoDocumento" name="archivoDocumento">
-                    </div>
+                <div class="form-group">
+                    <label>Cargar archivo</label>
+                    <input type="file" class="form-control-file" id="archivoDocumento" name="archivoDocumento">
                 </div>
-
             </div>
+
+        </div>
         <input type="number" class="form-control" id="tipo" name="tipo" value="1" hidden />
         <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarLibro();" class="btn btn-success" value="Registrar">Registrar</a>
         </div>
+        
     </div>
 </form>
 <script>
@@ -120,9 +121,10 @@
 
                 console.log(r);
                 if (r == 1) {
-                    window.location.href = "index.php";
+                    toastr["error"]("Error al subir doc", "Error :(");
                 } else {
-
+                    toastr["success"]("Libro agregado con exito", "Genial");
+                    document.getElementById("formNuevoLibro").reset();
                 }
             }
         });

@@ -4,13 +4,13 @@
     <div class="wizard-card">
         <br>
         <br>
-        <!--<div class="picture-container">
+        <div class="picture-container">
             <div class="picture">
                 <img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title="" />
-                <input type="file" id="portada" name="portada" required>
+                <input type="file" id="portada2" name="portada" required>
             </div>
             <h6>Elegir portada del título</h6>
-        </div>-->
+        </div>
         <br>
         <br>
         <div class="row">

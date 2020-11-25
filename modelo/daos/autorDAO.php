@@ -15,12 +15,11 @@ class autorDAO extends DB  implements dao_interface
     }
     
 
-    public function agregarRegistro(autor $nuevoRegistro){
+    public function agregarRegistro(Object $nuevoRegistro){
         
-        $query = "INSERT INTO autor (cod_autor,nombre_autor,
-        apellido_autor,fecha_nacimiento,biografia_autor) values (?,?,?,?,?)";
+        $query = "INSERT INTO autor (nombre_autor,
+        apellido_autor,fecha_nacimiento,biografia_autor) values (?,?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
-                $nuevoRegistro->getCodAutor(), 
                 $nuevoRegistro->getNombreAutor(), 
                 $nuevoRegistro->getApellidoAutor(),
                 $nuevoRegistro->getFechaNacimiento(), 
@@ -30,7 +29,7 @@ class autorDAO extends DB  implements dao_interface
     }
 
 
-    public function actualizarRegistro(autor $registroActualizar){
+    public function actualizarRegistro(Object $registroActualizar){
         $query = "UPDATE autor SET nombre_autor=?,apellido_autor=?,
         fecha_nacimiento=?,biografia_autor=? WHERE cod_autor=?";
         $respuesta = $this->con->prepare($query)->execute([ 
