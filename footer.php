@@ -55,6 +55,7 @@
 </footer>
 <!-- JS Files -->
 <script src="assetsCliente/js/vendor/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"> </script>
 <script src="assetsCliente/js/popper.min.js"></script>
 <script src="assetsCliente/js/bootstrap.min.js"></script>
 <script src="assetsCliente/js/plugins.js"></script>

@@ -2,6 +2,7 @@
 include_once('daointerface.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/modelo/entidades/Usuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/enviar.php');
 
 class DaoUsuario extends DB implements dao_interface
 {
@@ -17,7 +18,39 @@ class DaoUsuario extends DB implements dao_interface
     public function agregarRegistro($nuevoRegistro)
     {
     }
+    public function validarCorreoContraOlv($cor, $conf){
+        $query=$this->con->prepare('SELECT * FROM usuario WHERE user_usuario=? AND codigo_verificacion=?');
+        $query->execute([$cor,md5($conf)]);
+        if($query->rowCount()){
+            return 1;
+        }return 0;
+    }
+    public function actualizarContrasena(Usuario $u){
+        $query=$this->con->prepare('UPDATE usuario SET pass_usuario=? where  cod_usuario=?');
+        $query->execute([$u->getPass_usuario(),$u->getCod_usuario()]);
+        if($query->rowCount()){
+            return 1;
+        }return 0;
+    }
+    public function mandarCorreoRecuperacion($correo)
+    {
+        $cor= new enviarCorreo();
+        $codigo=(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
+        $md5Codigo=md5($codigo);
+        $mensaje=' Para continar con el proceso de Recuperación de Contraseña, por favor ingresa  el codigo de verificacion
+         que esta a continuación :  '.$codigo. " podrás actualizar tu contraseña
+        para quqe puedas volver a ingresar a la aplicación, recuerda que si no completas este proceso, 
+        tendrás que volver a pedir un codigo de verificación.";
+        $r1=$cor->enviarMensaje("Usuario Libreria",$correo,'Recuperación de Contraseña Oportunidades El Bosque',$mensaje);
+        if($r1==1){
+            $query=$this->con->prepare('UPDATE usuario SET codigo_verificacion=? WHERE user_usuario=?');
+            $query->execute([$md5Codigo,$correo]);
+            return 1;
+        }else{
+            return "hubo problemas con nuestro servidor de correos, por favor intenta mas tarde";
+        }
 
+    }
     public function actualizarRegistro($registroActualizar)
     {
     }
