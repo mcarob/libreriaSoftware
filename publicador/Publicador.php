@@ -105,10 +105,8 @@
 			}
 		}
 
-<<<<<<< Updated upstream
 		
 		
-=======
 		$("#portadaArt").change(function() {
 			readURL(this);
 		});
@@ -138,7 +136,6 @@
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
->>>>>>> Stashed changes
 	</script>
 	
 </body>

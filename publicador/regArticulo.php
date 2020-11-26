@@ -2,7 +2,6 @@
     <!--    esto es algo comentado--->
 
     <div class="wizard-card">
-<<<<<<< Updated upstream
         <br>
         <br>
         <div class="picture-container">
@@ -22,13 +21,11 @@
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="archivoDocumento">
                     <label class="custom-file-label" for="inputGroupFile01">Elegir Documento</label>
-=======
         <div class="wizard-card">
             <div class="picture-container">
                 <div class="picture">
                     <img src="assetsCliente/images/logo/logo.png" class="picture-src" id="wizardPicturePreview2" title="" />
                     <input type="file" id="portadaArt" name="portadaArt" required>
->>>>>>> Stashed changes
                 </div>
                 <h6>Elegir portada</h6>
             </div>

@@ -11,11 +11,8 @@
                 <h6>Elegir portada</h6>
             </div>
         </div>
-<<<<<<< Updated upstream
 <br>
-=======
         <br><br>
->>>>>>> Stashed changes
 
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
