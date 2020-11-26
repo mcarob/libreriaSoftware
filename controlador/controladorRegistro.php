@@ -13,7 +13,9 @@ class ControladorRegistro{
         $this->dao_usuario= new DaoUsuario();
     }
 
-  
+  public function mandarCorreoRecuperacion($correoOlvidado){
+    return $this->dao_usuario->mandarCorreoRecuperacion($correoOlvidado);
+  }
 
     /**
      * el metodo recibe por parametro un codigo, que es el codigo del usuario al que se le va a cambiar el estado de validado
@@ -21,6 +23,9 @@ class ControladorRegistro{
      */
     public function cambiarEstadoValidado($cod_cambiar){
          $this->dao_usuario->validarUsuario($cod_cambiar);
+    }
+    public function cambiarContraUsuario(Usuario $u){
+        $this->dao_usuario->actualizarContrasena($u);
     }
 
     public function darUsuario($user_usuario){
@@ -34,6 +39,10 @@ class ControladorRegistro{
 
     }
 
+    public function validarCorreoContraOlv($correo,$verificacion)
+    {
+        return $this->dao_usuario->validarCorreoContraOlv($correo,$verificacion);
+    }
     /**
      * Get the value of cod_especial
      */ 
