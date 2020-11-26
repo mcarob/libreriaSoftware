@@ -33,7 +33,6 @@ include('menuAdmi.php');
 										<div class="modal-content">
 											<div class="modal-body pd-5">
 												<div class="img-container">
-													<img id="image" src="vendors/images/photo2.jpg" alt="Picture">
 												</div>
 											</div>
 					
@@ -108,7 +107,7 @@ include('menuAdmi.php');
 															<div class="form-group">
 
 																<br>
-																<button type="submit" class='btn btn-outline-success'>Agregar</button>
+																<button type="submit" class='btn btn-outline-success'>EDITAR</button>
 															</div>
 												
 														</li>
@@ -164,7 +163,7 @@ include('menuAdmi.php');
 					swal({
 						type: 'error',
 						title: 'Oops...',
-						text: '¡Las contraseñas no coinciden!',
+						text: '¡Contraseñas incorrectas!',
 						showConfirmButton: false,
 						timer: 2000
 					})
@@ -194,3 +193,5 @@ include('menuAdmi.php');
 
 <script src="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
 <script src="../TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>
+<script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
+<script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
