@@ -55,23 +55,35 @@ class DaoPrestamoFisico extends DB implements dao_interface
         return $respuesta;
     }
 
+    public function cambiarEspera($idPrestamo)
+    {
+        $sentencia=$this->con->prepare("UPDATE prestamo_fisico set cod_estado_prestamo= 1 WHERE cod_prestamo_fisico=?");
+        $respuesta=$sentencia->execute([$idPrestamo]);
+        return $respuesta;
+
+        //agregar le envio de correo
+    }
+
     public function verRetraso($fecha)
     {
-        
+     if($fecha!=null)
+     {   
         $hoy = strtotime(date("Y-m-d"),time());
         $dev = strtotime($fecha);
         
         if($dev<$hoy)
         {
             return 1;
-        }else{
-            return 0;
         }
+     }else
+     {
+         return 0;
+     }
 
     }
     public function actualizarRegistro($registroActualizar)
     {
-       // No se le hace update al prestamo
+       
     }
 
     public function listar()
@@ -90,11 +102,21 @@ class DaoPrestamoFisico extends DB implements dao_interface
         
     }
     
-
+    public function darPrestamoFisicoxCod2($codPrestamo){
+        $query = $this->con->prepare("SELECT * FROM prestamo_fisico where cod_prestamo_fisico=?");
+        $query->execute([$codPrestamo]);
+        return $query->fetch();    
+    }
 
     public function darPrestamoFisicoxCod($id){
         $query = $this->con->prepare("SELECT * FROM listaLibrosFisicosPrestados where cod_prestamo_fisico=".$id);
         $query->execute();
+        return $query->fetch();    
+    }
+
+    public function darExistenciaFisica($id){
+        $query = $this->con->prepare("SELECT * FROM existencia_documento where cod_existencia_documento=?");
+        $query->execute([$id]);
         return $query->fetch();    
     }
 
@@ -147,6 +169,42 @@ class DaoPrestamoFisico extends DB implements dao_interface
             return $respuesta;
     }
 
+    public function cambiarEstadoPrestamoEnCola($cod)
+    {
+            $sentencia=$this->con->prepare("UPDATE prestamo_fisico set cod_estado_prestamo= 1, fecha_prestamo_fisico=now(),fecha_devolucion_fisico=now()+8*interval'1 day' WHERE cod_prestamo_fisico= ?");
+            $respuesta=$sentencia->execute([$cod]);
+            return $respuesta;
+    }
 
+
+    public function verificarDisponibilidad($idExistencia,$idPrestamo)
+    {
+        $ex=$this->darExistenciaFisica($idExistencia);
+        $fechas=array();
+
+        if($ex["cod_estado_copia"]==2)
+            {
+                
+                $prestamo=$this->darPrestamoFisicoxCod2($idPrestamo);
+                $this->cambiarEstadoExistencia($ex["cod_existencia_documento"]);
+                $this->cambiarEstadoPrestamoEnCola($prestamo["cod_prestamo_fisico"]);
+
+                $fecha_actual = date("d-m-Y");
+                $devo=date("d-m-Y",strtotime($fecha_actual."+ 8 days")); 
+
+                array_push($fechas,$fecha_actual,$devo);
+                
+                //ENVIAR CORREO
+                return $fechas;
+
+
+            }
+
+        return $fechas;
+    }
+
+
+
+    
 
 }

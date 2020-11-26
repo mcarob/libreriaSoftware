@@ -85,33 +85,49 @@ include("menu.php");
                                         {
                                         ?>
                                         <tr>
-                                            <td><?php echo $pre["titulo_documento"] ?></td>
-											<td><?php echo $pre["fecha_prestamo_fisico"] ?></td>
-                                            <td><?php echo $pre["fecha_devolucion_fisico"] ?></td>
-                                            <td><?php echo $pre["codigo_isbn"] ?></td>
                                             <?php 
                                             if($conPrestamo->verRetraso($pre["fecha_devolucion_fisico"])==1)
                                             {
                                                 $conPrestamo->cambiarEstadoPrestamo($pre["cod_prestamo_fisico"]);
+                                                echo ('<td>'.$pre["titulo_documento"].'</td>');
+                                                echo ('<td>'.$pre["fecha_prestamo_fisico"].'</td>');
+                                                echo ('<td>'.$pre["fecha_devolucion_fisico"].'</td>');
+                                                echo ('<td>'.$pre["codigo_isbn"].'</td>');
                                                 echo ('<td><FONT COLOR="red">Atrasado</FONT></td>');
 
-                                            }else{
-                                                if($pre["nombre_estado"]=='En Espera')
+                                            }else if($pre["nombre_estado"]=="En Espera"){
+                                                $fechas=$conPrestamo->verificarDisponibilidad($pre["cod_existencia"],$pre["cod_prestamo_fisico"]);
+                                                if(sizeof($fechas)>0)
                                                 {
+
+                                                    echo ('<td>'.$pre["titulo_documento"].'</td>');
+                                                    echo ('<td>'.$fechas[0].'</td>');
+                                                    echo ('<td>'.$fechas[1].'</td>');
+                                                    echo ('<td>'.$pre["codigo_isbn"].'</td>');
+                                                    echo ('<td><FONT COLOR="blue">Reservado</FONT></td>');
+                                                }else{
+                                                    echo ('<td>'.$pre["titulo_documento"].'</td>');
+                                                    echo ('<td>'.$pre["fecha_prestamo_fisico"].'</td>');
+                                                    echo ('<td>'.$pre["fecha_devolucion_fisico"].'</td>');
+                                                    echo ('<td>'.$pre["codigo_isbn"].'</td>');
                                                     echo ('<td><FONT COLOR="orange">En Espera</FONT></td>');
-
-                                                }else if($pre["nombre_estado"]=='Reservado')
-                                                {
-                                                    echo ('<td><FONT COLOR="navy">Reservado</FONT></td>');
-                                                
-                                                }else if($pre["nombre_estado"]=='Entregado')
-                                                {
-                                                    echo ('<td><FONT COLOR="green">Entregado</FONT></td>');
-                                                }else if($pre["nombre_estado"]=='Atrasado')
-                                                {
-                                                    echo ('<td><FONT COLOR="red">Atrasado</FONT></td>');
                                                 }
-
+                                            }
+                                            else if($pre["nombre_estado"]=="Entregado")
+                                            {
+                                                echo ('<td>'.$pre["titulo_documento"].'</td>');
+                                                echo ('<td>'.$pre["fecha_prestamo_fisico"].'</td>');
+                                                echo ('<td>'.$pre["fecha_devolucion_fisico"].'</td>');
+                                                echo ('<td>'.$pre["codigo_isbn"].'</td>');
+                                                echo ('<td><FONT COLOR="green">Entregado</FONT></td>');
+                                            }
+                                            else if($pre["nombre_estado"]=="Reservado")
+                                            {
+                                                echo ('<td>'.$pre["titulo_documento"].'</td>');
+                                                echo ('<td>'.$pre["fecha_prestamo_fisico"].'</td>');
+                                                echo ('<td>'.$pre["fecha_devolucion_fisico"].'</td>');
+                                                echo ('<td>'.$pre["codigo_isbn"].'</td>');
+                                                echo ('<td><FONT COLOR="blue">Reservado</FONT></td>');
                                             }
                                             ?>
                                         </tr>

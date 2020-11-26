@@ -15,7 +15,7 @@ class Autores_documentoDAO extends DB  implements dao_interface
     }
     
 
-    public function agregarRegistro(Autores_documento $nuevoRegistro){
+    public function agregarRegistro(Object $nuevoRegistro){
         
         $query = "INSERT INTO autores_documento (cod_autores_documento,cod_documento,cod_autor) values (?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
@@ -27,7 +27,7 @@ class Autores_documentoDAO extends DB  implements dao_interface
     }
 
 
-    public function actualizarRegistro(Autores_documento $registroActualizar){
+    public function actualizarRegistro(Object $registroActualizar){
         $query = "UPDATE autores_documento SET cod_documento=?,cod_autor=? WHERE cod_autores_documento=?";
         $respuesta = $this->con->prepare($query)->execute([ 
                 $registroActualizar->getCodDocumento(), 

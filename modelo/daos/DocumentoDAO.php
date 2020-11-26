@@ -204,7 +204,7 @@ class DocumentoDAO extends DB  implements dao_interface
 
 
     public function informacionDocumentos(){
-    $query = $this->con->prepare("SELECT * FROM info_documento ");
+    $query = $this->con->prepare("SELECT * FROM info_documento");
     $query->execute();
     $em = array();
     while ($fila = $query->fetch()) {
@@ -280,6 +280,8 @@ class DocumentoDAO extends DB  implements dao_interface
         }
         return $em;
     }
+
+ 
 
 
 //  //  //  //  //  

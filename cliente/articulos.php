@@ -21,19 +21,28 @@ $conCli=new ControladorCliente();
 $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 
 
-
+$autores=$conAutor->listar();
 $contDoc=new ControladorDocumento();
 $idiomas=$contDoc->idiomas();
 $presentacion=$contDoc->tipoPres();
 $documento=$contDoc->tipoDoc();
 
 $listaDocumentos=$contDoc->informacionDocumentos();
+
+$unidades=0;
+foreach($listaDocumentos as $k)
+{
+	if($k["nom_tipo_documento"]=="Articulo" and $k["nom_tipo_presentacion"]=="Digital")
+	{
+		$unidades=1;
+	}
+}
 ?>
 <body>
 <?php
 include("menu.php");
 ?>
-
+<?php if($unidades==1){?>
 	<div class="wrapper" id="wrapper">
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
@@ -87,7 +96,7 @@ include("menu.php");
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Autores</h3>
         						<ul>
-                                    <?php foreach($listaDocumentos as $a){?>
+                                    <?php foreach($autores as $a){?>
         							<li><a><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></a></li>
         							<?php }?>
         						</ul>
@@ -171,10 +180,52 @@ include("menu.php");
         	</div>
         </div>
       
-		</div>
-	
+	</div>
+	<?php }else{?>
+		<div class="ht__bradcaump__area bg-image--4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bradcaump__inner text-center">
+                        	<h2 class="bradcaump-title">No contamos con libros fisicos aún</h2>
+                            <nav class="bradcaump-content">
+                              <a class="breadcrumb_item" href="index.html">Home</a>
+                              <span class="brd-separetor">/</span>
+                              <span class="breadcrumb_item active">No encontrados</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+
+		<!-- Start Error Area -->
+		<section class="page_error section-padding--lg bg--white">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="error__inner text-center">
+							<div class="error__logo">
+								<a><img src="assetsCliente/images/404.png" alt="error images"></a>
+							</div>
+							<div class="error__content">
+								<h2>No se encontraron libros fisicos</h2>
+								<p>Te invitamos a mirar dentro de nuestros demas stands para que encuentres tu documento!</p>
+								<br><br>
+								<div class="search_form_wrapper">
+								<a href="index.php">Volver</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Error Area -->
+	<?php } ?>
 		
-    </body>
+</body>
 <?php
 include('footer.php')
 ?>
