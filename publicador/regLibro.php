@@ -79,6 +79,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="col-md-8" aling="align-items-center">
                 <div class="form-group">
@@ -96,7 +97,9 @@
                 </div>
             </div>
 
+
         </div>
+
         <div class="row">
             <div class="col-md-12" aling="align-items-center">
             <div class="custom-file">
