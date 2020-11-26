@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assetsCliente/plugins/toastr/toastr.min.css"/>
     <link rel="stylesheet" href="assetsCliente/style.css">
     <link rel="stylesheet" href="assetsCliente/plugins/toastr/toastr.min.css"/>
-    
+    <link rel="stylesheet" href="assetsCliente/css/bootstrap-multiselect.css" type="text/css"/>
     <!-- Cusom css -->
     <link rel="stylesheet" href="assetsCliente/css/custom.css">
 

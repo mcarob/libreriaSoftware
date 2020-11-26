@@ -137,7 +137,17 @@
 			}
 		}
 	</script>
-	
+	<script type="text/javascript">
+    $(document).ready(function() {
+		
+        $('#example-getting-started').multiselect({
+			buttonText: function(options, select) {
+                return 'Ingrese un Autor';
+            },
+			buttonWidth: '400px',
+		});
+    });
+</script>
 </body>
 
 </html>

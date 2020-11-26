@@ -52,3 +52,4 @@
 	<script src="assetsCliente/js/plugins.js"></script>
 	<script src="assetsCliente/js/active.js"></script>
 	<script src="assetsCliente/plugins/toastr/toastr.min.js"></script>
+	<script type="text/javascript" src="assetsCliente/js/bootstrap-multiselect.js"></script>
