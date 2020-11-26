@@ -82,7 +82,6 @@
                 </div>
 
             </div>
-<<<<<<< Updated upstream
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
                     <label>Autores:</label>
@@ -90,9 +89,7 @@
                     </input>
                 </div>
             </div>
-=======
 
->>>>>>> Stashed changes
 
         </div>
 
