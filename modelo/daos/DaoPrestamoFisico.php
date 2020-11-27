@@ -47,7 +47,7 @@ class DaoPrestamoFisico extends DB implements dao_interface
         cod_usuario_cliente,
         cod_estado_prestamo,
         fecha_prestamo_fisico,
-        fecha_devolucion_fisico) values (?,?,?,now(),null";
+        fecha_devolucion_fisico) values (?,?,?,now(),null)";
         $respuesta = $this->con->prepare($query)->execute([
             $nuevoRegistro->getCodExistencia(), $nuevoRegistro->getCod_usuario_cliente(),
             $nuevoRegistro->getCod_estado_prestamo()

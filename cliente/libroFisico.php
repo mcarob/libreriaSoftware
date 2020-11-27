@@ -136,7 +136,7 @@ include("menu.php");
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a><?php echo $lib["nombre_autor"]." ".$lib["apellido_autor"]?></a></h4>
+											<h4><a><?php echo $lib["titulo_documento"]?></a></h4>
 											<ul class="prize d-flex">
 												<li><?php echo $lib["editorial_publicacion"]?></li>
 												

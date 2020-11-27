@@ -7,6 +7,7 @@ $idLibro = $_GET['libro'];
 $libro = $conDocumento->darInfoXdoc($idLibro);
 $cod_cliente=$_GET['cliente'];
 
+
 ?>
 
 
@@ -79,6 +80,7 @@ $cod_cliente=$_GET['cliente'];
                 <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
                 <input type="hidden" id="idDocumento" name="idDocumento" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="presentacion" name="presentacion" value="<?php echo $libro["nom_tipo_presentacion"] ?>" />
+                <input type="hidden" id="documentoD" name="documentoD" value="../archivos/documentos/modelos.pdf" />
             </form>
         </div>
 </div>

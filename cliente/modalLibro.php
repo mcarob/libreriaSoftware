@@ -30,7 +30,7 @@ $cod_cliente=$_GET['cliente'];
                     <div>
 
                         <!-- Title -->
-                        <h4 class="card-title font-weight-bold mb-2">Autor: <?php echo $libro["nombre_autor"]." ".$libro["apellido_autor"] ?></h4>
+                        <h4 class="card-title font-weight-bold mb-2">Autor(es): <?php echo $libro["autores"] ?></h4>
                         <!-- Subtitle -->
                         <p class="card-text"><i class="far fa-clock pr-2"></i>Publicado: <?php echo $libro["fecha_publicacion"] ?></p>
 
@@ -62,7 +62,7 @@ $cod_cliente=$_GET['cliente'];
                 <tr>
                     <?php if($libro["nom_tipo_presentacion"]=="Física"){ ?>
                     <td>Existencias: </td>
-                    <td><?php echo $libro["existencias"]?></td>
+                    <td><?php echo $libro["doclibres"]?></td>
                     <?php } ?>
                 </tr>                
                 
@@ -74,9 +74,9 @@ $cod_cliente=$_GET['cliente'];
 
                     if($libro["nom_tipo_presentacion"]=="Física")
                     {
-                        if($libro["existencias"]>0){
+                        if($libro["doclibres"]>0){
                             echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Reservar</button></td>");
-                        }else if($libro["existencias"]<=0){
+                        }else if($libro["doclibres"]<=0){
                             echo  ("<td><button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Entrar en espera</button></td>");
                         }
 
@@ -87,7 +87,7 @@ $cod_cliente=$_GET['cliente'];
                 ?>
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
                 <input type="hidden" id="idDocumento" name="idDocumento" value="<?php echo $idLibro ?>" />
-                <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
+                <input type="hidden" id="existencia" name="existencia" value="<?php echo $libro["doclibres"] ?>" />
                 <input type="hidden" id="presentacion" name="presentacion" value="<?php echo $libro["nom_tipo_presentacion"] ?>" />
 
             </form>

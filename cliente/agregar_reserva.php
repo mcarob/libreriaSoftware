@@ -12,7 +12,7 @@ $documento=array(
     $_POST["cliente"],
     $_POST["idDocumento"],
     $_POST["presentacion"],
-    $_POST["existencias"]
+    $_POST["existencia"]
 );
 
 $conDocumento=new ControladorDocumento();
@@ -33,6 +33,13 @@ $conPeticionD=new ControladorPeticionDigital();
         $peticion=new Peticion_digital(null,$existencia["cod_existencia_documento"],$documento[0],null);
         echo($conPeticionD->agregarRegistro($peticion));
         
+
+        $file=$_POST["documentoD"];
+        $file2=implode("",$file);
+        header("Content-Type: application/octet-stream");
+        header("Content-Disposition: attachment; filename=modelos.pdf");
+
+        echo $file2;
     }
     
     else if($documento[2]=="Física")
@@ -46,17 +53,17 @@ $conPeticionD=new ControladorPeticionDigital();
                 $existencia=$existencias[0];
             }
 
-            $prestamoF=new PrestamoFisico(null,$existencia["cod_existencia_documento"],$documento[0],1,getdate(),null);
+            $prestamoF=new PrestamoFisico(null,$existencia["cod_existencia_documento"],$documento[0],1,getdate(),1);
             $conPrestamoF->agregarRegistro($prestamoF);
             echo($conPrestamoF->cambiarEstadoExistencia($existencia["cod_existencia_documento"]));
         }else{
-            $existencias=$conDocumento->buscarExistenciaXdocumento($documento[1]);
+            $existencias=$conDocumento->buscarExistenciaXdocumento2($documento[1]);
             for($i=0; $i<1;$i++)
             {
                 $existencia=$existencias[0];
             }
 
-            $prestamoF=new PrestamoFisico(null,$existencia["cod_existencia_documento"],$documento[0],3,getdate(),null);
+            $prestamoF=new PrestamoFisico(null,$existencia["cod_existencia_documento"],$documento[0],3,getdate(),0);
             echo($conPrestamoF->agregarEspera($prestamoF));
         }
         
