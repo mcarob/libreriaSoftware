@@ -241,7 +241,5 @@ include('footer.php')
 		$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
 		$('#modal1').modal('show');
 	}
-	
-
 </script>
 

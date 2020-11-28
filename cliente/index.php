@@ -118,8 +118,8 @@ $listaDocumentos=$contDoc->informacionDocumentos();
 					<div class="col-lg-12">
 						<div class="section__title text-center">
 							<br><br>
-							<h2 class="title__be--2">New <span class="color--theme">Products</span></h2>
-							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+							<h2 class="title__be--2">Nuevos <span class="color--theme">Productos</span></h2>
+							<p>Consulta nuestros stands para que puedas ver todos los documentos que el bosquecillo tiene para ti.</p>
 						</div>
 					</div>
 				</div>

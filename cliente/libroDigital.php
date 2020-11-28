@@ -68,11 +68,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
+                        	<h2 class="bradcaump-title">Stand libros digitales</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Libros Fisicos</span>
+                              <span class="breadcrumb_item active">Libros Digitales</span>
                             </nav>
                         </div>
                     </div>
@@ -191,7 +191,7 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">No contamos con libros fisicos aún</h2>
+                        	<h2 class="bradcaump-title">No contamos con libros digitales aún</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.html">Home</a>
                               <span class="brd-separetor">/</span>
@@ -214,7 +214,7 @@ include("menu.php");
 								<a><img src="assetsCliente/images/404.png" alt="error images"></a>
 							</div>
 							<div class="error__content">
-								<h2>No se encontraron libros fisicos</h2>
+								<h2>No se encontraron libros digitales</h2>
 								<p>Te invitamos a mirar dentro de nuestros demas stands para que encuentres tu documento!</p>
 								<br><br>
 								<div class="search_form_wrapper">
@@ -238,7 +238,7 @@ include('footer.php')
 
 <script>
 	function vermas(libro,cliente) {
-		$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
+		$('.modal-content').load('modalLibroDigital.php?libro='+libro+'&cliente='+cliente) 
 		$('#modal1').modal('show');
 	}
 	
