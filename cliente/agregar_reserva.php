@@ -31,15 +31,16 @@ $conPeticionD=new ControladorPeticionDigital();
         }
 
         $peticion=new Peticion_digital(null,$existencia["cod_existencia_documento"],$documento[0],null);
-        echo($conPeticionD->agregarRegistro($peticion));
         
-
-        $file=$_POST["documentoD"];
+        $ruta=$_POST["rutaDoc"];
+        $ruta="../archivos/documentos/Acta reunión 2.pdf";
+        $file=file($ruta);
         $file2=implode("",$file);
+        $decom=explode( '/', $ruta );
         header("Content-Type: application/octet-stream");
-        header("Content-Disposition: attachment; filename=modelos.pdf");
-
+        header("Content-Disposition: attachment; filename=".$decom[3]);
         echo $file2;
+
     }
     
     else if($documento[2]=="Física")

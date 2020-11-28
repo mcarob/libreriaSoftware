@@ -89,6 +89,7 @@ $cod_cliente=$_GET['cliente'];
                 <input type="hidden" id="idDocumento" name="idDocumento" value="<?php echo $idLibro ?>" />
                 <input type="hidden" id="existencia" name="existencia" value="<?php echo $libro["doclibres"] ?>" />
                 <input type="hidden" id="presentacion" name="presentacion" value="<?php echo $libro["nom_tipo_presentacion"] ?>" />
+                <input type="hidden" id="rutaDoc" name="rutaDoc" value="<?php echo $libro["direccion_archivo"] ?>" />
 
             </form>
         </div>
