@@ -19,11 +19,23 @@ for($i=0; $i<1;$i++)
 $peticion=new Peticion_digital(null,$existencia["cod_existencia_documento"],$documento[0],null);
 $conPeticionD->agregarRegistro($peticion);
 
-$ruta="../archivos/documentos/modelos.pdf";
-$file=file($ruta);
-$file2=implode("",$file);
+$ruta=$_POST["rutaDoc"];
 $decom=explode( '/', $ruta );
-header("Content-Type: application/octet-stream");
-header("Content-Disposition: attachment; filename=".$decom[3]);
-echo $file2;
+$file = $ruta;
+$fp = fopen($file, "r") ;
+
+header("Cache-Control: maxage=1");
+header("Pragma: public");
+header("Content-type: application/pdf");
+header("Content-Disposition: inline; filename=".$decom[3]."");
+header("Content-Description: PHP Generated Data");
+header("Content-Transfer-Encoding: binary");
+header('Content-Length:' . filesize($file));
+ob_clean();
+flush();
+while (!feof($fp)) {
+      $buff = fread($fp, 1024);
+      print $buff;
+}
+
 ?>
