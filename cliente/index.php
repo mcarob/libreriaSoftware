@@ -133,7 +133,7 @@ $listaDocumentos=$contDoc->informacionDocumentos();
 					<div class="product product__style--3">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
-							<a class="first__img" ><img src="<?php echo($doc["direccion_portada"])?>" width="270" height="340" ></a>
+							<a class="first__img" ><img src="../archivos/portadas/<?php echo($doc["direccion_portada"])?>" width="270" height="340" ></a>
 								<div class="hot__box">
 									<span class="hot-label">LIBRO</span>
 								</div>
@@ -143,14 +143,7 @@ $listaDocumentos=$contDoc->informacionDocumentos();
 								<ul class="prize d-flex">
 									<li><?php echo ($doc["editorial_publicacion"])?></li>
 								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 					</div>

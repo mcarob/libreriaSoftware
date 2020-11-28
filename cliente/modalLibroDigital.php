@@ -24,7 +24,7 @@ $cod_cliente=$_GET['cliente'];
                         <!-- Card -->
 
                     <!-- Avatar -->
-                    <img src="assetsCliente/images/books/1.jpg" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
+                    <img src="../archivos/portadas/<?php echo$libro["direccion_portada"]?>" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
 
                     <!-- Content -->
                     <div>
