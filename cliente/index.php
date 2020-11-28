@@ -139,7 +139,7 @@ $listaDocumentos=$contDoc->informacionDocumentos();
 								</div>
 							</div>
 							<div class="product__content content--center">
-								<h4><a><?php echo ($doc["nombre_autor"]." ".$doc["apellido_autor"] )?></a></h4>
+								<h4><a><?php echo ($doc["autores"] )?></a></h4>
 								<ul class="prize d-flex">
 									<li><?php echo ($doc["editorial_publicacion"])?></li>
 								</ul>
