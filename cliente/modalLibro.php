@@ -70,8 +70,7 @@ $cod_cliente=$_GET['cliente'];
 
                 <br>
                 <?php 
-                    
-
+                
                     if($libro["nom_tipo_presentacion"]=="Física")
                     {
                         if($libro["doclibres"]>0){

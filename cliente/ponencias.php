@@ -2,6 +2,7 @@
 <html class="no-js" lang="zxx">
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorAutor.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
@@ -26,6 +27,7 @@ $contDoc=new ControladorDocumento();
 $idiomas=$contDoc->idiomas();
 $presentacion=$contDoc->tipoPres();
 $documento=$contDoc->tipoDoc();
+$conAutor=new ControladorAutores();
 $autores=$conAutor->listar();
 $listaDocumentos=$contDoc->informacionDocumentos();
 
@@ -37,6 +39,7 @@ foreach($listaDocumentos as $k)
 		$unidades=1;
 	}
 }
+
 
 ?>
 <body>
@@ -65,11 +68,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand Ponencias</h2>
+                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Ponencias</span>
+                              <span class="breadcrumb_item active">Libros Fisicos</span>
                             </nav>
                         </div>
                     </div>
@@ -111,7 +114,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados Ponencia</p>
+			                        <p>Resultados Libros Fisicos</p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -123,7 +126,7 @@ include("menu.php");
 	        					<div class="row">
 	        						<!-- Start Single Product -->
                                     <?php foreach($listaDocumentos as $lib){
-                                    if($lib["nom_tipo_documento"]=="Ponencia"){?>
+                                    if($lib["nom_tipo_documento"]=="Ponencia" and $lib["nom_tipo_presentacion"]=="Digital"){?>
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
@@ -133,7 +136,7 @@ include("menu.php");
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a><?php echo $lib["nombre_autor"]." ".$lib["apellido_autor"]?></a></h4>
+											<h4><a><?php echo $lib["titulo_documento"]?></a></h4>
 											<ul class="prize d-flex">
 												<li><?php echo $lib["editorial_publicacion"]?></li>
 												
@@ -182,14 +185,13 @@ include("menu.php");
         </div>
       
 	</div>
-	
-	<?php }else{?>	
+	<?php }else{?>
 		<div class="ht__bradcaump__area bg-image--4">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">No contamos con libros fisicos aún</h2>
+                        	<h2 class="bradcaump-title">No contamos con ponencias aún</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.html">Home</a>
                               <span class="brd-separetor">/</span>
@@ -212,7 +214,7 @@ include("menu.php");
 								<a><img src="assetsCliente/images/404.png" alt="error images"></a>
 							</div>
 							<div class="error__content">
-								<h2>No se encontraron libros fisicos</h2>
+								<h2>No se encontraron Ponencias</h2>
 								<p>Te invitamos a mirar dentro de nuestros demas stands para que encuentres tu documento!</p>
 								<br><br>
 								<div class="search_form_wrapper">
@@ -226,6 +228,8 @@ include("menu.php");
 		</section>
 		<!-- End Error Area -->
 	<?php } ?>
+	
+		
 </body>
 <?php
 include('footer.php')
