@@ -19,7 +19,7 @@ for($i=0; $i<1;$i++)
 $peticion=new Peticion_digital(null,$existencia["cod_existencia_documento"],$documento[0],null);
 $conPeticionD->agregarRegistro($peticion);
 
-$ruta=$_POST["rutaDoc"];
+$ruta="../archivos/documentos/modelos.pdf";
 $file=file($ruta);
 $file2=implode("",$file);
 $decom=explode( '/', $ruta );
