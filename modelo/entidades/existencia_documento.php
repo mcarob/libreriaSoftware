@@ -10,7 +10,7 @@ class Existencia_documento{
     {
         $this->cod_existencia_documento = $cod_existencia_documento;
         $this->cod_documento = $cod_documento;
-        $this->$this->cod_existencia_documento = $cod_estado_copia;
+        $this->cod_estado_copia = $cod_estado_copia;
     }
 
   public function getCod_existencia_documento()
@@ -27,6 +27,7 @@ class Existencia_documento{
 
   public function getCod_documento()
   {
+    
     return $this->cod_documento;
   }
 

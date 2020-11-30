@@ -1,18 +1,15 @@
 <form id="formNuevoLibro" method="post">
-    <!--    esto es algo comentado--->
 
     <div class="wizard-card">
-        <div class="wizard-card">
-            <div class="picture-container">
-                <div class="picture">
-                    <img src="assetsCliente/images/logo/logo2.png" class="picture-src" id="wizardPicturePreview" title="" />
-                    <input type="file" id="portada" name="portada" required>
-                </div>
-                <h6>Elegir portada</h6>
+        <br>
+        <div class="picture-container">
+            <div class="picture">
+                <img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview" title="" />
+                <input type="file" id="portada" name="portada" required>
             </div>
+            <h6>Elegir portada</h6>
         </div>
         <br>
-
         <div class="row">
             <div class="col-md-4" aling="align-items-center">
                 <div class="form-group">
@@ -83,9 +80,7 @@
             </div>
             <div class="col-md-8" aling="align-items-center">
                 <div class="form-group">
-                    <div class="row">
-                        <label>Autores:</label>
-                    </div>
+                    <label>Autores:</label>
                     <select id="example-getting-started" multiple="multiple" value="Seleccionar">
                         <option value="cheese">Andres Mendonza</option>
                         <option value="tomatoes">Gabriel Garcia Marquez</option>
@@ -99,17 +94,17 @@
 
 
         </div>
+        <div class="col-md-8">
 
-        <div class="row">
-            <div class="col-md-12" aling="align-items-center">
-            <div class="custom-file">
-            <input type="file" class="form-control-file" id="archivoDocumento" name="archivoDocumento">
-                    <label class="custom-file-label" for="inputGroupFile01">Elegir Documento</label>
+            <div class="row">
+
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="archivoDocumento" name="archivoDocumento">
+                    <label class="custom-file-label" for="customFile">Elegir Documento</label>
+                </div>
             </div>
-
-            </div>
-
         </div>
+
         <input type="number" class="form-control" id="tipo" name="tipo" value="1" hidden />
         <div class="form-footer pt-4 pt-5 mt-4" style="float: center;">
             <a onclick="agregarLibro();" class="btn btn-success" value="Registrar">Registrar</a>
