@@ -42,10 +42,7 @@
                 </nav>
             </div>
             <div class="col-md-6 col-sm-6 col-6 col-lg-2">
-                <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-                    <li class="shop_search"><a class="search__active" href="#"></a></li>
-                    </li>
-                </ul>
+                
             </div>
         </div>
         <!-- Start Mobile Menu -->

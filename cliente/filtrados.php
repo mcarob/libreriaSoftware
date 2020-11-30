@@ -166,8 +166,7 @@ include("menu.php");
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
-                                                        <li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
-														
+
 														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"  onclick='vermas(<?php echo $lib["cod_documento"] ?>,<?php echo ($cliente->getCod_cliente())?>)'>
 														<i class="bi bi-search"></i></a>
 														</li>
