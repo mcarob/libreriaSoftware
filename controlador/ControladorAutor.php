@@ -1,6 +1,6 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/Modelo/daos/autorDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/autorDAO.php');
 
 
 
