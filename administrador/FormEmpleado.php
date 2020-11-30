@@ -138,6 +138,9 @@ include('menuAdmi.php');
         });
     }
 </script>
-
+<script src="../TemplateAdministrador/vendors/scripts/core.js"></script>
+<script src="../TemplateAdministrador/vendors/scripts/script.min.js"></script>
+<script src="../TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
+<script src="../TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
 <script src="../TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
 <script src="../TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>

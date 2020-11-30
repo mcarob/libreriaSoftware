@@ -3,8 +3,8 @@ include('Header.php');
 include('menuEm.php');
 
 ?>
-<script src="librerias/jquery-3.3.1.min.js"></script>
-<script src="librerias/plotly-latest1.min.js"></script>
+<script src="../administrador/librerias/jquery-3.3.1.min.js"></script>
+<script src="../administrador/librerias/plotly-latest1.min.js"></script>
 
 <div class="main-container">
     <div class="pd-ltr-20">
