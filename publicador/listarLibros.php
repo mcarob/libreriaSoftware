@@ -103,7 +103,7 @@ include("menu.php");
                                 </ul>
                                 <ul class="cart__total__tk">
                                     <!-- <li><?php echo $libH["cantidad_libstamos"]?></li> -->
-                                    <li>1</li>
+                                    <li>5</li>
                                 </ul>
                             </div>
                         </div>

@@ -43,6 +43,12 @@ class ControladorPublicador{
         return $this->Publicador->listarPublicadoresSinValidar();
     }
 
+    //public function devolverPublicador($codigo_usuario)
+   // {
+     //   $this->publicador=new DaoPublicador();
+       // return $this->cliente->devolverPublicador($codigo_usuario);
+   // }
+
    
 
 }

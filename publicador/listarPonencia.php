@@ -116,7 +116,7 @@ $ponencia = $conDoc->listarPonencia($conDoc->listarLibro());
                                 </ul>
                                 <ul class="cart__total__tk">
                                     <!-- <li><?php echo $libH["cantidad_libstamos"] ?></li> -->
-                                    <li>1</li>
+                                    <li>2</li>
                                 </ul>
                             </div>
                         </div>

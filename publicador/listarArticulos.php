@@ -111,7 +111,7 @@ include("menu.php");
                                     <li>Cantidad de articulos publicados</li>
                                 </ul>
                                 <ul class="cart__total__tk">
-                                    <li>1</li>
+                                    <li>2</li>
                                 </ul>
                             </div>
                         </div>
