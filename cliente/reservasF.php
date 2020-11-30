@@ -52,7 +52,7 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Mis reservas</h2>
+                        	<h2 class="bradcaump-title">Mis reservas Fisicas</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
@@ -70,7 +70,7 @@ include("menu.php");
                     <div class="col-md-12 col-sm-12 ol-lg-12">
                         <form action="#">               
                             <div class="table-content wnro__table table-responsive">
-                                <table>
+                                <table id="example"  class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr class="title-top">
 											<th class="product-name">Titulo libro</th>
