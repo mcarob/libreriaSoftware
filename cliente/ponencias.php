@@ -133,7 +133,7 @@ include("menu.php");
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
-											<a class="first__img"><img src="../archivos/portadas/<?php echo$lib["direccion_portada"]?>" ></a>
+											<a class="first__img"><img src="../archivos/portadas/<?php echo$lib["direccion_portada"]?>" width="100" height="250"></a>
 											<div class="hot__box">
 												<span class="hot-label">Ponencia</span>
 											</div>
