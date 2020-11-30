@@ -7,7 +7,7 @@
         <div class="wizard-card">
             <div class="picture-container">
                 <div class="picture">
-                    <img src="assetsCliente/images/logo/logo.png" class="picture-src" id="wizardPicturePreview3" title="" />
+                    <img src="assetsCliente/images/icons/default-avatar1.png" class="picture-src" id="wizardPicturePreview3" title="" />
                     <input type="file" id="portadaPo" name="portadaPo" required>
                 </div>
                 <h6>Elegir portada</h6>

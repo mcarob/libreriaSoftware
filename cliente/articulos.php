@@ -2,6 +2,7 @@
 <html class="no-js" lang="zxx">
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorAutor.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
@@ -21,12 +22,13 @@ $conCli=new ControladorCliente();
 $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
 
 
-$autores=$conAutor->listar();
+
 $contDoc=new ControladorDocumento();
 $idiomas=$contDoc->idiomas();
 $presentacion=$contDoc->tipoPres();
 $documento=$contDoc->tipoDoc();
-
+$conAutor=new ControladorAutores();
+$autores=$conAutor->listar();
 $listaDocumentos=$contDoc->informacionDocumentos();
 
 $unidades=0;
@@ -37,6 +39,8 @@ foreach($listaDocumentos as $k)
 		$unidades=1;
 	}
 }
+
+
 ?>
 <body>
 <?php
@@ -64,11 +68,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand Articulo</h2>
+                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Articulos</span>
+                              <span class="breadcrumb_item active">Libros Fisicos</span>
                             </nav>
                         </div>
                     </div>
@@ -82,25 +86,28 @@ include("menu.php");
         		<div class="row">
         			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
         				<div class="shop__sidebar">
-        					<aside class="wedget__categories poroduct--cat">
-        						<h3 class="wedget__title">Idiomas</h3>
-								<form>
-								<ul>
-                                <?php foreach($idiomas as $i){?>    
-                                <li><a><?php echo $i["nom_idioma"] ?></a></li>
-        						<?php }?>	
-								</ul>
-								</form>
+						<form action="filtradosAI.php" method="POST">	
+							<aside class="wedget__categories poroduct--cat">
+        						<h3 class="wedget__title">Idiomas</h3>	
+								<select name="idiomaSelec" id="idiomaSelec" class="form-control">
+								<?php foreach($idiomas as $i){?>
+                                    <option value="<?php echo $i["nom_idioma"]?>"><?php echo $i["nom_idioma"]?></option>
+								<?php }?>
+								</select>								
         					</aside>
         					
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Autores</h3>
-        						<ul>
-                                    <?php foreach($autores as $a){?>
-        							<li><a><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></a></li>
-        							<?php }?>
-        						</ul>
-        					</aside>
+								<select name="autorSelec" id="autorSelec" class="form-control">
+								<?php foreach($autores as $a){?>
+                                    <option value="<?php echo ($a["nombre_autor"].$a["apellido_autor"])?>"><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></option>
+								<?php }?>
+								</select>								
+								<input type="hidden" class="form-control" id="presentacionSelec" name="presentacionSelec" value="Digital">
+								<input type="hidden" class="form-control" id="docSelec" name="docSelec" value="Articulo">
+							</aside>
+								<input class="form-control" type="submit" value="Filtrar">
+							</form>
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -110,7 +117,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados Articulos</p>
+			                        <p>Resultados Libros Fisicos</p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -122,17 +129,17 @@ include("menu.php");
 	        					<div class="row">
 	        						<!-- Start Single Product -->
                                     <?php foreach($listaDocumentos as $lib){
-                                    if($lib["nom_tipo_documento"]=="Libro" and $lib["nom_tipo_presentacion"]=="Física"){?>
+                                    if($lib["nom_tipo_documento"]=="Articulo" and $lib["nom_tipo_presentacion"]=="Digital"){?>
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
-											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
+											<a class="first__img"><img src="../archivos/portadas/<?php echo$lib["direccion_portada"]?>" ></a>
 											<div class="hot__box">
-												<span class="hot-label">Articulo</span>
+												<span class="hot-label">Ponencia</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a><?php echo $lib["nombre_autor"]." ".$lib["apellido_autor"]?></a></h4>
+											<h4><a><?php echo $lib["titulo_documento"]?></a></h4>
 											<ul class="prize d-flex">
 												<li><?php echo $lib["editorial_publicacion"]?></li>
 												
@@ -140,8 +147,6 @@ include("menu.php");
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
-                                                        <li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
-														
 														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"  onclick='vermas(<?php echo $lib["cod_documento"] ?>,<?php echo ($cliente->getCod_cliente()) ?>)'>
 														<i class="bi bi-search"></i></a>
 														</li>
@@ -187,9 +192,9 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">No contamos con libros fisicos aún</h2>
+                        	<h2 class="bradcaump-title">No contamos con articulos aún</h2>
                             <nav class="bradcaump-content">
-                              <a class="breadcrumb_item" href="index.html">Home</a>
+                              <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
                               <span class="breadcrumb_item active">No encontrados</span>
                             </nav>
@@ -210,7 +215,7 @@ include("menu.php");
 								<a><img src="assetsCliente/images/404.png" alt="error images"></a>
 							</div>
 							<div class="error__content">
-								<h2>No se encontraron libros fisicos</h2>
+								<h2>No se encontraron Articulos</h2>
 								<p>Te invitamos a mirar dentro de nuestros demas stands para que encuentres tu documento!</p>
 								<br><br>
 								<div class="search_form_wrapper">
@@ -224,6 +229,7 @@ include("menu.php");
 		</section>
 		<!-- End Error Area -->
 	<?php } ?>
+	
 		
 </body>
 <?php
@@ -239,3 +245,4 @@ include('footer.php')
 	
 
 </script>
+

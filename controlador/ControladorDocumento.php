@@ -10,8 +10,16 @@ class ControladorDocumento{
 
     public function agregarRegistro(Documento $nuevoRegistro)
     {
+        print_r("Entro por aca 1");
         $this->documento=new DocumentoDAO();
         return $this->documento->agregarRegistro($nuevoRegistro);
+    }
+
+    public function agregarExistencia(Existencia_documento $nuevoRegistro)
+    {
+        print_r("Entro por aca 2");
+        $this->documento=new DocumentoDAO();
+        return $this->documento->agregarExistencia($nuevoRegistro);
     }
 
     public function actualizarRegistro(Documento $registroActualizar)

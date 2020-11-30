@@ -40,6 +40,28 @@ class DocumentoDAO extends DB  implements dao_interface
                 $nuevoRegistro->getCod_publicador(),
                 $nuevoRegistro->getDireccion_portada()
         ]);
+        
+     
+    }
+
+    public function agregarExistencia(Object $nuevoRegistro){
+
+        $lastID = $this->con->prepare("SELECT cod_documento FROM documento ORDER BY cod_documento DESC LIMIT 1 ");
+        if($lastID){
+            $lastID->execute();
+            
+            $em = 0;
+        while ($fila = $lastID->fetch()) {
+                $em = $fila;
+                print_r($em);
+            }
+        }
+        
+        $query = "INSERT INTO existencia_documento(cod_documento, cod_estado_copia) VALUES (?,?)";
+        $respuesta = $this->con->prepare($query)->execute([
+                $nuevoRegistro->$em[0],
+                $nuevoRegistro->getCod_estado_copia(),
+        ]);
         return $respuesta;
     }
 
@@ -298,4 +320,3 @@ class DocumentoDAO extends DB  implements dao_interface
 //  //  //  //  //  
 
 }
-?>

@@ -4,18 +4,9 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/DocumentoDAO.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
-// session_start();
-// if (!isset($_SESSION['user'])) {
-
-//     header("location: ../index.php");
-// } else if (!$_SESSION['tipo'] == 4) {
-//     header("location: ../index.php");
-// }
 include("header.php");
 
-// $conReg=new ControladorRegistro();
-// $usuario=$conReg->darUsuario($_SESSION['user']);
-// $codigo=$usuario->getCod_usuario();
+
 $conDoc=new ControladorDocumento();
 $libro=$conDoc->listarLibro($conDoc->listarLibro());
 

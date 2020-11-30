@@ -86,25 +86,28 @@ include("menu.php");
         		<div class="row">
         			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
         				<div class="shop__sidebar">
-        					<aside class="wedget__categories poroduct--cat">
-        						<h3 class="wedget__title">Idiomas</h3>
-								<form>
-								<ul>
-                                <?php foreach($idiomas as $i){?>    
-                                <li><a><?php echo $i["nom_idioma"] ?></a></li>
-        						<?php }?>	
-								</ul>
-								</form>
+						<form action="filtradosAI.php" method="POST">	
+							<aside class="wedget__categories poroduct--cat">
+        						<h3 class="wedget__title">Idiomas</h3>	
+								<select name="idiomaSelec" id="idiomaSelec" class="form-control">
+								<?php foreach($idiomas as $i){?>
+                                    <option value="<?php echo $i["nom_idioma"]?>"><?php echo $i["nom_idioma"]?></option>
+								<?php }?>
+								</select>								
         					</aside>
         					
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Autores</h3>
-        						<ul>
-                                    <?php foreach($autores as $a){?>
-        							<li><a><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></a></li>
-        							<?php }?>
-        						</ul>
-        					</aside>
+								<select name="autorSelec" id="autorSelec" class="form-control">
+								<?php foreach($autores as $a){?>
+                                    <option value="<?php echo ($a["nombre_autor"].$a["apellido_autor"])?>"><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></option>
+								<?php }?>
+								</select>								
+								<input type="hidden" class="form-control" id="presentacionSelec" name="presentacionSelec" value="Física">
+								<input type="hidden" class="form-control" id="docSelec" name="docSelec" value="Libro">
+							</aside>
+								<input class="form-control" type="submit" value="Filtrar">
+							</form>
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -130,7 +133,7 @@ include("menu.php");
 
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
-											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
+											<a class="first__img"><img src="../archivos/portadas/<?php echo$lib["direccion_portada"]?>" ></a>
 											<div class="hot__box">
 												<span class="hot-label">Libro</span>
 											</div>
@@ -144,8 +147,7 @@ include("menu.php");
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
-                                                        <li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
-														
+                                                        
 														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"  onclick='vermas(<?php echo $lib["cod_documento"] ?>,<?php echo ($cliente->getCod_cliente()) ?>)'>
 														<i class="bi bi-search"></i></a>
 														</li>
@@ -193,7 +195,7 @@ include("menu.php");
                         <div class="bradcaump__inner text-center">
                         	<h2 class="bradcaump-title">No contamos con libros fisicos aún</h2>
                             <nav class="bradcaump-content">
-                              <a class="breadcrumb_item" href="index.html">Home</a>
+                              <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
                               <span class="breadcrumb_item active">No encontrados</span>
                             </nav>
@@ -241,7 +243,5 @@ include('footer.php')
 		$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
 		$('#modal1').modal('show');
 	}
-	
-
 </script>
 

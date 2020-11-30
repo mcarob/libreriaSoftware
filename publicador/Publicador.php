@@ -90,7 +90,7 @@
 	<script>
 		// Prepare the preview for profile picture
 		
-		$("#portada",).change(function() {
+		$("#portada").change(function() {
 			readURL(this);
 		});
 
@@ -107,35 +107,35 @@
 
 		
 		
-		$("#portadaArt").change(function() {
-			readURL(this);
-		});
+		// $("#portadaArt").change(function() {
+		// 	readURL(this);
+		// });
 
-		function readURL(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
+		// function readURL(input) {
+		// 	if (input.files && input.files[0]) {
+		// 		var reader = new FileReader();
 
-				reader.onload = function(e) {
-					$('#wizardPicturePreview2').attr('src', e.target.result).fadeIn('slow');
-				}
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
+		// 		reader.onload = function(e) {
+		// 			$('#wizardPicturePreview2').attr('src', e.target.result).fadeIn('slow');
+		// 		}
+		// 		reader.readAsDataURL(input.files[0]);
+		// 	}
+		// }
 
-		$("#portadaPo").change(function() {
-			readURL(this);
-		});
+		// $("#portadaPo").change(function() {
+		// 	readURL(this);
+		// });
 
-		function readURL(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
+		// function readURL(input) {
+		// 	if (input.files && input.files[0]) {
+		// 		var reader = new FileReader();
 
-				reader.onload = function(e) {
-					$('#wizardPicturePreview3').attr('src', e.target.result).fadeIn('slow');
-				}
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
+		// 		reader.onload = function(e) {
+		// 			$('#wizardPicturePreview3').attr('src', e.target.result).fadeIn('slow');
+		// 		}
+		// 		reader.readAsDataURL(input.files[0]);
+		// 	}
+		// }
 	</script>
 	<script type="text/javascript">
     $(document).ready(function() {
@@ -146,6 +146,13 @@
             },
 			buttonWidth: '400px',
 		});
+    });
+</script>
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 </script>
 </body>

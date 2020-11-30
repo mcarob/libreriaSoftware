@@ -17,7 +17,7 @@ $cod_cliente=$_GET['cliente'];
         </div>
         <div class="modal-body px-4">
 
-            <form id="reserva" method="POST" action="javascript:agregarPeticion()">
+            <form id="reserva" method="POST" action="descargar_archivos.php">
             
                 <div class="modal-body px-4">
                 <div>
@@ -25,13 +25,13 @@ $cod_cliente=$_GET['cliente'];
                         <!-- Card -->
 
                     <!-- Avatar -->
-                    <img src="assetsCliente/images/books/1.jpg" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
+                    <img src="../archivos/portadas/<?php echo$libro["direccion_portada"]?>" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
 
                     <!-- Content -->
                     <div>
 
                         <!-- Title -->
-                        <h4 class="card-title font-weight-bold mb-2">Autor: <?php echo $libro["nombre_autor"]." ".$libro["apellido_autor"] ?></h4>
+                        <h4 class="card-title font-weight-bold mb-2">Autor: <?php echo $libro["autores"] ?></h4>
                         <!-- Subtitle -->
                         <p class="card-text"><i class="far fa-clock pr-2"></i>Publicado: <?php echo $libro["fecha_publicacion"] ?></p>
 
@@ -71,43 +71,13 @@ $cod_cliente=$_GET['cliente'];
                 </tr>                               
                 
                 
-                
+                        
                 </table>
                 <br>
                 <button id='botonReservar' type='submit' class='btn btn-primary mb-2 btn-pill' >Descargar</button>
                 <input type="hidden" id="cliente" name="cliente" value="<?php echo $cod_cliente?>" />
-                <input type="hidden" id="ponencia" name="ponencia" value="<?php echo $idLibro ?>" />
-                <input type="hidden" id="existencias" name="existencias" value="<?php echo $libro["existencias"] ?>" />
                 <input type="hidden" id="idDocumento" name="idDocumento" value="<?php echo $idLibro ?>" />
-                <input type="hidden" id="presentacion" name="presentacion" value="<?php echo $libro["nom_tipo_presentacion"] ?>" />
-                <input type="hidden" id="documentoD" name="documentoD" value="../archivos/documentos/modelos.pdf" />
+                <input type="hidden" id="rutaDoc" name="rutaDoc" value="<?php echo $libro["direccion_archivo"] ?>" />
             </form>
         </div>
 </div>
-
-<script>
-    
-        function agregarPeticion() {
-            
-               
-            datos = $('#reserva').serialize();
-
-                    $.ajax({
-                        type: "POST",
-                        data: datos,
-                        url: "agregar_reserva.php",
-                        success: function(r) {
-
-                            console.log(r);
-                            if (r == 1) {
-                                toastr["success"]('Realizando descarga...', "NOTIFICACIÓN");
-                                window.location.href = "reservasD.php";
-                            } else {
-                                toastr["error"]("No se pudo realizar la descarga", "ERROR");
-                            }
-                        }
-                    });
-
-               
-        }
-    </script>

@@ -2,7 +2,11 @@
 <html class="no-js" lang="zxx">
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'] . '/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorDocumento.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorAutor.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/ClienteDAO.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
@@ -12,11 +16,17 @@ if (!isset($_SESSION['user'])) {
 }
 include("header.php");
 
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+$conCli=new ControladorCliente();
+$cliente=$conCli->devolverCliente($usuario->getCod_usuario());
+
 $idioma=$_POST["idioma"];
 $documento=$_POST["documento"];
 $presentacion=$_POST["presentacion"];
 
-
+$conAutor=new ControladorAutores();
+$autores=$conAutor->listar();
 $controladorDocumentos=new ControladorDocumento();
 $categorias=$controladorDocumentos->materias();
 $idiomas=$controladorDocumentos->idiomas();
@@ -45,17 +55,18 @@ if($presentacion=="Digital")
 }
 
 $filtrados=$controladorDocumentos->filtradosInicio($idioma,$documento,$presentacion);
-$resultados=0;
+$unidades=0;
 if(sizeof($filtrados)>0)
 {
-	$resultados=1;
+	$unidades=1;
 }
+
 ?>
 <body>
 <?php
 include("menu.php");
 ?>
-
+<?php if($unidades==1){?>
 	<div class="wrapper" id="wrapper">
 		<div class="box-search-content search_active block-bg close__top">
 			<form id="search_mini_form" class="minisearch" action="#">
@@ -77,11 +88,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand <?php echo $mostrarDoc." ".$mostrarPre?></h2>
+                        	<h2 class="bradcaump-title">Stand de <?php echo $mostrarDoc?></h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active"><?php echo $mostrarDoc." ".$mostrarPre?></span>
+                              <span class="breadcrumb_item active"><?php echo $mostrarDoc?></span>
                             </nav>
                         </div>
                     </div>
@@ -95,23 +106,28 @@ include("menu.php");
         		<div class="row">
         			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
         				<div class="shop__sidebar">
-        					<aside class="wedget__categories poroduct--cat">
-        						<h3 class="wedget__title">Idiomas</h3>
-        						<ul>
-                                <?php foreach($idiomas as $i){?>    
-                                <li><a href="#"><?php echo $i["nom_idioma"] ?></a></li>
-        						<?php }?>	
-        						</ul>
+						<form action="filtradosAI.php" method="POST">	
+							<aside class="wedget__categories poroduct--cat">
+        						<h3 class="wedget__title">Idiomas</h3>	
+								<select name="idiomaSelec" id="idiomaSelec" class="form-control">
+								<?php foreach($idiomas as $i){?>
+                                    <option value="<?php echo $i["nom_idioma"]?>"><?php echo $i["nom_idioma"]?></option>
+								<?php }?>
+								</select>								
         					</aside>
         					
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Autores</h3>
-        						<ul>
-                                    <?php foreach($listaDocumentos as $a){?>
-        							<li><a href="#"><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></a></li>
-        							<?php }?>
-        						</ul>
-        					</aside>
+								<select name="autorSelec" id="autorSelec" class="form-control">
+								<?php foreach($autores as $a){?>
+                                    <option value="<?php echo ($a["nombre_autor"].$a["apellido_autor"])?>"><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></option>
+								<?php }?>
+								</select>								
+								<input type="hidden" class="form-control" id="presentacionSelec" name="presentacionSelec" value="Física">
+								<input type="hidden" class="form-control" id="docSelec" name="docSelec" value="Libro">
+							</aside>
+								<input class="form-control" type="submit" value="Filtrar">
+							</form>
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -121,7 +137,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados <?php echo $mostrarDoc." ".$mostrarPre?></p>
+			                        <p>Resultados <?php echo $mostrarDoc?></p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -133,6 +149,7 @@ include("menu.php");
 	        					<div class="row">
 	        						<!-- Start Single Product -->
                                     <?php foreach($filtrados as $lib){?>
+
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="<?php echo$lib["direccion_portada"]?>" ></a>
@@ -141,23 +158,35 @@ include("menu.php");
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a><?php echo $lib["nombre_autor"]." ".$lib["apellido_autor"]?></a></h4>
+											<h4><a><?php echo $lib["titulo_documento"]?></a></h4>
 											<ul class="prize d-flex">
-												<li><?php echo $lib["editorial_publicacion"]?></li>
+												<li><?php echo $lib["fecha_publicacion"]?></li>
 												
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
-                                                        <li><a class="wishlist" href=""><i class="bi bi-shopping-cart-full"></i></a></li>
-														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"  onclick='vermas(<?php echo $lib["cod_documento"] ?>,<?php echo ($cliente->getCod_cliente())?>)'>
+														<i class="bi bi-search"></i></a>
+														</li>
 													</ul>
 												</div>
 											</div>
 											
 										</div>
                                     </div>
+
                                     <?php } ?>
+
+									<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+												
+															
+												</div>
+											</div>
+										</div>
 		        					<!-- End Single Product -->
 	        					</div>
 	        					<ul class="wn__pagination">
@@ -175,13 +204,79 @@ include("menu.php");
         	</div>
         </div>
       
-		</div>
-		
+	</div>
+	<?php }else{?>
+		<div class="ht__bradcaump__area bg-image--4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bradcaump__inner text-center">
+                        	<h2 class="bradcaump-title">No contamos con <?php echo $mostrarDoc?> aún</h2>
+                            <nav class="bradcaump-content">
+                              <a class="breadcrumb_item" href="index.php">Home</a>
+                              <span class="brd-separetor">/</span>
+                              <span class="breadcrumb_item active">No encontrados</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
 
-		
-		
-    </body>
+		<!-- Start Error Area -->
+		<section class="page_error section-padding--lg bg--white">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="error__inner text-center">
+							<div class="error__logo">
+								<a><img src="assetsCliente/images/404.png" alt="error images"></a>
+							</div>
+							<div class="error__content">
+								<h2>No se encontraron <?php echo $mostrarDoc?> con las especificaciones dadas.</h2>
+								<p>Te invitamos a mirar dentro de nuestros demas stands para que encuentres tu documento!</p>
+								<br><br>
+								<div class="search_form_wrapper">
+								<a href="index.php">Volver</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Error Area -->
+	<?php } ?>
+	    </body>
 <?php
 include('footer.php')
 ?>
 </html>
+<script>
+	function vermas(libro,cliente) {
+
+		var doc='<?php echo $documento;?>';
+		var pre='<?php echo $presentacion;?>';
+		if(doc=="Libro" && pre=="Física")
+		{
+			$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
+		else if(doc=="Libro" && pre=="Digital")
+		{
+			$('.modal-content').load('modalLibroDigital.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
+		else if(doc=="Ponencia")
+		{
+			$('.modal-content').load('modalPonencia.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
+		else if(doc=="Articulo")
+		{
+			$('.modal-content').load('modalArticulo.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
+	}
+</script>

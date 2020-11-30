@@ -42,10 +42,7 @@
                 </nav>
             </div>
             <div class="col-md-6 col-sm-6 col-6 col-lg-2">
-                <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-                    <li class="shop_search"><a class="search__active" href="#"></a></li>
-                    </li>
-                </ul>
+                
             </div>
         </div>
         <!-- Start Mobile Menu -->
@@ -53,38 +50,36 @@
             <div class="col-lg-12 d-none">
                 <nav class="mobilemenu__nav">
                     <ul class="meninmenu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Pages</a>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a>Documentos</a>
                             <ul>
-                                <li><a href="about.html">About Page</a></li>
-                                <li><a href="portfolio.html">Portfolio</a>
+                                <li><a>Fisicos</a>
                                     <ul>
-                                        <li><a href="portfolio.html">Portfolio</a></li>
-                                        <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                                        <li><a href="libroFisico.php">Libros</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="cart.html">Cart Page</a></li>
-                                <li><a href="checkout.html">Checkout Page</a></li>
-                                <li><a href="wishlist.html">Wishlist Page</a></li>
-                                <li><a href="error404.html">404 Page</a></li>
-                                <li><a href="faq.html">Faq Page</a></li>
-                                <li><a href="team.html">Team Page</a></li>
+                                <li><a>Digitales</a>
+                                    <ul>
+                                        <li><a href="libroDigital.php">Libros</a></li>
+                                        <li><a href="articulos.php">Articulos</a></li>
+                                        <li><a href="ponencias.php">Ponencias</a></li>
+                                    </ul>
+                                </li>
+                                
                             </ul>
                         </li>
-                        <li><a href="shop-grid.html">Shop</a>
+                        <li><a>Mis reservas</a>
                             <ul>
-                                <li><a href="shop-grid.html">Shop Grid</a></li>
-                                <li><a href="single-product.html">Single Product</a></li>
+                                
+                                <li><a href="reservasF.php">Fisicas</a></li>
+    
+                                <li><a href="reservasD.php">Digitales</a></li>
+                                
                             </ul>
                         </li>
-                        <li><a href="blog.html">Blog</a>
-                            <ul>
-                                <li><a href="blog.html">Blog Page</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="perfil.php">Perfil</a></li>
+                        <li><a href="../cerrarSesion.php">Cerrar sesión</a></li>
+                        
                     </ul>
                 </nav>
             </div>
