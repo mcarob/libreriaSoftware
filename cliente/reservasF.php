@@ -146,7 +146,13 @@ include("menu.php");
                                     <li>Cantidad de prestamos realizados</li>
                                 </ul>
                                 <ul class="cart__total__tk">
+                                    <?php if($PreH["cantidad_prestamos"]==null){ ?>
+                                        <li>0</li>
+                                    <?php }else{ ?>
                                     <li><?php echo $PreH["cantidad_prestamos"]?></li>
+                                    <?php } ?>
+
+
                                 </ul>
                             </div>
                             <div class="cart__total__amount">

@@ -86,25 +86,28 @@ include("menu.php");
         		<div class="row">
         			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
         				<div class="shop__sidebar">
-        					<aside class="wedget__categories poroduct--cat">
-        						<h3 class="wedget__title">Idiomas</h3>
-								<form>
-								<ul>
-                                <?php foreach($idiomas as $i){?>    
-                                <li><a><?php echo $i["nom_idioma"] ?></a></li>
-        						<?php }?>	
-								</ul>
-								</form>
+						<form action="filtradosAI.php" method="POST">	
+							<aside class="wedget__categories poroduct--cat">
+        						<h3 class="wedget__title">Idiomas</h3>	
+								<select name="idiomaSelec" id="idiomaSelec" class="form-control">
+								<?php foreach($idiomas as $i){?>
+                                    <option value="<?php echo $i["nom_idioma"]?>"><?php echo $i["nom_idioma"]?></option>
+								<?php }?>
+								</select>								
         					</aside>
         					
         					<aside class="wedget__categories poroduct--tag">
         						<h3 class="wedget__title">Autores</h3>
-        						<ul>
-                                    <?php foreach($autores as $a){?>
-        							<li><a><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></a></li>
-        							<?php }?>
-        						</ul>
-        					</aside>
+								<select name="autorSelec" id="autorSelec" class="form-control">
+								<?php foreach($autores as $a){?>
+                                    <option value="<?php echo ($a["nombre_autor"].$a["apellido_autor"])?>"><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></option>
+								<?php }?>
+								</select>								
+								<input type="hidden" class="form-control" id="presentacionSelec" name="presentacionSelec" value="Digital">
+								<input type="hidden" class="form-control" id="docSelec" name="docSelec" value="Ponencia">
+							</aside>
+								<input class="form-control" type="submit" value="Filtrar">
+							</form>
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">

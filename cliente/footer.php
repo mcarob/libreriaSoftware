@@ -8,8 +8,7 @@
                             <a href="index.html">
 							<img src="assetsCliente/images/logo/logo2.png" alt="logo">
                             </a>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered duskam alteration variations of passages</p>
+                           
                         </div>
                         <div class="footer__content">
                             <ul class="social__net social__net--2 d-flex justify-content-center">
@@ -19,14 +18,7 @@
                                 <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
                                 <li><a href="#"><i class="bi bi-youtube"></i></a></li>
                             </ul>
-                            <ul class="mainmenu d-flex justify-content-center">
-                                <li><a href="index.html">Trending</a></li>
-                                <li><a href="index.html">Best Seller</a></li>
-                                <li><a href="index.html">All Product</a></li>
-                                <li><a href="index.html">Wishlist</a></li>
-                                <li><a href="index.html">Blog</a></li>
-                                <li><a href="index.html">Contact</a></li>
-                            </ul>
+                        
                         </div>
                     </div>
                 </div>

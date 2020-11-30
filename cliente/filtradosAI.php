@@ -29,15 +29,29 @@ $presentacion=$contDoc->tipoPres();
 $documento=$contDoc->tipoDoc();
 $conAutor=new ControladorAutores();
 $autores=$conAutor->listar();
-$listaDocumentos=$contDoc->informacionDocumentos();
 
+
+$listaDocumentos=$contDoc->informacionDocumentos();
 $unidades=0;
+$idiomaSelec=$_POST["idiomaSelec"];
+$autorSelec=$_POST["autorSelec"];
+$presentacion=$_POST["presentacionSelec"];
+$tipoDoc=$_POST["docSelec"];
+
+$mostrarFil=array();
+
 foreach($listaDocumentos as $k)
 {
-	if($k["nom_tipo_documento"]=="Articulo" and $k["nom_tipo_presentacion"]=="Digital")
+	$encontrado = strpos($k["autores"], $autorSelec);
+	if($encontrado!==false and $k["nom_idioma"]==$idiomaSelec and $k["nom_tipo_documento"]==$tipoDoc and $k["nom_tipo_presentacion"]==$presentacion)
 	{
-		$unidades=1;
+		array_push($mostrarFil,$k);
 	}
+	
+}
+if(sizeof($mostrarFil)>0)
+{
+	$unidades=1;
 }
 
 
@@ -68,11 +82,11 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">Stand libros fisicos</h2>
+                        	<h2 class="bradcaump-title">Stand doc filtrados</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.php">Home</a>
                               <span class="brd-separetor">/</span>
-                              <span class="breadcrumb_item active">Libros Fisicos</span>
+                              <span class="breadcrumb_item active">Filtrados</span>
                             </nav>
                         </div>
                     </div>
@@ -103,8 +117,8 @@ include("menu.php");
                                     <option value="<?php echo ($a["nombre_autor"].$a["apellido_autor"])?>"><?php echo ($a["nombre_autor"]." ".$a["apellido_autor"])?></option>
 								<?php }?>
 								</select>								
-								<input type="hidden" class="form-control" id="presentacionSelec" name="presentacionSelec" value="Digital">
-								<input type="hidden" class="form-control" id="docSelec" name="docSelec" value="Articulo">
+								<input type="hidden" class="form-control" id="presentacionSelec" name="presentacionSelec" value=<?php echo $presentacion?>>
+								<input type="hidden" class="form-control" id="docSelec" name="docSelec" value=<?php echo $tipoDoc?>>
 							</aside>
 								<input class="form-control" type="submit" value="Filtrar">
 							</form>
@@ -117,7 +131,7 @@ include("menu.php");
 									<div class="shop__list nav justify-content-center" role="tablist">
 			                            
 			                        </div>
-			                        <p>Resultados Libros Fisicos</p>
+			                        <p>Resultados </p>
 			                        <div class="orderby__wrapper">
 			                        	
 			                        </div>
@@ -128,14 +142,12 @@ include("menu.php");
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
 	        						<!-- Start Single Product -->
-                                    <?php foreach($listaDocumentos as $lib){
-                                    if($lib["nom_tipo_documento"]=="Articulo" and $lib["nom_tipo_presentacion"]=="Digital"){?>
-
+                                    <?php foreach($mostrarFil as $lib){?>
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											<a class="first__img"><img src="../archivos/portadas/<?php echo$lib["direccion_portada"]?>" ></a>
 											<div class="hot__box">
-												<span class="hot-label">Ponencia</span>
+												<span class="hot-label">Libro</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
@@ -147,6 +159,7 @@ include("menu.php");
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
+                                                        
 														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"  onclick='vermas(<?php echo $lib["cod_documento"] ?>,<?php echo ($cliente->getCod_cliente()) ?>)'>
 														<i class="bi bi-search"></i></a>
 														</li>
@@ -157,8 +170,7 @@ include("menu.php");
 										</div>
                                     </div>
 
-                                    <?php }
-                                    }?>
+                                    <?php } ?>
 
 									<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-hidden="true">
 											<div class="modal-dialog modal-dialog-centered" role="document">
@@ -192,7 +204,7 @@ include("menu.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                        	<h2 class="bradcaump-title">No contamos con articulos aún</h2>
+                        	<h2 class="bradcaump-title">No contamos con documentos aun</h2>
                             <nav class="bradcaump-content">
                               <a class="breadcrumb_item" href="index.html">Home</a>
                               <span class="brd-separetor">/</span>
@@ -215,7 +227,7 @@ include("menu.php");
 								<a><img src="assetsCliente/images/404.png" alt="error images"></a>
 							</div>
 							<div class="error__content">
-								<h2>No se encontraron Articulos</h2>
+								<h2>No se encontraron documentos con esas caracteristicas</h2>
 								<p>Te invitamos a mirar dentro de nuestros demas stands para que encuentres tu documento!</p>
 								<br><br>
 								<div class="search_form_wrapper">
@@ -239,10 +251,27 @@ include('footer.php')
 
 <script>
 	function vermas(libro,cliente) {
-		$('.modal-content').load('modalArticulo.php?libro='+libro+'&cliente='+cliente) 
-		$('#modal1').modal('show');
+		var doc='<?php echo $tipoDoc;?>';
+		var pre='<?php echo $presentacion;?>';
+		if(doc=="Libro" && pre=="Física")
+		{
+			$('.modal-content').load('modalLibro.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
+		else if(doc=="Libro" && pre=="Digital")
+		{
+			$('.modal-content').load('modalLibroDigital.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
+		else if(doc=="Ponencia")
+		{
+			$('.modal-content').load('modalPonencia.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
+		else if(doc=="Articulo")
+		{
+			$('.modal-content').load('modalArticulo.php?libro='+libro+'&cliente='+cliente) 
+			$('#modal1').modal('show');
+		}
 	}
-	
-
 </script>
-
