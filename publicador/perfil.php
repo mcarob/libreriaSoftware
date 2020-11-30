@@ -2,7 +2,7 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorPublicador.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/modelo/daos/DaoPublicador.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/libreriaSoftware/controlador/controladorRegistro.php');
 session_start();
 if (!isset($_SESSION['user'])) {
 
