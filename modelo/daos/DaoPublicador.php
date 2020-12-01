@@ -50,7 +50,7 @@ class DaoPublicador extends DB implements dao_interface
         $sentencia = "CALL agregarpublicador(?,?,?,?,?,?,?,?,?)";
         $r = $this->con->prepare($sentencia)->execute([$c->getCorreoPublicador(),
                                                                 $md5Codigo,
-                                                                $codigo,
+                                                                md5($codigo),
                                                                 $c->getNomPublicador(),
                                                                 $c->getCedPublicador(),
                                                                 $c->getDireccionPublicador(),

@@ -18,6 +18,7 @@ class ClienteDAO extends DB  implements dao_interface
     public function agregarRegistroPlataforma(Cliente $c,$pass){
         $cor= new enviarCorreo();
         $codigo=(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
+        $md5Veri=md5($codigo);
         $mensaje="Muchas gracias por registrarse en la aplicación de EL Bosquecillo".
         " para continuar con el proceso de inscripción, por favor ingrese a la aplicación con su correo electrónico, 
         deberá ingresar el codigo de verificacion que esta a continuación :  ".$codigo. ". al acceder la primera vez a la aplicación
@@ -26,7 +27,7 @@ class ClienteDAO extends DB  implements dao_interface
         $sentencia = "CALL agregarcliente(?,?,?,?,?,?)";
         $r = $this->con->prepare($sentencia)->execute([$c->getCorreo_cliente(),
                                                                 $md5Codigo,
-                                                                $codigo,
+                                                                $md5Veri,
                                                                 $c->getNom_cliente(),
                                                                 $c->getTelefono_cliente(),
                                                                 $c->getDireccion_cliente()]);
